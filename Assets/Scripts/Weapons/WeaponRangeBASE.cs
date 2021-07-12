@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class RangeBASE : WeaponBASE
+public class WeaponRangeBASE : WeaponBASE
 {
     [Header("Range Weapon")]
     [SerializeField] bool automatic = true;                 //keep pressed or click

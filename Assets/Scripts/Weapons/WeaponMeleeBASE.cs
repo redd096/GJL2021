@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeBASE : WeaponBASE
+public class WeaponMeleeBASE : WeaponBASE
 {
     public override void PressAttack()
     {

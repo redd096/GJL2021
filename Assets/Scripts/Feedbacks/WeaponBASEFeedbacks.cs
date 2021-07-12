@@ -2,6 +2,9 @@
 
 public class WeaponBASEFeedbacks : MonoBehaviour
 {
+    [Header("Offset from center of player")]
+    [SerializeField] Vector2 offset = Vector2.zero;
+
     [Header("Rotate Sprite (if not setted, rotate all)")]
     [SerializeField] Transform objectToRotate = default;
 
@@ -42,8 +45,8 @@ public class WeaponBASEFeedbacks : MonoBehaviour
 
     void OnPickWeapon()
     {
-        //set owner local scale (to rotate left or right)
-        transform.localScale = weaponBASE.Owner.transform.localScale;
+        //set local scale (to rotate left or right)
+        transform.localScale = Vector3.one;
     }
 
     void RotateWeapon()
@@ -51,9 +54,11 @@ public class WeaponBASEFeedbacks : MonoBehaviour
         //rotate weapon with aim
         if (weaponBASE.Owner)
         {
-            float angle = Vector2.SignedAngle(Vector2.right, weaponBASE.Owner.DirectionAim);
+            bool isLookingRight = weaponBASE.Owner.transform.localScale.x > 0;
+
+            float angle = Vector2.SignedAngle(isLookingRight ? Vector2.right : Vector2.left, weaponBASE.Owner.DirectionAim);
             objectToRotate.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            objectToRotate.localPosition = Quaternion.AngleAxis(angle, Vector3.forward) * weaponBASE.Offset;    //rotate also offset and use it to set new position
+            objectToRotate.localPosition = Quaternion.AngleAxis(angle, isLookingRight ? Vector3.forward : Vector3.back) * offset;   //rotate also offset and use it to set new position
         }
     }
 

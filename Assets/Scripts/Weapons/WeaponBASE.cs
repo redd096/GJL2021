@@ -3,14 +3,8 @@ using redd096;
 
 public abstract class WeaponBASE : MonoBehaviour
 {
-    [Header("Base Weapon")]
-    [SerializeField] Vector2 offset = Vector2.zero;
-    [SerializeField] GameObject objectToRotate = default;
-
     [Header("DEBUG")]
     [ReadOnly] public Character Owner;
-
-    public Vector2 Offset => offset;
 
     //events
     public System.Action onPickWeapon { get; set; }
