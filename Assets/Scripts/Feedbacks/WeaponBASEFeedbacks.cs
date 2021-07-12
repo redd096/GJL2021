@@ -54,7 +54,7 @@ public class WeaponBASEFeedbacks : MonoBehaviour
         //rotate weapon with aim
         if (weaponBASE.Owner)
         {
-            bool isLookingRight = weaponBASE.Owner.transform.localScale.x > 0;
+            bool isLookingRight = weaponBASE.Owner.DirectionAim.x > 0;
 
             float angle = Vector2.SignedAngle(isLookingRight ? Vector2.right : Vector2.left, weaponBASE.Owner.DirectionAim);
             objectToRotate.rotation = Quaternion.AngleAxis(angle, Vector3.forward);

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using redd096;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
 {
     [Header("Character")]

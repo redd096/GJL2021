@@ -2,24 +2,26 @@
 using UnityEngine;
 using redd096;
 
-public class WeaponRangeBASE : WeaponBASE
+public class WeaponRange : WeaponBASE
 {
     [Header("Range Weapon")]
     [SerializeField] bool automatic = true;                 //keep pressed or click
     [SerializeField] float rateOfFire = 0.2f;
-    [SerializeField] Transform[] barrels = default;         //spawn bullets - if more than one, shoot from every barrel
-    [SerializeField] bool barrelSimultaneously = true;      //when more than one barrel, shoot every bullet simultaneously or with a delay (use always rate of fire)
     [SerializeField] float recoil = 1;                      //push back character when shoot
 
+    [Header("Barrel")]
+    [SerializeField] Transform[] barrels = default;         //spawn bullets - if more than one, shoot from every barrel
+    [SerializeField] bool barrelSimultaneously = true;      //when more than one barrel, shoot every bullet simultaneously or with a delay (use always rate of fire)
+
     [Header("Bullet")]
-    [SerializeField] GameObject bulletPrefab = default;
+    [SerializeField] Bullet bulletPrefab = default;
     [SerializeField] float damage = 10;
     [SerializeField] float bulletSpeed = 10;
 
     float lastShoot;
     Coroutine automaticShootCoroutine;
 
-    Pooling<GameObject> bulletsPooling = new Pooling<GameObject>();
+    Pooling<Bullet> bulletsPooling = new Pooling<Bullet>();
     GameObject bulletsParent;
     GameObject BulletsParent
     {
@@ -85,11 +87,13 @@ public class WeaponRangeBASE : WeaponBASE
     void CreateBullet(Transform barrel)
     {
         //instantiate bullet
-        GameObject bullet = bulletsPooling.Instantiate(bulletPrefab, BulletsParent.transform);
+        Bullet bullet = bulletsPooling.Instantiate(bulletPrefab, BulletsParent.transform);
         bullet.transform.position = barrel.position;
         bullet.transform.rotation = barrel.rotation;
+        bullet.transform.localScale = Owner.DirectionAim.x < 0 ? new Vector3(-1, 1, 1) : Vector3.one;    //rotate bullet
 
         //and set it
+        bullet.Init(Owner, Owner.DirectionAim, damage, bulletSpeed);
     }
 
     /// <summary>
@@ -100,6 +104,10 @@ public class WeaponRangeBASE : WeaponBASE
     {
         while (true)
         {
+            //stop if lose owner
+            if (Owner == null)
+                break;
+
             //check rate of fire
             if (Time.time > lastShoot + rateOfFire)
             {
