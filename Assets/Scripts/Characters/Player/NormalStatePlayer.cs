@@ -32,7 +32,7 @@ public class NormalStatePlayer : StateMachineBehaviour
     void Movement(Vector2 inputMovement)
     {
         //set velocity
-        player.Rb.velocity = inputMovement.normalized * speed;
+        player.MoveCharacter(inputMovement.normalized * speed);
     }
 
     void Aim(Vector2 inputAim)

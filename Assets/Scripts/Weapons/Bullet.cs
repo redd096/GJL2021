@@ -56,14 +56,12 @@ public class Bullet : MonoBehaviour
         if (useTrigger == false || collision.GetComponentInParent<Bullet>())
             return;
 
-        Character character = collision.GetComponentInParent<Character>();
-
         //do nothing if hit owner
-        if (character == owner)
+        if (collision.GetComponentInParent<Character>() == owner)
             return;
 
-        //if hit other caracters, do damage
-        character?.GetDamage(damage);
+        //if hit something damageable, do damage
+        collision.GetComponentInParent<IDamageable>()?.GetDamage(damage);
 
         //destroy this object
         Pooling.Destroy(gameObject);
@@ -75,14 +73,12 @@ public class Bullet : MonoBehaviour
         if (useTrigger || collision.gameObject.GetComponentInParent<Bullet>())
             return;
 
-        Character character = collision.gameObject.GetComponentInParent<Character>();
-
         //do nothing if hit owner
-        if (character == owner)
+        if (collision.gameObject.GetComponentInParent<Character>() == owner)
             return;
 
-        //if hit other caracters, do damage
-        character?.GetDamage(damage);
+        //if hit something damageable, do damage
+        collision.gameObject.GetComponentInParent<IDamageable>()?.GetDamage(damage);
 
         //destroy this object
         Pooling.Destroy(gameObject);

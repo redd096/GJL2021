@@ -83,6 +83,9 @@ public class WeaponRange : WeaponBASE
             CreateBullet(barrel);
         }
 
+        //pushback character
+        Owner.PushBack(-Owner.DirectionAim * recoil);
+
         //call event
         onShoot?.Invoke();
     }
