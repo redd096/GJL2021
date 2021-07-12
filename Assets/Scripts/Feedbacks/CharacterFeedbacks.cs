@@ -2,8 +2,9 @@
 
 public class CharacterFeedbacks : MonoBehaviour
 {
-    [Header("Animator Animations")]
+    [Header("Animator Animations - if not setted get in children")]
     [SerializeField] Animator anim;
+    [SerializeField] float minSpeedToStartRun = 0.01f;
 
     [Header("Sprite in Order when rotate left - if not setted get in children")]
     [SerializeField] SpriteRenderer spriteToChange = default;
@@ -17,6 +18,10 @@ public class CharacterFeedbacks : MonoBehaviour
         //get references
         character = GetComponent<Character>();
 
+        //be sure is setted animator
+        if (anim == null)
+            anim = GetComponentInChildren<Animator>();
+
         //be sure is setted sprite to change
         if (spriteToChange == null) 
             spriteToChange = GetComponentInChildren<SpriteRenderer>();
@@ -28,15 +33,15 @@ public class CharacterFeedbacks : MonoBehaviour
     void Update()
     {
         //rotate left or right
-        if (character.DirectionAim.x < 0 && transform.localScale.x > 0)
+        if (character.DirectionAim.x < 0 && transform.localScale.x >= 0)
             RotateObject(false);
-        else if (character.DirectionAim.x > 0 && transform.localScale.x < 0)
+        else if (character.DirectionAim.x > 0 && transform.localScale.x <= 0)
             RotateObject(true);
 
         //set if running or idle
-        if (character.Rb.velocity.magnitude > 0 && anim.GetBool("Running") == false)
+        if (character.Rb.velocity.magnitude > minSpeedToStartRun && anim.GetBool("Running") == false)
             SetRun(true);
-        else if (character.Rb.velocity.magnitude <= 0 && anim.GetBool("Running"))
+        else if (character.Rb.velocity.magnitude <= minSpeedToStartRun && anim.GetBool("Running"))
             SetRun(false);
 
     }

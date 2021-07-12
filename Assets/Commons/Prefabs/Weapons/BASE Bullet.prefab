@@ -4910,6 +4910,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTrigger: 1
+  radiusAreaDamage: 0
+  knockBack: 10
   direction: {x: 0, y: 0}
   damage: 0
   bulletSpeed: 0
@@ -4925,6 +4927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455e4dd17e21bb149b681276a6ad33be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectOnHit:
+    instantiatedGameObject: {fileID: 0}
+    timeAutodestruction: 0
   particlesOnHit: {fileID: 0}
   audioOnHit:
     audioClip: {fileID: 0}
