@@ -2628,11 +2628,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9196000884912609340, guid: d49d310771d259d49a3d65809169f46c,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9196000884912609341, guid: d49d310771d259d49a3d65809169f46c,
         type: 3}
       propertyPath: m_Size.x
