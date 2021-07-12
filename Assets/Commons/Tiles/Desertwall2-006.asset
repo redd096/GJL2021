@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Desertwall-0001
+  m_Name: Desertwall2-006
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 6c86def232893344eb74ff2c4c0ad0e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4133373616cd1e945a0aced1d4831513, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
