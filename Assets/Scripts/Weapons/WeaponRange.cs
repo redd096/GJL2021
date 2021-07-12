@@ -103,7 +103,7 @@ public class WeaponRange : WeaponBASE
         bullet.transform.localScale = Owner.DirectionAim.x < 0 ? new Vector3(-1, 1, 1) : Vector3.one;    //rotate bullet
 
         //and set it
-        bullet.Init(Owner, Owner.DirectionAim, damage, bulletSpeed);
+        bullet.Init(Owner, barrel.right, damage, bulletSpeed);
     }
 
     /// <summary>
