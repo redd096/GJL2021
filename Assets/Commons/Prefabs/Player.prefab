@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3678769784504406893}
   - component: {fileID: 3678769784504406802}
+  - component: {fileID: 2465572222686213355}
   - component: {fileID: 5638893550303126142}
   - component: {fileID: 2558624634725258368}
   - component: {fileID: 4118630773763783409}
@@ -44,11 +45,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3678769784504406800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b750798aab235fb49aeb9fa86bd46b71, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d7f62b3f1763c343ae8eafe8fbc1287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  useTrigger: 1
+  DirectionAim: {x: 0, y: 0}
+  CurrentWeapon: {fileID: 0}
+--- !u!114 &2465572222686213355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678769784504406800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc44a54c699e04787be626262f9d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &5638893550303126142
 Animator:
   serializedVersion: 3

@@ -7,6 +7,7 @@ public class NormalStatePlayer : StateMachineBehaviour
     [SerializeField] float speed = 5;
 
     Player player;
+    bool attacking;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -20,11 +21,10 @@ public class NormalStatePlayer : StateMachineBehaviour
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        //move
+        //inputs
         Movement(InputRedd096.GetValue<Vector2>("Move"));
-
-        //aim
         Aim(InputRedd096.GetValue<Vector2>("Aim"));
+        Attack(InputRedd096.GetButton("Attack"));
     }
 
     #region private API
@@ -41,12 +41,28 @@ public class NormalStatePlayer : StateMachineBehaviour
         if (InputRedd096.IsCurrentControlScheme(player.playerInput, "KeyboardAndMouse"))
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(inputAim);
-            player.DirectionPlayer = (mousePosition - new Vector2(player.transform.position.x, player.transform.position.y)).normalized;
+            player.DirectionAim = (mousePosition - new Vector2(player.transform.position.x, player.transform.position.y)).normalized;
         }
         //or using analog
         else
         {
-            player.DirectionPlayer = inputAim.normalized;
+            player.DirectionAim = inputAim.normalized;
+        }
+    }
+
+    void Attack(bool inputAttack)
+    {
+        //when press, attack
+        if(inputAttack && attacking == false)
+        {
+            attacking = true;
+            player.CurrentWeapon?.PressAttack();
+        }
+        //on release, stop it if automatic shoot
+        else if(inputAttack == false && attacking)
+        {
+            attacking = false;
+            player.CurrentWeapon?.ReleaseAttack();
         }
     }
 
