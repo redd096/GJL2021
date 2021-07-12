@@ -78,7 +78,7 @@ MonoBehaviour:
   gameObjectOnInstantiateBullet:
     instantiatedGameObject: {fileID: 2178930449053546603, guid: 9295a7e88de8c874d834b1f6f9faea8b,
       type: 3}
-    timeAutodestruction: 0.17
+    timeAutodestruction: 0.08
   particlesOnInstantiateBullet: {fileID: 0}
   audioOnInstantiateBullet:
     audioClip: {fileID: 0}
