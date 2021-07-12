@@ -4,12 +4,16 @@
     using System.Collections.Generic;
     using UnityEngine;
 
+    [System.Serializable]
+    public struct InstantiatedGameObjectStruct
+    {
+        public GameObject instantiatedGameObject;
+        public float timeAutodestruction;
+    }
+
     [AddComponentMenu("redd096/Singletons/Instantiate GameObject Manager")]
     public class InstantiateGameObjectManager : Singleton<InstantiateGameObjectManager>
     {
-        [Header("Time Autodestruction")]
-        [SerializeField] float timeAutodestruction = 5;
-
         private Transform parent;
         Transform Parent
         {
@@ -26,7 +30,7 @@
         /// <summary>
         /// Spawn at point and rotation. Use specific pooling
         /// </summary>
-        public void Play(Pooling<GameObject> pool, GameObject prefab, Vector3 position, Quaternion rotation)
+        public void Play(Pooling<GameObject> pool, GameObject prefab, Vector3 position, Quaternion rotation, float timeAutodestruction)
         {
             if (prefab == null)
                 return;
@@ -46,10 +50,10 @@
             element.transform.SetParent(Parent);
 
             //start coroutine to deactivate
-            StartCoroutine(DeactiveAfterSeconds(element));
+            StartCoroutine(DeactiveAfterSeconds(element, timeAutodestruction));
         }
 
-        IEnumerator DeactiveAfterSeconds(GameObject gameObjectToDeactivate)
+        IEnumerator DeactiveAfterSeconds(GameObject gameObjectToDeactivate, float timeAutodestruction)
         {
             //wait
             yield return new WaitForSeconds(timeAutodestruction);
@@ -62,28 +66,30 @@
         /// <summary>
         /// Spawn at point and rotation
         /// </summary>
-        public void Play(GameObject prefab, Vector3 position, Quaternion rotation)
+        public void Play(InstantiatedGameObjectStruct prefab, Vector3 position, Quaternion rotation)
         {
-            if (prefab == null)
+            if (prefab.instantiatedGameObject == null)
                 return;
 
             //if this pooling is not in the dictionary, add it
-            if (pooling.ContainsKey(prefab) == false)
-                pooling.Add(prefab, new Pooling<GameObject>());
+            if (pooling.ContainsKey(prefab.instantiatedGameObject) == false)
+                pooling.Add(prefab.instantiatedGameObject, new Pooling<GameObject>());
 
             //use this manager's pooling, instead of a specific one
-            Play(pooling[prefab], prefab, position, rotation);
+            Play(pooling[prefab.instantiatedGameObject], prefab.instantiatedGameObject, position, rotation, prefab.timeAutodestruction);
         }
 
         /// <summary>
         /// Spawn at point and rotation. Get one random from the array
         /// </summary>
-        public void Play(GameObject[] prefabs, Vector3 position, Quaternion rotation)
+        public void Play(InstantiatedGameObjectStruct[] prefabs, Vector3 position, Quaternion rotation)
         {
             //do only if there are elements in the array
             if (prefabs.Length > 0)
             {
-                Play(prefabs[Random.Range(0, prefabs.Length)], position, rotation);
+                InstantiatedGameObjectStruct prefab = prefabs[Random.Range(0, prefabs.Length)];
+
+                Play(prefab, position, rotation);
             }
         }
     }

@@ -3,6 +3,11 @@ using redd096;
 
 public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
 {
+    [Header("On Instantiate Bullet")]
+    [SerializeField] InstantiatedGameObjectStruct gameObjectOnInstantiateBullet = default;
+    [SerializeField] ParticleSystem particlesOnInstantiateBullet = default;
+    [SerializeField] AudioStruct audioOnInstantiateBullet = default;
+
     [Header("On Shoot")]
     [SerializeField] bool cameraShake = true;
     [CanShow("cameraShake")] [SerializeField] bool customShake = false;
@@ -21,6 +26,7 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
         //add events
         if(weaponRange)
         {
+            weaponRange.onInstantiateBullet += OnInstantiateBullet;
             weaponRange.onShoot += OnShoot;
         }
     }
@@ -32,8 +38,17 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
         //remove events
         if (weaponRange)
         {
+            weaponRange.onInstantiateBullet -= OnInstantiateBullet;
             weaponRange.onShoot -= OnShoot;
         }
+    }
+
+    void OnInstantiateBullet(Transform barrel)
+    {
+        //instantiate vfx and sfx
+        InstantiateGameObjectManager.instance.Play(gameObjectOnInstantiateBullet, barrel.position, barrel.rotation);
+        ParticlesManager.instance.Play(particlesOnInstantiateBullet, barrel.position, barrel.rotation);
+        SoundManager.instance.Play(audioOnInstantiateBullet.audioClip, barrel.position, audioOnInstantiateBullet.volume);
     }
 
     void OnShoot()

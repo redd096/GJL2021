@@ -4,6 +4,7 @@ using redd096;
 public class BulletFeedbacks : MonoBehaviour
 {
     [Header("On Hit")]
+    [SerializeField] InstantiatedGameObjectStruct gameObjectOnHit = default;
     [SerializeField] ParticleSystem particlesOnHit = default;
     [SerializeField] AudioStruct audioOnHit = default;
 
@@ -32,6 +33,9 @@ public class BulletFeedbacks : MonoBehaviour
 
     void OnHit()
     {
-
+        //instantiate vfx and sfx
+        InstantiateGameObjectManager.instance.Play(gameObjectOnHit, transform.position, transform.rotation);
+        ParticlesManager.instance.Play(particlesOnHit, transform.position, transform.rotation);
+        SoundManager.instance.Play(audioOnHit.audioClip, transform.position, audioOnHit.volume);
     }
 }
