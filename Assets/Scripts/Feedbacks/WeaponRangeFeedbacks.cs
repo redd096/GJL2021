@@ -46,7 +46,13 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
     void OnInstantiateBullet(Transform barrel)
     {
         //instantiate vfx and sfx
-        InstantiateGameObjectManager.instance.Play(gameObjectOnInstantiateBullet, barrel.position, barrel.rotation);
+        GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnInstantiateBullet, barrel.position, barrel.rotation);
+        if (instantiatedGameObject)
+        {
+            //rotate left/right and set parent
+            instantiatedGameObject.transform.localScale = transform.lossyScale;
+            instantiatedGameObject.transform.SetParent(transform);
+        }
         ParticlesManager.instance.Play(particlesOnInstantiateBullet, barrel.position, barrel.rotation);
         SoundManager.instance.Play(audioOnInstantiateBullet.audioClip, barrel.position, audioOnInstantiateBullet.volume);
     }

@@ -34,7 +34,12 @@ public class BulletFeedbacks : MonoBehaviour
     void OnHit()
     {
         //instantiate vfx and sfx
-        InstantiateGameObjectManager.instance.Play(gameObjectOnHit, transform.position, transform.rotation);
+        GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnHit, transform.position, transform.rotation);
+        if (instantiatedGameObject)
+        {
+            //rotate left/right and set parent
+            instantiatedGameObject.transform.localScale = transform.lossyScale;
+        }
         ParticlesManager.instance.Play(particlesOnHit, transform.position, transform.rotation);
         SoundManager.instance.Play(audioOnHit.audioClip, transform.position, audioOnHit.volume);
     }

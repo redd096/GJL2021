@@ -30,10 +30,10 @@
         /// <summary>
         /// Spawn at point and rotation. Use specific pooling
         /// </summary>
-        public void Play(Pooling<GameObject> pool, GameObject prefab, Vector3 position, Quaternion rotation, float timeAutodestruction)
+        public GameObject Play(Pooling<GameObject> pool, GameObject prefab, Vector3 position, Quaternion rotation, float timeAutodestruction)
         {
             if (prefab == null)
-                return;
+                return null;
 
             //instantiate (if didn't find deactivated, take first one in the pool)
             GameObject element = pool.Instantiate(prefab);
@@ -42,7 +42,7 @@
 
             //if still null, return
             if (element == null)
-                return;
+                return null;
 
             //set position, rotation and parent
             element.transform.position = position;
@@ -51,6 +51,8 @@
 
             //start coroutine to deactivate
             StartCoroutine(DeactiveAfterSeconds(element, timeAutodestruction));
+
+            return element;
         }
 
         IEnumerator DeactiveAfterSeconds(GameObject gameObjectToDeactivate, float timeAutodestruction)
@@ -66,31 +68,33 @@
         /// <summary>
         /// Spawn at point and rotation
         /// </summary>
-        public void Play(InstantiatedGameObjectStruct prefab, Vector3 position, Quaternion rotation)
+        public GameObject Play(InstantiatedGameObjectStruct prefab, Vector3 position, Quaternion rotation)
         {
             if (prefab.instantiatedGameObject == null)
-                return;
+                return null;
 
             //if this pooling is not in the dictionary, add it
             if (pooling.ContainsKey(prefab.instantiatedGameObject) == false)
                 pooling.Add(prefab.instantiatedGameObject, new Pooling<GameObject>());
 
             //use this manager's pooling, instead of a specific one
-            Play(pooling[prefab.instantiatedGameObject], prefab.instantiatedGameObject, position, rotation, prefab.timeAutodestruction);
+            return Play(pooling[prefab.instantiatedGameObject], prefab.instantiatedGameObject, position, rotation, prefab.timeAutodestruction);
         }
 
         /// <summary>
         /// Spawn at point and rotation. Get one random from the array
         /// </summary>
-        public void Play(InstantiatedGameObjectStruct[] prefabs, Vector3 position, Quaternion rotation)
+        public GameObject Play(InstantiatedGameObjectStruct[] prefabs, Vector3 position, Quaternion rotation)
         {
             //do only if there are elements in the array
             if (prefabs.Length > 0)
             {
                 InstantiatedGameObjectStruct prefab = prefabs[Random.Range(0, prefabs.Length)];
 
-                Play(prefab, position, rotation);
+                return Play(prefab, position, rotation);
             }
+
+            return null;
         }
     }
 }
