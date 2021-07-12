@@ -15,6 +15,9 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
     Character owner;
 
+    //events
+    public System.Action onHit { get; set; }
+
     private void Awake()
     {
         //get references
@@ -60,11 +63,8 @@ public class Bullet : MonoBehaviour
         if (collision.GetComponentInParent<Character>() == owner)
             return;
 
-        //if hit something damageable, do damage
-        collision.GetComponentInParent<IDamageable>()?.GetDamage(damage);
-
-        //destroy this object
-        Pooling.Destroy(gameObject);
+        //on hit
+        OnHit(collision.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -77,8 +77,17 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.GetComponentInParent<Character>() == owner)
             return;
 
+        //on hit
+        OnHit(collision.gameObject);
+    }
+
+    void OnHit(GameObject hit)
+    {
         //if hit something damageable, do damage
-        collision.gameObject.GetComponentInParent<IDamageable>()?.GetDamage(damage);
+        hit.GetComponentInParent<IDamageable>()?.GetDamage(damage);
+
+        //call event
+        onHit?.Invoke();
 
         //destroy this object
         Pooling.Destroy(gameObject);

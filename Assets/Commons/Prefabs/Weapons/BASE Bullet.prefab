@@ -118,6 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8395371864379619246}
   - component: {fileID: 8395371864379619245}
+  - component: {fileID: 1535250552387387380}
   - component: {fileID: 8395371864379619244}
   m_Layer: 0
   m_Name: BASE Bullet
@@ -157,6 +158,18 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   damage: 0
   bulletSpeed: 0
+--- !u!114 &1535250552387387380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395371864379619235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455e4dd17e21bb149b681276a6ad33be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8395371864379619244
 Rigidbody2D:
   serializedVersion: 4

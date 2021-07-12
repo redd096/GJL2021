@@ -4,7 +4,6 @@ public abstract class WeaponBASEFeedbacks : MonoBehaviour
 {
     [Header("Offset from center of player")]
     [SerializeField] Vector2 offset = Vector2.zero;
-    [SerializeField] bool moveBasedOnOffset = true;
 
     [Header("Rotate Sprite (if not setted, rotate all)")]
     [SerializeField] Transform objectToRotate = default;
@@ -61,8 +60,7 @@ public abstract class WeaponBASEFeedbacks : MonoBehaviour
             objectToRotate.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             //rotate also offset and use it to set new position
-            if (moveBasedOnOffset)
-                objectToRotate.localPosition = Quaternion.AngleAxis(angle, isLookingRight ? Vector3.forward : Vector3.back) * offset;
+            objectToRotate.localPosition = Quaternion.AngleAxis(angle, isLookingRight ? Vector3.forward : Vector3.back) * offset;
         }
     }
 
