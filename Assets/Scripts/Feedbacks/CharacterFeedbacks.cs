@@ -1,21 +1,31 @@
 ﻿using UnityEngine;
+using redd096;
 
 public class CharacterFeedbacks : MonoBehaviour
 {
-    [Header("Animator Animations")]
+    [Header("Animator Animations - if not setted get in children")]
     [SerializeField] Animator anim;
+    [SerializeField] float minSpeedToStartRun = 0.01f;
 
     [Header("Sprite in Order when rotate left - if not setted get in children")]
     [SerializeField] SpriteRenderer spriteToChange = default;
     [SerializeField] int spriteInOrder = default;
 
+    [Header("DEBUG")]
+    [ReadOnly] [SerializeField] float calculatedSpeed = 0;
+
     Character character;
     int defaultSpriteInOrder;
+    Vector3 previousPosition;
 
     void Start()
     {
         //get references
         character = GetComponent<Character>();
+
+        //be sure is setted animator
+        if (anim == null)
+            anim = GetComponentInChildren<Animator>();
 
         //be sure is setted sprite to change
         if (spriteToChange == null) 
@@ -28,17 +38,24 @@ public class CharacterFeedbacks : MonoBehaviour
     void Update()
     {
         //rotate left or right
-        if (character.DirectionAim.x < 0 && transform.localScale.x > 0)
+        if (character.DirectionAim.x < 0 && transform.localScale.x >= 0)
             RotateObject(false);
-        else if (character.DirectionAim.x > 0 && transform.localScale.x < 0)
+        else if (character.DirectionAim.x > 0 && transform.localScale.x <= 0)
             RotateObject(true);
 
-        //set if running or idle
-        if (character.Rb.velocity.magnitude > 0 && anim.GetBool("Running") == false)
-            SetRun(true);
-        else if (character.Rb.velocity.magnitude <= 0 && anim.GetBool("Running"))
-            SetRun(false);
+    }
 
+    void FixedUpdate()
+    {
+        //calculate speed (don't use rigidbody, to not glitch when hit walls), and save previous position
+        calculatedSpeed = (transform.position - previousPosition).magnitude / Time.fixedDeltaTime;
+        previousPosition = transform.position;
+
+        //set if running or idle
+        if (calculatedSpeed > minSpeedToStartRun && anim.GetBool("Running") == false)
+            SetRun(true);
+        else if (calculatedSpeed <= minSpeedToStartRun && anim.GetBool("Running"))
+            SetRun(false);
     }
 
     #region private API

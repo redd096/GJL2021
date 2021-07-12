@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using redd096;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -6,6 +7,10 @@ public class Bullet : MonoBehaviour
 {
     [Header("Use trigger or collision enter")]
     [SerializeField] bool useTrigger = true;
+
+    [Header("Bullet")]
+    [SerializeField] [Min(0)] float radiusAreaDamage = 0;       //damage other characters in radius area
+    [SerializeField] float knockBack = 1;                       //knockback hitted character
 
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] Vector2 direction = Vector2.zero;
@@ -55,41 +60,54 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //be sure which collider use, and be sure to not hit other bullets
-        if (useTrigger == false || collision.GetComponentInParent<Bullet>())
-            return;
-
-        //do nothing if hit owner
-        if (collision.GetComponentInParent<Character>() == owner)
-            return;
-
-        //on hit
-        OnHit(collision.gameObject);
+        //be sure which collider use, then call OnHit
+        if (useTrigger)
+            OnHit(collision.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //be sure which collider use, and be sure to not hit other bullets
-        if (useTrigger || collision.gameObject.GetComponentInParent<Bullet>())
-            return;
-
-        //do nothing if hit owner
-        if (collision.gameObject.GetComponentInParent<Character>() == owner)
-            return;
-
-        //on hit
-        OnHit(collision.gameObject);
+        //be sure which collider use, then call OnHit
+        if (useTrigger == false)
+            OnHit(collision.gameObject);
     }
 
     void OnHit(GameObject hit)
     {
-        //if hit something damageable, do damage
-        hit.GetComponentInParent<IDamageable>()?.GetDamage(damage);
+        //be sure to hit something, but not other bullets or this bullet owner
+        if (hit == null || hit.GetComponentInParent<Bullet>() || hit.GetComponentInParent<Character>() == owner)
+            return;
 
         //call event
         onHit?.Invoke();
 
+        //if hit something damageable, do damage and push back
+        IDamageable damageable = hit.GetComponentInParent<IDamageable>();
+        damageable?.GetDamage(damage);
+        damageable?.PushBack(direction * knockBack);
+
+        //damage in area too
+        if(radiusAreaDamage > 0)
+            DamageInArea();
+
         //destroy this object
         Pooling.Destroy(gameObject);
+    }
+
+    void DamageInArea()
+    {
+        List<IDamageable> damageables = new List<IDamageable>();
+
+        //find every object damageable in area
+        foreach(Collider2D col in Physics2D.OverlapCircleAll(transform.position, radiusAreaDamage))
+        {
+            IDamageable damageable = col.GetComponentInParent<IDamageable>();
+            if (damageable != null && damageables.Contains(damageable) == false)
+            {
+                //add only one time in the list, and do damage
+                damageables.Add(damageable);
+                damageable.GetDamage(damage);
+            }
+        }
     }
 }

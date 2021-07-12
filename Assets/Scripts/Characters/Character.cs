@@ -12,6 +12,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     [ReadOnly] public Vector2 DirectionAim;
     public WeaponBASE CurrentWeapon;
     [ReadOnly] [SerializeField] Vector2 pushForce;
+    [ReadOnly] [SerializeField] float currentSpeed;
 
     public Rigidbody2D Rb { get; private set; }
 
@@ -32,6 +33,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     {
         //set velocity
         Rb.velocity = velocity + pushForce;
+        currentSpeed = Rb.velocity.magnitude;
 
         //remove push force
         Vector2 previousPush = pushForce;
