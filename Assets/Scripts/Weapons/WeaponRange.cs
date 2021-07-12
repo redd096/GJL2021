@@ -36,6 +36,7 @@ public class WeaponRange : WeaponBASE
     }
 
     //events
+    public System.Action<Transform> onInstantiateBullet { get; set; }
     public System.Action onShoot { get; set; }
 
     public override void PressAttack()
@@ -73,14 +74,14 @@ public class WeaponRange : WeaponBASE
         {
             foreach (Transform barrel in barrels)
             {
-                CreateBullet(barrel);
+                InstantiateBullet(barrel);
             }
         }
         //or shoot one bullet from random barrel
         else
         {
             Transform barrel = barrels[Random.Range(0, barrels.Length)];
-            CreateBullet(barrel);
+            InstantiateBullet(barrel);
         }
 
         //pushback character
@@ -94,7 +95,7 @@ public class WeaponRange : WeaponBASE
     /// Instantiate bullet and set it
     /// </summary>
     /// <param name="barrel"></param>
-    void CreateBullet(Transform barrel)
+    void InstantiateBullet(Transform barrel)
     {
         //instantiate bullet
         Bullet bullet = bulletsPooling.Instantiate(bulletPrefab, BulletsParent.transform);
@@ -103,7 +104,10 @@ public class WeaponRange : WeaponBASE
         bullet.transform.localScale = Owner.DirectionAim.x < 0 ? new Vector3(-1, 1, 1) : Vector3.one;    //rotate bullet
 
         //and set it
-        bullet.Init(Owner, barrel.right, damage, bulletSpeed);
+        bullet.Init(Owner, Owner.DirectionAim.x < 0 ? -barrel.right : barrel.right, damage, bulletSpeed);
+
+        //call event
+        onInstantiateBullet?.Invoke(barrel);
     }
 
     /// <summary>
