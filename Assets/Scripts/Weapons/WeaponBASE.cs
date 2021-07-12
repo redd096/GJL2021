@@ -35,6 +35,9 @@ public abstract class WeaponBASE : MonoBehaviour
 
         //remove parent
         transform.SetParent(null);
+
+        //be sure to reset attack vars
+        ReleaseAttack();
     }
 
     #endregion
