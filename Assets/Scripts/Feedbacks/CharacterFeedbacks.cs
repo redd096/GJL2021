@@ -2,7 +2,7 @@
 
 public class CharacterFeedbacks : MonoBehaviour
 {
-    [Header("Change Sprite in Order when Rotate")]
+    [Header("Sprite in Order when rotate left - if not setted get in children")]
     [SerializeField] SpriteRenderer spriteToChange = default;
     [SerializeField] int spriteInOrder = default;
 

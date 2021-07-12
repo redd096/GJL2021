@@ -18,13 +18,7 @@ public class Character : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
 
         //if there is a weapon by inspector, set it
-        //CurrentWeapon?.PickWeapon(this);
-    }
-
-    private void Update()
-    {
-        if (InputRedd096.GetKeyDown(UnityEngine.InputSystem.Key.P))
-            CurrentWeapon?.PickWeapon(this);
+        CurrentWeapon?.PickWeapon(this);
     }
 
     /// <summary>
