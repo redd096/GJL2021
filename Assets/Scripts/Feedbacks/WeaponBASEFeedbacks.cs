@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 
-public class WeaponBASEFeedbacks : MonoBehaviour
+public abstract class WeaponBASEFeedbacks : MonoBehaviour
 {
     [Header("Offset from center of player")]
     [SerializeField] Vector2 offset = Vector2.zero;
+    [SerializeField] bool moveBasedOnOffset = true;
 
     [Header("Rotate Sprite (if not setted, rotate all)")]
     [SerializeField] Transform objectToRotate = default;
 
     WeaponBASE weaponBASE;
 
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         //get references
         weaponBASE = GetComponent<WeaponBASE>();
@@ -26,7 +27,7 @@ public class WeaponBASEFeedbacks : MonoBehaviour
             objectToRotate = transform;
     }
 
-    void OnDisable()
+    protected virtual void OnDisable()
     {
         //remove events
         if (weaponBASE)
@@ -58,7 +59,10 @@ public class WeaponBASEFeedbacks : MonoBehaviour
 
             float angle = Vector2.SignedAngle(isLookingRight ? Vector2.right : Vector2.left, weaponBASE.Owner.DirectionAim);
             objectToRotate.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            objectToRotate.localPosition = Quaternion.AngleAxis(angle, isLookingRight ? Vector3.forward : Vector3.back) * offset;   //rotate also offset and use it to set new position
+
+            //rotate also offset and use it to set new position
+            if (moveBasedOnOffset)
+                objectToRotate.localPosition = Quaternion.AngleAxis(angle, isLookingRight ? Vector3.forward : Vector3.back) * offset;
         }
     }
 

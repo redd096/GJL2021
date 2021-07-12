@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1862482482030742672}
   - component: {fileID: 1862482482030742673}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: BASE Range Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,11 +66,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1862482482030742674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13451abbfad83c646bac9b73df0b21d0, type: 3}
+  m_Script: {fileID: 11500000, guid: db754ea9f8a95844f83d303cee992a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0.2, y: -0.2}
+  moveBasedOnOffset: 1
   objectToRotate: {fileID: 0}
+  cameraShake: 1
 --- !u!1 &1862482482099635949
 GameObject:
   m_ObjectHideFlags: 0

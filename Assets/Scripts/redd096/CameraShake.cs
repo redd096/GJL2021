@@ -6,6 +6,8 @@
 	[AddComponentMenu("redd096/MonoBehaviours/Camera Shake")]
 	public class CameraShake : MonoBehaviour
 	{
+		public static CameraShake instance;
+
 		[Header("Camera - by default is main camera")]
 		[Tooltip("If null, use main camera")] [SerializeField] Transform camTransform;
 
@@ -21,6 +23,9 @@
 
 		void Awake()
 		{
+			//set instance to call it without use FindObjectOfType
+			instance = this;
+
 			//get reference if null
 			if (camTransform == null)
 			{

@@ -21,6 +21,7 @@ public class WeaponRange : WeaponBASE
     float lastShoot;
     Coroutine automaticShootCoroutine;
 
+    //bullets
     Pooling<Bullet> bulletsPooling = new Pooling<Bullet>();
     GameObject bulletsParent;
     GameObject BulletsParent
@@ -33,6 +34,9 @@ public class WeaponRange : WeaponBASE
             return bulletsParent;
         }
     }
+
+    //events
+    public System.Action onShoot { get; set; }
 
     public override void PressAttack()
     {
@@ -78,6 +82,9 @@ public class WeaponRange : WeaponBASE
             Transform barrel = barrels[Random.Range(0, barrels.Length)];
             CreateBullet(barrel);
         }
+
+        //call event
+        onShoot?.Invoke();
     }
 
     /// <summary>

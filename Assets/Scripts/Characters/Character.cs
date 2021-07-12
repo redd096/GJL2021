@@ -2,7 +2,7 @@
 using redd096;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     [Header("Character")]
     [SerializeField] float health = 100;
