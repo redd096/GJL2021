@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using redd096;
 
 public class CharacterFeedbacks : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class CharacterFeedbacks : MonoBehaviour
     [SerializeField] SpriteRenderer spriteToChange = default;
     [SerializeField] int spriteInOrder = default;
 
+    [Header("DEBUG")]
+    [ReadOnly] [SerializeField] float calculatedSpeed = 0;
+
     Character character;
     int defaultSpriteInOrder;
+    Vector3 previousPosition;
 
     void Start()
     {
@@ -38,12 +43,19 @@ public class CharacterFeedbacks : MonoBehaviour
         else if (character.DirectionAim.x > 0 && transform.localScale.x <= 0)
             RotateObject(true);
 
-        //set if running or idle
-        if (character.Rb.velocity.magnitude > minSpeedToStartRun && anim.GetBool("Running") == false)
-            SetRun(true);
-        else if (character.Rb.velocity.magnitude <= minSpeedToStartRun && anim.GetBool("Running"))
-            SetRun(false);
+    }
 
+    void FixedUpdate()
+    {
+        //calculate speed (don't use rigidbody, to not glitch when hit walls), and save previous position
+        calculatedSpeed = (transform.position - previousPosition).magnitude / Time.fixedDeltaTime;
+        previousPosition = transform.position;
+
+        //set if running or idle
+        if (calculatedSpeed > minSpeedToStartRun && anim.GetBool("Running") == false)
+            SetRun(true);
+        else if (calculatedSpeed <= minSpeedToStartRun && anim.GetBool("Running"))
+            SetRun(false);
     }
 
     #region private API
