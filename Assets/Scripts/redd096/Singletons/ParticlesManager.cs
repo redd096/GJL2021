@@ -22,10 +22,10 @@
         /// <summary>
         /// Start particles at point and rotation. Use specific pooling
         /// </summary>
-        public void Play(Pooling<ParticleSystem> pool, ParticleSystem prefab, Vector3 position, Quaternion rotation)
+        public ParticleSystem Play(Pooling<ParticleSystem> pool, ParticleSystem prefab, Vector3 position, Quaternion rotation)
         {
             if (prefab == null)
-                return;
+                return null;
 
             //instantiate (if didn't find deactivated, take first one in the pool)
             ParticleSystem particles = pool.Instantiate(prefab);
@@ -34,7 +34,7 @@
 
             //if still null, return
             if (particles == null)
-                return;
+                return null;
 
             //set position, rotation and parent
             particles.transform.position = position;
@@ -43,34 +43,38 @@
 
             //play
             particles.Play();
+
+            return particles;
         }
 
         /// <summary>
         /// Start particles at point and rotation
         /// </summary>
-        public void Play(ParticleSystem prefab, Vector3 position, Quaternion rotation)
+        public ParticleSystem Play(ParticleSystem prefab, Vector3 position, Quaternion rotation)
         {
             if (prefab == null)
-                return;
+                return null;
 
             //if this pooling is not in the dictionary, add it
             if (poolingParticles.ContainsKey(prefab) == false)
                 poolingParticles.Add(prefab, new Pooling<ParticleSystem>());
 
             //use this manager's pooling, instead of a specific one
-            Play(poolingParticles[prefab], prefab, position, rotation);
+            return Play(poolingParticles[prefab], prefab, position, rotation);
         }
 
         /// <summary>
         /// Start particles at point and rotation. Get one random from the array
         /// </summary>
-        public void Play(ParticleSystem[] prefabs, Vector3 position, Quaternion rotation)
+        public ParticleSystem Play(ParticleSystem[] prefabs, Vector3 position, Quaternion rotation)
         {
             //do only if there are elements in the array
             if (prefabs.Length > 0)
             {
-                Play(prefabs[Random.Range(0, prefabs.Length)], position, rotation);
+                return Play(prefabs[Random.Range(0, prefabs.Length)], position, rotation);
             }
+
+            return null;
         }
     }
 }
