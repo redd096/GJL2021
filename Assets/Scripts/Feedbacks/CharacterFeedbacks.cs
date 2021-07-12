@@ -2,6 +2,9 @@
 
 public class CharacterFeedbacks : MonoBehaviour
 {
+    [Header("Animator Animations")]
+    [SerializeField] Animator anim;
+
     [Header("Sprite in Order when rotate left - if not setted get in children")]
     [SerializeField] SpriteRenderer spriteToChange = default;
     [SerializeField] int spriteInOrder = default;
@@ -29,7 +32,16 @@ public class CharacterFeedbacks : MonoBehaviour
             RotateObject(false);
         else if (character.DirectionAim.x > 0 && transform.localScale.x < 0)
             RotateObject(true);
+
+        //set if running or idle
+        if (character.Rb.velocity.magnitude > 0 && anim.GetBool("Running") == false)
+            SetRun(true);
+        else if (character.Rb.velocity.magnitude <= 0 && anim.GetBool("Running"))
+            SetRun(false);
+
     }
+
+    #region private API
 
     void RotateObject(bool toRight)
     {
@@ -48,4 +60,12 @@ public class CharacterFeedbacks : MonoBehaviour
             spriteToChange.sortingOrder = spriteInOrder;
         }
     }
+
+    void SetRun(bool isRunning)
+    {
+        //set running or idle animation
+        anim.SetBool("Running", isRunning);
+    }
+
+    #endregion
 }

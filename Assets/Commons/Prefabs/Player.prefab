@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dc44a54c699e04787be626262f9d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 5462269823241799479}
   spriteToChange: {fileID: 0}
   spriteInOrder: 2
 --- !u!95 &5638893550303126142
