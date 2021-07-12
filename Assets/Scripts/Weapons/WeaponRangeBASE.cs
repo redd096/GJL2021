@@ -9,7 +9,6 @@ public class WeaponRangeBASE : WeaponBASE
     [SerializeField] Transform[] barrels = default;         //spawn bullets - if more than one, shoot from every barrel
     [SerializeField] bool barrelSimultaneously = true;      //when more than one barrel, shoot every bullet simultaneously or with a delay (use always rate of fire)
     [SerializeField] float recoil = 1;                      //push back character when shoot
-    [SerializeField] float charge = 0;                      //keep pressed to charge and release to shoot
 
     [Header("Bullet")]
     [SerializeField] GameObject bulletPrefab = default;

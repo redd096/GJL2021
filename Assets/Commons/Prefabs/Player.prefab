@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteToChange: {fileID: 0}
-  spriteInOrder: 1
+  spriteInOrder: 2
 --- !u!95 &5638893550303126142
 Animator:
   serializedVersion: 3
