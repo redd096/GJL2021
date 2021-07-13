@@ -1,5 +1,6 @@
 ﻿using UnityEngine.InputSystem;
 using UnityEngine;
+using redd096;
 
 [RequireComponent(typeof(PlayerInput))]
 public class Player : Character
@@ -12,5 +13,16 @@ public class Player : Character
 
         //get references
         playerInput = GetComponent<PlayerInput>();
+
+        //add to level manager list
+        if (GameManager.instance.levelManager)
+            GameManager.instance.levelManager.Players.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        //remove from level manager list
+        if (GameManager.instance.levelManager)
+            GameManager.instance.levelManager.Players.Remove(this);
     }
 }
