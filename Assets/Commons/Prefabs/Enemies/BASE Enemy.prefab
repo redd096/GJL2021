@@ -227,10 +227,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  customDrag: 0.1
+  customDrag: 30
   DirectionAim: {x: 0, y: 0}
   CurrentWeapon: {fileID: 0}
+  MovementInput: {x: 0, y: 0}
   pushForce: {x: 0, y: 0}
+  currentSpeed: 0
 --- !u!114 &4545613733212651832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,5 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4545613732538162995}
+  minSpeedToStartRun: 0.01
   spriteToChange: {fileID: 0}
   spriteInOrder: 0
+  calculatedSpeed: 0

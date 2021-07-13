@@ -6,11 +6,12 @@ public abstract class Character : MonoBehaviour, IDamageable
 {
     [Header("Character")]
     [SerializeField] float health = 100;
-    [SerializeField] float customDrag = 0.1f;
+    [SerializeField] float customDrag = 30;
     
     [Header("DEBUG")]
     [ReadOnly] public Vector2 DirectionAim;
     public WeaponBASE CurrentWeapon;
+    [ReadOnly] public Vector2 MovementInput;
     [ReadOnly] [SerializeField] Vector2 pushForce;
     [ReadOnly] [SerializeField] float currentSpeed;
 
@@ -25,19 +26,28 @@ public abstract class Character : MonoBehaviour, IDamageable
         CurrentWeapon?.PickWeapon(this);
     }
 
+    protected virtual void Update()
+    {
+        //move rigidbody
+        MoveCharacter();
+    }
+
     /// <summary>
     /// Move character by velocity
     /// </summary>
     /// <param name="velocity"></param>
-    public void MoveCharacter(Vector2 velocity)
+    void MoveCharacter()
     {
         //set velocity
-        Rb.velocity = velocity + pushForce;
+        Rb.velocity = MovementInput + pushForce;    //input + push
         currentSpeed = Rb.velocity.magnitude;
+
+        //reset movement input
+        MovementInput = Vector2.zero;
 
         //remove push force
         Vector2 previousPush = pushForce;
-        pushForce -= pushForce.normalized * customDrag;
+        pushForce -= pushForce.normalized * (customDrag * Time.deltaTime);
 
         //clamp it
         if (previousPush.x >= 0 && pushForce.x < 0 || previousPush.x <= 0 && pushForce.x > 0)
