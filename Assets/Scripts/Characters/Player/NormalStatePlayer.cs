@@ -8,7 +8,7 @@ public class NormalStatePlayer : StateMachineBehaviour
 
     [Header("Dash")]
     [SerializeField] bool canDash = true;
-    [CanShow("canDash")] [SerializeField] bool dashToAimDirection = true;
+    [CanShow("canDash")] [SerializeField] bool dashToAimDirection = false;
     [CanShow("canDash")] [SerializeField] float dashForce = 20;
     [CanShow("canDash")] [SerializeField] float dashDelay = 1;
 
@@ -84,8 +84,19 @@ public class NormalStatePlayer : StateMachineBehaviour
         {
             lastDash = Time.time;
 
-            //add as push
-            player.PushBack((dashToAimDirection ? player.DirectionAim : player.DirectionInput) * dashForce);
+            //add as push in Aim Direction
+            if(dashToAimDirection)
+            {
+                player.PushBack(player.DirectionAim * dashForce);
+            }
+            //or push in Input Direction (if no input, dash right or left)
+            else
+            {
+                if (player.DirectionInput != Vector2.zero)
+                    player.PushBack(player.DirectionInput * dashForce);
+                else
+                    player.PushBack((player.transform.localScale.x > 0 ? Vector2.right : Vector2.left) * dashForce);
+            }
         }
     }
 

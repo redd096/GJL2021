@@ -85,6 +85,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   canDash: 1
-  dashToAimDirection: 1
+  dashToAimDirection: 0
   dashForce: 15
   dashDelay: 0.8
