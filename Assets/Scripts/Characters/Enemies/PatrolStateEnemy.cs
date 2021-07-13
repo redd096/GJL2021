@@ -62,7 +62,9 @@ public class PatrolStateEnemy : StateMachineBehaviour
             {
                 //stop at every node or when finish path
                 if (stopAtEveryNode || path.Count <= 0)
+                {
                     timerBeforeMove = Time.time + timeToWait;
+                }
             }
 
             return;

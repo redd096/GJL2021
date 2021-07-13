@@ -17,5 +17,6 @@ public interface IDamageable
     /// Push back character
     /// </summary>
     /// <param name="push"></param>
-    void PushBack(Vector2 push);
+    /// <param name="resetPreviousPush"></param>
+    void PushBack(Vector2 push, bool resetPreviousPush = false);
 }

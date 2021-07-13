@@ -23,6 +23,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 15c0849732b523c44bfa8addff846da5,
         type: 3}
+    - target: {fileID: 4545613732538162995, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 284376fa540934a42958c98d6e2b5b99, type: 2}
     - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
         type: 3}
       propertyPath: m_RootOrder
@@ -83,5 +88,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Charger
       objectReference: {fileID: 0}
+    - target: {fileID: 8337730980123881659, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 9174833575798075947}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
+--- !u!95 &9174833575798075947 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4545613732538162995, guid: 32f0a48baafe006409afe4bac4b27067,
+    type: 3}
+  m_PrefabInstance: {fileID: 4631614795409681688}
+  m_PrefabAsset: {fileID: 0}

@@ -14,6 +14,9 @@ public class Enemy : Character
 
     Animator stateMachine;
 
+    //event animations
+    public System.Action onNextState { get; set; }
+
     void OnDrawGizmos()
     {
         //draw patrol area
@@ -32,19 +35,11 @@ public class Enemy : Character
         pointPatrol = new GameObject("Patrol Point: " + name).transform;
         pointPatrol.position = transform.position;
 
+        //TODO
         //SULL'ENEMY CONTROLLER ci saranno le variabili per sapere cosa droppa (con percentuale) e quanta vita ha (vita già c'è)
         //per il drop può droppare un solo oggetto, preso magari da una lista con percentuale
         //oppure può droppare da liste di drop?
         //oppure semplicemente viene generata una percentuale per ogni drop, quindi può essere che droppa tutto come può essere che ne droppa solo alcuni o nessuno?
-
-        //il charger avrà:
-        //V normalmente si muove in giro random (o verso il player?)
-        //quando il player entra nella linea di tiro, cambia stato e inizia a CARICARE
-        //quando finisce di caricare, cambia ancora stato e inizia a CORRERE verso il player (o ultima posizione nota?)
-        //quando sbatte contro qualcosa (player o muri), cambia ancora stato e resta in IDLE per qualche secondo
-        //poi tornerà allo stato normale, che passerà subito al caricare se il nemico è ancora nella linea di tiro
-        //p.s. il charger avrà 2 variabili quando colpisce il player: danno e knockback
-        //p.p.s. il charger non può essere danneggiato da davanti perché ha uno scudo
     }
 
     /// <summary>

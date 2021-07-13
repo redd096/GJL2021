@@ -3,7 +3,7 @@
 public class IdleStateEnemyCharger : StateMachineBehaviour
 {
     [Header("Duration Idle")]
-    [SerializeField] float durationIdle = 3;
+    [SerializeField] float durationIdle = 2;
 
     Enemy enemy;
     float timerIdle;
@@ -17,6 +17,9 @@ public class IdleStateEnemyCharger : StateMachineBehaviour
 
         //set vars
         timerIdle = Time.time + durationIdle;
+
+        //call next state event
+        enemy.onNextState?.Invoke();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -33,5 +36,8 @@ public class IdleStateEnemyCharger : StateMachineBehaviour
         //set if target still in vision, then change state
         enemy.SetTargetSetted(enemy.CheckTargetStillInVision());
         enemy.SetState("Next State");
+
+        //call next state event
+        enemy.onNextState?.Invoke();
     }
 }

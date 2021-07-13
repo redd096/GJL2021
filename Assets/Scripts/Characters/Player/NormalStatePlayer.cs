@@ -97,6 +97,9 @@ public class NormalStatePlayer : StateMachineBehaviour
                 else
                     player.PushBack((player.transform.localScale.x > 0 ? Vector2.right : Vector2.left) * dashForce);
             }
+
+            //call event
+            player.onDash?.Invoke();
         }
     }
 

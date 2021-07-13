@@ -39,6 +39,9 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
 
     void LookAtTarget()
     {
+        if (enemy.Target == null)
+            return;
+
         //aim at target
         enemy.DirectionAim = (enemy.Target.transform.position - enemy.transform.position).normalized;
     }

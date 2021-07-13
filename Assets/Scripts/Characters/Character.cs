@@ -98,9 +98,14 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// Push back character
     /// </summary>
     /// <param name="push"></param>
-    public void PushBack(Vector2 push)
+    /// <param name="resetPreviousPush"></param>
+    public void PushBack(Vector2 push, bool resetPreviousPush = false)
     {
-        pushForce += push;
+        //reset previous push or add new one to it
+        if (resetPreviousPush)
+            pushForce = push;
+        else
+            pushForce += push;
     }
 
     #endregion
