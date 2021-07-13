@@ -76,7 +76,7 @@ MonoBehaviour:
   offset: {x: 0.2, y: -0.2}
   objectToRotate: {fileID: 0}
   gameObjectOnInstantiateBullet:
-    instantiatedGameObject: {fileID: 2178930449053546603, guid: 9295a7e88de8c874d834b1f6f9faea8b,
+    instantiatedGameObject: {fileID: 7717712962230171627, guid: 998590d86f7c7c64591a07404a1ab66c,
       type: 3}
     timeAutodestruction: 0.08
   particlesOnInstantiateBullet: {fileID: 0}
