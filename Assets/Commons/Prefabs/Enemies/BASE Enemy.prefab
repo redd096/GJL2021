@@ -235,6 +235,8 @@ MonoBehaviour:
   MovementInput: {x: 0, y: 0}
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
+  radiusPatrol: 2
+  pointPatrol: {fileID: 0}
 --- !u!114 &4545613733212651832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +264,7 @@ Animator:
   m_GameObject: {fileID: 4545613733212651833}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c33ac9f79a4f7c429b8025ed1c1b9f4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
