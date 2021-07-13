@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7587865647445716159}
   - component: {fileID: 1749803577991424086}
   - component: {fileID: 5852111070775291726}
+  - component: {fileID: 1082200100082339313}
   m_Layer: 0
   m_Name: VAN ANIMAZIONE1
   m_TagString: Untagged
@@ -101,3 +102,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!68 &1082200100082339313
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883814029083066458}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.9652218, y: 1.7772756}
+  - {x: -0.9082104, y: 1.0185208}
+  - {x: -1.163025, y: -0.92809486}
+  - {x: 1.8962119, y: -2.8412235}
+  - {x: 3.3132472, y: -1.5350728}
+  - {x: 2.596099, y: 0.6177163}
+  - {x: 0.9571377, y: 1.777276}
