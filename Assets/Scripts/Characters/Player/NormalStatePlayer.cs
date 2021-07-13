@@ -54,7 +54,9 @@ public class NormalStatePlayer : StateMachineBehaviour
         //or using analog
         else
         {
-            player.DirectionAim = inputAim.normalized;
+            //don't reset when release analog, keep last rotation
+            if(inputAim != Vector2.zero)
+                player.DirectionAim = inputAim.normalized;
         }
     }
 
