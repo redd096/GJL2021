@@ -6,8 +6,15 @@ public class NormalStatePlayer : StateMachineBehaviour
     [Header("Movement")]
     [SerializeField] float speed = 5;
 
+    [Header("Dash")]
+    [SerializeField] bool canDash = true;
+    [CanShow("canDash")] [SerializeField] bool dashToAimDirection = true;
+    [CanShow("canDash")] [SerializeField] float dashForce = 20;
+    [CanShow("canDash")] [SerializeField] float dashDelay = 1;
+
     Player player;
     bool attacking;
+    float lastDash;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -25,6 +32,7 @@ public class NormalStatePlayer : StateMachineBehaviour
         Movement(InputRedd096.GetValue<Vector2>("Move"));
         Aim(InputRedd096.GetValue<Vector2>("Aim"));
         Attack(InputRedd096.GetButton("Attack"));
+        Dash(InputRedd096.GetButtonDown("Dash"));
     }
 
     #region private API
@@ -32,7 +40,7 @@ public class NormalStatePlayer : StateMachineBehaviour
     void Movement(Vector2 inputMovement)
     {
         //set velocity
-        player.MovementInput = inputMovement.normalized * speed;
+        player.MoveCharacter(inputMovement.normalized, speed);
     }
 
     void Aim(Vector2 inputAim)
@@ -63,6 +71,21 @@ public class NormalStatePlayer : StateMachineBehaviour
         {
             attacking = false;
             player.CurrentWeapon?.ReleaseAttack();
+        }
+    }
+
+    void Dash(bool inputDash)
+    {
+        if (canDash == false)
+            return;
+
+        //on press, check delay between dash
+        if(inputDash && Time.time > lastDash + dashDelay)
+        {
+            lastDash = Time.time;
+
+            //add as push
+            player.PushBack((dashToAimDirection ? player.DirectionAim : player.DirectionInput) * dashForce);
         }
     }
 

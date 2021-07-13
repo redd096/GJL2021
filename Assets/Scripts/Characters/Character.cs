@@ -7,13 +7,14 @@ public abstract class Character : MonoBehaviour, IDamageable
     [Header("Character")]
     [SerializeField] float health = 100;
     [SerializeField] float customDrag = 30;
-    
+
     [Header("DEBUG")]
-    [ReadOnly] public Vector2 DirectionAim;
-    public WeaponBASE CurrentWeapon;
-    [ReadOnly] public Vector2 MovementInput;
-    [ReadOnly] [SerializeField] Vector2 pushForce;
-    [ReadOnly] [SerializeField] float currentSpeed;
+    [ReadOnly] public Vector2 DirectionInput;               //when character moves, set it (used to know last movement direction)
+    [ReadOnly] public Vector2 DirectionAim;                 //when character aim, set it (used to know where to shoot for example)
+    public WeaponBASE CurrentWeapon;                        //current equipped weapon
+    [ReadOnly] [SerializeField] Vector2 MovementInput;      //when character moves, set it (used to move character, will be reset after movement in every frame)
+    [ReadOnly] [SerializeField] Vector2 pushForce;          //used to push character (push by recoil, knockback, dash, etc...), will be decreased by customDrag in every frame
+    [ReadOnly] [SerializeField] float currentSpeed;         //speed from MovementInput and pushForce
 
     public Rigidbody2D Rb { get; private set; }
 
@@ -33,9 +34,8 @@ public abstract class Character : MonoBehaviour, IDamageable
     }
 
     /// <summary>
-    /// Move character by velocity
+    /// Move character using movement and push
     /// </summary>
-    /// <param name="velocity"></param>
     void MoveCharacter()
     {
         //set velocity
@@ -55,6 +55,23 @@ public abstract class Character : MonoBehaviour, IDamageable
         if (previousPush.y >= 0 && pushForce.y < 0 || previousPush.y <= 0 && pushForce.y > 0)
             pushForce.y = 0;
     }
+
+    /// <summary>
+    /// Set character movement
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <param name="speed"></param>
+    public void MoveCharacter(Vector2 direction, float speed)
+    {
+        //save last input direction + set movement
+        if (direction != Vector2.zero)
+        {
+            DirectionInput = direction;
+            MovementInput = direction * speed;
+        }
+    }
+
+    #region IDamageable
 
     /// <summary>
     /// Get damage and check if dead
@@ -88,4 +105,6 @@ public abstract class Character : MonoBehaviour, IDamageable
     {
         pushForce += push;
     }
+
+    #endregion
 }
