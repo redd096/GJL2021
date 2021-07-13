@@ -237,7 +237,7 @@ MonoBehaviour:
   currentSpeed: 0
   radiusPatrol: 2
   pointPatrol: {fileID: 0}
-  target: {fileID: 0}
+  Target: {fileID: 0}
 --- !u!114 &4545613733212651832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   anim: {fileID: 4545613732538162995}
   minSpeedToStartRun: 0.01
   spriteToChange: {fileID: 0}
-  spriteInOrder: 0
+  spriteInOrder: 2
   calculatedSpeed: 0
 --- !u!95 &3788898173565024316
 Animator:
