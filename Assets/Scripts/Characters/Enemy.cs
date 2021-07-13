@@ -10,6 +10,7 @@ public class Enemy : Character
     [Header("DEBUG ENEMY")]
     [ReadOnly] [SerializeField] Transform pointPatrol;
     [ReadOnly] public Player Target;
+    [ReadOnly] public Vector3 LastTargetPosition;
 
     Animator stateMachine;
 
@@ -70,10 +71,11 @@ public class Enemy : Character
             //if there are not obstacles between enemy and player, set it as target
             if (Physics2D.Linecast(transform.position, player.transform.position, CreateLayer.LayerOnly("Not Walkable")) == false)
             {
-                Debug.DrawLine(transform.position, player.transform.position, Color.red);
                 Target = player;
+
                 return true;
             }
+
             Debug.DrawLine(transform.position, player.transform.position, Color.green);
         }
 
@@ -86,6 +88,12 @@ public class Enemy : Character
     /// <returns></returns>
     public bool CheckTargetStillInVision()
     {
+        if (Target == null)
+            return false;
+
+        //save last target position
+        LastTargetPosition = Target.transform.position;
+
         //if there are not obstacles between enemy and player, return true
         if (Physics2D.Linecast(transform.position, Target.transform.position, CreateLayer.LayerOnly("Not Walkable")) == false)
         {
@@ -107,5 +115,14 @@ public class Enemy : Character
     {
         //set new state
         stateMachine.SetTrigger(state);
+    }
+
+    /// <summary>
+    /// Set in state machine if Target is setted
+    /// </summary>
+    /// <param name="isSetted"></param>
+    public void SetTargetSetted(bool isSetted)
+    {
+        stateMachine.SetBool("Target Setted", isSetted);
     }
 }
