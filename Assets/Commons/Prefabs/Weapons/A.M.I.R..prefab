@@ -60,7 +60,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8395371864379619245, guid: ec8b166e16a4f5749adee068cb9ec98f,
     type: 3}
   damage: 10
-  bulletSpeed: 10
+  bulletSpeed: 20
 --- !u!114 &3182246790604602617
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -83,8 +83,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb5a34f6f610804cb213bed773e6ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   canDash: 1
   dashToAimDirection: 0
-  dashForce: 15
+  dashForce: 10
   dashDelay: 0.8
