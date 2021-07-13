@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 4545613733212651834}
   - component: {fileID: 4545613733212651835}
   - component: {fileID: 4545613733212651832}
+  - component: {fileID: 3788898173565024316}
   m_Layer: 0
   m_Name: BASE Enemy
   m_TagString: Untagged
@@ -228,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   customDrag: 30
+  DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
   CurrentWeapon: {fileID: 0}
   MovementInput: {x: 0, y: 0}
@@ -250,3 +252,22 @@ MonoBehaviour:
   spriteToChange: {fileID: 0}
   spriteInOrder: 0
   calculatedSpeed: 0
+--- !u!95 &3788898173565024316
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545613733212651833}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

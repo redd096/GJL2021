@@ -12,7 +12,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours:
-  - {fileID: 2277003076441960467}
+  - {fileID: 6871135639553712797}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -55,7 +55,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player SM
+  m_Name: Enemy Shooter SM
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -71,7 +71,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &2277003076441960467
+--- !u!114 &6871135639553712797
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,11 +80,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb5a34f6f610804cb213bed773e6ebf, type: 3}
+  m_Script: {fileID: 11500000, guid: 77d9814d6e5af9648be93d07be0677ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  canDash: 1
-  dashToAimDirection: 0
-  dashForce: 15
-  dashDelay: 0.8
