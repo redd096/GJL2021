@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1392776428961085934}
   - component: {fileID: 4699611119171575675}
   - component: {fileID: 2216048085187273528}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Props (Collider)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 8353809937445515601}
   - component: {fileID: 8903650580798701306}
   - component: {fileID: 7407112263379826120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Border(Collider)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

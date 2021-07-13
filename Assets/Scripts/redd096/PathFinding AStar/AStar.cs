@@ -6,13 +6,15 @@
     using UnityEngine;
 
     [AddComponentMenu("redd096/Path Finding A Star/A Star")]
-    public class AStar : MonoBehaviour
+    public class AStar : Singleton<AStar>
     {
         [Header("Default use Find Object of Type")]
         [SerializeField] GridAStar grid = default;
 
-        void Awake()
+        protected override void SetDefaults()
         {
+            base.SetDefaults();
+
             if (grid == null)
                 grid = FindObjectOfType<GridAStar>();
         }
