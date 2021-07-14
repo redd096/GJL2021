@@ -50,7 +50,7 @@ MonoBehaviour:
   automatic: 1
   rateOfFire: 0.2
   recoil: 1
-  NoiseAccuracy: 10
+  NoiseAccuracy: 13
   barrels:
   - {fileID: 7698008951610279915}
   barrelSimultaneously: 1

@@ -1,66 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4643108227283232049
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2590819884871708604}
-  m_Layer: 0
-  m_Name: Barrel (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2590819884871708604
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4643108227283232049}
-  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
-  m_LocalPosition: {x: 0.45, y: 0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1320243031726332637}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
---- !u!1 &6884759982120563415
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 751354265370812487}
-  m_Layer: 0
-  m_Name: Barrel (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &751354265370812487
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6884759982120563415}
-  m_LocalRotation: {x: 0, y: 0, z: -0.13052624, w: 0.9914449}
-  m_LocalPosition: {x: 0.45, y: -0.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1320243031726332637}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
---- !u!1001 &831670568656770626
+--- !u!1001 &5170203990674358885
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -69,8 +9,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
+      propertyPath: damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
       propertyPath: recoil
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
@@ -80,42 +25,23 @@ PrefabInstance:
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: rateOfFire
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
-      propertyPath: NoiseAccuracy
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: barrels.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: barrels.Array.data[1]
+      propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 2590819884871708604}
+      objectReference: {fileID: 8670359750081860716, guid: 7a3d1fe7aba9bf94a8af634b546b6d04,
+        type: 3}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
-      propertyPath: barrels.Array.data[2]
-      value: 
-      objectReference: {fileID: 751354265370812487}
-    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: offset.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: offset.y
-      value: -0.15
+      propertyPath: barrelSimultaneously
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: gameObjectOnInstantiateBullet.timeAutodestruction
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
@@ -126,7 +52,7 @@ PrefabInstance:
     - target: {fileID: 1862482482030742674, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_Name
-      value: Shotgun
+      value: Gun
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742687, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
@@ -183,27 +109,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1862482483740369052, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a12b817884954bc429058e7f4eb90336,
-        type: 3}
-    - target: {fileID: 7698008951610279915, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698008951610279915, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2557c0556e3bf0d44b2eb21fa55875bb, type: 3}
---- !u!4 &1320243031726332637 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1862482482030742687, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-    type: 3}
-  m_PrefabInstance: {fileID: 831670568656770626}
-  m_PrefabAsset: {fileID: 0}

@@ -226,15 +226,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0b442338526af49a6173f7cd4ffe29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  isDestructible: 1
+  health: 50
   removeColliderOnDeath: 1
   doAreaDamage: 0
   radiusAreaDamage: 1
   damage: 10
   canBePushed: 0
   customDrag: 30
-  destroyAfterSeconds: 0
-  secondsBeforeDestroy: 10
+  removeAfterSecondsIsDead: 0
+  secondsBeforeRemove: 10
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
 --- !u!114 &1482023216425784880
