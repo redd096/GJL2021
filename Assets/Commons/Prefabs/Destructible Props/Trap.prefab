@@ -46,6 +46,16 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.0666667
       objectReference: {fileID: 0}
+    - target: {fileID: 3212107486455365022, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107487290733887, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3212107487702693235, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: m_RootOrder
@@ -105,6 +115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107487702693246, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7083865139490018212, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}

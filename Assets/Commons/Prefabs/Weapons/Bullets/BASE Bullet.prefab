@@ -4912,7 +4912,7 @@ MonoBehaviour:
   useTrigger: 1
   layerPenetrable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   doAreaDamage: 0
   radiusAreaDamage: 0
   areaCanDamageWhoShoot: 0

@@ -4845,7 +4845,7 @@ PrefabInstance:
     - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
       propertyPath: layerPenetrable.m_Bits
-      value: 1536
+      value: 3584
       objectReference: {fileID: 0}
     - target: {fileID: 8395371864379619246, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
