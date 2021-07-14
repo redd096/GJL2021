@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3212107487702693235}
   - component: {fileID: 3212107487702693244}
-  - component: {fileID: 3212107487702693245}
+  - component: {fileID: 7083865139490018212}
   - component: {fileID: 1482023216425784880}
   m_Layer: 9
   m_Name: BASE Destructible Prop
@@ -214,7 +214,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3212107487702693245
+--- !u!114 &7083865139490018212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3212107487702693246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c0b442338526af49a6173f7cd4ffe29, type: 3}
+  m_Script: {fileID: 11500000, guid: 865cea14a692ae74a9804d7561434660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isDestructible: 1
@@ -232,12 +232,21 @@ MonoBehaviour:
   doAreaDamage: 0
   radiusAreaDamage: 1
   damage: 10
+  knockBack: 0
   canBePushed: 0
   customDrag: 30
   removeAfterSecondsIsDead: 0
   secondsBeforeRemove: 10
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
+  doDamageOnHit: 0
+  useTrigger: 0
+  layerToIgnore:
+    serializedVersion: 2
+    m_Bits: 0
+  damageOnHit: 10
+  knockBackOnHit: 20
+  dieOnHit: 0
 --- !u!114 &1482023216425784880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9adc9440e9d334aad5f12e345ddeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteToChange: {fileID: 0}
+  durationBlink: 0.2
+  ignoreIfAlreadyBlinking: 1
