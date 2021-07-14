@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3212107486455365011, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d31ad7465d284941b6cebb3d2a9a940,
+        type: 3}
+    - target: {fileID: 3212107486455365020, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107486455365020, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3212107487702693235, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: m_RootOrder
@@ -65,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 3212107487702693246, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: m_Name
-      value: BASE Destructible Prop
+      value: Bidone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8f19c66884b6d47990b711f842cdd8, type: 3}
