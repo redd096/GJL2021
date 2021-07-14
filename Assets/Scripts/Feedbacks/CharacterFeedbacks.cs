@@ -5,6 +5,7 @@ using redd096;
 public class CharacterFeedbacks : MonoBehaviour
 {
     [Header("On Get Damage")]
+    [SerializeField] Material blinkMaterial = default;
     [SerializeField] float durationBlink = 0.2f;
     [SerializeField] bool ignoreIfAlreadyBlinking = true;
 
@@ -28,6 +29,7 @@ public class CharacterFeedbacks : MonoBehaviour
     int defaultSpriteInOrder;
     Vector3 previousPosition;
 
+    Material defaultMaterial;
     Coroutine blinkCoroutine;
 
     private void OnEnable()
@@ -65,6 +67,9 @@ public class CharacterFeedbacks : MonoBehaviour
 
         //and save its default order in layer
         defaultSpriteInOrder = spriteToChange.sortingOrder;
+
+        //get references
+        defaultMaterial = spriteToChange.material;
     }
 
     void Update()
@@ -146,13 +151,13 @@ public class CharacterFeedbacks : MonoBehaviour
     IEnumerator BlinkCoroutine()
     {
         //set blink
-        spriteToChange.material.SetFloat("_FlashAmount", 1);
+        spriteToChange.material = blinkMaterial;
 
         //wait
         yield return new WaitForSeconds(durationBlink);
 
         //reset sprite color
-        spriteToChange.material.SetFloat("_FlashAmount", 0);
+        spriteToChange.material = defaultMaterial;
 
         blinkCoroutine = null;
     }

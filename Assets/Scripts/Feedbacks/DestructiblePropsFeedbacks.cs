@@ -7,12 +7,14 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
     [SerializeField] SpriteRenderer spriteToChange = default;
 
     [Header("On Get Damage")]
+    [SerializeField] Material blinkMaterial = default;
     [SerializeField] float durationBlink = 0.2f;
     [SerializeField] bool ignoreIfAlreadyBlinking = true;
 
     BASEDestructibleProps props;
     Animator anim;
 
+    Material defaultMaterial;
     Coroutine blinkCoroutine;
 
     void OnEnable()
@@ -20,10 +22,6 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
         //get references
         props = GetComponent<BASEDestructibleProps>();
         anim = GetComponentInChildren<Animator>();
-
-        //be sure is setted sprite to change
-        if (spriteToChange == null)
-            spriteToChange = GetComponentInChildren<SpriteRenderer>();
 
         //add events
         if (props)
@@ -41,6 +39,16 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
             props.onGetDamage += OnGetDamage;
             props.onDie += OnDie;
         }
+    }
+
+    void Start()
+    {
+        //be sure is setted sprite to change
+        if (spriteToChange == null)
+            spriteToChange = GetComponentInChildren<SpriteRenderer>();
+
+        //get references
+        defaultMaterial = spriteToChange.material;
     }
 
     #region private API
@@ -69,13 +77,13 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
     IEnumerator BlinkCoroutine()
     {
         //set blink
-        spriteToChange.material.SetFloat("_FlashAmount", 1);
+        spriteToChange.material = blinkMaterial;
 
         //wait
         yield return new WaitForSeconds(durationBlink);
 
         //reset sprite color
-        spriteToChange.material.SetFloat("_FlashAmount", 0);
+        spriteToChange.material = defaultMaterial;
 
         blinkCoroutine = null;
     }

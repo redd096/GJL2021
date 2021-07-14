@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 608f4df164a05aa4398c5ad06a26cd5e, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,5 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteToChange: {fileID: 0}
+  blinkMaterial: {fileID: 2100000, guid: ba381242cd8d6144f8af0713efd1c8df, type: 2}
   durationBlink: 0.2
   ignoreIfAlreadyBlinking: 1
