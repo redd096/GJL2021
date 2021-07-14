@@ -17,7 +17,7 @@ public class Enemy : Character
     //event animations
     public System.Action onNextState { get; set; }
 
-    void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         //draw patrol area
         Gizmos.color = Color.red;

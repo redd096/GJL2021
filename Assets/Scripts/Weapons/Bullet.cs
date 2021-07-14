@@ -83,8 +83,8 @@ public class Bullet : MonoBehaviour
 
         //if hit something damageable, do damage and push back
         IDamageable damageable = hit.GetComponentInParent<IDamageable>();
-        damageable?.GetDamage(damage);
-        damageable?.PushBack(direction * knockBack);
+        damageable?.GetDamage(damage, transform.position);
+        damageable?.PushBack(direction * knockBack, transform.position);
 
         //damage in area too
         if(radiusAreaDamage > 0)
@@ -106,7 +106,7 @@ public class Bullet : MonoBehaviour
             {
                 //add only one time in the list, and do damage
                 damageables.Add(damageable);
-                damageable.GetDamage(damage);
+                damageable.GetDamage(damage, transform.position);
             }
         }
     }

@@ -129,8 +129,8 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
             {
                 //if hit something damageable, do damage and push back
                 IDamageable damageable = hit.transform.GetComponentInParent<IDamageable>();
-                damageable?.GetDamage(damage);
-                damageable?.PushBack(enemy.DirectionAim * knockBack);
+                damageable?.GetDamage(damage, enemy.transform.position);
+                damageable?.PushBack(enemy.DirectionAim * knockBack, enemy.transform.position);
             }
         }
 

@@ -74,7 +74,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// Get damage and check if dead
     /// </summary>
     /// <param name="damage"></param>
-    public void GetDamage(float damage)
+    public virtual void GetDamage(float damage, Vector2 hitPosition = default)
     {
         health -= damage;
 
@@ -99,7 +99,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// </summary>
     /// <param name="push"></param>
     /// <param name="resetPreviousPush"></param>
-    public void PushBack(Vector2 push, bool resetPreviousPush = false)
+    public virtual void PushBack(Vector2 push, Vector2 hitPosition = default, bool resetPreviousPush = false)
     {
         //reset previous push or add new one to it
         if (resetPreviousPush)
