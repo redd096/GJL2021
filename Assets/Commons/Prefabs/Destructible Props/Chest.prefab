@@ -19,6 +19,26 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 3212107486455365020, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.59267294
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107486455365020, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.6576062
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107486455365020, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.014345765
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107486455365020, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.01208061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107486455365020, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.2045455
       objectReference: {fileID: 0}
@@ -85,7 +105,7 @@ PrefabInstance:
     - target: {fileID: 3212107487702693246, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: m_Name
-      value: Bidone infiammato
+      value: Chest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8f19c66884b6d47990b711f842cdd8, type: 3}
