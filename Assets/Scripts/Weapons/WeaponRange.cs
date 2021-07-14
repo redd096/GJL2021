@@ -19,7 +19,7 @@ public class WeaponRange : WeaponBASE
     [SerializeField] float damage = 10;
     [SerializeField] float bulletSpeed = 10;
 
-    float lastShoot;
+    float timeForNextShot;
     Coroutine automaticShootCoroutine;
 
     //bullets
@@ -43,9 +43,9 @@ public class WeaponRange : WeaponBASE
     public override void PressAttack()
     {
         //check rate of fire
-        if (Time.time > lastShoot + rateOfFire)
+        if (Time.time > timeForNextShot)
         {
-            lastShoot = Time.time;
+            timeForNextShot = Time.time + rateOfFire;
 
             //shoot
             Shoot();
@@ -131,9 +131,9 @@ public class WeaponRange : WeaponBASE
                 break;
 
             //check rate of fire
-            if (Time.time > lastShoot + rateOfFire)
+            if (Time.time > timeForNextShot)
             {
-                lastShoot = Time.time;
+                timeForNextShot = Time.time + rateOfFire;
 
                 //shoot
                 Shoot();

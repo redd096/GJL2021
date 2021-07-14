@@ -14,7 +14,7 @@ public class NormalStatePlayer : StateMachineBehaviour
 
     Player player;
     bool attacking;
-    float lastDash;
+    float timeBeforeNextDash;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -82,9 +82,9 @@ public class NormalStatePlayer : StateMachineBehaviour
             return;
 
         //on press, check delay between dash
-        if(inputDash && Time.time > lastDash + dashDelay)
+        if(inputDash && Time.time > timeBeforeNextDash)
         {
-            lastDash = Time.time;
+            timeBeforeNextDash = Time.time + dashDelay;
 
             //add as push in Aim Direction
             if(dashToAimDirection)
