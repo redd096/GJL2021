@@ -37,7 +37,7 @@ public class IdleStateEnemyCharger : StateMachineBehaviour
         enemy.SetTargetSetted(enemy.CheckTargetStillInVision());
         enemy.SetState("Next State");
 
-        //call next state event
+        //call next state event (to move back on patrol, if go to charge will be called again)
         enemy.onNextState?.Invoke();
     }
 }

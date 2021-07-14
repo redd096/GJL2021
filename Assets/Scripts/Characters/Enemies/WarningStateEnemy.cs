@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class ShockedStateEnemyCharger : StateMachineBehaviour
+public class WarningStateEnemy : StateMachineBehaviour
 {
-    [Header("Duration Shock")]
-    [SerializeField] float durationShock = 0.5f;
+    [Header("Duration Warning")]
+    [SerializeField] float durationWarning = 0.5f;
 
     Enemy enemy;
     float timerBeforeCharge;
@@ -16,7 +16,7 @@ public class ShockedStateEnemyCharger : StateMachineBehaviour
         enemy = animator.GetComponent<Enemy>();
 
         //set timer
-        timerBeforeCharge = Time.time + durationShock;
+        timerBeforeCharge = Time.time + durationWarning;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

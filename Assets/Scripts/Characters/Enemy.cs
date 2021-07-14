@@ -10,6 +10,11 @@ public class Enemy : Character
     [Header("Block Enemy Sight")]
     [SerializeField] LayerMask layerBlockSight = default;
 
+    [Header("When Hit Player")]
+    [SerializeField] bool knockBackPlayerOnHit = true;
+    [CanShow("knockBackPlayerOnHit")] [SerializeField] float pushBackOnHitEnemy = 10;
+    [CanShow("knockBackPlayerOnHit")] [SerializeField] float damageOnHitEnemy = 10;
+
     [Header("DEBUG ENEMY")]
     [ReadOnly] [SerializeField] Transform pointPatrol;
     [ReadOnly] public Player Target;
@@ -45,6 +50,21 @@ public class Enemy : Character
         //oppure semplicemente viene generata una percentuale per ogni drop, quindi può essere che droppa tutto come può essere che ne droppa solo alcuni o nessuno?
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (knockBackPlayerOnHit == false)
+            return;
+
+        //if hit player
+        Player player = collision.gameObject.GetComponentInParent<Player>();
+        if (player)
+        {
+            //pushback and damage
+            player.PushBack((collision.transform.position - transform.position).normalized * pushBackOnHitEnemy);
+            player.GetDamage(damageOnHitEnemy);
+        }
+    }
+
     #region public statemachine API
 
     /// <summary>
@@ -58,6 +78,15 @@ public class Enemy : Character
 
         //find path
         return AStar.instance.FindPath(transform.position, randomPoint);
+    }
+
+    /// <summary>
+    /// Set if can knockback player on hit
+    /// </summary>
+    /// <param name="canKnockback"></param>
+    public void SetKnobackPlayerOnHit(bool canKnockback)
+    {
+        knockBackPlayerOnHit = canKnockback;
     }
 
     /// <summary>

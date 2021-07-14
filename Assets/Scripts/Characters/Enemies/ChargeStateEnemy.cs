@@ -2,7 +2,7 @@
 using UnityEngine;
 using redd096;
 
-public class ChargeStateEnemyCharger : StateMachineBehaviour
+public class ChargeStateEnemy : StateMachineBehaviour
 {
     [Header("Charge Movement")]
     [SerializeField] float speed = 3;
@@ -30,6 +30,9 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
         //get references
         enemy = animator.GetComponent<Enemy>();
 
+        //remove knockack player on hit
+        enemy.SetKnobackPlayerOnHit(false);
+
         //start coroutine
         enemy.StartCoroutine(CheckHitWallCoroutine());
 
@@ -47,6 +50,14 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
         //rotate to follow target
         if (followTarget)
             FollowTarget();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+
+        //reset knockack player on hit
+        enemy.SetKnobackPlayerOnHit(true);
     }
 
     #region private API
@@ -129,8 +140,9 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
             {
                 //if hit something damageable, do damage and push back
                 IDamageable damageable = hit.transform.GetComponentInParent<IDamageable>();
-                damageable?.GetDamage(damage, enemy.transform.position);
                 damageable?.PushBack(enemy.DirectionAim * knockBack, enemy.transform.position);
+                if (damage != 0)
+                    damageable?.GetDamage(damage, enemy.transform.position);
             }
         }
 

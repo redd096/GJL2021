@@ -66,7 +66,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     /// </summary>
     void DamageInArea()
     {
-        //be sure to not hit itself
+        //be sure to not hit again the same
         List<IDamageable> damageables = new List<IDamageable>();
 
         //find every object damageable in area

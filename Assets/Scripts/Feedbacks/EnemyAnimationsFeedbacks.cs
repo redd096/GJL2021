@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyChargerFeedbacks : MonoBehaviour
+public class EnemyAnimationsFeedbacks : MonoBehaviour
 {
     [Header("Animator Animations - if not setted get in children")]
     [SerializeField] Animator anim;

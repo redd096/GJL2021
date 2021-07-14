@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7745847167442446508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418964397718702257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8816aa482c323479f0714a03a807ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 4418964399466419899}
+--- !u!1001 &163839526066194824
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3788898173565024316, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 65aaeffc5c4cee148b47eb5a991ae268, type: 2}
+    - target: {fileID: 4545613732538162994, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ff19232a6252d04f945218e9010895c,
+        type: 3}
+    - target: {fileID: 4545613732538162995, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 22881ed9953e8ad49b5184a175fcae58, type: 2}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651829, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: gameObjectOnDie.timeAutodestruction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: gameObjectOnDie.instantiatedGameObject
+      value: 
+      objectReference: {fileID: 4758295514663824166, guid: c7ce9cf5c106ae149b27bf5a0efcdeb4,
+        type: 3}
+    - target: {fileID: 4545613733212651833, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy KamiCATze
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
+--- !u!1 &4418964397718702257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4545613733212651833, guid: 32f0a48baafe006409afe4bac4b27067,
+    type: 3}
+  m_PrefabInstance: {fileID: 163839526066194824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4418964399466419899 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4545613732538162995, guid: 32f0a48baafe006409afe4bac4b27067,
+    type: 3}
+  m_PrefabInstance: {fileID: 163839526066194824}
+  m_PrefabAsset: {fileID: 0}
