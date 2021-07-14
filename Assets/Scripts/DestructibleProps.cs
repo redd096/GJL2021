@@ -6,8 +6,9 @@ using redd096;
 public class DestructibleProps : MonoBehaviour, IDamageable
 {
     [Header("Prop")]
-    [SerializeField] float health = 100;
-    [SerializeField] bool removeColliderOnDeath = true;
+    [SerializeField] bool isDestructible = true;
+    [CanShow("isDestructible")] [SerializeField] float health = 100;
+    [CanShow("isDestructible")] [SerializeField] bool removeColliderOnDeath = true;
 
     [Header("Area Damage")]
     [SerializeField] bool doAreaDamage = false;
@@ -18,9 +19,9 @@ public class DestructibleProps : MonoBehaviour, IDamageable
     [SerializeField] bool canBePushed = false;
     [CanShow("canBePushed")] [SerializeField] float customDrag = 30;
 
-    [Header("Destroy after few seconds is Dead")]
-    [SerializeField] bool destroyAfterSeconds = false;
-    [CanShow("destroyAfterSeconds")] [SerializeField] float secondsBeforeDestroy = 10;
+    [Header("Remove after few seconds is Dead")]
+    [SerializeField] bool removeAfterSecondsIsDead = false;
+    [CanShow("removeAfterSecondsIsDead")] [SerializeField] float secondsBeforeRemove = 10;
 
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] Vector2 pushForce;          //used to push character (push by recoil, knockback, dash, etc...), will be decreased by customDrag in every frame
@@ -111,6 +112,10 @@ public class DestructibleProps : MonoBehaviour, IDamageable
         if (alreadyDead)
             return;
 
+        //be sure is destructible
+        if (isDestructible == false)
+            return;
+
         health -= damage;
 
         //call event
@@ -148,8 +153,8 @@ public class DestructibleProps : MonoBehaviour, IDamageable
             DamageInArea();
 
         //if necessary, destroy after few seconds
-        if (destroyAfterSeconds)
-            Destroy(gameObject, secondsBeforeDestroy);
+        if (removeAfterSecondsIsDead)
+            Destroy(gameObject, secondsBeforeRemove);
     }
 
     /// <summary>
