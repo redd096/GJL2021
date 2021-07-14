@@ -14,6 +14,8 @@ public class ChargeStateEnemy : StateMachineBehaviour
     [SerializeField] float knockBack = 10;
 
     [Header("Check hit Something")]
+    [SerializeField] bool checkMinDistance = false;
+    [CanShow("checkMinDistance")] [SerializeField] float minDistance = 1;
     [SerializeField] float speedCheckIfHitWall = 2.5f;
     [SerializeField] float radiusCastToCheckWhatHit = 0.5f;
 
@@ -110,20 +112,54 @@ public class ChargeStateEnemy : StateMachineBehaviour
 
         while (true)
         {
-            //calculate speed (don't use rigidbody, to not glitch when hit walls), and save previous position
-            calculatedSpeed = (enemy.transform.position - previousPosition).magnitude / Time.fixedDeltaTime;
-            previousPosition = enemy.transform.position;
-
             //hit wall or character
-            if (calculatedSpeed <= speedCheckIfHitWall)
+            if (CheckHit())
             {
-                HitSomething();
-                break;
+                //if need min distance, check if reached
+                if (checkMinDistance == false || CheckReachedMinDistance())
+                {
+                    HitSomething();
+                    break;
+                }
+                //else lost target if didn't reach
+                else
+                {
+                    LostTarget();
+                    break;
+                }
             }
 
             //use fixed update
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    bool CheckHit()
+    {
+        //calculate speed (don't use rigidbody, to not glitch when hit walls), and save previous position
+        calculatedSpeed = (enemy.transform.position - previousPosition).magnitude / Time.fixedDeltaTime;
+        previousPosition = enemy.transform.position;
+
+        //hit wall or character
+        if (calculatedSpeed <= speedCheckIfHitWall)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    bool CheckReachedMinDistance()
+    {
+        //reach min distance
+        if (Vector2.Distance(enemy.transform.position, enemy.LastTargetPosition) <= minDistance)
+        {
+            //if there is target, hit it
+            if (enemy.CheckTargetStillInVision())
+                return true;
+        }
+
+        return false;
     }
 
     #endregion
@@ -148,5 +184,13 @@ public class ChargeStateEnemy : StateMachineBehaviour
 
         //move to next state
         enemy.SetState("Next State");
+    }
+
+    void LostTarget()
+    {
+        //back to patrol state
+        enemy.onBackToPatrolState?.Invoke();
+
+        enemy.SetState("Target Lost");
     }
 }

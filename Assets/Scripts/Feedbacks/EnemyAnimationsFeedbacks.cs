@@ -16,6 +16,7 @@ public class EnemyAnimationsFeedbacks : MonoBehaviour
         if (enemy)
         {
             enemy.onNextState += OnNextState;
+            enemy.onBackToPatrolState += OnBackToPatrolState;
         }
 
         //be sure is setted animator
@@ -29,6 +30,7 @@ public class EnemyAnimationsFeedbacks : MonoBehaviour
         if (enemy)
         {
             enemy.onNextState -= OnNextState;
+            enemy.onBackToPatrolState -= OnBackToPatrolState;
         }
     }
 
@@ -36,5 +38,11 @@ public class EnemyAnimationsFeedbacks : MonoBehaviour
     {
         //set next state
         anim.SetTrigger("Next State");
+    }
+
+    void OnBackToPatrolState()
+    {
+        //set next state
+        anim.SetTrigger("Back to Patrol State");
     }
 }

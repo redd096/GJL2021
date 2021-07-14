@@ -24,6 +24,7 @@ public class Enemy : Character
 
     //event animations
     public System.Action onNextState { get; set; }
+    public System.Action onBackToPatrolState { get; set; }
 
     protected virtual void OnDrawGizmos()
     {
