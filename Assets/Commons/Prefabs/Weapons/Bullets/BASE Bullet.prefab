@@ -4911,7 +4911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useTrigger: 1
   radiusAreaDamage: 0
-  knockBack: 10
+  knockBack: 0
   direction: {x: 0, y: 0}
   damage: 0
   bulletSpeed: 0
