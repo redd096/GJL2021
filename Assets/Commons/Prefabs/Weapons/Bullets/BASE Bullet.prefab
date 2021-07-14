@@ -4910,6 +4910,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTrigger: 1
+  layerHittable:
+    serializedVersion: 2
+    m_Bits: 1793
   radiusAreaDamage: 0
   knockBack: 0
   direction: {x: 0, y: 0}

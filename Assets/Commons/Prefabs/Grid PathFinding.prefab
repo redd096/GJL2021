@@ -46,6 +46,6 @@ MonoBehaviour:
   useZ: 0
   unwalkableMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   gridWorldSize: {x: 30, y: 30}
   nodeDiameter: 0.8

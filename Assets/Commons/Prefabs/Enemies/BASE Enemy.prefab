@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4545613732399549690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4545613732538162994}
   - component: {fileID: 4545613732538162995}
   - component: {fileID: 4545613732538162989}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 4545613733212651835}
   - component: {fileID: 4545613733212651832}
   - component: {fileID: 3788898173565024316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BASE Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ MonoBehaviour:
   radiusPatrol: 2
   layerBlockSight:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   pointPatrol: {fileID: 0}
   Target: {fileID: 0}
   LastTargetPosition: {x: 0, y: 0, z: 0}

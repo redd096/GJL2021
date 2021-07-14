@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3212107486455365011}
   - component: {fileID: 3212107486455365020}
   - component: {fileID: 619288969}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3212107487290733886}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 3212107487702693244}
   - component: {fileID: 3212107487702693245}
   - component: {fileID: 1482023216425784880}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BASE Destructible Prop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

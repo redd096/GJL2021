@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
     [Header("Use trigger or collision enter")]
     [SerializeField] bool useTrigger = true;
 
+    [Header("Layer Penetrable")]
+    [SerializeField] LayerMask layerPenetrable = default;
+
     [Header("Bullet")]
     [SerializeField] [Min(0)] float radiusAreaDamage = 0;       //damage other characters in radius area
     [SerializeField] float knockBack = 1;                       //knockback hitted character
@@ -88,20 +91,23 @@ public class Bullet : MonoBehaviour
         if (hit == null || hit.GetComponentInParent<Bullet>() || hit.GetComponentInParent<Character>() == owner)
             return;
 
-        //call event
-        onHit?.Invoke();
-
         //if hit something damageable, do damage and push back
         IDamageable damageable = hit.GetComponentInParent<IDamageable>();
         damageable?.GetDamage(damage, transform.position);
         damageable?.PushBack(direction * knockBack, transform.position);
 
-        //damage in area too
-        if(radiusAreaDamage > 0)
-            DamageInArea(damageable);
+        //if is not a penetrable layer, destroy this object
+        if (layerPenetrable.ContainsLayer(hit.layer) == false)
+        {
+            //call event
+            onHit?.Invoke();
 
-        //destroy this object
-        Pooling.Destroy(gameObject);
+            //damage in area too
+            if (radiusAreaDamage > 0)
+                DamageInArea(damageable);
+
+            Pooling.Destroy(gameObject);
+        }
     }
 
     void DamageInArea(IDamageable hit)
