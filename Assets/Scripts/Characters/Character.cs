@@ -18,6 +18,12 @@ public abstract class Character : MonoBehaviour, IDamageable
 
     public Rigidbody2D Rb { get; private set; }
 
+    bool alreadyDead;
+
+    //animation events
+    public System.Action onGetDamage { get; set; }
+    public System.Action onDie { get; set; }
+
     protected virtual void Awake()
     {
         //get references
@@ -27,7 +33,7 @@ public abstract class Character : MonoBehaviour, IDamageable
         CurrentWeapon?.PickWeapon(this);
     }
 
-    protected virtual void Update()
+    void Update()
     {
         //move rigidbody
         MoveCharacter();
@@ -76,7 +82,13 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// <param name="damage"></param>
     public virtual void GetDamage(float damage, Vector2 hitPosition = default)
     {
+        if (alreadyDead)
+            return;
+
         health -= damage;
+
+        //call event
+        onGetDamage?.Invoke();
 
         //check if dead
         if(health <= 0)
@@ -90,8 +102,10 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// </summary>
     public virtual void Die()
     {
-        //destroy character
-        Destroy(gameObject);
+        alreadyDead = true;
+
+        //call event
+        onDie?.Invoke();
     }
 
     /// <summary>

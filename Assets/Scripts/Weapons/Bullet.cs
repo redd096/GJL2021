@@ -20,6 +20,8 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
     Character owner;
 
+    bool alreadyDead;
+
     //events
     public System.Action onHit { get; set; }
 
@@ -37,6 +39,9 @@ public class Bullet : MonoBehaviour
     /// <param name="bulletSpeed"></param>
     public void Init(Character owner, Vector2 direction, float damage, float bulletSpeed)
     {
+        //reset vars
+        alreadyDead = false;
+
         this.direction = direction;
         this.damage = damage;
         this.bulletSpeed = bulletSpeed;
@@ -74,6 +79,11 @@ public class Bullet : MonoBehaviour
 
     void OnHit(GameObject hit)
     {
+        if (alreadyDead)
+            return;
+
+        alreadyDead = true;
+
         //be sure to hit something, but not other bullets or this bullet owner
         if (hit == null || hit.GetComponentInParent<Bullet>() || hit.GetComponentInParent<Character>() == owner)
             return;
@@ -88,15 +98,18 @@ public class Bullet : MonoBehaviour
 
         //damage in area too
         if(radiusAreaDamage > 0)
-            DamageInArea();
+            DamageInArea(damageable);
 
         //destroy this object
         Pooling.Destroy(gameObject);
     }
 
-    void DamageInArea()
+    void DamageInArea(IDamageable hit)
     {
+        //be sure to not hit again the same
         List<IDamageable> damageables = new List<IDamageable>();
+        if (hit != null)
+            damageables.Add(hit);
 
         //find every object damageable in area
         foreach(Collider2D col in Physics2D.OverlapCircleAll(transform.position, radiusAreaDamage))
