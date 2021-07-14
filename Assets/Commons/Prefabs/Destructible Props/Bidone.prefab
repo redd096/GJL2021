@@ -78,10 +78,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3212107487702693244, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107487702693244, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107487702693244, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107487702693244, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3212107487702693245, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: health
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107487702693245, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: customDrag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212107487702693245, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: canBePushed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3212107487702693246, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
