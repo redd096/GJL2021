@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestructiblePropsFeedbacks : MonoBehaviour
 {
     DestructibleProps props;
+    Animator anim;
 
     void OnEnable()
     {
         //get references
         props = GetComponent<DestructibleProps>();
+        anim = GetComponentInChildren<Animator>();
 
         //add events
         if(props)
@@ -37,7 +37,7 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
 
     void OnDie()
     {
-        //TODO
-        //animazione di esplosione
+        //start die animation
+        anim.SetTrigger("Die");
     }
 }
