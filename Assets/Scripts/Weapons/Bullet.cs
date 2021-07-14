@@ -22,8 +22,8 @@ public class Bullet : MonoBehaviour
 
     Rigidbody2D rb;
     Character owner;
-
     bool alreadyDead;
+    List<IDamageable> alreadyHit = new List<IDamageable>();
 
     //events
     public System.Action onHit { get; set; }
@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
     {
         //reset vars
         alreadyDead = false;
+        alreadyHit.Clear();
 
         this.direction = direction;
         this.damage = damage;
@@ -85,20 +86,24 @@ public class Bullet : MonoBehaviour
         if (alreadyDead)
             return;
 
-        alreadyDead = true;
-
         //be sure to hit something, but not other bullets or this bullet owner
         if (hit == null || hit.GetComponentInParent<Bullet>() || hit.GetComponentInParent<Character>() == owner)
             return;
 
-        //if hit something damageable, do damage and push back
+        //don't hit again same damageable
         IDamageable damageable = hit.GetComponentInParent<IDamageable>();
+        if (alreadyHit.Contains(damageable))
+            return;
+
+        //if hit something damageable, do damage and push back
         damageable?.GetDamage(damage, transform.position);
         damageable?.PushBack(direction * knockBack, transform.position);
 
         //if is not a penetrable layer, destroy this object
         if (layerPenetrable.ContainsLayer(hit.layer) == false)
         {
+            alreadyDead = true;
+
             //call event
             onHit?.Invoke();
 
