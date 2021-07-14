@@ -17,9 +17,6 @@ public class RechargeStateEnemyCharger : StateMachineBehaviour
 
         //set timer
         timerRecharge = Time.time + durationRecharge;
-
-        //call next state event
-        enemy.onNextState?.Invoke();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -63,6 +60,9 @@ public class RechargeStateEnemyCharger : StateMachineBehaviour
 
     void ChargeTarget()
     {
+        //call next state event
+        enemy.onNextState?.Invoke();
+
         //change to next state
         enemy.SetState("Next State");
     }

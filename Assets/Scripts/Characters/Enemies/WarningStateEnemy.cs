@@ -62,6 +62,9 @@ public class WarningStateEnemy : StateMachineBehaviour
 
     void ChargeTarget()
     {
+        //call next state event
+        enemy.onNextState?.Invoke();
+
         //change to next state
         enemy.SetState("Next State");
     }

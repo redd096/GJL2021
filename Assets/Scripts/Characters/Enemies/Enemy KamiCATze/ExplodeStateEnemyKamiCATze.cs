@@ -26,9 +26,6 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
 
         //set vars
         timeBeforeExplode = Time.time + delayBeforeExplode;
-
-        //call next state event
-        enemy.onNextState?.Invoke();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

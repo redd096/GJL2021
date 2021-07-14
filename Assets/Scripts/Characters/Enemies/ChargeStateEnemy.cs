@@ -37,9 +37,6 @@ public class ChargeStateEnemy : StateMachineBehaviour
 
         //start coroutine
         enemy.StartCoroutine(CheckHitWallCoroutine());
-
-        //call next state event
-        enemy.onNextState?.Invoke();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -181,6 +178,9 @@ public class ChargeStateEnemy : StateMachineBehaviour
                     damageable?.GetDamage(damage, enemy.transform.position);
             }
         }
+
+        //call next state event
+        enemy.onNextState?.Invoke();
 
         //move to next state
         enemy.SetState("Next State");

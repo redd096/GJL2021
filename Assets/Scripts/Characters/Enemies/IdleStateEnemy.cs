@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class IdleStateEnemyCharger : StateMachineBehaviour
+public class IdleStateEnemy : StateMachineBehaviour
 {
     [Header("Duration Idle")]
     [SerializeField] float durationIdle = 2;
@@ -17,9 +17,6 @@ public class IdleStateEnemyCharger : StateMachineBehaviour
 
         //set vars
         timerIdle = Time.time + durationIdle;
-
-        //call next state event
-        enemy.onNextState?.Invoke();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
