@@ -1,8 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using redd096;
 
 public class CharacterFeedbacks : MonoBehaviour
 {
+    [Header("On Get Damage")]
+    [SerializeField] float durationBlink = 0.2f;
+    [SerializeField] bool ignoreIfAlreadyBlinking = true;
+
     [Header("On Die")]
     [SerializeField] InstantiatedGameObjectStruct gameObjectOnDie = default;
     [SerializeField] ParticleSystem particlesOnDie = default;
@@ -22,6 +27,8 @@ public class CharacterFeedbacks : MonoBehaviour
     Character character;
     int defaultSpriteInOrder;
     Vector3 previousPosition;
+
+    Coroutine blinkCoroutine;
 
     private void OnEnable()
     {
@@ -67,7 +74,6 @@ public class CharacterFeedbacks : MonoBehaviour
             RotateObject(false);
         else if (character.DirectionAim.x > 0 && transform.localScale.x <= 0)
             RotateObject(true);
-
     }
 
     void FixedUpdate()
@@ -111,8 +117,17 @@ public class CharacterFeedbacks : MonoBehaviour
 
     void OnGetDamage()
     {
-        //TODO
         //blink sprite
+        if(blinkCoroutine == null)
+        {
+            blinkCoroutine = StartCoroutine(BlinkCoroutine());
+        }
+        //if already blinking, reset timer if necessary
+        else if(ignoreIfAlreadyBlinking == false)
+        {
+            StopCoroutine(blinkCoroutine);
+            blinkCoroutine = StartCoroutine(BlinkCoroutine());
+        }
     }
 
     void OnDie()
@@ -126,6 +141,20 @@ public class CharacterFeedbacks : MonoBehaviour
         }
         ParticlesManager.instance.Play(particlesOnDie, transform.position, transform.rotation);
         SoundManager.instance.Play(audioOnDie.audioClip, transform.position, audioOnDie.volume);
+    }
+
+    IEnumerator BlinkCoroutine()
+    {
+        //set blink
+        spriteToChange.material.SetFloat("_FlashAmount", 1);
+
+        //wait
+        yield return new WaitForSeconds(durationBlink);
+
+        //reset sprite color
+        spriteToChange.material.SetFloat("_FlashAmount", 0);
+
+        blinkCoroutine = null;
     }
 
     #endregion
