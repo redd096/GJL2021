@@ -11,6 +11,9 @@ public class PropAndTrap : BASEDestructibleProps
     [CanShow("doDamageOnHit")] [SerializeField] float knockBackOnHit = 10;
     [CanShow("doDamageOnHit")] [SerializeField] bool dieOnHit = false;
 
+    //animation events
+    public System.Action onHit { get; set; }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         //check if do damage
@@ -42,6 +45,9 @@ public class PropAndTrap : BASEDestructibleProps
         //check if layer is to ignore
         if (layerToIgnore.ContainsLayer(collisionObject.layer))
             return;
+
+        //call event
+        onHit?.Invoke();
 
         //do damage and push back
         IDamageable damageable = collisionObject.GetComponentInParent<IDamageable>();
