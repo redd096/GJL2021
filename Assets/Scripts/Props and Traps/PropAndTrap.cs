@@ -8,7 +8,7 @@ public class PropAndTrap : BASEDestructibleProps
     [CanShow("doDamageOnHit")] [SerializeField] bool useTrigger = false;
     [CanShow("doDamageOnHit")] [SerializeField] LayerMask layerToIgnore = default;
     [CanShow("doDamageOnHit")] [SerializeField] float damageOnHit = 10;
-    [CanShow("doDamageOnHit")] [SerializeField] float knockBackOnHit = 20;
+    [CanShow("doDamageOnHit")] [SerializeField] float knockBackOnHit = 10;
     [CanShow("doDamageOnHit")] [SerializeField] bool dieOnHit = false;
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -46,7 +46,7 @@ public class PropAndTrap : BASEDestructibleProps
         //do damage and push back
         IDamageable damageable = collisionObject.GetComponentInParent<IDamageable>();
         damageable?.GetDamage(damageOnHit, transform.position);
-        damageable?.PushBack((transform.position - collisionObject.transform.position).normalized * knockBackOnHit);
+        damageable?.PushBack((collisionObject.transform.position - transform.position).normalized * knockBackOnHit);
 
         //die on hit
         if(dieOnHit)

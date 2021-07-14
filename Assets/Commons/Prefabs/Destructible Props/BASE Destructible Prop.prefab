@@ -245,7 +245,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   damageOnHit: 10
-  knockBackOnHit: 20
+  knockBackOnHit: 10
   dieOnHit: 0
 --- !u!114 &1482023216425784880
 MonoBehaviour:
