@@ -4910,9 +4910,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTrigger: 1
-  layerHittable:
+  layerPenetrable:
     serializedVersion: 2
-    m_Bits: 1793
+    m_Bits: 0
   radiusAreaDamage: 0
   knockBack: 0
   direction: {x: 0, y: 0}
@@ -4931,8 +4931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectOnHit:
-    instantiatedGameObject: {fileID: 0}
-    timeAutodestruction: 0
+    instantiatedGameObject: {fileID: 2552357356597262414, guid: f2d05427a65ee0c4f89f32a327ae849f,
+      type: 3}
+    timeAutodestruction: 0.35
   particlesOnHit: {fileID: 0}
   audioOnHit:
     audioClip: {fileID: 0}
