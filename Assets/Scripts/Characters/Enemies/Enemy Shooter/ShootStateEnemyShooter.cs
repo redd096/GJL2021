@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using redd096;
 
 public class ShootStateEnemyShooter : StateMachineBehaviour
@@ -11,9 +12,13 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
     [SerializeField] float delayBeforeFirstShot = 1;
     [SerializeField] float delayBetweenShots = 1;
 
+    [Header("Used for automatic weapons")]
+    [SerializeField] float durationShoot = 0.3f;
+
     Enemy enemy;
     float timerBeforeShoot;
     bool firstShoot;
+    Coroutine stopShootCoroutine;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -47,6 +52,18 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
 
         //check target still in vision area
         CheckTargetStillInVision();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+
+        //if coroutine is running, stop it and stop shooting
+        if (stopShootCoroutine != null)
+        {
+            enemy.StopCoroutine(stopShootCoroutine);
+            enemy.CurrentWeapon?.ReleaseAttack();
+        }
     }
 
     #region private API
@@ -90,8 +107,22 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
         //set delay between shots
         timerBeforeShoot = Time.time + delayBetweenShots;
 
-        //shoot but not automatic
+        //shoot
         enemy.CurrentWeapon?.PressAttack();
+
+        //start coroutine
+        if (stopShootCoroutine != null)
+            enemy.StopCoroutine(stopShootCoroutine);
+
+        stopShootCoroutine = enemy.StartCoroutine(StopShootCoroutine());
+    }
+
+    IEnumerator StopShootCoroutine()
+    {
+        //wait
+        yield return new WaitForSeconds(durationShoot);
+
+        //stop shoot
         enemy.CurrentWeapon?.ReleaseAttack();
     }
 
