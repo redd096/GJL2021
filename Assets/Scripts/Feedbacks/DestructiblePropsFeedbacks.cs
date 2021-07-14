@@ -10,7 +10,7 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
     [SerializeField] float durationBlink = 0.2f;
     [SerializeField] bool ignoreIfAlreadyBlinking = true;
 
-    DestructibleProps props;
+    BASEDestructibleProps props;
     Animator anim;
 
     Coroutine blinkCoroutine;
@@ -18,7 +18,7 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
     void OnEnable()
     {
         //get references
-        props = GetComponent<DestructibleProps>();
+        props = GetComponent<BASEDestructibleProps>();
         anim = GetComponentInChildren<Animator>();
 
         //be sure is setted sprite to change

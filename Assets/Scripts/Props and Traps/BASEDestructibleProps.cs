@@ -3,7 +3,7 @@ using UnityEngine;
 using redd096;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class DestructibleProps : MonoBehaviour, IDamageable
+public class BASEDestructibleProps : MonoBehaviour, IDamageable
 {
     [Header("Prop")]
     [SerializeField] bool isDestructible = true;
@@ -14,6 +14,7 @@ public class DestructibleProps : MonoBehaviour, IDamageable
     [SerializeField] bool doAreaDamage = false;
     [CanShow("doAreaDamage")] [SerializeField] [Min(0)] float radiusAreaDamage = 1;     //damage characters in radius area
     [CanShow("doAreaDamage")] [SerializeField] float damage = 10;
+    [CanShow("doAreaDamage")] [SerializeField] float knockBack = 0;
 
     [Header("Push")]
     [SerializeField] bool canBePushed = false;
@@ -29,7 +30,7 @@ public class DestructibleProps : MonoBehaviour, IDamageable
 
     public Rigidbody2D Rb { get; private set; }
 
-    bool alreadyDead;
+    protected bool alreadyDead;
 
     //animation events
     public System.Action onGetDamage { get; set; }
@@ -74,9 +75,10 @@ public class DestructibleProps : MonoBehaviour, IDamageable
             IDamageable damageable = col.GetComponentInParent<IDamageable>();
             if (damageable != null && damageables.Contains(damageable) == false)
             {
-                //add only one time in the list, and do damage
+                //add only one time in the list, and do damage and knockback
                 damageables.Add(damageable);
                 damageable.GetDamage(damage, transform.position);
+                damageable.PushBack((transform.position - col.transform.position).normalized * knockBack);
             }
         }
     }
