@@ -17,6 +17,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     [ReadOnly] [SerializeField] float currentSpeed;         //speed from MovementInput and pushForce
 
     public Rigidbody2D Rb { get; private set; }
+    Shield shield;
 
     bool alreadyDead;
 
@@ -28,6 +29,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     {
         //get references
         Rb = GetComponent<Rigidbody2D>();
+        shield = GetComponentInChildren<Shield>();
 
         //if there is a weapon by inspector, set it
         CurrentWeapon?.PickWeapon(this);
@@ -85,6 +87,10 @@ public abstract class Character : MonoBehaviour, IDamageable
         if (alreadyDead)
             return;
 
+        //do nothing if hit shield
+        if (shield && shield.HitShield(hitPosition))
+            return;
+
         health -= damage;
 
         //call event
@@ -118,6 +124,10 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// <param name="resetPreviousPush"></param>
     public virtual void PushBack(Vector2 push, Vector2 hitPosition = default, bool resetPreviousPush = false)
     {
+        //do nothing if hit shield
+        if (shield && shield.HitShield(hitPosition))
+            return;
+
         //reset previous push or add new one to it
         if (resetPreviousPush)
             pushForce = push;

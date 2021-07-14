@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9174833575798075947}
---- !u!114 &7672580429004542419
+--- !u!114 &7287292103048313368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22,24 +22,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9174833575123577889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d047b94017cfcc47a15256f1e8cd7e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 568c3e1480e2b6646991aeb96d0b3d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  customDrag: 30
-  DirectionInput: {x: 0, y: 0}
-  DirectionAim: {x: 0, y: 0}
-  CurrentWeapon: {fileID: 0}
-  MovementInput: {x: 0, y: 0}
-  pushForce: {x: 0, y: 0}
-  currentSpeed: 0
-  radiusPatrol: 2
-  layerBlockSight:
-    serializedVersion: 2
-    m_Bits: 768
-  pointPatrol: {fileID: 0}
-  Target: {fileID: 0}
-  LastTargetPosition: {x: 0, y: 0, z: 0}
   angleDefense: 90
 --- !u!1 &7965432749470031074
 GameObject:
@@ -230,8 +215,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.391
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4545613733212651835, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
 --- !u!1 &9174833575123577889 stripped
 GameObject:

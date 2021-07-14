@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 
-public class EnemyCharger : Enemy
+public class Shield : MonoBehaviour
 {
     [Header("Shield")]
     [SerializeField] float angleDefense = 90;
 
-    protected override void OnDrawGizmos()
+    void OnDrawGizmos()
     {
-        base.OnDrawGizmos();
-
         //draw shield angle
         Gizmos.color = Color.green;
         Vector3 up = Quaternion.AngleAxis(angleDefense, transform.localScale.x > 0 ? Vector3.forward : Vector3.back) * Vector3.right;
@@ -17,25 +15,7 @@ public class EnemyCharger : Enemy
         Gizmos.DrawLine(transform.position, transform.position + down);
     }
 
-    public override void GetDamage(float damage, Vector2 hitPosition = default)
-    {
-        //do nothing if hit shield
-        if (HitShield(hitPosition))
-            return;
-
-        base.GetDamage(damage, hitPosition);
-    }
-
-    public override void PushBack(Vector2 push, Vector2 hitPosition = default, bool resetPreviousPush = false)
-    {
-        //do nothing if hit shield
-        if (HitShield(hitPosition))
-            return;
-
-        base.PushBack(push, hitPosition, resetPreviousPush);
-    }
-
-    bool HitShield(Vector2 hitPosition)
+    public bool HitShield(Vector2 hitPosition)
     {
         //get angle (change if enemy is looking right or left)
         Vector2 direction = (hitPosition - new Vector2(transform.position.x, transform.position.y)).normalized;
