@@ -7,6 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: gameObjectOnHit.timeAutodestruction
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: gameObjectOnHit.instantiatedGameObject
+      value: 
+      objectReference: {fileID: 6367177993712656635, guid: 78269a0ca5fcbe248b365dc11971227a,
+        type: 3}
     - target: {fileID: 4968888224254459874, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.b
