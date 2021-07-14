@@ -7,6 +7,9 @@ public class Enemy : Character
     [Header("Patrol Area")]
     [SerializeField] float radiusPatrol = 2;
 
+    [Header("Block Enemy Sight")]
+    [SerializeField] LayerMask layerBlockSight = default;
+
     [Header("DEBUG ENEMY")]
     [ReadOnly] [SerializeField] Transform pointPatrol;
     [ReadOnly] public Player Target;
@@ -74,7 +77,7 @@ public class Enemy : Character
         foreach (Player player in GameManager.instance.levelManager.Players)
         {
             //if there are not obstacles between enemy and player, set it as target
-            if (Physics2D.Linecast(transform.position, player.transform.position, CreateLayer.LayerOnly("Not Walkable")) == false)
+            if (Physics2D.Linecast(transform.position, player.transform.position, layerBlockSight) == false)
             {
                 Target = player;
 
@@ -100,7 +103,7 @@ public class Enemy : Character
         LastTargetPosition = Target.transform.position;
 
         //if there are not obstacles between enemy and player, return true
-        if (Physics2D.Linecast(transform.position, Target.transform.position, CreateLayer.LayerOnly("Not Walkable")) == false)
+        if (Physics2D.Linecast(transform.position, Target.transform.position, layerBlockSight) == false)
         {
             Debug.DrawLine(transform.position, Target.transform.position, Color.red);
             return true;

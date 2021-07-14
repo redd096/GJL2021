@@ -21,10 +21,26 @@ MonoBehaviour:
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
   radiusPatrol: 2
+  layerBlockSight:
+    serializedVersion: 2
+    m_Bits: 256
   pointPatrol: {fileID: 0}
   Target: {fileID: 0}
   LastTargetPosition: {x: 0, y: 0, z: 0}
   angleDefense: 90
+--- !u!114 &1098548556912432316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174833575123577889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8816aa482c323479f0714a03a807ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 9174833575798075947}
 --- !u!1001 &4631614795409681688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,11 +129,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Charger
       objectReference: {fileID: 0}
-    - target: {fileID: 8337730980123881659, guid: 32f0a48baafe006409afe4bac4b27067,
-        type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 9174833575798075947}
     m_RemovedComponents:
     - {fileID: 4545613733212651835, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
