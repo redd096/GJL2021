@@ -108,7 +108,7 @@ public class WeaponRange : WeaponBASE
         //instantiate bullet
         Bullet bullet = bulletsPooling.Instantiate(bulletPrefab, BulletsParent.transform);
         bullet.transform.position = barrel.position;
-        bullet.transform.rotation = barrel.rotation;
+        bullet.transform.rotation = barrel.rotation * Quaternion.AngleAxis(randomNoiseAccuracy, Vector3.forward);
         bullet.transform.localScale = Owner.DirectionAim.x < 0 ? new Vector3(-1, 1, 1) : Vector3.one;    //rotate bullet
 
         //and set it
