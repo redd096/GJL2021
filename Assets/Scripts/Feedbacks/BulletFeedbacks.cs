@@ -37,7 +37,7 @@ public class BulletFeedbacks : MonoBehaviour
         GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnHit, transform.position, transform.rotation);
         if (instantiatedGameObject)
         {
-            //rotate left/right and set parent
+            //rotate left/right
             instantiatedGameObject.transform.localScale = transform.lossyScale;
         }
         ParticlesManager.instance.Play(particlesOnHit, transform.position, transform.rotation);

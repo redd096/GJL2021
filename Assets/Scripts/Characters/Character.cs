@@ -106,6 +106,9 @@ public abstract class Character : MonoBehaviour, IDamageable
 
         //call event
         onDie?.Invoke();
+
+        //destroy object
+        Destroy(gameObject);
     }
 
     /// <summary>

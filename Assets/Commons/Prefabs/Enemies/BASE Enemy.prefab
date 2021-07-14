@@ -254,6 +254,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dc44a54c699e04787be626262f9d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectOnDie:
+    instantiatedGameObject: {fileID: 5577563908462706139, guid: b2d26fb78a7b352449547dc66428b04d,
+      type: 3}
+    timeAutodestruction: 0.5
+  particlesOnDie: {fileID: 0}
+  audioOnDie:
+    audioClip: {fileID: 0}
+    volume: 0
   anim: {fileID: 4545613732538162995}
   minSpeedToStartRun: 0.01
   spriteToChange: {fileID: 4545613732538162994}

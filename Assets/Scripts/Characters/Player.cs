@@ -44,12 +44,4 @@ public class Player : Character
             GetDamage(damageOnHitEnemy);
         }
     }
-
-    public override void Die()
-    {
-        base.Die();
-
-        //destroy character
-        Destroy(gameObject);
-    }
 }
