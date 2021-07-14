@@ -28,6 +28,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7726903567764012651, guid: f9e71bdcbca5f644d816f63715c3dea1,
         type: 3}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: offset.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: customShake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: gameObjectOnInstantiateBullet.timeAutodestruction
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: gameObjectOnInstantiateBullet.instantiatedGameObject
+      value: 
+      objectReference: {fileID: 23228975091057658, guid: 6a9c3e6a08fad614984e598bd1f394fc,
+        type: 3}
     - target: {fileID: 1862482482030742674, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_Name
@@ -41,12 +62,12 @@ PrefabInstance:
     - target: {fileID: 1862482482030742687, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742687, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742687, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1862482482030742672}
   - component: {fileID: 1862482482030742673}
   m_Layer: 0
-  m_Name: BASE Range Weapon
+  m_Name: _BASE_Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862482482030742674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.128, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1862482482099635948}
@@ -50,6 +50,7 @@ MonoBehaviour:
   automatic: 1
   rateOfFire: 0.2
   recoil: 1
+  NoiseAccuracy: 10
   barrels:
   - {fileID: 7698008951610279915}
   barrelSimultaneously: 1
@@ -70,9 +71,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0.2, y: -0.2}
-  moveBasedOnOffset: 1
   objectToRotate: {fileID: 0}
+  gameObjectOnInstantiateBullet:
+    instantiatedGameObject: {fileID: 0}
+    timeAutodestruction: 0
+  particlesOnInstantiateBullet: {fileID: 0}
+  audioOnInstantiateBullet:
+    audioClip: {fileID: 0}
+    volume: 0
   cameraShake: 1
+  customShake: 0
+  shakeDuration: 1
+  shakeAmount: 0.7
 --- !u!1 &1862482482099635949
 GameObject:
   m_ObjectHideFlags: 0
