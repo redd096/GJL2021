@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e868ebc62034b442b6362a845a3c01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeExplode: 1
-  radiusAreaDamage: 1
-  damage: 10
+  delayBeforeExplode: 0.5
+  radiusAreaDamage: 2
+  damage: 25
   knockBack: 10
   selfDamage: 200
 --- !u!114 &-484814566214193870
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1609fcb0a5e234c93de92c18e6046a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 3.2
   followTarget: 1
   rotationSpeed: 1
   damage: 0
