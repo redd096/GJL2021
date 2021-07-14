@@ -3,6 +3,11 @@ using redd096;
 
 public class CharacterFeedbacks : MonoBehaviour
 {
+    [Header("On Die")]
+    [SerializeField] InstantiatedGameObjectStruct gameObjectOnDie = default;
+    [SerializeField] ParticleSystem particlesOnDie = default;
+    [SerializeField] AudioStruct audioOnDie = default;
+
     [Header("Animator Animations - if not setted get in children")]
     [SerializeField] Animator anim;
     [SerializeField] float minSpeedToStartRun = 0.01f;
@@ -18,11 +23,31 @@ public class CharacterFeedbacks : MonoBehaviour
     int defaultSpriteInOrder;
     Vector3 previousPosition;
 
-    void Start()
+    private void OnEnable()
     {
         //get references
         character = GetComponent<Character>();
 
+        //add events
+        if(character)
+        {
+            character.onGetDamage += OnGetDamage;
+            character.onDie += OnDie;
+        }
+    }
+
+    private void OnDisable()
+    {
+        //remove events
+        if (character)
+        {
+            character.onGetDamage -= OnGetDamage;
+            character.onDie -= OnDie;
+        }
+    }
+
+    void Start()
+    {
         //be sure is setted animator
         if (anim == null)
             anim = GetComponentInChildren<Animator>();
@@ -82,6 +107,25 @@ public class CharacterFeedbacks : MonoBehaviour
     {
         //set running or idle animation
         anim.SetBool("Running", isRunning);
+    }
+
+    void OnGetDamage()
+    {
+        //TODO
+        //blink sprite
+    }
+
+    void OnDie()
+    {
+        //instantiate vfx and sfx
+        GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnDie, transform.position, transform.rotation);
+        if (instantiatedGameObject)
+        {
+            //rotate left/right
+            instantiatedGameObject.transform.localScale = transform.lossyScale;
+        }
+        ParticlesManager.instance.Play(particlesOnDie, transform.position, transform.rotation);
+        SoundManager.instance.Play(audioOnDie.audioClip, transform.position, audioOnDie.volume);
     }
 
     #endregion

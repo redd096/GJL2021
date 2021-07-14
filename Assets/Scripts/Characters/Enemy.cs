@@ -45,14 +45,6 @@ public class Enemy : Character
         //oppure semplicemente viene generata una percentuale per ogni drop, quindi può essere che droppa tutto come può essere che ne droppa solo alcuni o nessuno?
     }
 
-    public override void Die()
-    {
-        base.Die();
-
-        //destroy character
-        Destroy(gameObject);
-    }
-
     #region public statemachine API
 
     /// <summary>
