@@ -10,7 +10,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     [CanShow("isDestructible")] [SerializeField] float health = 100;
     [CanShow("isDestructible")] [SerializeField] bool removeColliderOnDeath = true;
 
-    [Header("Area Damage")]
+    [Header("Area Damage on Destroy")]
     [SerializeField] bool doAreaDamage = false;
     [CanShow("doAreaDamage")] [SerializeField] [Min(0)] float radiusAreaDamage = 1;     //damage characters in radius area
     [CanShow("doAreaDamage")] [SerializeField] float damage = 10;
@@ -78,7 +78,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
                 //add only one time in the list, and do damage and knockback
                 damageables.Add(damageable);
                 damageable.GetDamage(damage, transform.position);
-                damageable.PushBack((transform.position - col.transform.position).normalized * knockBack);
+                damageable.PushBack((col.transform.position - transform.position).normalized * knockBack, transform.position);
             }
         }
     }

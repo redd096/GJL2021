@@ -102,5 +102,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cactus
       objectReference: {fileID: 0}
+    - target: {fileID: 7083865139490018212, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: health
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083865139490018212, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: doDamageOnHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083865139490018212, guid: 6b8f19c66884b6d47990b711f842cdd8,
+        type: 3}
+      propertyPath: layerToIgnore.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8f19c66884b6d47990b711f842cdd8, type: 3}
