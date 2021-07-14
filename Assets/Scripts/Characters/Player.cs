@@ -35,8 +35,9 @@ public class Player : Character
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //if hit an enemy
-        if(collision.gameObject.GetComponentInParent<Enemy>())
+        //if hit an enemy (not enemy charger)
+        Enemy enemy = collision.gameObject.GetComponentInParent<Enemy>();
+        if (enemy && enemy is EnemyCharger == false)
         {
             //pushback and damage
             PushBack((transform.position - collision.transform.position).normalized * pushBackOnHitEnemy);

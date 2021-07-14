@@ -211,7 +211,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CurrentWeapon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1391431332}
     - target: {fileID: 3366163097786489373, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
         type: 3}
       propertyPath: m_RootOrder
@@ -368,6 +368,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391431332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3182246790604602616, guid: c5b6ba422f9085346b75752cb6e94864,
+    type: 3}
+  m_PrefabInstance: {fileID: 27685061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86dc4754b28a5348954243273db8dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1556666588
 GameObject:
   m_ObjectHideFlags: 0
