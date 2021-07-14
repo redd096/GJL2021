@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4335080562500711232}
   - component: {fileID: 4968888224254459874}
   - component: {fileID: 718214061899820463}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4765,7 +4765,7 @@ GameObject:
   - component: {fileID: 8395371863094262442}
   - component: {fileID: 8395371863094262443}
   - component: {fileID: 8157764783494114593}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4875,7 +4875,7 @@ GameObject:
   - component: {fileID: 8395371864379619245}
   - component: {fileID: 1535250552387387380}
   - component: {fileID: 8395371864379619244}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BASE Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,10 @@ MonoBehaviour:
   layerPenetrable:
     serializedVersion: 2
     m_Bits: 0
+  doAreaDamage: 0
   radiusAreaDamage: 0
+  areaCanDamageWhoShoot: 0
+  areaCanDamageWhoHit: 0
   knockBack: 0
   direction: {x: 0, y: 0}
   damage: 0
@@ -4968,7 +4971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8395371864745001907}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

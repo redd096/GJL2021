@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5638893550303126142}
   - component: {fileID: 2558624634725258368}
   - component: {fileID: 4118630773763783409}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,8 +58,6 @@ MonoBehaviour:
   MovementInput: {x: 0, y: 0}
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
-  pushBackOnHitEnemy: 10
-  damageOnHitEnemy: 10
 --- !u!114 &2465572222686213355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5869991697151389893}
   - component: {fileID: 3594890447280184107}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ombra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194600831546781331}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +297,7 @@ GameObject:
   - component: {fileID: 6843519103025443205}
   - component: {fileID: 5462269823241799479}
   - component: {fileID: 5911784888124121415}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,6 +425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116199542468667461, guid: d0d36d0c17dd82d4db50ca1b49228a70,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7449442902424867830, guid: d0d36d0c17dd82d4db50ca1b49228a70,
         type: 3}

@@ -8,7 +8,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     [Header("Prop")]
     [SerializeField] bool isDestructible = true;
     [CanShow("isDestructible")] [SerializeField] float health = 100;
-    [CanShow("isDestructible")] [SerializeField] bool removeColliderOnDeath = true;
+    [SerializeField] bool removeColliderOnDeath = true;
 
     [Header("Area Damage on Destroy")]
     [SerializeField] bool doAreaDamage = false;
