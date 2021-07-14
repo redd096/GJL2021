@@ -12,7 +12,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] LayerMask layerPenetrable = default;
 
     [Header("Bullet")]
-    [SerializeField] [Min(0)] float radiusAreaDamage = 0;       //damage other characters in radius area
+    [SerializeField] bool doAreaDamage = false;
+    [CanShow("doAreaDamage")] [SerializeField] [Min(0)] float radiusAreaDamage = 0;         //damage other characters in radius area
+    [CanShow("doAreaDamage")] [SerializeField] bool areaCanDamageWhoShoot = false;          //is possible to damage owner with area damage
+    [CanShow("doAreaDamage")] [SerializeField] bool areaCanDamageWhoHit = false;            //is possible to damage again who hit this bullet
     [SerializeField] float knockBack = 1;                       //knockback hitted character
 
     [Header("DEBUG")]
@@ -32,6 +35,16 @@ public class Bullet : MonoBehaviour
     {
         //get references
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void OnDrawGizmos()
+    {
+        //draw area damage
+        if (doAreaDamage && radiusAreaDamage > 0)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, radiusAreaDamage);
+        }
     }
 
     /// <summary>
@@ -108,7 +121,7 @@ public class Bullet : MonoBehaviour
             onHit?.Invoke();
 
             //damage in area too
-            if (radiusAreaDamage > 0)
+            if (doAreaDamage && radiusAreaDamage > 0)
                 DamageInArea(damageable);
 
             Pooling.Destroy(gameObject);
@@ -119,7 +132,13 @@ public class Bullet : MonoBehaviour
     {
         //be sure to not hit again the same
         List<IDamageable> damageables = new List<IDamageable>();
-        if (hit != null)
+
+        //be sure to not hit owner (if necessary)
+        if (areaCanDamageWhoShoot == false)
+            damageables.Add(owner.GetComponent<IDamageable>());
+
+        //be sure to not hit who was already hit by bullet (if necessary)
+        if (areaCanDamageWhoHit == false && hit != null)
             damageables.Add(hit);
 
         //find every object damageable in area
