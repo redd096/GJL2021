@@ -138,6 +138,9 @@ public class DestructibleProps : MonoBehaviour, IDamageable
         {
             foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
                 col.enabled = false;
+
+            //update grid
+            AStar.instance.UpdateGrid();
         }
 
         //damage in area too

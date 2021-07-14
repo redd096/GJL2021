@@ -26,7 +26,7 @@
             if (GUILayout.Button("Update Nodes"))
             {
                 //update nodes
-                gridAStar.UpdateNodesFromEditor();
+                gridAStar.UpdateGrid();
 
                 //repaint scene and set undo
                 SceneView.RepaintAll();
@@ -66,7 +66,7 @@
             CreateGrid();
         }
 
-        public void UpdateNodesFromEditor()
+        public void UpdateGrid()
         {
             SetGridSize();
             CreateGrid();
