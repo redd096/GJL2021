@@ -8,6 +8,7 @@ public class WeaponRange : WeaponBASE
     [SerializeField] bool automatic = true;                 //keep pressed or click
     [SerializeField] float rateOfFire = 0.2f;
     [SerializeField] float recoil = 1;                      //push back character when shoot
+    public float NoiseAccuracy = 10;                        //rotate random the shot when instantiated
 
     [Header("Barrel")]
     [SerializeField] Transform[] barrels = default;         //spawn bullets - if more than one, shoot from every barrel
@@ -97,6 +98,13 @@ public class WeaponRange : WeaponBASE
     /// <param name="barrel"></param>
     void InstantiateBullet(Transform barrel)
     {
+        //create random noise in accuracy
+        float randomNoiseAccuracy = Random.Range(-NoiseAccuracy, NoiseAccuracy);
+        Vector3 direction = Owner.DirectionAim.x < 0 ? -barrel.right : barrel.right;            //normal direction
+        direction = Quaternion.AngleAxis(randomNoiseAccuracy, Vector3.forward) * direction;     //direction with noise
+
+        Debug.DrawLine(barrel.position, barrel.position + direction, Color.red, 1);
+
         //instantiate bullet
         Bullet bullet = bulletsPooling.Instantiate(bulletPrefab, BulletsParent.transform);
         bullet.transform.position = barrel.position;
@@ -104,7 +112,7 @@ public class WeaponRange : WeaponBASE
         bullet.transform.localScale = Owner.DirectionAim.x < 0 ? new Vector3(-1, 1, 1) : Vector3.one;    //rotate bullet
 
         //and set it
-        bullet.Init(Owner, Owner.DirectionAim.x < 0 ? -barrel.right : barrel.right, damage, bulletSpeed);
+        bullet.Init(Owner, direction, damage, bulletSpeed);
 
         //call event
         onInstantiateBullet?.Invoke(barrel);

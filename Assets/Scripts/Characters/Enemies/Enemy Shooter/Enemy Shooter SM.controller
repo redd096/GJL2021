@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8e139597e7c0e45b74998501691cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overwriteNoiseAccuracyFirstShoot: 1
+  noiseAccuracyFirstShoot: 30
   delayBeforeFirstShot: 1
   delayBetweenShots: 1
 --- !u!1101 &-4621509442394195190
