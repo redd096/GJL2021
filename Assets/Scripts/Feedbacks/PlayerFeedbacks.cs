@@ -20,7 +20,7 @@ public class PlayerFeedbacks : MonoBehaviour
     {
         //instantiate aim
         if(aimPrefab)
-            aimObject = Instantiate(aimPrefab);
+            aimObject = Instantiate(aimPrefab, transform);
     }
 
     void OnEnable()
@@ -81,7 +81,7 @@ public class PlayerFeedbacks : MonoBehaviour
         }
 
         //set aimObject position
-        aimObject.transform.position = new Vector2(transform.position.x, transform.position.y) + inputPosition;
+        aimObject.transform.localPosition = inputPosition;
     }
 
     void OnDash()
