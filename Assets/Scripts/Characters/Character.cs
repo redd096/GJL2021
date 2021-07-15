@@ -34,11 +34,7 @@ public abstract class Character : MonoBehaviour, IDamageable
         shield = GetComponentInChildren<Shield>();
 
         //if there is a weapon by inspector, set it
-        if(weaponPrefab)
-        {
-            CurrentWeapon = Instantiate(weaponPrefab);
-        }
-        CurrentWeapon?.PickWeapon(this);
+        PickWeapon(weaponPrefab);
     }
 
     protected virtual void Update()
@@ -70,6 +66,8 @@ public abstract class Character : MonoBehaviour, IDamageable
             pushForce.y = 0;
     }
 
+    #region public API
+
     /// <summary>
     /// Set character movement
     /// </summary>
@@ -92,6 +90,43 @@ public abstract class Character : MonoBehaviour, IDamageable
         AimPositionNotNormalized = aim;
         DirectionAim = aim.normalized;
     }
+
+    /// <summary>
+    /// Instantiate and Equip Weapon
+    /// </summary>
+    /// <param name="weaponPrefab"></param>
+    public void PickWeapon(WeaponBASE prefab)
+    {
+        if (prefab == null)
+            return;
+
+        //instantiate and equip weapon
+        CurrentWeapon = Instantiate(prefab);
+        CurrentWeapon.PickWeapon(this);
+
+        //save it and update UI
+        GameManager.instance.CurrentWeapon = CurrentWeapon;
+        GameManager.instance.uiManager.UpdateWeaponImage(CurrentWeapon.GetComponentInChildren<SpriteRenderer>().sprite);
+    }
+
+    /// <summary>
+    /// Drop and Destroy Weapon
+    /// </summary>
+    public void DropWeapon()
+    {
+        if (CurrentWeapon == null)
+            return;
+
+        //drop and destroy weapon
+        CurrentWeapon.DropWeapon();
+        CurrentWeapon = null;
+
+        //save it and update UI
+        GameManager.instance.CurrentWeapon = null;
+        GameManager.instance.uiManager.UpdateWeaponImage(null);
+    }
+
+    #endregion
 
     #region IDamageable
 

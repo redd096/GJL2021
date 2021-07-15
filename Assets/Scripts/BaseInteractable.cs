@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
+using redd096;
 
 public class BaseInteractable : MonoBehaviour, IInteractable
 {
     [Header("On Interact")]
-    [SerializeField] UnityEvent onInteract = default;
+    [SerializeField] string sceneToLoad = "Scena Game";
 
     /// <summary>
     /// Called from player when interact
@@ -12,7 +12,7 @@ public class BaseInteractable : MonoBehaviour, IInteractable
     /// <param name="player"></param>
     public void Interact(Player player)
     {
-        //call on interact
-        onInteract?.Invoke();
+        //change scene
+        SceneLoader.instance.LoadScene(sceneToLoad);
     }
 }

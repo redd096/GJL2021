@@ -86,7 +86,9 @@ public class Drop : MonoBehaviour
             //if in percentage, drop this
             if(currentPercentage >= random)
             {
-                Instantiate(drop.objectToDrop, transform.position, transform.rotation);
+                if(drop.objectToDrop != null)
+                    Instantiate(drop.objectToDrop, transform.position, transform.rotation);
+
                 return;
             }
         }
