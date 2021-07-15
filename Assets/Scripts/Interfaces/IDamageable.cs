@@ -2,6 +2,8 @@
 
 public interface IDamageable
 {
+    System.Action onDie { get; set; }
+
     /// <summary>
     /// Get damage and check if dead
     /// </summary>
