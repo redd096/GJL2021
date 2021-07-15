@@ -33,6 +33,7 @@ public class NormalStatePlayer : StateMachineBehaviour
         Aim(InputRedd096.GetValue<Vector2>("Aim"));
         Attack(InputRedd096.GetButton("Attack"));
         Dash(InputRedd096.GetButtonDown("Dash"));
+        Interact(InputRedd096.GetButtonDown("Interact"));
     }
 
     #region private API
@@ -103,6 +104,51 @@ public class NormalStatePlayer : StateMachineBehaviour
             //call event
             player.onDash?.Invoke();
         }
+    }
+
+    void Interact(bool inputInteract)
+    {
+        //on press, check nearest interactable
+        if(inputInteract)
+        {
+            Collider2D[] cols = Physics2D.OverlapCircleAll(player.transform.position, player.RadiusInteract);
+            IInteractable interactable = FindNearest(cols, player.transform.position);
+
+            //interact
+            interactable?.Interact(player);
+        }
+    }
+
+    /// <summary>
+    /// Find nearest to position
+    /// </summary>
+    IInteractable FindNearest(Collider2D[] collection, Vector3 position)
+    {
+        IInteractable nearest = default;
+        float distance = Mathf.Infinity;
+
+        //foreach element in the collection
+        foreach (Collider2D element in collection)
+        {
+            //only if there is element
+            if (element == null)
+                continue;
+
+            //only if is interactable
+            IInteractable interactable = element.GetComponentInParent<IInteractable>();
+            if (interactable == null)
+                continue;
+
+            //check distance to find nearest
+            float newDistance = Vector3.Distance(element.transform.position, position);
+            if (newDistance < distance)
+            {
+                distance = newDistance;
+                nearest = interactable;
+            }
+        }
+
+        return nearest;
     }
 
     #endregion

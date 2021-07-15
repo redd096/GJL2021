@@ -52,6 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   customDrag: 30
+  weaponPrefab: {fileID: 6780341664455544565, guid: 94f2266d2af02c144839cd99263cdf2a,
+    type: 3}
   DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
   AimPositionNotNormalized: {x: 0, y: 0}
@@ -59,6 +61,7 @@ MonoBehaviour:
   MovementInput: {x: 0, y: 0}
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
+  RadiusInteract: 1.5
 --- !u!114 &2465572222686213355
 MonoBehaviour:
   m_ObjectHideFlags: 0
