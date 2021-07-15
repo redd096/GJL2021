@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeExplode: 0.5
-  radiusAreaDamage: 1
+  radiusAreaDamage: 2
   damage: 25
   knockBack: 10
   selfDamage: 200
