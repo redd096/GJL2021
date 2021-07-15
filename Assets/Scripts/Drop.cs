@@ -78,8 +78,6 @@ public class Drop : MonoBehaviour
         int random = Mathf.FloorToInt(Random.value * 100);
         float currentPercentage = 0;
 
-        Debug.Log(random);
-
         //foreach drop
         foreach(DropStruct drop in drops)
         {
