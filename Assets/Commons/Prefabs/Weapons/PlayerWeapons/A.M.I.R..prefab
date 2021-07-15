@@ -72,6 +72,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0.2, y: -0.2}
   objectToRotate: {fileID: 0}
+  gameObjectOnDrop:
+    instantiatedGameObject: {fileID: 4758295514663824166, guid: c7ce9cf5c106ae149b27bf5a0efcdeb4,
+      type: 3}
+    timeAutodestruction: 1
+  particlesOnDrop: {fileID: 0}
+  audioOnDrop:
+    audioClip: {fileID: 0}
+    volume: 0
+  cameraShakeOnDrop: 1
+  customShakeOnDrop: 0
+  shakeDurationOnDrop: 1
+  shakeAmountOnDrop: 0.7
   gameObjectOnInstantiateBullet:
     instantiatedGameObject: {fileID: 7717712962230171627, guid: 998590d86f7c7c64591a07404a1ab66c,
       type: 3}

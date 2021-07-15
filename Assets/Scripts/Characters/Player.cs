@@ -26,6 +26,9 @@ public class Player : Character
     {
         base.Awake();
 
+        //if there a weapon saved in game manager, set it (or use weapon prefab for first room)
+        GameManager.instance.PickWeaponSaved(this, weaponPrefab);
+
         //get references
         playerInput = GetComponent<PlayerInput>();
         stateMachine = GetComponent<Animator>();
@@ -81,8 +84,8 @@ public class Player : Character
         base.PickWeapon(prefab);
 
         //save it and update UI
-        GameManager.instance.CurrentWeapon = CurrentWeapon;
-        GameManager.instance.uiManager.UpdateWeaponImage(CurrentWeapon.GetComponentInChildren<SpriteRenderer>().sprite);
+        GameManager.instance.CurrentWeapon = prefab;
+        GameManager.instance.uiManager.UpdateWeaponImage(CurrentWeapon?.GetComponentInChildren<SpriteRenderer>().sprite);
 
         //save also in already seen
         GameManager.instance.WeaponsAlreadyUsed.Add(prefab);

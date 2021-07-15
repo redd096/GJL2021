@@ -2,6 +2,7 @@
 {
     using UnityEngine;
     using UnityEngine.SceneManagement;
+    using DG.Tweening;
 
     [AddComponentMenu("redd096/Singletons/Scene Loader")]
     public class SceneLoader : Singleton<SceneLoader>
@@ -74,6 +75,8 @@
             LockMouse(CursorLockMode.None);
             Time.timeScale = 1;
 
+            DOTween.KillAll();
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -85,6 +88,8 @@
             //show cursor and set timeScale to 1
             LockMouse(CursorLockMode.None);
             Time.timeScale = 1;
+
+            DOTween.KillAll();
 
             //load new scene
             SceneManager.LoadScene(scene);
@@ -98,6 +103,8 @@
             //show cursor and set timeScale to 1
             LockMouse(CursorLockMode.None);
             Time.timeScale = 1;
+
+            DOTween.KillAll();
 
             //load next scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

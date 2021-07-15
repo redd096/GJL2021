@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     [Header("Character")]
     [SerializeField] protected float health = 100;
     [SerializeField] float customDrag = 30;
-    [SerializeField] WeaponBASE weaponPrefab = default;
+    [SerializeField] protected WeaponBASE weaponPrefab = default;
 
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] protected float maxHealth = 0;
@@ -36,9 +36,6 @@ public abstract class Character : MonoBehaviour, IDamageable
 
         //max health
         maxHealth = health;
-
-        //if there is a weapon by inspector, set it
-        PickWeapon(weaponPrefab);
     }
 
     protected virtual void Update()
@@ -101,12 +98,9 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// <param name="weaponPrefab"></param>
     public virtual void PickWeapon(WeaponBASE prefab)
     {
-        if (prefab == null)
-            return;
-
         //instantiate and equip weapon
-        CurrentWeapon = Instantiate(prefab);
-        CurrentWeapon.PickWeapon(this);
+        CurrentWeapon = prefab != null ? Instantiate(prefab) : null;
+        CurrentWeapon?.PickWeapon(this);
     }
 
     /// <summary>

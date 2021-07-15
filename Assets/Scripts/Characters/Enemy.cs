@@ -43,6 +43,9 @@ public class Enemy : Character
         //instantiate static point for patrol
         pointPatrol = new GameObject("Patrol Point: " + name).transform;
         pointPatrol.position = transform.position;
+
+        //if there is a weapon by inspector, set it
+        PickWeapon(weaponPrefab);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

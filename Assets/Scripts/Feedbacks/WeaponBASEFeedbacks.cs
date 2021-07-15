@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using redd096;
 
 public abstract class WeaponBASEFeedbacks : MonoBehaviour
 {
@@ -7,6 +8,17 @@ public abstract class WeaponBASEFeedbacks : MonoBehaviour
 
     [Header("Rotate Sprite (if not setted, rotate all)")]
     [SerializeField] Transform objectToRotate = default;
+
+    [Header("On Drop")]
+    [SerializeField] InstantiatedGameObjectStruct gameObjectOnDrop = default;
+    [SerializeField] ParticleSystem particlesOnDrop = default;
+    [SerializeField] AudioStruct audioOnDrop = default;
+
+    [Header("On Drop Camera Shake")]
+    [SerializeField] bool cameraShakeOnDrop = true;
+    [CanShow("cameraShakeOnDrop")] [SerializeField] bool customShakeOnDrop = false;
+    [CanShow("cameraShakeOnDrop", "customShakeOnDrop")] [SerializeField] float shakeDurationOnDrop = 1;
+    [CanShow("cameraShakeOnDrop", "customShakeOnDrop")] [SerializeField] float shakeAmountOnDrop = 0.7f;
 
     WeaponBASE weaponBASE;
 
@@ -19,6 +31,7 @@ public abstract class WeaponBASEFeedbacks : MonoBehaviour
         if(weaponBASE)
         {
             weaponBASE.onPickWeapon += OnPickWeapon;
+            weaponBASE.onDropWeapon += OnDropWeapon;
         }
 
         //by default rotate all the object
@@ -32,6 +45,7 @@ public abstract class WeaponBASEFeedbacks : MonoBehaviour
         if (weaponBASE)
         {
             weaponBASE.onPickWeapon -= OnPickWeapon;
+            weaponBASE.onDropWeapon -= OnDropWeapon;
         }
     }
 
@@ -47,6 +61,29 @@ public abstract class WeaponBASEFeedbacks : MonoBehaviour
     {
         //set local scale (to rotate left or right)
         transform.localScale = Vector3.one;
+    }
+
+    void OnDropWeapon()
+    {
+        //instantiate vfx and sfx
+        GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnDrop, transform.position, transform.rotation);
+        if (instantiatedGameObject)
+        {
+            //rotate left/right
+            instantiatedGameObject.transform.localScale = transform.lossyScale;
+        }
+        ParticlesManager.instance.Play(particlesOnDrop, transform.position, transform.rotation);
+        SoundManager.instance.Play(audioOnDrop.audioClip, transform.position, audioOnDrop.volume);
+
+        //camera shake
+        if (cameraShakeOnDrop)
+        {
+            //custom or default
+            if (customShakeOnDrop)
+                CameraShake.instance.StartShake(shakeDurationOnDrop, shakeAmountOnDrop);
+            else
+                CameraShake.instance.StartShake();
+        }
     }
 
     void RotateWeapon()

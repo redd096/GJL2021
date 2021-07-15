@@ -8,6 +8,7 @@ public abstract class WeaponBASE : MonoBehaviour
 
     //events
     public System.Action onPickWeapon { get; set; }
+    public System.Action onDropWeapon { get; set; }
 
     #region public API
 
@@ -38,6 +39,12 @@ public abstract class WeaponBASE : MonoBehaviour
 
         //be sure to reset attack vars
         ReleaseAttack();
+
+        //call event
+        onDropWeapon?.Invoke();
+
+        //destroy weapon
+        Destroy(gameObject);
     }
 
     #endregion
