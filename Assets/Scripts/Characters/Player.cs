@@ -60,6 +60,19 @@ public class Player : Character
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
+
+    public override void GetDamage(float damage, Vector2 hitPosition = default)
+    {
+        base.GetDamage(damage, hitPosition);
+
+        //update health UI
+        GameManager.instance.uiManager.UpdateHealth(health, maxHealth);
+    }
+
     /// <summary>
     /// Set state to pause or resume
     /// </summary>

@@ -9,8 +9,9 @@
     {
         [Header("Saved elements for this run")]
         public List<GameObject> LevelsAlreadySeen = new List<GameObject>();
-        public int CurrentToiletPaper = 0;
+        public List<WeaponBASE> WeaponsAlreadyUsed = new List<WeaponBASE>();
         public WeaponBASE CurrentWeapon = null;
+        public int CurrentToiletPaper = 0;
 
         public UIManager uiManager { get; private set; }
         public LevelManager levelManager { get; private set; }
