@@ -5,11 +5,12 @@ using redd096;
 public abstract class Character : MonoBehaviour, IDamageable
 {
     [Header("Character")]
-    [SerializeField] float health = 100;
+    [SerializeField] protected float health = 100;
     [SerializeField] float customDrag = 30;
     [SerializeField] WeaponBASE weaponPrefab = default;
 
     [Header("DEBUG")]
+    [ReadOnly] [SerializeField] protected float maxHealth = 0;
     [ReadOnly] public Vector2 DirectionInput;               //when character moves, set it with only direction (used to know last movement direction)
     [ReadOnly] public Vector2 DirectionAim;                 //when character aim, set it (used to know where to shoot for example)
     [ReadOnly] public Vector2 AimPositionNotNormalized;     //when character aim, set it without normalize (used to set crosshair on screen)
@@ -33,12 +34,11 @@ public abstract class Character : MonoBehaviour, IDamageable
         Rb = GetComponent<Rigidbody2D>();
         shield = GetComponentInChildren<Shield>();
 
+        //max health
+        maxHealth = health;
+
         //if there is a weapon by inspector, set it
-        if(weaponPrefab)
-        {
-            CurrentWeapon = Instantiate(weaponPrefab);
-        }
-        CurrentWeapon?.PickWeapon(this);
+        PickWeapon(weaponPrefab);
     }
 
     protected virtual void Update()
@@ -70,6 +70,8 @@ public abstract class Character : MonoBehaviour, IDamageable
             pushForce.y = 0;
     }
 
+    #region public API
+
     /// <summary>
     /// Set character movement
     /// </summary>
@@ -93,6 +95,35 @@ public abstract class Character : MonoBehaviour, IDamageable
         DirectionAim = aim.normalized;
     }
 
+    /// <summary>
+    /// Instantiate and Equip Weapon
+    /// </summary>
+    /// <param name="weaponPrefab"></param>
+    public virtual void PickWeapon(WeaponBASE prefab)
+    {
+        if (prefab == null)
+            return;
+
+        //instantiate and equip weapon
+        CurrentWeapon = Instantiate(prefab);
+        CurrentWeapon.PickWeapon(this);
+    }
+
+    /// <summary>
+    /// Drop and Destroy Weapon
+    /// </summary>
+    public virtual void DropWeapon()
+    {
+        if (CurrentWeapon == null)
+            return;
+
+        //drop and destroy weapon
+        CurrentWeapon.DropWeapon();
+        CurrentWeapon = null;
+    }
+
+    #endregion
+
     #region IDamageable
 
     /// <summary>
@@ -108,6 +139,7 @@ public abstract class Character : MonoBehaviour, IDamageable
         if (shield && shield.HitShield(hitPosition))
             return;
 
+        //set health and update UI
         health -= damage;
 
         //call event
