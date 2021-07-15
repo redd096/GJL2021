@@ -1,31 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1098548556912432316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174833575123577889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f8816aa482c323479f0714a03a807ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 9174833575798075947}
---- !u!114 &7287292103048313368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174833575123577889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 568c3e1480e2b6646991aeb96d0b3d1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angleDefense: 90
 --- !u!1 &7965432749470031074
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +81,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1098548556912432316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174833575123577889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8816aa482c323479f0714a03a807ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 9174833575798075947}
+--- !u!114 &7287292103048313368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174833575123577889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568c3e1480e2b6646991aeb96d0b3d1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleDefense: 90
 --- !u!1001 &4631614795409681688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,6 +194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Charger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651835, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: damageOnHitEnemy
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4969817824116401850, guid: 32f0a48baafe006409afe4bac4b27067,
         type: 3}
