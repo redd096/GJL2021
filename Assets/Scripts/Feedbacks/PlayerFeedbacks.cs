@@ -81,7 +81,7 @@ public class PlayerFeedbacks : MonoBehaviour
         }
 
         //set aimObject position
-        aimObject.transform.localPosition = inputPosition;
+        aimObject.transform.position = new Vector2(transform.position.x, transform.position.y) + inputPosition;
     }
 
     void OnDash()
