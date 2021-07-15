@@ -10,6 +10,8 @@ public class Player : Character
 
     public PlayerInput playerInput { get; private set; }
 
+    Animator stateMachine;
+
     //animation events
     public System.Action onDash { get; set; }
 
@@ -26,6 +28,7 @@ public class Player : Character
 
         //get references
         playerInput = GetComponent<PlayerInput>();
+        stateMachine = GetComponent<Animator>();
 
         //add to level manager list
         if (GameManager.instance.levelManager)
@@ -37,5 +40,32 @@ public class Player : Character
         //remove from level manager list
         if (GameManager.instance.levelManager)
             GameManager.instance.levelManager.Players.Remove(this);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        //pause
+        if (InputRedd096.GetButtonDown("Pause"))
+        {
+            if (Time.timeScale > 0)
+            {
+                SceneLoader.instance.PauseGame();
+            }
+            else
+            {
+                SceneLoader.instance.ResumeGame();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Set state to pause or resume
+    /// </summary>
+    /// <param name="pause"></param>
+    public void SetPauseState(bool pause)
+    {
+        stateMachine.SetTrigger(pause ? "Pause" : "Resume");
     }
 }

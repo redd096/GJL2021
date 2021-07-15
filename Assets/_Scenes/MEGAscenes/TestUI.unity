@@ -8094,7 +8094,7 @@ PrefabInstance:
     - target: {fileID: 2644368102197046782, guid: 9847762389e5c2b47983753224ce07f4,
         type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5304366086089382541, guid: 9847762389e5c2b47983753224ce07f4,
         type: 3}
@@ -8159,12 +8159,12 @@ PrefabInstance:
     - target: {fileID: 5304366086089382543, guid: 9847762389e5c2b47983753224ce07f4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6681385140014299918, guid: 9847762389e5c2b47983753224ce07f4,
         type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6681385140014299918, guid: 9847762389e5c2b47983753224ce07f4,
         type: 3}

@@ -43,12 +43,6 @@ public class Enemy : Character
         //instantiate static point for patrol
         pointPatrol = new GameObject("Patrol Point: " + name).transform;
         pointPatrol.position = transform.position;
-
-        //TODO
-        //SULL'ENEMY CONTROLLER ci saranno le variabili per sapere cosa droppa (con percentuale) e quanta vita ha (vita già c'è)
-        //per il drop può droppare un solo oggetto, preso magari da una lista con percentuale
-        //oppure può droppare da liste di drop?
-        //oppure semplicemente viene generata una percentuale per ogni drop, quindi può essere che droppa tutto come può essere che ne droppa solo alcuni o nessuno?
     }
 
     void OnCollisionEnter2D(Collision2D collision)

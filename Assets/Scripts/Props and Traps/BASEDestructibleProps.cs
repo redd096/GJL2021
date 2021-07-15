@@ -58,6 +58,10 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
         if (canBePushed)
         {
             MoveRigidbody();
+
+            //update grid when move
+            if (Rb.velocity.magnitude > 0)
+                AStar.instance.UpdateGrid();
         }
     }
 

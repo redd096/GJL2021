@@ -41,7 +41,7 @@ public abstract class Character : MonoBehaviour, IDamageable
         CurrentWeapon?.PickWeapon(this);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //move rigidbody
         MoveCharacter();
