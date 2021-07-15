@@ -49,14 +49,14 @@ public class NormalStatePlayer : StateMachineBehaviour
         if (InputRedd096.IsCurrentControlScheme(player.playerInput, "KeyboardAndMouse"))
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(inputAim);
-            player.DirectionAim = (mousePosition - new Vector2(player.transform.position.x, player.transform.position.y)).normalized;
+            player.AimWithCharacter(mousePosition - new Vector2(player.transform.position.x, player.transform.position.y));
         }
         //or using analog
         else
         {
             //don't reset when release analog, keep last rotation
             if(inputAim != Vector2.zero)
-                player.DirectionAim = inputAim.normalized;
+                player.AimWithCharacter(inputAim);
         }
     }
 

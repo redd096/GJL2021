@@ -54,6 +54,7 @@ MonoBehaviour:
   customDrag: 30
   DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
+  AimPositionNotNormalized: {x: 0, y: 0}
   CurrentWeapon: {fileID: 0}
   MovementInput: {x: 0, y: 0}
   pushForce: {x: 0, y: 0}
@@ -98,6 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f109d7311405844abd0508805040a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimPrefab: {fileID: 845501275940668365, guid: fdbe3452958a08b4da756cdffdd6dfcf,
+    type: 3}
+  mouseFree: 1
+  minDistance: 1.3
+  maxDistance: 2.3
   particlesToActivateOnDash: {fileID: 757184093709045176}
   audioOnDash:
     audioClip: {fileID: 0}

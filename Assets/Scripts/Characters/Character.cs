@@ -11,6 +11,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     [Header("DEBUG")]
     [ReadOnly] public Vector2 DirectionInput;               //when character moves, set it with only direction (used to know last movement direction)
     [ReadOnly] public Vector2 DirectionAim;                 //when character aim, set it (used to know where to shoot for example)
+    [ReadOnly] public Vector2 AimPositionNotNormalized;     //when character aim, set it without normalize (used to set crosshair on screen)
     public WeaponBASE CurrentWeapon;                        //current equipped weapon
     [ReadOnly] [SerializeField] Vector2 MovementInput;      //when character moves, set it as direction * speed (used to move character, will be reset in every frame)
     [ReadOnly] [SerializeField] Vector2 pushForce;          //used to push character (push by recoil, knockback, dash, etc...), will be decreased by customDrag in every frame
@@ -74,6 +75,17 @@ public abstract class Character : MonoBehaviour, IDamageable
         //save last input direction + set movement
         DirectionInput = direction;
         MovementInput = direction * speed;
+    }
+
+    /// <summary>
+    /// Aim to set character's direction
+    /// </summary>
+    /// <param name="aim"></param>
+    public void AimWithCharacter(Vector2 aim)
+    {
+        //save last input aim + set direction aim
+        AimPositionNotNormalized = aim;
+        DirectionAim = aim.normalized;
     }
 
     #region IDamageable

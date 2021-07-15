@@ -53,7 +53,7 @@ public class RechargeStateEnemyCharger : StateMachineBehaviour
     void LookAtTargetLastPosition()
     {
         //aim at target
-        enemy.DirectionAim = (enemy.LastTargetPosition - enemy.transform.position).normalized;
+        enemy.AimWithCharacter(enemy.LastTargetPosition - enemy.transform.position);
     }
 
     #endregion

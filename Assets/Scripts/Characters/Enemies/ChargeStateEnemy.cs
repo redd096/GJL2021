@@ -79,7 +79,7 @@ public class ChargeStateEnemy : StateMachineBehaviour
         float angle = Vector2.SignedAngle(enemy.DirectionAim, (enemy.LastTargetPosition - enemy.transform.position).normalized);
         if(angle != 0)
         {
-            enemy.DirectionAim = Quaternion.AngleAxis(angle > 0 ? rotationSpeed : -rotationSpeed, Vector3.forward) * enemy.DirectionAim;
+            enemy.AimWithCharacter(Quaternion.AngleAxis(angle > 0 ? rotationSpeed : -rotationSpeed, Vector3.forward) * enemy.DirectionAim);
         }
 
         //debug

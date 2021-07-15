@@ -74,7 +74,7 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
             return;
 
         //aim at target
-        enemy.DirectionAim = (enemy.Target.transform.position - enemy.transform.position).normalized;
+        enemy.AimWithCharacter(enemy.Target.transform.position - enemy.transform.position);
     }
 
     void FirstShoot()
