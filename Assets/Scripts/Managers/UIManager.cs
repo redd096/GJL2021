@@ -10,14 +10,19 @@
         [Header("Menu")]
         [SerializeField] GameObject pauseMenu = default;
 
-        [Header("Game")]
+        [Header("Toilet Paper")]
+        [SerializeField] Image toiletPaperImage = default;
         [SerializeField] TextMeshProUGUI toiletPaperText = default;
         [SerializeField] string format = "x{0:00}";
+
+        [Header("Weapon")]
         [SerializeField] Image weaponImage = default;
         [SerializeField] Sprite spriteWhenNoWeapon = default;
+
+        [Header("Health")]
         [SerializeField] Slider sliderHealth = default;
 
-        public TextMeshProUGUI ToiletPaperText => toiletPaperText;
+        public Image ToiletPaperImage => toiletPaperImage;
 
         void Start()
         {
