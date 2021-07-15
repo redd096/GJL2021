@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBeforeExplode: 0.5
   radiusAreaDamage: 2
-  damage: 25
+  damage: 10
   knockBack: 10
   selfDamage: 200
 --- !u!114 &-484814566214193870
@@ -271,7 +271,7 @@ MonoBehaviour:
   damage: 1
   knockBack: 0
   checkMinDistance: 1
-  minDistance: 0.8
+  minDistance: 1
   speedCheckIfHitWall: 2.5
   radiusCastToCheckWhatHit: 0.5
   calculatedSpeed: 0
