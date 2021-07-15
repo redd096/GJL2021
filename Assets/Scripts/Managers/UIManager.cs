@@ -15,6 +15,7 @@
         [SerializeField] string format = "x{0:00}";
         [SerializeField] Image weaponImage = default;
         [SerializeField] Sprite spriteWhenNoWeapon = default;
+        [SerializeField] Slider sliderHealth = default;
 
         void Start()
         {
@@ -57,6 +58,17 @@
         {
             if (weaponImage)
                 weaponImage.sprite = weapon != null ? weapon : spriteWhenNoWeapon;
+        }
+
+        /// <summary>
+        /// Set slider health
+        /// </summary>
+        /// <param name="currentHealth"></param>
+        /// <param name="maxHealth"></param>
+        public void UpdateHealth(float currentHealth, float maxHealth)
+        {
+            if (sliderHealth)
+                sliderHealth.value = currentHealth / maxHealth;
         }
     }
 }
