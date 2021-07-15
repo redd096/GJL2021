@@ -22,6 +22,7 @@ public class TrapFeedbacks : MonoBehaviour
         if(prop)
         {
             prop.onHit += OnHit;
+            prop.onActiveByTimer += OnActiveByTimer;
         }
     }
 
@@ -31,8 +32,11 @@ public class TrapFeedbacks : MonoBehaviour
         if (prop)
         {
             prop.onHit -= OnHit;
+            prop.onActiveByTimer -= OnActiveByTimer;
         }
     }
+
+    #region private API
 
     void OnHit()
     {
@@ -52,6 +56,15 @@ public class TrapFeedbacks : MonoBehaviour
         }
     }
 
+    void OnActiveByTimer(bool isActive)
+    {
+        //active or deactive trap
+        if (isActive)
+            anim.SetTrigger("Active");
+        else
+            anim.SetTrigger("Deactive");
+    }
+
     IEnumerator DeactiveCoroutine()
     {
         //wait
@@ -62,4 +75,6 @@ public class TrapFeedbacks : MonoBehaviour
 
         deactiveCoroutine = null;
     }
+
+    #endregion
 }

@@ -14,6 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   durationAnimation: 1
   ignoreIfAlreadyActive: 1
+--- !u!114 &1308691331571054613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145808667471308349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3a9f997abbf7e41a63f23f131ea307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToActive: 1
+  timeToDeactive: 1
+  isActive: 0
+  debugTimer: 0
 --- !u!1001 &3554680552075350851
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,9 +13,24 @@ public class PropAndTrap : BASEDestructibleProps
 
     //animation events
     public System.Action onHit { get; set; }
+    public System.Action<bool> onActiveByTimer { get; set; }
+
+    TimerTrap timerTrap;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        //check if has a timer
+        timerTrap = GetComponent<TimerTrap>();
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        //don't hit if is a timer trap
+        if (timerTrap)
+            return;
+
         //check if do damage
         if (useTrigger == false || doDamageOnHit == false)
             return;
@@ -26,6 +41,10 @@ public class PropAndTrap : BASEDestructibleProps
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        //don't hit if is a timer trap
+        if (timerTrap)
+            return;
+
         //check if do damage
         if (useTrigger || doDamageOnHit == false)
             return;
@@ -34,9 +53,7 @@ public class PropAndTrap : BASEDestructibleProps
         OnHit(collision.gameObject);
     }
 
-    #region private API
-
-    void OnHit(GameObject collisionObject)
+    public void OnHit(GameObject collisionObject, bool callEvent = true)
     {
         //be sure is not already dead
         if (alreadyDead)
@@ -47,7 +64,8 @@ public class PropAndTrap : BASEDestructibleProps
             return;
 
         //call event
-        onHit?.Invoke();
+        if(callEvent)
+            onHit?.Invoke();
 
         //do damage and push back
         IDamageable damageable = collisionObject.GetComponentInParent<IDamageable>();
@@ -61,5 +79,13 @@ public class PropAndTrap : BASEDestructibleProps
         }
     }
 
-    #endregion
+    /// <summary>
+    /// Called by TimerTrap, to call event
+    /// </summary>
+    /// <param name="active"></param>
+    public void ActiveByTimer(bool active)
+    {
+        //call event
+        onActiveByTimer?.Invoke(active);
+    }
 }
