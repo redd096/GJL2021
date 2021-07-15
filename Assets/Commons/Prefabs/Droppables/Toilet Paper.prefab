@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c7964207506bd488c5cdda7958a7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerOnPick: 101
+  particleToActive: {fileID: 0}
+  movement: {x: 0, y: 1, z: 0}
+  sizeToReach: 1.5
+  durationMovement: 0.8
+  easeMovement1: 0
+  moveToToiletPaperInUI: 1
+  movement2: {x: 0, y: -1, z: 0}
+  sizeToReach2: 0.3
+  durationMovement2: 0.5
+  easeMovement2: 13
 --- !u!1001 &8844068077113913869
 PrefabInstance:
   m_ObjectHideFlags: 0
