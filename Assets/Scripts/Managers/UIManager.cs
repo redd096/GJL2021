@@ -17,6 +17,8 @@
         [SerializeField] Sprite spriteWhenNoWeapon = default;
         [SerializeField] Slider sliderHealth = default;
 
+        public TextMeshProUGUI ToiletPaperText => toiletPaperText;
+
         void Start()
         {
             //by default, deactive pause menu

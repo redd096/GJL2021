@@ -99,7 +99,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// Instantiate and Equip Weapon
     /// </summary>
     /// <param name="weaponPrefab"></param>
-    public void PickWeapon(WeaponBASE prefab)
+    public virtual void PickWeapon(WeaponBASE prefab)
     {
         if (prefab == null)
             return;
@@ -107,16 +107,12 @@ public abstract class Character : MonoBehaviour, IDamageable
         //instantiate and equip weapon
         CurrentWeapon = Instantiate(prefab);
         CurrentWeapon.PickWeapon(this);
-
-        //save it and update UI
-        GameManager.instance.CurrentWeapon = CurrentWeapon;
-        GameManager.instance.uiManager.UpdateWeaponImage(CurrentWeapon.GetComponentInChildren<SpriteRenderer>().sprite);
     }
 
     /// <summary>
     /// Drop and Destroy Weapon
     /// </summary>
-    public void DropWeapon()
+    public virtual void DropWeapon()
     {
         if (CurrentWeapon == null)
             return;
@@ -124,10 +120,6 @@ public abstract class Character : MonoBehaviour, IDamageable
         //drop and destroy weapon
         CurrentWeapon.DropWeapon();
         CurrentWeapon = null;
-
-        //save it and update UI
-        GameManager.instance.CurrentWeapon = null;
-        GameManager.instance.uiManager.UpdateWeaponImage(null);
     }
 
     #endregion

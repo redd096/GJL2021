@@ -62,8 +62,11 @@ public class Player : Character
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        //check pick droppables
+        CheckPickDroppables(collision);
     }
+
+    #region overrides
 
     public override void GetDamage(float damage, Vector2 hitPosition = default)
     {
@@ -72,6 +75,39 @@ public class Player : Character
         //update health UI
         GameManager.instance.uiManager.UpdateHealth(health, maxHealth);
     }
+
+    public override void PickWeapon(WeaponBASE prefab)
+    {
+        base.PickWeapon(prefab);
+
+        //save it and update UI
+        GameManager.instance.CurrentWeapon = CurrentWeapon;
+        GameManager.instance.uiManager.UpdateWeaponImage(CurrentWeapon.GetComponentInChildren<SpriteRenderer>().sprite);
+
+        //save also in already seen
+        GameManager.instance.WeaponsAlreadyUsed.Add(prefab);
+    }
+
+    public override void DropWeapon()
+    {
+        base.DropWeapon();
+
+        //save it and update UI
+        GameManager.instance.CurrentWeapon = null;
+        GameManager.instance.uiManager.UpdateWeaponImage(null);
+    }
+
+    #endregion
+
+    #region private API
+
+    void CheckPickDroppables(Collider2D collision)
+    {
+        //pick if is droppable
+        collision.GetComponentInParent<IDroppable>()?.Pick();
+    }
+
+    #endregion
 
     /// <summary>
     /// Set state to pause or resume
