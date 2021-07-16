@@ -1548,6 +1548,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 758818639357958587, guid: 577048d40a2b42b498bbac5f591aa8de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -143.40039
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577048d40a2b42b498bbac5f591aa8de, type: 3}
 --- !u!1 &758818638572475629 stripped
@@ -1707,10 +1712,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 516145314496805839, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
+        type: 3}
+      propertyPath: audioOnDash.volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 516145314496805839, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
+        type: 3}
+      propertyPath: audioOnDash.audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465572222686213355, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
+        type: 3}
+      propertyPath: audioOnDie.volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465572222686213355, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
+        type: 3}
+      propertyPath: audioOnDie.audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3678769784504406800, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678769784504406802, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678769784504406802, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
+        type: 3}
+      propertyPath: weaponPrefab
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3678769784504406893, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
         type: 3}
