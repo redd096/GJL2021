@@ -1478,11 +1478,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 7730307589540990671}
-    - target: {fileID: 758818638793638627, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -7.659973
-      objectReference: {fileID: 0}
     - target: {fileID: 758818638795394100, guid: 577048d40a2b42b498bbac5f591aa8de,
         type: 3}
       propertyPath: m_RootOrder
@@ -1542,31 +1537,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Vendor Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818638800973487, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818638800973487, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818639116292282, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -286.89996
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818639357958587, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -286.89996
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818639357958587, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -143.40002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577048d40a2b42b498bbac5f591aa8de, type: 3}
@@ -1731,11 +1701,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3678769784504406802, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
-        type: 3}
-      propertyPath: weaponPrefab
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3678769784504406893, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
         type: 3}

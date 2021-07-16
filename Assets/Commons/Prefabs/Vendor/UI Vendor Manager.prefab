@@ -340,7 +340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7.659912}
+  m_AnchoredPosition: {x: 0, y: -7.6601562}
   m_SizeDelta: {x: 0, y: 15.328735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &758818638793638653
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopToActive: {fileID: 758818638800973486}
-  spriteOnAlreadySeenWeapons: {fileID: 4742422949044846169, guid: 209d2b92379816e4bb6d0e0f59f1ea49,
+  spriteOnAlreadySeenWeapons: {fileID: 798250575067388433, guid: 6cd53cc441c149c48b038e264b6f4517,
     type: 3}
   weapons:
   - weaponButton: {fileID: 758818638567486588}
@@ -576,7 +576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -286.89996, y: 184}
+  m_AnchoredPosition: {x: -286.90045, y: 184}
   m_SizeDelta: {x: -704.9736, y: -412.25095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &758818639116292276
@@ -650,7 +650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.300293, y: 6.1000977}
+  m_AnchoredPosition: {x: 46.30078, y: 6.100586}
   m_SizeDelta: {x: 92.69043, y: 74.708984}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &758818639341548063
@@ -727,7 +727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -286.89996, y: -143.40002}
+  m_AnchoredPosition: {x: -286.90045, y: -143.40039}
   m_SizeDelta: {x: -704.9736, y: -379.0491}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &758818639389729723
