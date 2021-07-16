@@ -67,6 +67,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: audioOnDie.volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: audioOnDie.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 603694d946b011c408c9f62883cbf509, type: 3}
     - target: {fileID: 4545613733212651833, guid: 32f0a48baafe006409afe4bac4b27067,
         type: 3}
       propertyPath: m_Name
