@@ -9,6 +9,7 @@
     {
         [Header("Menu")]
         [SerializeField] GameObject pauseMenu = default;
+        [SerializeField] GameObject endMenu = default;
 
         [Header("Toilet Paper")]
         [SerializeField] Image toiletPaperImage = default;
@@ -28,6 +29,7 @@
         {
             //by default, deactive pause menu
             PauseMenu(false);
+            EndMenu(false);
             UpdateToiletPaper(GameManager.instance.CurrentToiletPaper);
             UpdateWeaponImage(GameManager.instance.CurrentWeapon?.GetComponentInChildren<SpriteRenderer>().sprite);
         }
@@ -45,6 +47,23 @@
 
             //active or deactive pause menu
             pauseMenu.SetActive(active);
+        }
+
+        /// <summary>
+        /// Active/Deactive end menu
+        /// </summary>
+        /// <param name="active"></param>
+        public void EndMenu(bool active)
+        {
+            if (endMenu == null)
+                return;
+
+            //active or deactive end menu
+            endMenu.SetActive(active);
+
+            //when active, be sure to deactive pause menu
+            if (active)
+                PauseMenu(false);
         }
 
         /// <summary>
