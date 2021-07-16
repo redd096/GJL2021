@@ -8,7 +8,7 @@ public class PauseStatePlayer : StateMachineBehaviour
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
         //resume
-        ResumeGame(InputRedd096.GetButtonDown("Pause"));
+        ResumeGame(InputRedd096.GetButtonDown("Resume"));
     }
 
     void ResumeGame(bool inputResume)

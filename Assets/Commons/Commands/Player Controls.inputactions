@@ -54,6 +54,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Resume",
+                    "type": "Button",
+                    "id": "b167c719-e330-4915-9e20-30598e447797",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Buy Weapon Vendor",
                     "type": "Button",
                     "id": "8b99ef62-b206-4af8-9bbc-70f3aba1c14d",
@@ -310,6 +318,39 @@
                     "processors": "",
                     "groups": "KeyboardAndMouse",
                     "action": "Close Vendor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1576e009-3a0d-4be8-857d-22154c5b23b2",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a22b55d6-71ce-44b6-a8fd-d2197782b79d",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4123e9f-7632-4c80-9c21-9f5a7fd95da3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "Resume",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
