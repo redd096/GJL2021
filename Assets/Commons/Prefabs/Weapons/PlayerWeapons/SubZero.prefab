@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8285830385823972493
+--- !u!1001 &744664163890647731
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,49 +9,44 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
-      propertyPath: damage
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
-        type: 3}
-      propertyPath: automatic
-      value: 0
+      propertyPath: recoil
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: WeaponName
-      value: Nuke Hammer
+      value: SubZero
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: rateOfFire
-      value: 999999
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: WeaponPrice
-      value: 35
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: bulletSpeed
-      value: 5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 3877611519149374782, guid: ccc5bc5a208a87a4b8d15eb684efc322,
+      objectReference: {fileID: 835389067002613054, guid: 037c6846ddba6c141877067767c1d4d2,
         type: 3}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: NoiseAccuracy
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742674, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_Name
-      value: NukeHammer
+      value: SubZero
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742687, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
@@ -112,7 +107,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9a537736451480247bf60bec834651a6,
+      objectReference: {fileID: 21300000, guid: a9e0613874e2caf41a3e45fc5572a1c0,
         type: 3}
+    - target: {fileID: 1862482483740369053, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482483740369053, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482483740369053, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2557c0556e3bf0d44b2eb21fa55875bb, type: 3}
