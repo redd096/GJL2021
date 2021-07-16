@@ -37,9 +37,13 @@
             CanShowAttribute canShowAttribute = attribute as CanShowAttribute;
 
             //foreach value to check
-            foreach (string value in canShowAttribute.values)
+            for (int i = 0; i < canShowAttribute.values.Length; i++)
             {
-                bool check = property.serializedObject.FindProperty(value).boolValue;
+                bool check = property.serializedObject.FindProperty(canShowAttribute.values[i]).boolValue;
+
+                //use NOT only for the first value
+                if (i == 0 && canShowAttribute.NotOnlyFirst)
+                    check = !check;
 
                 //use NOT
                 if (canShowAttribute.NOT)
@@ -78,6 +82,11 @@
         /// set NOT for every value
         /// </summary>
         public bool NOT = false;
+
+        /// <summary>
+        /// set NOT only for first value
+        /// </summary>
+        public bool NotOnlyFirst = false;
 
         public readonly string[] values;
 
