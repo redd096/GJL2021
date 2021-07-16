@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5116066394212030836}
   - component: {fileID: 1702211660223916264}
   - component: {fileID: 4985715658595609042}
+  - component: {fileID: 4089097981555371746}
   m_Layer: 0
   m_Name: Mosquito Animata
   m_TagString: Untagged
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4089097981555371746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644218631116776045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f09fb9623a81a046a7eb7f1dc0e473f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 4
+  speed: 0.5
