@@ -425,6 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopToActive: {fileID: 758818638800973486}
+  spriteOnAlreadySeenWeapons: {fileID: 4742422949044846169, guid: 209d2b92379816e4bb6d0e0f59f1ea49,
+    type: 3}
   weapons:
   - weaponButton: {fileID: 758818638567486588}
     weapon: {fileID: 3182246790604602616, guid: c5b6ba422f9085346b75752cb6e94864,
