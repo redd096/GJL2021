@@ -93,6 +93,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
         type: 3}
+      propertyPath: audioOnDie.volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: audioOnDie.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 89e3caf2933552b4686f4b1b06b1542d, type: 3}
+    - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
       propertyPath: gameObjectsOnDie.Array.size
       value: 2
       objectReference: {fileID: 0}
