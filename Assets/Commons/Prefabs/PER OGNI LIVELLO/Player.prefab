@@ -81,7 +81,10 @@ MonoBehaviour:
   gameObjectsOnDie:
   - instantiatedGameObject: {fileID: 5577563908462706139, guid: b2d26fb78a7b352449547dc66428b04d,
       type: 3}
-    timeAutodestruction: 1
+    timeAutodestruction: 0.3
+  - instantiatedGameObject: {fileID: 2570428962629652885, guid: 0ecc508d80ab01d4289b807bbc95e563,
+      type: 3}
+    timeAutodestruction: 0
   particlesOnDie: {fileID: 0}
   audioOnDie:
     audioClip: {fileID: 0}
