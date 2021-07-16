@@ -90,7 +90,7 @@ public class UIVendorManager : MonoBehaviour
             weaponStruct.weaponButton.onClick.AddListener(() => SelectWeapon(weaponStruct));
 
             //set button image and price
-            weaponStruct.weaponButton.GetComponent<Image>().sprite = weaponStruct.weapon.uiSprite;
+            weaponStruct.weaponButton.GetComponent<Image>().sprite = weaponStruct.weapon.GetComponentInChildren<SpriteRenderer>().sprite;
             weaponStruct.weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = weaponStruct.weapon.WeaponPrice.ToString();
         }
 
@@ -174,7 +174,7 @@ public class UIVendorManager : MonoBehaviour
 
         //set name and sprite
         weaponNameText.text = selectedWeapon.weapon.WeaponName;
-        weaponImage.sprite = selectedWeapon.weapon.uiSprite;
+        weaponImage.sprite = selectedWeapon.weapon.GetComponentInChildren<SpriteRenderer>().sprite;
 
         //show selected weapon UI
         ShowHideSelectedWeaponUI(true);
