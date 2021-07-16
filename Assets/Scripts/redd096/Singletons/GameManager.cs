@@ -12,6 +12,7 @@
         public List<WeaponBASE> WeaponsAlreadyUsed = new List<WeaponBASE>();
         public WeaponBASE CurrentWeapon = null;
         public int CurrentToiletPaper = 0;
+        public float CurrentLife = 0;
 
         public UIManager uiManager { get; private set; }
         public LevelManager levelManager { get; private set; }

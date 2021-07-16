@@ -29,6 +29,12 @@ public class Player : Character
         //if there a weapon saved in game manager, set it (or use weapon prefab for first room)
         GameManager.instance.PickWeaponSaved(this, weaponPrefab);
 
+        //get also life saved in game manager (or save in game manager)
+        if (GameManager.instance.CurrentLife > 0)
+            health = GameManager.instance.CurrentLife;
+        else
+            GameManager.instance.CurrentLife = health;
+
         //get references
         playerInput = GetComponent<PlayerInput>();
         stateMachine = GetComponent<Animator>();
@@ -58,7 +64,8 @@ public class Player : Character
         base.GetDamage(damage, hitPosition);
 
         //update health UI
-        GameManager.instance.uiManager.UpdateHealth(health, maxHealth);
+        GameManager.instance.CurrentLife = health;
+        GameManager.instance.uiManager.UpdateHealth(health, MaxHealth);
     }
 
     public override void PickWeapon(WeaponBASE prefab)

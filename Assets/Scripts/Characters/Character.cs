@@ -10,7 +10,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     [SerializeField] protected WeaponBASE weaponPrefab = default;
 
     [Header("DEBUG")]
-    [ReadOnly] [SerializeField] protected float maxHealth = 0;
+    [ReadOnly] public float MaxHealth = 0;
     [ReadOnly] public Vector2 DirectionInput;               //when character moves, set it with only direction (used to know last movement direction)
     [ReadOnly] public Vector2 DirectionAim;                 //when character aim, set it (used to know where to shoot for example)
     [ReadOnly] public Vector2 AimPositionNotNormalized;     //when character aim, set it without normalize (used to set crosshair on screen)
@@ -35,7 +35,7 @@ public abstract class Character : MonoBehaviour, IDamageable
         shield = GetComponentInChildren<Shield>();
 
         //max health
-        maxHealth = health;
+        MaxHealth = health;
     }
 
     protected virtual void Update()
