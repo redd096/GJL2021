@@ -76,14 +76,18 @@ public class DestructiblePropsFeedbacks : MonoBehaviour
 
     IEnumerator BlinkCoroutine()
     {
-        //set blink
-        spriteToChange.material = blinkMaterial;
+        //check in case spriteRenderer is destroyed
+        if (spriteToChange)
+        {
+            //set blink
+            spriteToChange.material = blinkMaterial;
 
-        //wait
-        yield return new WaitForSeconds(durationBlink);
+            //wait
+            yield return new WaitForSeconds(durationBlink);
 
-        //reset sprite color
-        spriteToChange.material = defaultMaterial;
+            //reset sprite color
+            spriteToChange.material = defaultMaterial;
+        }
 
         blinkCoroutine = null;
     }

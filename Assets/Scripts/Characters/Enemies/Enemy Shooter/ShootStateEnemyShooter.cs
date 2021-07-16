@@ -123,7 +123,8 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
         yield return new WaitForSeconds(durationShoot);
 
         //stop shoot
-        enemy.CurrentWeapon?.ReleaseAttack();
+        if(enemy)
+            enemy.CurrentWeapon?.ReleaseAttack();
     }
 
     #endregion

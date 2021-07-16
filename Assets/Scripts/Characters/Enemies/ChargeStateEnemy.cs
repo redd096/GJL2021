@@ -109,6 +109,9 @@ public class ChargeStateEnemy : StateMachineBehaviour
 
         while (true)
         {
+            if (enemy == null)
+                break;
+
             //hit wall or character
             if (CheckHit())
             {

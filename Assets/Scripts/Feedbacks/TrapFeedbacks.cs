@@ -71,7 +71,8 @@ public class TrapFeedbacks : MonoBehaviour
         yield return new WaitForSeconds(durationAnimation);
 
         //deactive trap
-        anim.SetTrigger("Deactive");
+        if(anim)
+            anim.SetTrigger("Deactive");
 
         deactiveCoroutine = null;
     }
