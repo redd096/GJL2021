@@ -32,6 +32,7 @@
             EndMenu(false);
             UpdateToiletPaper(GameManager.instance.CurrentToiletPaper);
             UpdateWeaponImage(GameManager.instance.CurrentWeapon?.GetComponentInChildren<SpriteRenderer>().sprite);
+            UpdateHealth(GameManager.instance.CurrentLife, GameManager.instance.levelManager.Players[0].MaxHealth);
         }
 
         /// <summary>
