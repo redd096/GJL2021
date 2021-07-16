@@ -19,6 +19,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
+      propertyPath: uiSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92547230a05fd9844a911e282c91a26b,
+        type: 3}
+    - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
       propertyPath: automatic
       value: 0
       objectReference: {fileID: 0}
