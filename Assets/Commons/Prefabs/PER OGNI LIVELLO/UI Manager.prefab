@@ -56,7 +56,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6138552246052001200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 6138552247458824888}
+  endMenu: {fileID: 0}
   toiletPaperImage: {fileID: 6138552246186909632}
   toiletPaperText: {fileID: 6138552247104288927}
   format: x{0:000}
@@ -1525,7 +1526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6138552247663949577
 RectTransform:
   m_ObjectHideFlags: 0
