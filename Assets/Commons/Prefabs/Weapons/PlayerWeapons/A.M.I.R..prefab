@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86dc4754b28a5348954243273db8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponName: Weapon Name
+  WeaponName: A.M.I.R.
   WeaponPrice: 10
   Owner: {fileID: 0}
   automatic: 1

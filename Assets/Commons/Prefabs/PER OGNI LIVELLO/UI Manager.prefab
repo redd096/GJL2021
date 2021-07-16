@@ -369,7 +369,7 @@ MonoBehaviour:
   toiletPaperText: {fileID: 6138552247104288927}
   format: x{0:000}
   weaponImage: {fileID: 6138552247638983840}
-  spriteWhenNoWeapon: {fileID: 0}
+  spriteWhenNoWeapon: {fileID: 21300000, guid: 78d1dd0a04c0b044dbad40213568f78d, type: 3}
   sliderHealth: {fileID: 6138552247781960437}
 --- !u!1 &6138552246421921359
 GameObject:
