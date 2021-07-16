@@ -60,12 +60,16 @@ public class UIVendorManager : MonoBehaviour
 
                 //if selected a weapon not available, select first available
                 if (selectedWeapon.weaponButton == null || selectedWeapon.weaponButton.interactable == false)
+                {
                     SelectFirstWeaponAvailable();
+                    EventSystemRedd096.current.SetSelectedGameObject(selectedWeapon.weaponButton.gameObject);
+                }
             }
             //else if player didn't select anything, select first weapon available
             else
             {
                 SelectFirstWeaponAvailable();
+                EventSystemRedd096.current.SetSelectedGameObject(selectedWeapon.weaponButton.gameObject);
             }
         }
     }
@@ -138,10 +142,13 @@ public class UIVendorManager : MonoBehaviour
     void SelectFirstWeaponAvailable()
     {
         //select first weapon available
-        foreach (WeaponVendorStruct weaponStruct in weapons)
+        for(int i = 0; i < weapons.Length; i++)
         {
-            if (weaponStruct.weaponButton != null && weaponStruct.weaponButton.interactable && weaponStruct.weapon != null)
-                SelectWeapon(weaponStruct);
+            if (weapons[i].weaponButton != null && weapons[i].weaponButton.interactable && weapons[i].weapon != null)
+            {
+                SelectWeapon(weapons[i]);
+                break;
+            }
         }
 
         //if no weapon selected, hide selected weapon UI
