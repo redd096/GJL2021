@@ -23,6 +23,8 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [ReadOnly] [SerializeField] bool isOpen;
     [ReadOnly] [SerializeField] Animator animChangeScene;
 
+    Camera cam;
+
     void Awake()
     {
         //get references
@@ -33,10 +35,12 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         if (objectToActivate)
             objectToActivate.SetActive(false);
 
+        cam = Camera.main;
+
         //instantiate animation Fade In in center of the screen
         if (animPrefab)
         {
-            Vector3 position = fadeInFromBotola ? transform.position : Vector3.zero;
+            Vector3 position = fadeInFromBotola ? transform.position : new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
             animChangeScene = Instantiate(animPrefab, transform);
             animChangeScene.transform.position = position;
         }
@@ -106,7 +110,7 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         //start animation fade out
         if (animChangeScene)
         {
-            animChangeScene.transform.position = fadeOutFromBotola ? transform.position : Vector3.zero;
+            animChangeScene.transform.position = fadeOutFromBotola ? transform.position : new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
             animChangeScene.SetTrigger("Fade Out");
         }
 
