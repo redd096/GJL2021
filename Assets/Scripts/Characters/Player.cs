@@ -116,8 +116,8 @@ public class Player : Character
     /// Set state to pause or resume
     /// </summary>
     /// <param name="pause"></param>
-    public void SetPauseState(bool pause)
+    public void SetState(string state)
     {
-        stateMachine.SetTrigger(pause ? "Pause" : "Resume");
+        stateMachine.SetTrigger(state);
     }
 }

@@ -34,7 +34,7 @@
             //enable player input and hide cursor
             LockMouse(CursorLockMode.Confined);
             foreach (Player player in GameManager.instance.levelManager.Players)
-                player.SetPauseState(false);
+                player.SetState("Resume");
         }
 
         /// <summary>
@@ -51,7 +51,7 @@
             //disable player input and show cursor
             LockMouse(CursorLockMode.None);
             foreach (Player player in GameManager.instance.levelManager.Players)
-                player.SetPauseState(true);
+                player.SetState("Pause");
         }
 
         /// <summary>

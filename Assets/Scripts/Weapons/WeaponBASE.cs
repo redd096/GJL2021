@@ -3,6 +3,11 @@ using redd096;
 
 public abstract class WeaponBASE : MonoBehaviour
 {
+    [Header("Weapon BASE")]
+    public string WeaponName = "Weapon Name";
+    public int WeaponPrice = 10;
+    public Sprite uiSprite = default;
+
     [Header("DEBUG")]
     [ReadOnly] public Character Owner;
 

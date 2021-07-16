@@ -15,6 +15,7 @@
 
         public UIManager uiManager { get; private set; }
         public LevelManager levelManager { get; private set; }
+        public UIVendorManager uIVendorManager { get; private set; }
 
         public bool firstRoom = true;
 
@@ -23,6 +24,7 @@
             //get references
             uiManager = FindObjectOfType<UIManager>();
             levelManager = FindObjectOfType<LevelManager>();
+            uIVendorManager = FindObjectOfType<UIVendorManager>();
         }
 
         /// <summary>

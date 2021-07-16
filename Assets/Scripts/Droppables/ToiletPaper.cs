@@ -37,8 +37,9 @@ public class ToiletPaper : MonoBehaviour, IDroppable
 
         alreadyPicked = true;
 
-        //add toilet paper
+        //add toilet paper and update UI
         GameManager.instance.CurrentToiletPaper++;
+        GameManager.instance.uiManager.UpdateToiletPaper(GameManager.instance.CurrentToiletPaper);
 
         //set layer and active particle
         GetComponentInChildren<SpriteRenderer>().sortingOrder = layerOnPick;

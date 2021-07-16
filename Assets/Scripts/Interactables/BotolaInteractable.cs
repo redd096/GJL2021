@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using redd096;
 
-public class BaseInteractable : MonoBehaviour, IInteractable
+public class BotolaInteractable : MonoBehaviour, IInteractable
 {
     [Header("On Interact")]
     [SerializeField] bool destroyWeapon = true;
