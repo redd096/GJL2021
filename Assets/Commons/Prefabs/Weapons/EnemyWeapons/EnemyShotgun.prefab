@@ -120,6 +120,11 @@ PrefabInstance:
       objectReference: {fileID: 1821171254467390232}
     - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
+      propertyPath: gameObjectOnInstantiateBullet.timeAutodestruction
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
       propertyPath: gameObjectOnInstantiateBullet.instantiatedGameObject
       value: 
       objectReference: {fileID: 550096882352133935, guid: b56c7ae5c9b01d44d941a4065de4636e,
