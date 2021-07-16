@@ -326,6 +326,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6138552246421921354, guid: ffc490a3680d94c42b30044a1f11e1c1,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 7730307589540990671}
+    - target: {fileID: 6138552247021449118, guid: ffc490a3680d94c42b30044a1f11e1c1,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 7730307589540990671}
     - target: {fileID: 6138552247396242248, guid: ffc490a3680d94c42b30044a1f11e1c1,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1061,16 +1071,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 7730307589540990671}
-    - target: {fileID: 758818638771015395, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818638771015395, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 758818638795394100, guid: 577048d40a2b42b498bbac5f591aa8de,
         type: 3}
       propertyPath: m_RootOrder
@@ -1130,16 +1130,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Vendor Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818639346954090, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 758818639346954090, guid: 577048d40a2b42b498bbac5f591aa8de,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577048d40a2b42b498bbac5f591aa8de, type: 3}
