@@ -445,7 +445,8 @@ MonoBehaviour:
     weapon: {fileID: 6849988284818780971, guid: 5e0fe5440140e6348a893060fc3abfc9,
       type: 3}
   - weaponButton: {fileID: 4222564518630549942}
-    weapon: {fileID: 0}
+    weapon: {fileID: 7720844484589154333, guid: 1d2e06c7272c765499b15206526009a7,
+      type: 3}
   - weaponButton: {fileID: 7087632612017261648}
     weapon: {fileID: 1320243031726332626, guid: f8b8cc33e1718c64393c70d8b2d5ed88,
       type: 3}
