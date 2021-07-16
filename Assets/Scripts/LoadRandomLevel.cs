@@ -2,32 +2,15 @@
 using UnityEngine;
 using redd096;
 
-public class LoadRandom : MonoBehaviour
+public class LoadRandomLevel : MonoBehaviour
 {
-    [Header("Levels")]
-    [SerializeField] bool loadRandomLevel = true;
-    [CanShow("loadRandomLevel")] [SerializeField] bool destroyOldLevel = true;
-    [CanShow("loadRandomLevel")] [SerializeField] GameObject[] levels = default;
-    [CanShow("loadRandomLevel")] [SerializeField] bool resetLevelsListWhenFinished = false;
-    [CanShow("resetLevelsListWhenFinished", "loadRandomLevel", NotOnlyFirst = true)] [SerializeField] GameObject lastLevel = default;
-
-    [Header("Sprite")]
-    [SerializeField] bool loadRandomSprite = false;
-    [CanShow("loadRandomSprite")] [SerializeField] SpriteRenderer spriteRenderer = default;
-    [CanShow("loadRandomSprite")] [SerializeField] Sprite[] sprites = default;
+    [Header("Random Levels")]
+    [SerializeField] bool destroyOldLevel = true;
+    [SerializeField] GameObject[] levels = default;
+    [SerializeField] bool resetLevelsListWhenFinished = false;
+    [CanShow("resetLevelsListWhenFinished", NOT = true)] [SerializeField] GameObject lastLevel = default;
 
     void Start()
-    {
-        //load random level
-        if (loadRandomLevel)
-            LoadRandomLevel();
-
-        //load random sprite
-        if (loadRandomSprite)
-            LoadRandomSprite();
-    }
-
-    void LoadRandomLevel()
     {
         //destroy old level
         if (destroyOldLevel)
@@ -35,13 +18,6 @@ public class LoadRandom : MonoBehaviour
 
         //instantiate random level
         InstantiateRandomLevel();
-    }
-
-    void LoadRandomSprite()
-    {
-        //set random sprite to sprite renderer
-        if (spriteRenderer)
-            spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
     }
 
     #region load random level

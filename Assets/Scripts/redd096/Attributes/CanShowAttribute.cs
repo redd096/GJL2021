@@ -41,10 +41,6 @@
             {
                 bool check = property.serializedObject.FindProperty(canShowAttribute.values[i]).boolValue;
 
-                //use NOT only for the first value
-                if (i == 0 && canShowAttribute.NotOnlyFirst)
-                    check = !check;
-
                 //use NOT
                 if (canShowAttribute.NOT)
                     check = !check;
@@ -82,11 +78,6 @@
         /// set NOT for every value
         /// </summary>
         public bool NOT = false;
-
-        /// <summary>
-        /// set NOT only for first value
-        /// </summary>
-        public bool NotOnlyFirst = false;
 
         public readonly string[] values;
 

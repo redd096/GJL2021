@@ -294,7 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68b6e1277854bd419408a6f440fcd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadRandomLevel: 1
   destroyOldLevel: 1
   levels:
   - {fileID: 8473544420822008193, guid: 77958bebe6705294ea610cddd5fa71df, type: 3}
@@ -307,9 +306,6 @@ MonoBehaviour:
   - {fileID: 5304366086089382543, guid: 9847762389e5c2b47983753224ce07f4, type: 3}
   resetLevelsListWhenFinished: 0
   lastLevel: {fileID: 0}
-  loadRandomSprite: 0
-  spriteRenderer: {fileID: 0}
-  sprites: []
 --- !u!1001 &1033316362
 PrefabInstance:
   m_ObjectHideFlags: 0
