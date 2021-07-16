@@ -18,11 +18,10 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [SerializeField] bool fadeInFromBotola = false;
     [SerializeField] bool fadeOutFromBotola = false;
     [SerializeField] Animator animPrefab = default;
-    Animator animChangeScene;
 
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] bool isOpen;
-
+    [ReadOnly] [SerializeField] Animator animChangeScene;
 
     void Awake()
     {
@@ -38,7 +37,8 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         if (animPrefab)
         {
             Vector3 position = fadeInFromBotola ? transform.position : Vector3.zero;
-            animChangeScene = Instantiate(animPrefab, position, Quaternion.identity);
+            animChangeScene = Instantiate(animPrefab, transform);
+            animChangeScene.transform.position = position;
         }
     }
 
