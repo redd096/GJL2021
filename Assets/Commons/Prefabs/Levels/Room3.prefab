@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5169432538376414657}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3743876626786642901
 GameObject:
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 1855941490551424144}
   - {fileID: 820911666727162238}
   m_Father: {fileID: 5169432538376414657}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5372039503315533342
 GameObject:
@@ -163,7 +163,7 @@ Transform:
   - {fileID: 4648797314242585593}
   - {fileID: 5969940261731360607}
   m_Father: {fileID: 5169432538376414657}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8334872141123210841
 GameObject:
@@ -200,7 +200,7 @@ Transform:
   - {fileID: 753826418215499196}
   - {fileID: 3449646903325830996}
   m_Father: {fileID: 5169432538376414657}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &31395362302263455
 PrefabInstance:
@@ -751,6 +751,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Shooter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
+        type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 713418113675196450}
     - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
         type: 3}
       propertyPath: CurrentWeapon
@@ -6842,6 +6847,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7357ceffe9b066469b02a890b3dac26, type: 3}
+--- !u!4 &685991261267725268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2890288847764227044, guid: c7357ceffe9b066469b02a890b3dac26,
+    type: 3}
+  m_PrefabInstance: {fileID: 2421105973392312368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &685991261267725275 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2890288847764227051, guid: c7357ceffe9b066469b02a890b3dac26,
@@ -6854,12 +6865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86dc4754b28a5348954243273db8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &685991261267725268 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2890288847764227044, guid: c7357ceffe9b066469b02a890b3dac26,
-    type: 3}
-  m_PrefabInstance: {fileID: 2421105973392312368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2448497609316432841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6929,6 +6934,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7357ceffe9b066469b02a890b3dac26, type: 3}
+--- !u!4 &713418113675196461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2890288847764227044, guid: c7357ceffe9b066469b02a890b3dac26,
+    type: 3}
+  m_PrefabInstance: {fileID: 2448497609316432841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &713418113675196450 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2890288847764227051, guid: c7357ceffe9b066469b02a890b3dac26,
@@ -6941,12 +6952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86dc4754b28a5348954243273db8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &713418113675196461 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2890288847764227044, guid: c7357ceffe9b066469b02a890b3dac26,
-    type: 3}
-  m_PrefabInstance: {fileID: 2448497609316432841}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2479934487426283096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7893,6 +7898,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
         type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 7616021990760624224}
+    - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
+        type: 3}
       propertyPath: CurrentWeapon
       value: 
       objectReference: {fileID: 7616021990760624224}
@@ -8435,6 +8445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
         type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 6281901447155507619}
+    - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
+        type: 3}
       propertyPath: CurrentWeapon
       value: 
       objectReference: {fileID: 6281901447155507619}
@@ -8945,12 +8960,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7357ceffe9b066469b02a890b3dac26, type: 3}
---- !u!4 &5476706269733333215 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2890288847764227044, guid: c7357ceffe9b066469b02a890b3dac26,
-    type: 3}
-  m_PrefabInstance: {fileID: 7214051032100154171}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5476706269733333200 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2890288847764227051, guid: c7357ceffe9b066469b02a890b3dac26,
@@ -8963,6 +8972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86dc4754b28a5348954243273db8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5476706269733333215 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2890288847764227044, guid: c7357ceffe9b066469b02a890b3dac26,
+    type: 3}
+  m_PrefabInstance: {fileID: 7214051032100154171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7252053922581500648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9113,6 +9128,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7487036055533389853}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7564095312114588423
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5169432538376414657}
+    m_Modifications:
+    - target: {fileID: 2221304480037013541, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_Name
+      value: Botola Fine Livello
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221304480037013544, guid: be108fb92b79463419f1421e87f895fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be108fb92b79463419f1421e87f895fb, type: 3}
 --- !u!1001 &7651808433315715001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9500,6 +9584,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Shooter
       objectReference: {fileID: 0}
+    - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
+        type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 5476706269733333200}
     - target: {fileID: 3366163097786489363, guid: a68c4ad286f19924eb015e5e4a8ec4e3,
         type: 3}
       propertyPath: CurrentWeapon
