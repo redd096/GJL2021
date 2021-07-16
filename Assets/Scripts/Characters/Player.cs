@@ -8,9 +8,14 @@ public class Player : Character
     [Header("Interact")]
     public float RadiusInteract = 1.5f;
 
+    [Header("Camera Follow")]
+    [SerializeField] bool cameraFollowPlayer = true;
+    [CanShow("cameraFollowPlayer")] [SerializeField] Vector3 offset = Vector3.back * 10;
+
     public PlayerInput playerInput { get; private set; }
 
     Animator stateMachine;
+    Camera cam;
 
     //animation events
     public System.Action onDash { get; set; }
@@ -25,6 +30,9 @@ public class Player : Character
     protected override void Awake()
     {
         base.Awake();
+
+        //get references
+        cam = Camera.main;
 
         //if there a weapon saved in game manager, set it (or use weapon prefab for first room)
         GameManager.instance.PickWeaponSaved(this, weaponPrefab);
@@ -42,6 +50,13 @@ public class Player : Character
         //add to level manager list
         if (GameManager.instance.levelManager)
             GameManager.instance.levelManager.Players.Add(this);
+    }
+
+    void LateUpdate()
+    {
+        //camera follow player
+        if (cameraFollowPlayer)
+            cam.transform.position = transform.position + offset;
     }
 
     void OnDestroy()
