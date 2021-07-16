@@ -250,8 +250,10 @@ MonoBehaviour:
   speed: 4
   followTarget: 1
   rotationSpeed: 0.05
-  damage: 30
+  damage: 10
   knockBack: 10
+  checkMinDistance: 0
+  minDistance: 1
   speedCheckIfHitWall: 2.5
   radiusCastToCheckWhatHit: 0.5
   calculatedSpeed: 0

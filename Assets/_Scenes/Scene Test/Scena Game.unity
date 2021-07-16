@@ -304,9 +304,7 @@ MonoBehaviour:
   - {fileID: 3334491489607298576, guid: 187ad3024dee4b84da546f398bb5df5e, type: 3}
   - {fileID: 8722270298004600292, guid: 788c73f4e5c893c4faaa376bfbda53be, type: 3}
   - {fileID: 2343364841177267134, guid: 10f95756ea58e054493624da8b0d40de, type: 3}
-  - {fileID: 9104890459863242977, guid: ae62edc06394b6146a144483e3c0d051, type: 3}
   - {fileID: 5304366086089382543, guid: 9847762389e5c2b47983753224ce07f4, type: 3}
-  - {fileID: 1047272779594583040, guid: 0a58387ea43a28640babf55150764ff0, type: 3}
   resetLevelsListWhenFinished: 0
   lastLevel: {fileID: 0}
   loadRandomSprite: 0
@@ -463,6 +461,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[3].Y
       value: -70000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[1].second.m_TileSpriteIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[6].second.m_TileSpriteIndex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1493638287775525640, guid: cd86b87ab053a4442a54e630f13becb8,
         type: 3}
@@ -720,6 +743,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c42731bbf7abb74e80a53d2c953a0e6, type: 3}
+--- !u!1 &1922035832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1922035834}
+  - component: {fileID: 1922035833}
+  m_Layer: 0
+  m_Name: MosquitoObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1922035833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922035832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fec033a8d679424b9a062bb78113200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mosca: {fileID: 1644218631116776045, guid: 253f26ef4677e2847843410016934dc6, type: 3}
+  spawnRangeVert: 3
+  spawnRangeHoriz: 12
+--- !u!4 &1922035834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922035832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3457061262487887463
 PrefabInstance:
   m_ObjectHideFlags: 0
