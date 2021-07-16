@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 1200599360308179033}
   - component: {fileID: 1805875467531878984}
   m_Layer: 5
-  m_Name: ResumeButton
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,7 +633,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5584576993007751574, guid: 2cca78376824f3246a8f01213a9bb640,
           type: 3}
-        m_MethodName: ResumeGame
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Scena Game
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6775149040864764065, guid: 2cca78376824f3246a8f01213a9bb640,
+          type: 3}
+        m_MethodName: ResetAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1928,12 +1940,11 @@ MonoBehaviour:
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
   startMenu: {fileID: 0}
-  firstSelectedGameObjects: []
-  overrideObjects:
+  firstSelectedGameObjects:
   - {fileID: 6138552246494447158}
-  notNavigables:
-  - {fileID: 0}
-  - {fileID: 0}
+  overrideObjects:
+  - {fileID: 5142464702260144263}
+  notNavigables: []
 --- !u!1 &6138552247396242255
 GameObject:
   m_ObjectHideFlags: 0

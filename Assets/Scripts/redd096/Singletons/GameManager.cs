@@ -46,5 +46,17 @@
                 player.PickWeapon(CurrentWeapon);
             }
         }
+
+        /// <summary>
+        /// Reset every var
+        /// </summary>
+        public void ResetAll()
+        {
+            LevelsAlreadySeen.Clear();
+            WeaponsAlreadyUsed.Clear();
+            CurrentWeapon = null;
+            CurrentToiletPaper = 0;
+            CurrentLife = 0;
+        }
     }
 }
