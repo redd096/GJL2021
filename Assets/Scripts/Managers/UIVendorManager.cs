@@ -28,7 +28,7 @@ public class UIVendorManager : MonoBehaviour
     [ReadOnly] [SerializeField] bool isOpen;                                    //vendor is open or close?
     [ReadOnly] [SerializeField] Player playerUsingVendor;                       //which player is using this vendor
     IInteractable interactableForThisVendor;                                    //which interactable opened this vendor? - Unfortunately can't be shown in inspector
-    [ReadOnly] [SerializeField] WeaponBASE selectedWeapon;                      //the weapon currently selected
+    [ReadOnly] [SerializeField] WeaponVendorStruct selectedWeapon;              //the weapon currently selected
 
     void Start()
     {
@@ -54,9 +54,18 @@ public class UIVendorManager : MonoBehaviour
                 foreach(WeaponVendorStruct weaponStruct in weapons)
                 {
                     //if different from already selected, select this
-                    if (weaponStruct.weaponButton.gameObject == EventSystemRedd096.current.currentSelectedGameObject && selectedWeapon != weaponStruct.weapon)
-                        SelectWeapon(weaponStruct.weapon);
+                    if (weaponStruct.weaponButton.gameObject == EventSystemRedd096.current.currentSelectedGameObject && selectedWeapon.weaponButton != weaponStruct.weaponButton)
+                        SelectWeapon(weaponStruct);
                 }
+
+                //if selected a weapon not available, select first available
+                if (selectedWeapon.weaponButton == null || selectedWeapon.weaponButton.interactable == false)
+                    SelectFirstWeaponAvailable();
+            }
+            //else if player didn't select anything, select first weapon available
+            else
+            {
+                SelectFirstWeaponAvailable();
             }
         }
     }
@@ -78,7 +87,7 @@ public class UIVendorManager : MonoBehaviour
             }
 
             //set event on click
-            weaponStruct.weaponButton.onClick.AddListener(() => SelectWeapon(weaponStruct.weapon));
+            weaponStruct.weaponButton.onClick.AddListener(() => SelectWeapon(weaponStruct));
 
             //set button image and price
             weaponStruct.weaponButton.GetComponent<Image>().sprite = weaponStruct.weapon.uiSprite;
@@ -131,12 +140,12 @@ public class UIVendorManager : MonoBehaviour
         //select first weapon available
         foreach (WeaponVendorStruct weaponStruct in weapons)
         {
-            if (weaponStruct.weaponButton.interactable && weaponStruct.weapon != null)
-                SelectWeapon(weaponStruct.weapon);
+            if (weaponStruct.weaponButton != null && weaponStruct.weaponButton.interactable && weaponStruct.weapon != null)
+                SelectWeapon(weaponStruct);
         }
 
         //if no weapon selected, hide selected weapon UI
-        if (selectedWeapon == null)
+        if (selectedWeapon.weapon == null)
             ShowHideSelectedWeaponUI(false);
     }
 
@@ -148,17 +157,24 @@ public class UIVendorManager : MonoBehaviour
     /// Called by every weapon button - will show selected weapon
     /// </summary>
     /// <param name="weapon"></param>
-    void SelectWeapon(WeaponBASE weapon)
+    void SelectWeapon(WeaponVendorStruct weaponStruct)
     {
-        if (weapon == null)
+        //if selected a button without weapon, hide selected weapon UI
+        if (weaponStruct.weaponButton == null || weaponStruct.weapon == null)
+        {
+            selectedWeapon.weaponButton = null;
+            selectedWeapon.weapon = null;
+            ShowHideSelectedWeaponUI(false);
+
             return;
+        }
 
         //set selected weapon
-        selectedWeapon = weapon;
+        selectedWeapon = weaponStruct;
 
         //set name and sprite
-        weaponNameText.text = weapon.WeaponName;
-        weaponImage.sprite = weapon.uiSprite;
+        weaponNameText.text = selectedWeapon.weapon.WeaponName;
+        weaponImage.sprite = selectedWeapon.weapon.uiSprite;
 
         //show selected weapon UI
         ShowHideSelectedWeaponUI(true);
@@ -169,12 +185,12 @@ public class UIVendorManager : MonoBehaviour
     /// </summary>
     public void Buy()
     {
-        if (selectedWeapon == null)
+        if (selectedWeapon.weapon == null)
             return;
 
         //buy selected weapon
-        playerUsingVendor.PickWeapon(selectedWeapon);
-        GameManager.instance.CurrentToiletPaper -= selectedWeapon.WeaponPrice;
+        playerUsingVendor.PickWeapon(selectedWeapon.weapon);
+        GameManager.instance.CurrentToiletPaper -= selectedWeapon.weapon.WeaponPrice;
 
         //close vendor
         CloseVendor();
@@ -231,7 +247,8 @@ public class UIVendorManager : MonoBehaviour
         playerUsingVendor = null;
 
         //remove selected weapon
-        selectedWeapon = null;
+        selectedWeapon.weaponButton = null;
+        selectedWeapon.weapon = null;
 
         //hide vendor
         shopToActive.SetActive(false);

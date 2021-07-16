@@ -266,6 +266,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6094811806179294883, guid: ffc490a3680d94c42b30044a1f11e1c1,
+        type: 3}
+      propertyPath: notNavigables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094811806179294883, guid: ffc490a3680d94c42b30044a1f11e1c1,
+        type: 3}
+      propertyPath: notNavigables.Array.data[0]
+      value: 
+      objectReference: {fileID: 758818638572475630}
+    - target: {fileID: 6094811806179294883, guid: ffc490a3680d94c42b30044a1f11e1c1,
+        type: 3}
+      propertyPath: notNavigables.Array.data[1]
+      value: 
+      objectReference: {fileID: 758818638572475629}
     - target: {fileID: 6138552246223235640, guid: ffc490a3680d94c42b30044a1f11e1c1,
         type: 3}
       propertyPath: m_Name
@@ -1354,6 +1369,31 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[3].Y
       value: -70000000
       objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[1].second.m_TileSpriteIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493638287602650375, guid: cd86b87ab053a4442a54e630f13becb8,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[6].second.m_TileSpriteIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1493638287775525640, guid: cd86b87ab053a4442a54e630f13becb8,
         type: 3}
       propertyPath: m_Name
@@ -1523,8 +1563,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -286.90002
       objectReference: {fileID: 0}
+    - target: {fileID: 758818639357958587, guid: 577048d40a2b42b498bbac5f591aa8de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -143.40004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577048d40a2b42b498bbac5f591aa8de, type: 3}
+--- !u!1 &758818638572475629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 758818640567372765, guid: 577048d40a2b42b498bbac5f591aa8de,
+    type: 3}
+  m_PrefabInstance: {fileID: 758818638572475628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &758818638572475630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 758818639522342691, guid: 577048d40a2b42b498bbac5f591aa8de,
+    type: 3}
+  m_PrefabInstance: {fileID: 758818638572475628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3457061262487887463
 PrefabInstance:
   m_ObjectHideFlags: 0

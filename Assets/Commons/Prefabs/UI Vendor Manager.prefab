@@ -460,6 +460,9 @@ MonoBehaviour:
   weaponImage: {fileID: 758818638489123006}
   buyButton: {fileID: 758818639522342717}
   backButton: {fileID: 758818640567372767}
+  isOpen: 0
+  playerUsingVendor: {fileID: 0}
+  selectedWeapon: {fileID: 0}
 --- !u!1 &758818638800973486
 GameObject:
   m_ObjectHideFlags: 0
