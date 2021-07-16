@@ -265,11 +265,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toilet Paper
       objectReference: {fileID: 0}
-    - target: {fileID: 4745252223160052376, guid: 0120357b5f3d232449a02652aab23775,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0120357b5f3d232449a02652aab23775, type: 3}
 --- !u!1 &4668326190196967851 stripped
