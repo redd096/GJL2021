@@ -435,7 +435,8 @@ MonoBehaviour:
     weapon: {fileID: 3767409710226537453, guid: 3549618c85c75cb44a7a7c62753dee77,
       type: 3}
   - weaponButton: {fileID: 383866361987654236}
-    weapon: {fileID: 0}
+    weapon: {fileID: 1408863551438642723, guid: 7129f335804b6444d8727d0d5ec26289,
+      type: 3}
   - weaponButton: {fileID: 2774412228716699168}
     weapon: {fileID: 6780341664455544565, guid: 94f2266d2af02c144839cd99263cdf2a,
       type: 3}
@@ -3315,13 +3316,37 @@ PrefabInstance:
     - target: {fileID: 8880975618344495687, guid: 19c009e184792564e995fef7a1371bd4,
         type: 3}
       propertyPath: m_Name
-      value: Dlc
+      value: SubZero
       objectReference: {fileID: 0}
     - target: {fileID: 8880975618344495704, guid: 19c009e184792564e995fef7a1371bd4,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 35e1361e2452e404497030e07a554f74,
+      objectReference: {fileID: 21300000, guid: a9e0613874e2caf41a3e45fc5572a1c0,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50051e8fa344a5d4991de7df1db0717a,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 309807c6ca2971a468f98e0306874913,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50051e8fa344a5d4991de7df1db0717a,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50051e8fa344a5d4991de7df1db0717a,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c009e184792564e995fef7a1371bd4, type: 3}
