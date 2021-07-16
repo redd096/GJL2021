@@ -14,8 +14,13 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [SerializeField] float timeBeforeLoadNewScene = 1;
     [SerializeField] string sceneToLoad = "Scena Game";
 
+    [Header("Animation Change Scene")]
+    [SerializeField] Animator animPrefab = default;
+    Animator animChangeScene;
+
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] bool isOpen;
+
 
     void Awake()
     {
@@ -26,6 +31,10 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         //by default, object to activate is hidden
         if (objectToActivate)
             objectToActivate.SetActive(false);
+
+        //instantiate animation Fade In in center of the screen
+        if (animPrefab)
+            animChangeScene = Instantiate(animPrefab, Vector2.zero, Quaternion.identity);
     }
 
     void FixedUpdate()
@@ -88,6 +97,10 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
 
         //deactive player
         player.GetComponent<Animator>().enabled = false;
+
+        //start animation fade out
+        if (animChangeScene)
+            animChangeScene.SetTrigger("Fade Out");
 
         //load scene after few seconds
         Invoke("LoadScene", timeBeforeLoadNewScene);

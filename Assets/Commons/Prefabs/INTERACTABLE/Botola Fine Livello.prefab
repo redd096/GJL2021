@@ -19,6 +19,9 @@ MonoBehaviour:
   destroyWeapon: 1
   timeBeforeLoadNewScene: 1
   sceneToLoad: Scena Negozio
+  animPrefab: {fileID: 5204159214828272771, guid: b7a30637445ff724795f167a84338d38,
+    type: 3}
+  isOpen: 0
 --- !u!1 &9221577165295853841
 GameObject:
   m_ObjectHideFlags: 0
