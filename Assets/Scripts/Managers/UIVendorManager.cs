@@ -27,6 +27,10 @@ public class UIVendorManager : MonoBehaviour
     Player playerUsingVendor;
     WeaponBASE selectedWeapon;
 
+    //TODO
+    //sempre avere un'arma selezionata
+    //se premi back, chiude il negozio senza comprare
+
     void Start()
     {
         //by default, hide shop
@@ -148,7 +152,7 @@ public class UIVendorManager : MonoBehaviour
         selectedWeapon = null;
 
         //hide selected weapon UI
-        ShowHideSelectedWeaponUI(true);
+        ShowHideSelectedWeaponUI(false);
     }
 
     #endregion
@@ -160,10 +164,6 @@ public class UIVendorManager : MonoBehaviour
     /// </summary>
     public void OpenVendor(Player player)
     {
-        //be sure player has not a weapon equipped
-        if (player.CurrentWeapon != null)
-            return;
-
         //set player using this vendor
         playerUsingVendor = player;
         playerUsingVendor.SetState("Vendor");
