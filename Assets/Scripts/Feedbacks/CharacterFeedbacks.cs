@@ -10,7 +10,7 @@ public class CharacterFeedbacks : MonoBehaviour
     [SerializeField] bool ignoreIfAlreadyBlinking = true;
 
     [Header("On Die")]
-    [SerializeField] InstantiatedGameObjectStruct gameObjectOnDie = default;
+    [SerializeField] InstantiatedGameObjectStruct[] gameObjectsOnDie = default;
     [SerializeField] ParticleSystem particlesOnDie = default;
     [SerializeField] AudioStruct audioOnDie = default;
 
@@ -138,11 +138,14 @@ public class CharacterFeedbacks : MonoBehaviour
     void OnDie()
     {
         //instantiate vfx and sfx
-        GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnDie, transform.position, transform.rotation);
-        if (instantiatedGameObject)
+        foreach (InstantiatedGameObjectStruct objectOnDie in gameObjectsOnDie)
         {
-            //rotate left/right
-            instantiatedGameObject.transform.localScale = transform.lossyScale;
+            GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(objectOnDie, transform.position, transform.rotation);
+            if (instantiatedGameObject)
+            {
+                //rotate left/right
+                instantiatedGameObject.transform.localScale = transform.lossyScale;
+            }
         }
         ParticlesManager.instance.Play(particlesOnDie, transform.position, transform.rotation);
         SoundManager.instance.Play(audioOnDie.audioClip, transform.position, audioOnDie.volume);

@@ -230,8 +230,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   customDrag: 30
+  weaponPrefab: {fileID: 0}
+  maxHealth: 0
   DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
+  AimPositionNotNormalized: {x: 0, y: 0}
   CurrentWeapon: {fileID: 0}
   MovementInput: {x: 0, y: 0}
   pushForce: {x: 0, y: 0}
@@ -240,6 +243,9 @@ MonoBehaviour:
   layerBlockSight:
     serializedVersion: 2
     m_Bits: 768
+  knockBackPlayerOnHit: 1
+  pushBackOnHitEnemy: 10
+  damageOnHitEnemy: 10
   pointPatrol: {fileID: 0}
   Target: {fileID: 0}
   LastTargetPosition: {x: 0, y: 0, z: 0}
@@ -258,10 +264,13 @@ MonoBehaviour:
   blinkMaterial: {fileID: 2100000, guid: ba381242cd8d6144f8af0713efd1c8df, type: 2}
   durationBlink: 0.2
   ignoreIfAlreadyBlinking: 1
-  gameObjectOnDie:
-    instantiatedGameObject: {fileID: 5577563908462706139, guid: b2d26fb78a7b352449547dc66428b04d,
+  gameObjectsOnDie:
+  - instantiatedGameObject: {fileID: 5577563908462706139, guid: b2d26fb78a7b352449547dc66428b04d,
       type: 3}
-    timeAutodestruction: 0.5
+    timeAutodestruction: 0.3
+  - instantiatedGameObject: {fileID: 3002026414214183893, guid: a42057a07df226745a29172170d7f248,
+      type: 3}
+    timeAutodestruction: 0
   particlesOnDie: {fileID: 0}
   audioOnDie:
     audioClip: {fileID: 0}
