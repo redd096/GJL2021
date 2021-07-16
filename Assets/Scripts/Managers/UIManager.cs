@@ -29,7 +29,7 @@
             //by default, deactive pause menu
             PauseMenu(false);
             UpdateToiletPaper(GameManager.instance.CurrentToiletPaper);
-            UpdateWeaponImage(GameManager.instance.CurrentWeapon?.GetComponentInChildren<SpriteRenderer>().sprite);
+            UpdateWeaponImage(GameManager.instance.CurrentWeapon?.uiSprite);
         }
 
         /// <summary>

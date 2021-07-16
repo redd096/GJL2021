@@ -85,7 +85,7 @@ public class Player : Character
 
         //save it and update UI
         GameManager.instance.CurrentWeapon = prefab;
-        GameManager.instance.uiManager.UpdateWeaponImage(CurrentWeapon?.GetComponentInChildren<SpriteRenderer>().sprite);
+        GameManager.instance.uiManager.UpdateWeaponImage(CurrentWeapon?.uiSprite);
 
         //save also in already seen
         GameManager.instance.WeaponsAlreadyUsed.Add(prefab);
