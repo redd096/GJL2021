@@ -268,11 +268,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6094811806179294883, guid: ffc490a3680d94c42b30044a1f11e1c1,
         type: 3}
-      propertyPath: notNavigables.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6094811806179294883, guid: ffc490a3680d94c42b30044a1f11e1c1,
-        type: 3}
       propertyPath: notNavigables.Array.data[0]
       value: 
       objectReference: {fileID: 758818638572475630}
@@ -1537,6 +1532,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Vendor Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 758818638795394107, guid: 577048d40a2b42b498bbac5f591aa8de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 758818638800973487, guid: 577048d40a2b42b498bbac5f591aa8de,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758818638800973487, guid: 577048d40a2b42b498bbac5f591aa8de,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577048d40a2b42b498bbac5f591aa8de, type: 3}
