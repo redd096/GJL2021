@@ -99,5 +99,13 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         SceneLoader.instance.LoadScene(sceneToLoad);
     }
 
+    /// <summary>
+    /// Called to re-enable interactable (for example when close vendor)
+    /// </summary>
+    public void ReactiveInteractable()
+    {
+        enabled = true;
+    }
+
     #endregion
 }

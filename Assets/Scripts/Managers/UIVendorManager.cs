@@ -24,12 +24,11 @@ public class UIVendorManager : MonoBehaviour
     [SerializeField] Button buyButton = default;
     [SerializeField] Button backButton = default;
 
-    Player playerUsingVendor;
-    WeaponBASE selectedWeapon;
-
-    //TODO
-    //sempre avere un'arma selezionata
-    //se premi back, chiude il negozio senza comprare
+    [Header("DEBUG")]
+    [ReadOnly] [SerializeField] bool isOpen;                                    //vendor is open or close?
+    [ReadOnly] [SerializeField] Player playerUsingVendor;                       //which player is using this vendor
+    IInteractable interactableForThisVendor;                                    //which interactable opened this vendor? - Unfortunately can't be shown in inspector
+    [ReadOnly] [SerializeField] WeaponBASE selectedWeapon;                      //the weapon currently selected
 
     void Start()
     {
@@ -41,6 +40,25 @@ public class UIVendorManager : MonoBehaviour
 
         //hide selected weapon UI by default
         ShowHideSelectedWeaponUI(false);
+    }
+
+    void Update()
+    {
+        //when open
+        if(isOpen)
+        {
+            //check, if player select a weapon
+            GameObject uiSelectedObject = EventSystemRedd096.current.currentSelectedGameObject;
+            if(uiSelectedObject != null)
+            {
+                foreach(WeaponVendorStruct weaponStruct in weapons)
+                {
+                    //if different from already selected, select this
+                    if (weaponStruct.weaponButton.gameObject == EventSystemRedd096.current.currentSelectedGameObject && selectedWeapon != weaponStruct.weapon)
+                        SelectWeapon(weaponStruct.weapon);
+                }
+            }
+        }
     }
 
     #region private API
@@ -69,16 +87,18 @@ public class UIVendorManager : MonoBehaviour
 
         //set event on click for Buy and Back buttons
         buyButton.onClick.AddListener(() => Buy());
-        buyButton.onClick.AddListener(() => Back());
+        backButton.onClick.AddListener(() => Back());
     }
 
+    /// <summary>
+    /// In theory we have always a weapon selected, but in case of error, don't show anything
+    /// </summary>
+    /// <param name="show"></param>
     void ShowHideSelectedWeaponUI(bool show)
     {
-        //show or hide every element in selected weapon UI
+        //show or hide elements in selected weapon UI
         weaponNameText.gameObject.SetActive(show);
         weaponImage.gameObject.SetActive(show);
-        buyButton.gameObject.SetActive(show);
-        backButton.gameObject.SetActive(show);
     }
 
     void SetSelectableButtons()
@@ -104,6 +124,20 @@ public class UIVendorManager : MonoBehaviour
             if (GameManager.instance.WeaponsAlreadyUsed.Contains(weaponStruct.weapon))
                 weaponStruct.weaponButton.interactable = false;
         }
+    }
+
+    void SelectFirstWeaponAvailable()
+    {
+        //select first weapon available
+        foreach (WeaponVendorStruct weaponStruct in weapons)
+        {
+            if (weaponStruct.weaponButton.interactable && weaponStruct.weapon != null)
+                SelectWeapon(weaponStruct.weapon);
+        }
+
+        //if no weapon selected, hide selected weapon UI
+        if (selectedWeapon == null)
+            ShowHideSelectedWeaponUI(false);
     }
 
     #endregion
@@ -133,8 +167,11 @@ public class UIVendorManager : MonoBehaviour
     /// <summary>
     /// Called when press BUY - will give weapon to player
     /// </summary>
-    void Buy()
+    public void Buy()
     {
+        if (selectedWeapon == null)
+            return;
+
         //buy selected weapon
         playerUsingVendor.PickWeapon(selectedWeapon);
         GameManager.instance.CurrentToiletPaper -= selectedWeapon.WeaponPrice;
@@ -144,32 +181,36 @@ public class UIVendorManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Called when press back - will hide selected weapon
+    /// Called when press back - will close vendor
     /// </summary>
-    void Back()
+    public void Back()
     {
-        //remove selected weapon
-        selectedWeapon = null;
-
-        //hide selected weapon UI
-        ShowHideSelectedWeaponUI(false);
+        //close vendor
+        CloseVendor();
     }
 
     #endregion
 
-    #region public API
+    #region interact
 
     /// <summary>
     /// Active Vendor UI
     /// </summary>
-    public void OpenVendor(Player player)
+    public void OpenVendor(Player player, IInteractable interactable)
     {
+        //set is open and save from which interactable
+        isOpen = true;
+        interactableForThisVendor = interactable;
+
         //set player using this vendor
         playerUsingVendor = player;
         playerUsingVendor.SetState("Vendor");
 
         //active/deactive buttons
         SetSelectableButtons();
+
+        //select first weapon available
+        SelectFirstWeaponAvailable();
 
         //show vendor
         shopToActive.SetActive(true);
@@ -178,11 +219,19 @@ public class UIVendorManager : MonoBehaviour
     /// <summary>
     /// Deactive Vendor UI
     /// </summary>
-    public void CloseVendor()
+    void CloseVendor()
     {
+        //set is close and reactive interactable
+        isOpen = false;
+        interactableForThisVendor?.ReactiveInteractable();
+        interactableForThisVendor = null;
+
         //stop player using this vendor
         playerUsingVendor?.SetState("Vendor");
         playerUsingVendor = null;
+
+        //remove selected weapon
+        selectedWeapon = null;
 
         //hide vendor
         shopToActive.SetActive(false);

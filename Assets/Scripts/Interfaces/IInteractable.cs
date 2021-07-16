@@ -6,4 +6,9 @@ public interface IInteractable
     /// </summary>
     /// <param name="player"></param>
     void Interact(Player player);
+
+    /// <summary>
+    /// Called to re-enable interactable (for example when close vendor)
+    /// </summary>
+    void ReactiveInteractable();
 }

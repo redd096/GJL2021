@@ -64,7 +64,19 @@ public class ShopInteractable : MonoBehaviour, IInteractable
         enabled = false;    //stop check open/close
         isOpen = false;     //can't interact anymore
 
+        //hide object to activate
+        if (objectToActivate)
+            objectToActivate.SetActive(false);
+
         //open vendor
-        GameManager.instance.uIVendorManager.OpenVendor(player);
+        GameManager.instance.uIVendorManager.OpenVendor(player, this);
+    }
+
+    /// <summary>
+    /// Called to re-enable interactable (for example when close vendor)
+    /// </summary>
+    public void ReactiveInteractable()
+    {
+        enabled = true;
     }
 }

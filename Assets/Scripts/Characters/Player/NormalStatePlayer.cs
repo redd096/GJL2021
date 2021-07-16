@@ -34,6 +34,9 @@ public class NormalStatePlayer : StateMachineBehaviour
         Attack(InputRedd096.GetButton("Attack"));
         Dash(InputRedd096.GetButtonDown("Dash"));
         Interact(InputRedd096.GetButtonDown("Interact"));
+
+        //pause
+        PauseGame(InputRedd096.GetButtonDown("Pause"));
     }
 
     #region private API
@@ -152,4 +155,13 @@ public class NormalStatePlayer : StateMachineBehaviour
     }
 
     #endregion
+
+    void PauseGame(bool inputPause)
+    {
+        //pause
+        if (inputPause)
+        {
+            SceneLoader.instance.PauseGame();
+        }
+    }
 }

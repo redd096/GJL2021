@@ -70,7 +70,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 5390690239842518633}
   m_StateMachineBehaviours:
-  - {fileID: 3938529035891417989}
+  - {fileID: 2499942565069726917}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -229,16 +229,16 @@ MonoBehaviour:
   dashToAimDirection: 0
   dashForce: 10
   dashDelay: 0.5
---- !u!114 &3938529035891417989
+--- !u!114 &2499942565069726917
 MonoBehaviour:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e58bf39d5b6cd614b96972b01bc1af7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b5202f255b209e4a8646b9f37fac850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1101 &5390690239842518633

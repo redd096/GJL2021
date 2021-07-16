@@ -45,24 +45,6 @@ public class Player : Character
             GameManager.instance.levelManager.Players.Remove(this);
     }
 
-    protected override void Update()
-    {
-        base.Update();
-
-        //pause
-        if (InputRedd096.GetButtonDown("Pause"))
-        {
-            if (Time.timeScale > 0)
-            {
-                SceneLoader.instance.PauseGame();
-            }
-            else
-            {
-                SceneLoader.instance.ResumeGame();
-            }
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         //check pick droppables
