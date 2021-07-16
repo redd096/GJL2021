@@ -82,6 +82,14 @@ public class Player : Character
         GameManager.instance.uiManager.UpdateWeaponImage(null);
     }
 
+    public override void Die()
+    {
+        base.Die();
+
+        //call end game
+        GameManager.instance.levelManager.EndGame();
+    }
+
     #endregion
 
     #region private API
