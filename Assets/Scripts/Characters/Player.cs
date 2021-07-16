@@ -34,6 +34,13 @@ public class Player : Character
         //get references
         cam = Camera.main;
 
+        //if follow camera, set parent
+        if (cameraFollowPlayer)
+        {
+            cam.transform.SetParent(transform);
+            cam.transform.position = transform.position + offset;
+        }
+
         //if there a weapon saved in game manager, set it (or use weapon prefab for first room)
         GameManager.instance.PickWeaponSaved(this, weaponPrefab);
 
@@ -50,13 +57,6 @@ public class Player : Character
         //add to level manager list
         if (GameManager.instance.levelManager)
             GameManager.instance.levelManager.Players.Add(this);
-    }
-
-    void LateUpdate()
-    {
-        //camera follow player
-        if (cameraFollowPlayer)
-            cam.transform.position = transform.position + offset;
     }
 
     void OnDestroy()
@@ -106,6 +106,10 @@ public class Player : Character
 
     public override void Die()
     {
+        //if follow camera, remove parent
+        if (cam.transform.parent == transform)
+            cam.transform.SetParent(null);
+
         base.Die();
 
         //call end game

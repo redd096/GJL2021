@@ -70,6 +70,10 @@
 		/// </summary>
 		public void StartShake(float duration, float amount)
 		{
+			//set start position if no shake is running
+			if (shakeCoroutine == null)
+				originalPos = transform.localPosition;
+
 			//do only if there is not another shake, or can overwrite it
 			if (shakeCoroutine == null || ovewriteShake)
 			{
