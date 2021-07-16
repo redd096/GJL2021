@@ -50,7 +50,8 @@
             element.transform.SetParent(Parent);
 
             //start coroutine to deactivate
-            StartCoroutine(DeactiveAfterSeconds(element, timeAutodestruction));
+            if(timeAutodestruction > 0)
+                StartCoroutine(DeactiveAfterSeconds(element, timeAutodestruction));
 
             return element;
         }
