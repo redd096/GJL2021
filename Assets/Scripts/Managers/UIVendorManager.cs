@@ -160,6 +160,10 @@ public class UIVendorManager : MonoBehaviour
     /// </summary>
     public void OpenVendor(Player player)
     {
+        //be sure player has not a weapon equipped
+        if (player.CurrentWeapon != null)
+            return;
+
         //set player using this vendor
         playerUsingVendor = player;
         playerUsingVendor.SetState("Vendor");
