@@ -14,6 +14,7 @@ public class UIVendorManager : MonoBehaviour
 {
     [Header("UI Vendor")]
     [SerializeField] GameObject shopToActive = default;
+    [SerializeField] GameObject spriteOnAlreadySeenWeapons = default;
 
     [Header("Weapons")]
     [SerializeField] WeaponVendorStruct[] weapons = default;
@@ -135,7 +136,16 @@ public class UIVendorManager : MonoBehaviour
                 continue;
 
             if (GameManager.instance.WeaponsAlreadyUsed.Contains(weaponStruct.weapon))
+            {
                 weaponStruct.weaponButton.interactable = false;
+
+                //instantiate sprite on already seen weapons
+                if(spriteOnAlreadySeenWeapons)
+                {
+                    GameObject sprite = Instantiate(spriteOnAlreadySeenWeapons, weaponStruct.weaponButton.transform);
+                    sprite.transform.localPosition = Vector2.zero;
+                }
+            }
         }
     }
 
