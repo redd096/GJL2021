@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using redd096;
 
 #region editor
 
@@ -29,6 +30,7 @@ public struct DropStruct
 {
     [Range(0, 100)] public int percentage;
     public GameObject objectToDrop;
+    public AudioStruct audioOnDrop;
 }
 
 public class Drop : MonoBehaviour
@@ -86,11 +88,20 @@ public class Drop : MonoBehaviour
             //if in percentage, drop this
             if(currentPercentage >= random)
             {
-                if(drop.objectToDrop != null)
-                    Instantiate(drop.objectToDrop, transform.position, transform.rotation);
+                if (drop.objectToDrop != null)
+                    InstantiateDrop(drop);
 
                 return;
             }
         }
+    }
+
+    void InstantiateDrop(DropStruct drop)
+    {
+        //instantiate drop
+        Instantiate(drop.objectToDrop, transform.position, transform.rotation);
+
+        //instantiate sound
+        SoundManager.instance.Play(drop.audioOnDrop.audioClip, transform.position, drop.audioOnDrop.volume);
     }
 }
