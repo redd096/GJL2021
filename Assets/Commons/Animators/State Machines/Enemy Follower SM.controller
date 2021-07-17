@@ -204,5 +204,6 @@ MonoBehaviour:
   alwaysInMovement: 1
   stopAtEveryNode: 0
   timeToWait: 1
+  checkCanReachTarget: 1
   remainingTime: 0
   path: []
