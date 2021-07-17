@@ -17,10 +17,12 @@ public class Bullet : MonoBehaviour
     [CanShow("doAreaDamage")] [SerializeField] [Min(0)] float radiusAreaDamage = 0;         //damage other characters in radius area
     [CanShow("doAreaDamage")] [SerializeField] bool areaCanDamageWhoShoot = false;          //is possible to damage owner with area damage
     [CanShow("doAreaDamage")] [SerializeField] bool areaCanDamageWhoHit = false;            //is possible to damage again who hit this bullet
+    [CanShow("doAreaDamage")] [SerializeField] bool knockbackAlsoInArea = true;            //do knockback also who hit in area
     [SerializeField] float knockBack = 1;                       //knockback hitted character
 
     [Header("Timer Autodestruction (0 = no autodestruction)")]
     [SerializeField] float delayAutodestruction = 0;
+    [CanShow("doAreaDamage")] [SerializeField] bool doAreaDamageAlsoOnAutoDestruction = true;
 
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] Vector2 direction = Vector2.zero;
@@ -130,8 +132,6 @@ public class Bullet : MonoBehaviour
         //if is not a penetrable layer, destroy this object
         if (layerPenetrable.ContainsLayer(hit.layer) == false)
         {
-            alreadyDead = true;
-
             //call event
             onHit?.Invoke();
 
@@ -166,6 +166,10 @@ public class Bullet : MonoBehaviour
                 //add only one time in the list, and do damage
                 damageables.Add(damageable);
                 damageable.GetDamage(damage, transform.position);
+
+                //and knockback
+                if(knockbackAlsoInArea)
+                    damageable.PushBack((col.transform.position - transform.position).normalized * knockBack, transform.position);
             }
         }
     }
@@ -174,6 +178,17 @@ public class Bullet : MonoBehaviour
     {
         //wait
         yield return new WaitForSeconds(delayAutodestruction);
+
+        //only if not already dead
+        if (alreadyDead)
+            yield break;
+
+        //do damage in area too
+        if (doAreaDamageAlsoOnAutoDestruction)
+        {
+            if (doAreaDamage && radiusAreaDamage > 0)
+                DamageInArea(null);
+        }
 
         //call event
         onAutodestruction?.Invoke();
@@ -186,6 +201,8 @@ public class Bullet : MonoBehaviour
 
     void Die()
     {
+        alreadyDead = true;
+
         //if coroutine is running, stop it
         if (autodestructionCoroutine != null)
             StopCoroutine(autodestructionCoroutine);
