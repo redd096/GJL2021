@@ -12,18 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a044dbae99bfb214aabd03e9449f45ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  objectToActivate: {fileID: 9221577165295853841}
   checkNoEnemiesInScene: 1
   checkPlayerHasWeapon: 1
+  updateVisitedRooms: 1
   destroyWeapon: 1
   timeBeforeLoadNewScene: 3
   sceneToLoad: Scena Negozio
+  isOpen: 0
+--- !u!114 &5364919700012622153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221304480037013541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a96cae2a7028fe49a3185acfa16b878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 3620922800092128466}
+  objectToActivate: {fileID: 9221577165295853841}
   fadeInFromBotola: 0
   fadeOutFromBotola: 0
   animPrefab: {fileID: 5204159214828272771, guid: b7a30637445ff724795f167a84338d38,
     type: 3}
-  isOpen: 0
+  soundFadeIn:
+    audioClip: {fileID: 0}
+    volume: 0
+  soundFadeOut:
+    audioClip: {fileID: 0}
+    volume: 0
   animChangeScene: {fileID: 0}
 --- !u!1 &9221577165295853841
 GameObject:
@@ -258,6 +277,12 @@ GameObject:
 --- !u!4 &2221304480037013544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3212107487702693235, guid: 6b8f19c66884b6d47990b711f842cdd8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3620922799619784027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3620922800092128466 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 619288969, guid: 6b8f19c66884b6d47990b711f842cdd8,
     type: 3}
   m_PrefabInstance: {fileID: 3620922799619784027}
   m_PrefabAsset: {fileID: 0}

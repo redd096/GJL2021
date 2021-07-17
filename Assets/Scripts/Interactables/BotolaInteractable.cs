@@ -3,9 +3,7 @@ using redd096;
 
 public class BotolaInteractable : MonoBehaviour, IInteractable
 {
-    [Header("On Open - by default get in children")]
-    [SerializeField] Animator anim = default;
-    [SerializeField] GameObject objectToActivate = default;
+    [Header("Rules to Open")]
     [SerializeField] bool checkNoEnemiesInScene = true;
     [SerializeField] bool checkPlayerHasWeapon = true;
 
@@ -15,37 +13,11 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [SerializeField] float timeBeforeLoadNewScene = 1;
     [SerializeField] string sceneToLoad = "Scena Game";
 
-    [Header("Animation Change Scene")]
-    [SerializeField] bool fadeInFromBotola = false;
-    [SerializeField] bool fadeOutFromBotola = false;
-    [SerializeField] Animator animPrefab = default;
-
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] bool isOpen;
-    [ReadOnly] [SerializeField] Animator animChangeScene;
 
-    Camera cam;
-
-    void Awake()
-    {
-        //get references
-        if (anim == null)
-            anim = GetComponentInChildren<Animator>();
-
-        //by default, object to activate is hidden
-        if (objectToActivate)
-            objectToActivate.SetActive(false);
-
-        cam = Camera.main;
-
-        //instantiate animation Fade In in center of the screen
-        if (animPrefab)
-        {
-            Vector3 position = fadeInFromBotola ? transform.position : new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
-            animChangeScene = Instantiate(animPrefab, transform);
-            animChangeScene.transform.position = position;
-        }
-    }
+    public System.Action<bool> onCloseOpen { get; set; }
+    public System.Action onInteract { get; set; }
 
     void FixedUpdate()
     {
@@ -76,12 +48,8 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         //open or close
         isOpen = !isOpen;
 
-        //show animation
-        anim?.SetTrigger(isOpen ? "Open" : "Close");
-
-        //activate object
-        if (objectToActivate)
-            objectToActivate.SetActive(isOpen);
+        //call event
+        onCloseOpen?.Invoke(isOpen);
     }
 
     #endregion
@@ -111,13 +79,6 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         //update current room
         if (updateVisitedRooms)
             GameManager.instance.CurrentRoom++;
-
-        //start animation fade out
-        if (animChangeScene)
-        {
-            animChangeScene.transform.position = fadeOutFromBotola ? transform.position : new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
-            animChangeScene.SetTrigger("Fade Out");
-        }
 
         //load scene after few seconds
         Invoke("LoadScene", timeBeforeLoadNewScene);
