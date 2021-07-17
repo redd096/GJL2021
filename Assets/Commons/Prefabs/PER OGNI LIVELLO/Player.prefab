@@ -54,7 +54,7 @@ MonoBehaviour:
   customDrag: 30
   weaponPrefab: {fileID: 6780341664455544565, guid: 94f2266d2af02c144839cd99263cdf2a,
     type: 3}
-  maxHealth: 0
+  MaxHealth: 0
   DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
   AimPositionNotNormalized: {x: 0, y: 0}
@@ -63,6 +63,8 @@ MonoBehaviour:
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
   RadiusInteract: 1.5
+  cameraFollowPlayer: 1
+  offset: {x: 0, y: 0, z: -10}
 --- !u!114 &2465572222686213355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 2812767e5ac56054591cd34ac40ff89e,
     type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
