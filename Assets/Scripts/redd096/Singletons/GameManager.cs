@@ -13,12 +13,11 @@
         public WeaponBASE CurrentWeapon = null;
         public int CurrentToiletPaper = 0;
         public float CurrentLife = 0;
+        public bool firstRoom = true;
 
         public UIManager uiManager { get; private set; }
         public LevelManager levelManager { get; private set; }
         public UIVendorManager uIVendorManager { get; private set; }
-
-        public bool firstRoom = true;
 
         protected override void SetDefaults()
         {
@@ -57,6 +56,7 @@
             CurrentWeapon = null;
             CurrentToiletPaper = 0;
             CurrentLife = 0;
+            firstRoom = true;
         }
     }
 }
