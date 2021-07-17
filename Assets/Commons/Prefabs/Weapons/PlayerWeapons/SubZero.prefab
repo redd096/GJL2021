@@ -43,6 +43,17 @@ PrefabInstance:
       propertyPath: NoiseAccuracy
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: gameObjectOnInstantiateBullet.timeAutodestruction
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: gameObjectOnInstantiateBullet.instantiatedGameObject
+      value: 
+      objectReference: {fileID: 3872186356052580892, guid: 508bb3358e1ad8845b539f198172dd4f,
+        type: 3}
     - target: {fileID: 1862482482030742674, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_Name
