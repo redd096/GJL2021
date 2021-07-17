@@ -1,5 +1,5 @@
 ﻿
 public interface IDroppable
 {
-    void Pick();
+    void Pick(Character character);
 }

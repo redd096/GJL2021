@@ -22,7 +22,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     public Rigidbody2D Rb { get; private set; }
     Shield shield;
 
-    protected bool alreadyDead;
+    bool alreadyDead;
 
     //animation events
     public System.Action onGetDamage { get; set; }
@@ -151,6 +151,9 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// </summary>
     public virtual void Die()
     {
+        if (alreadyDead)
+            return;
+
         alreadyDead = true;
 
         //call event
@@ -158,6 +161,19 @@ public abstract class Character : MonoBehaviour, IDamageable
 
         //destroy object
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Get health
+    /// </summary>
+    /// <param name="healthGiven"></param>
+    public virtual void GetHealth(float healthGiven)
+    {
+        if (alreadyDead)
+            return;
+
+        //add health
+        health += healthGiven;
     }
 
     /// <summary>

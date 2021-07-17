@@ -14,7 +14,7 @@ public class ToiletPaper : MonoBehaviour, IDroppable
     [SerializeField] float durationMovement = 0.8f;
     [SerializeField] Ease easeMovement1 = Ease.Unset;
 
-    [Header("Animation Destruction (movement 1)")]
+    [Header("Animation Destruction (movement 2)")]
     [SerializeField] bool moveToToiletPaperInUI = true;
     [CanShow("moveToToiletPaperInUI", NOT = true)] [SerializeField] Vector3 movement2 = Vector3.down;
     [SerializeField] float sizeToReach2 = 0.3f;
@@ -30,7 +30,7 @@ public class ToiletPaper : MonoBehaviour, IDroppable
             particleToActive.SetActive(false);
     }
 
-    public void Pick()
+    public void Pick(Character character)
     {
         if (alreadyPicked)
             return;
