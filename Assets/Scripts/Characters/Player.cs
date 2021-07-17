@@ -12,6 +12,9 @@ public class Player : Character
     [SerializeField] bool cameraFollowPlayer = true;
     [CanShow("cameraFollowPlayer")] [SerializeField] Vector3 offset = Vector3.back * 10;
 
+    [Header("Dash")]
+    public bool DashToAimDirection = false;
+
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] float remainingTimeInvincible;
     float timerInvincible;
@@ -37,6 +40,8 @@ public class Player : Character
 
         //get references
         cam = Camera.main;
+        playerInput = GetComponent<PlayerInput>();
+        stateMachine = GetComponent<Animator>();
 
         //if follow camera, set parent
         if (cameraFollowPlayer)
@@ -54,9 +59,8 @@ public class Player : Character
         else
             GameManager.instance.CurrentLife = health;
 
-        //get references
-        playerInput = GetComponent<PlayerInput>();
-        stateMachine = GetComponent<Animator>();
+        //set dash from options when instantiate player
+        SetDashOption(OptionsManager.LoadOptions().dashWhereYouAim);
 
         //add to level manager list
         if (GameManager.instance.levelManager)
@@ -155,6 +159,8 @@ public class Player : Character
 
     #endregion
 
+    #region public API
+
     /// <summary>
     /// Set state to pause or resume
     /// </summary>
@@ -171,4 +177,15 @@ public class Player : Character
     {
         timerInvincible = Time.time + durationInvincible;
     }
+
+    /// <summary>
+    /// Set if dash where you aim or where you move
+    /// </summary>
+    /// <param name="dashWhereYouAim"></param>
+    public void SetDashOption(bool dashWhereYouAim)
+    {
+        DashToAimDirection = dashWhereYouAim;
+    }
+
+    #endregion
 }

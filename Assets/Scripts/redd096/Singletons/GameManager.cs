@@ -21,6 +21,18 @@
         public LevelManager levelManager { get; private set; }
         public UIVendorManager uIVendorManager { get; private set; }
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            //if this is the unique game manager
+            if(instance == this)
+            {
+                //load and set options in scene
+                OptionsManager.SetInScene(OptionsManager.LoadOptions());
+            }
+        }
+
         protected override void SetDefaults()
         {
             //get references

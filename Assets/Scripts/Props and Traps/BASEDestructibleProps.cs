@@ -66,6 +66,8 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
         }
     }
 
+    #region private API
+
     /// <summary>
     /// On destroy, damage in area
     /// </summary>
@@ -107,6 +109,21 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
         if (previousPush.y >= 0 && pushForce.y < 0 || previousPush.y <= 0 && pushForce.y > 0)
             pushForce.y = 0;
     }
+
+    /// <summary>
+    /// Remove collider
+    /// </summary>
+    void RemoveCollider()
+    {
+        //remove every collider
+        foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
+            col.enabled = false;
+
+        //update grid
+        AStar.instance.UpdateGrid();
+    }
+
+    #endregion
 
     #region IDamageable
 
@@ -151,11 +168,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
         //remove every collider if necessary
         if(removeColliderOnDeath)
         {
-            foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
-                col.enabled = false;
-
-            //update grid
-            AStar.instance.UpdateGrid();
+            Invoke("RemoveCollider", 0.5f);
         }
 
         //damage in area too
