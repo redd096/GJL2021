@@ -50,10 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7f62b3f1763c343ae8eafe8fbc1287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 125
   customDrag: 30
-  weaponPrefab: {fileID: 6780341664455544565, guid: 94f2266d2af02c144839cd99263cdf2a,
-    type: 3}
+  weaponPrefab: {fileID: 0}
   MaxHealth: 0
   DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
@@ -63,7 +62,7 @@ MonoBehaviour:
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
   RadiusInteract: 1.5
-  cameraFollowPlayer: 1
+  cameraFollowPlayer: 0
   offset: {x: 0, y: 0, z: -10}
 --- !u!114 &2465572222686213355
 MonoBehaviour:
@@ -182,7 +181,43 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: feb9a100-43dc-448b-acd7-bef7b80e85cf
+    m_ActionName: Gameplay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d8b47960-5e7d-4b64-b8cc-b0c549b78247
+    m_ActionName: Gameplay/Aim[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: caf2bddf-924d-4a58-8e2c-40d85c68463a
+    m_ActionName: Gameplay/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2397213f-7afd-42e9-8182-94de466555aa
+    m_ActionName: Gameplay/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed65e1ba-e4fe-4183-9d19-3d228a81e1cb
+    m_ActionName: Gameplay/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b1871d8a-d15a-48fd-9938-5a67e821fbfd
+    m_ActionName: Gameplay/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b167c719-e330-4915-9e20-30598e447797
+    m_ActionName: Gameplay/Resume[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8b99ef62-b206-4af8-9bbc-70f3aba1c14d
+    m_ActionName: Gameplay/Buy Weapon Vendor[/Keyboard/space,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cb3ac88d-30a8-4d8a-952c-71c25e735366
+    m_ActionName: Gameplay/Close Vendor[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
