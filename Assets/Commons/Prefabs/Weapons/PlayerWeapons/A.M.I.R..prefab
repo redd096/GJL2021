@@ -94,6 +94,14 @@ MonoBehaviour:
   audioOnInstantiateBullet:
     audioClip: {fileID: 0}
     volume: 0
+  mainBarrel: {fileID: 0}
+  gameObjectOnShoot:
+    instantiatedGameObject: {fileID: 0}
+    timeAutodestruction: 0
+  particlesOnShoot: {fileID: 0}
+  audioOnShoot:
+    audioClip: {fileID: 8300000, guid: dc4931d3502768842b08a0e5c8a46d38, type: 3}
+    volume: 0.03
   cameraShake: 1
   customShake: 0
   shakeDuration: 1

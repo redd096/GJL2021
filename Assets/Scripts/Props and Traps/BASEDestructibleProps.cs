@@ -140,6 +140,9 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     /// </summary>
     public virtual void Die()
     {
+        if (alreadyDead)
+            return;
+
         alreadyDead = true;
 
         //call event
@@ -162,6 +165,19 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
         //if necessary, destroy after few seconds
         if (removeAfterSecondsIsDead)
             Destroy(gameObject, secondsBeforeRemove);
+    }
+
+    /// <summary>
+    /// Get health
+    /// </summary>
+    /// <param name="healthGiven"></param>
+    public void GetHealth(float healthGiven)
+    {
+        if (alreadyDead)
+            return;
+
+        //add health
+        health += healthGiven;
     }
 
     /// <summary>

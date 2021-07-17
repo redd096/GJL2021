@@ -129,6 +129,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
         type: 3}
+      propertyPath: gameObjectsOnDie.Array.data[0].instantiatedGameObject
+      value: 
+      objectReference: {fileID: 8378139511099418196, guid: 40fc399a624054941b4f4bc90fdd76e5,
+        type: 3}
+    - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
       propertyPath: gameObjectsOnDie.Array.data[1].instantiatedGameObject
       value: 
       objectReference: {fileID: 6145261539280062329, guid: 13e5f502910f60b43a8e49587647faa3,

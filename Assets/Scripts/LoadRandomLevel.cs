@@ -8,7 +8,11 @@ public class LoadRandomLevel : MonoBehaviour
     [SerializeField] bool destroyOldLevel = true;
     [SerializeField] GameObject[] levels = default;
     [SerializeField] bool resetLevelsListWhenFinished = false;
-    [CanShow("resetLevelsListWhenFinished", NOT = true)] [SerializeField] GameObject lastLevel = default;
+
+    [Header("Last Level")]
+    [SerializeField] bool showAfterFewRooms = true;
+    [SerializeField] int numberOfRoomsBeforeLastLevel = 4;
+    [CanShow("resetLevelsListWhenFinished", "showAfterFewRooms", checkAND = false)] [SerializeField] GameObject lastLevel = default;
 
     void Start()
     {
@@ -16,8 +20,16 @@ public class LoadRandomLevel : MonoBehaviour
         if (destroyOldLevel)
             DestroyOldLevel();
 
-        //instantiate random level
-        InstantiateRandomLevel();
+        //after few rooms, instantiate last level 
+        if (showAfterFewRooms && GameManager.instance.CurrentRoom >= numberOfRoomsBeforeLastLevel && lastLevel)
+        {
+            Instantiate(lastLevel, transform);
+        }
+        //else instantiate random level
+        else
+        {
+            InstantiateRandomLevel();
+        }
 
         //update grid
         AStar.instance.UpdateGrid();

@@ -10,13 +10,13 @@ PrefabInstance:
     - target: {fileID: 1152849430519687875, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: drops.Array.data[0].audioOnDrop.volume
-      value: 0.253
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1152849430519687875, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: drops.Array.data[0].audioOnDrop.audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 99cc67d58eb4f4e47b9c956a374ecb0f, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3212107486455365011, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: m_Sprite

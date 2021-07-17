@@ -5,6 +5,11 @@ using redd096;
 public class CharacterFeedbacks : MonoBehaviour
 {
     [Header("On Get Damage")]
+    [SerializeField] InstantiatedGameObjectStruct[] gameObjectsOnGetDamage = default;
+    [SerializeField] ParticleSystem particlesOnGetDamage = default;
+    [SerializeField] AudioStruct audioOnGetDamage = default;
+
+    [Header("On Get Damage (blink)")]
     [SerializeField] Material blinkMaterial = default;
     [SerializeField] float durationBlink = 0.2f;
     [SerializeField] bool ignoreIfAlreadyBlinking = true;
@@ -122,8 +127,21 @@ public class CharacterFeedbacks : MonoBehaviour
 
     void OnGetDamage()
     {
+        //instantiate vfx and sfx
+        foreach (InstantiatedGameObjectStruct objectOnGetDamage in gameObjectsOnGetDamage)
+        {
+            GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(objectOnGetDamage, transform.position, transform.rotation);
+            if (instantiatedGameObject)
+            {
+                //rotate left/right
+                instantiatedGameObject.transform.localScale = transform.lossyScale;
+            }
+        }
+        ParticlesManager.instance.Play(particlesOnGetDamage, transform.position, transform.rotation);
+        SoundManager.instance.Play(audioOnGetDamage.audioClip, transform.position, audioOnGetDamage.volume);
+
         //blink sprite
-        if(blinkCoroutine == null)
+        if (blinkCoroutine == null)
         {
             blinkCoroutine = StartCoroutine(BlinkCoroutine());
         }

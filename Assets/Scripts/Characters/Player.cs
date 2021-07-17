@@ -88,9 +88,6 @@ public class Player : Character
 
     public override void GetDamage(float damage, bool ignoreShield = true, Vector2 hitPosition = default)
     {
-        if (alreadyDead)
-            return;
-
         //do nothing if invincible
         if (Time.time < timerInvincible)
             return;
@@ -137,6 +134,15 @@ public class Player : Character
         GameManager.instance.levelManager.EndGame();
     }
 
+    public override void GetHealth(float healthGiven)
+    {
+        base.GetHealth(healthGiven);
+
+        //update health UI
+        GameManager.instance.CurrentLife = health;
+        GameManager.instance.uiManager.UpdateHealth(health, MaxHealth);
+    }
+
     #endregion
 
     #region private API
@@ -144,7 +150,7 @@ public class Player : Character
     void CheckPickDroppables(Collider2D collision)
     {
         //pick if is droppable
-        collision.GetComponentInParent<IDroppable>()?.Pick();
+        collision.GetComponentInParent<IDroppable>()?.Pick(this);
     }
 
     #endregion

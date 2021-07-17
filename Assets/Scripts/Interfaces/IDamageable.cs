@@ -16,6 +16,12 @@ public interface IDamageable
     void Die();
 
     /// <summary>
+    /// Get health
+    /// </summary>
+    /// <param name="healthGiven"></param>
+    void GetHealth(float healthGiven);
+
+    /// <summary>
     /// Push back character
     /// </summary>
     /// <param name="push"></param>
