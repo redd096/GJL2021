@@ -11,6 +11,7 @@
         public List<GameObject> LevelsAlreadySeen = new List<GameObject>();
         public List<WeaponBASE> WeaponsAlreadyUsed = new List<WeaponBASE>();
         public WeaponBASE CurrentWeapon = null;
+        public Sprite CurrentWeaponSprite = default;
         public int CurrentToiletPaper = 0;
         public float CurrentLife = 0;
         public int CurrentRoom = 0;
@@ -44,6 +45,10 @@
             else
             {
                 player.PickWeapon(CurrentWeapon);
+
+                //set sprite (in case randomizer setted another sprite)
+                if(player.CurrentWeapon)
+                    player.CurrentWeapon.GetComponentInChildren<SpriteRenderer>().sprite = CurrentWeaponSprite;
             }
         }
 
@@ -55,6 +60,7 @@
             LevelsAlreadySeen.Clear();
             WeaponsAlreadyUsed.Clear();
             CurrentWeapon = null;
+            CurrentWeaponSprite = null;
             CurrentToiletPaper = 0;
             CurrentLife = 0;
             CurrentRoom = 0;
