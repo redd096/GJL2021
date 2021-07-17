@@ -458,7 +458,7 @@ MonoBehaviour:
     weapon: {fileID: 9087822784441239259, guid: afdd40f791337264b9afea22f5126871,
       type: 3}
   - weaponButton: {fileID: 7937122701861230413}
-    weapon: {fileID: 3182246790604602616, guid: c5b6ba422f9085346b75752cb6e94864,
+    weapon: {fileID: 6457412146889862633, guid: 04ca9294a8feceb45b5292b5a83639a4,
       type: 3}
   weaponNameText: {fileID: 758818639807887191}
   weaponImage: {fileID: 758818638489123006}
@@ -1897,8 +1897,38 @@ PrefabInstance:
     - target: {fileID: 8880975618344495687, guid: 19c009e184792564e995fef7a1371bd4,
         type: 3}
       propertyPath: m_Name
-      value: A.M.I.R. (1)
+      value: Thing
       objectReference: {fileID: 0}
+    - target: {fileID: 8880975618344495704, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 130828cf57217c34a8a0778f0db85587,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50f22f896b0d2f940b20e88ae7b2c4ff,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e753eb012acef5b4a8ec5b7611c2a225,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50f22f896b0d2f940b20e88ae7b2c4ff,
+        type: 3}
+    - target: {fileID: 8880975618344495705, guid: 19c009e184792564e995fef7a1371bd4,
+        type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50f22f896b0d2f940b20e88ae7b2c4ff,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c009e184792564e995fef7a1371bd4, type: 3}
 --- !u!224 &7937122701861230418 stripped
