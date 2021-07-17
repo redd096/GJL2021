@@ -23,7 +23,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     float timerToChangeState;
 
     //Move to last target position
-    //when reach last target position, call "Next State"    (only if setted to reach target)
+    //when reach last target position, call "Next State"    (only if setted to NOT finish after seconds -so reach target-)
     //after few seconds, call "Next State"                  (only if setted to finish after seconds)
     //
     //delay before move

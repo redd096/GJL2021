@@ -22,8 +22,8 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
     Coroutine stopShootCoroutine;
 
     //Look at Target and shoot
-    //when player is lost, call "Target Lost"
-    //when finish shoot, call "Next State"
+    //when player is lost, call "Target Lost"   (only if setted to NOT change state after shoot)
+    //when finish shoot, call "Next State"      (only if setted to change state after shoot)
     //
     //continue look at target last position
     //delay before first shoot. Can also overwrite noise weapon for first shoot
