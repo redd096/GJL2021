@@ -48,7 +48,6 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
 
     //TODO
     //controllare se si viene colpiti da un proiettile, in quel caso non ci si deve fermare
-    //finito questo, il charger è a posto, bisogna fare il gatto e poi l'armadillo
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

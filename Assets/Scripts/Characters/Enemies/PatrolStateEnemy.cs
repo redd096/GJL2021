@@ -46,6 +46,10 @@ public class PatrolStateEnemy : StateMachineBehaviour
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
+        //check if found player
+        if (CheckPlayerIsFound())
+            return;
+
         //if not path, find new one
         if (path == null || path.Count <= 0)
         {
@@ -62,9 +66,6 @@ public class PatrolStateEnemy : StateMachineBehaviour
         //move if there is no timer to wait
         if (Time.time > timerBeforeMove)
             Movement();
-
-        //check if found player
-        CheckPlayerIsFound();
     }
 
     #region private API
@@ -110,10 +111,15 @@ public class PatrolStateEnemy : StateMachineBehaviour
 
     #endregion
 
-    void CheckPlayerIsFound()
+    bool CheckPlayerIsFound()
     {
         //if player is found, change state
         if (enemy.CheckPlayerIsFound())
+        {
             enemy.SetState("Target Found");
+            return true;
+        }
+
+        return false;
     }
 }

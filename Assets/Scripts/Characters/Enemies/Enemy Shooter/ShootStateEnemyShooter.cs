@@ -62,8 +62,8 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
                 Shoot();
         }
 
-        //check target still in vision area
-        CheckTargetStillInVision();
+        //check target still in vision area or finish state
+        CheckIfFinishState();
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -152,7 +152,7 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
         enemy.SetState("Next State");
     }
 
-    void CheckTargetStillInVision()
+    void CheckIfFinishState()
     {
         //do only if not change at every shot
         if (changeStateAfterShoot)
