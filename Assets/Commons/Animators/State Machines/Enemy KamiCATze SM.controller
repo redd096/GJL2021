@@ -396,7 +396,7 @@ MonoBehaviour:
   approxReachPosition: 0.1
   finishAfterTime: 0
   secondsBeforeStop: 1
-  distanceFromLastTargetPosition: 0.5
+  distanceFromLastTargetPosition: 0.1
   canSeeThroughWalls: 0
 --- !u!1101 &3645033178591514223
 AnimatorStateTransition:

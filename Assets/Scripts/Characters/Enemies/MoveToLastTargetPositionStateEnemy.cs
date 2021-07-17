@@ -4,6 +4,9 @@ using redd096;
 
 public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
 {
+    [Header("Keep Knockback players")]
+    [SerializeField] bool keepKnockbackPlayers = true;
+
     [Header("Delay before start move")]
     [SerializeField] float delayBeforeMove = 0;
 
@@ -44,7 +47,12 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
         path = null;
         timerBeforeMove = Time.time + delayBeforeMove;
 
+        //set time to finish this state (only if setted finishAfterTime)
         timerToChangeState = Time.time + secondsBeforeStop;
+
+        //stop knockback players on hit (if necessary)
+        if (keepKnockbackPlayers == false)
+            enemy.SetKnobackPlayerOnHit(false);
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -71,6 +79,15 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
         //move if there is no timer to wait
         if (Time.time > timerBeforeMove)
             Movement();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+
+        //reset knockback players on hit (if necessary)
+        if (keepKnockbackPlayers == false)
+            enemy.SetKnobackPlayerOnHit(true);
     }
 
     #region private API

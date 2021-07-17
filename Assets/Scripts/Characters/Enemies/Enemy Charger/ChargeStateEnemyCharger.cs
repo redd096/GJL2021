@@ -5,6 +5,9 @@ using redd096;
 
 public class ChargeStateEnemyCharger : StateMachineBehaviour
 {
+    [Header("Keep Knockback players")]
+    [SerializeField] bool keepKnockbackPlayers = false;
+
     [Header("Charge Movement")]
     [SerializeField] float speed = 3;
     [SerializeField] bool followTarget = true;
@@ -51,8 +54,9 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
         //get references
         enemy = animator.GetComponent<Enemy>();
 
-        //remove knockack player on hit
-        enemy.SetKnobackPlayerOnHit(false);
+        //stop knockback players on hit (if necessary)
+        if (keepKnockbackPlayers == false)
+            enemy.SetKnobackPlayerOnHit(false);
 
         //start coroutine (to use fixed update)
         enemy.StartCoroutine(CheckHitWallCoroutine());
@@ -74,8 +78,9 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
 
-        //reset knockack player on hit
-        enemy.SetKnobackPlayerOnHit(true);
+        //reset knockback players on hit (if necessary)
+        if (keepKnockbackPlayers == false)
+            enemy.SetKnobackPlayerOnHit(true);
     }
 
     #region private API
