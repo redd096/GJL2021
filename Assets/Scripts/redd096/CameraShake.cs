@@ -42,7 +42,7 @@
 			float shake = Time.time + duration;
 
 			//shake
-			while (shake > Time.time)
+			while (shake > Time.time && Time.timeScale > 0)
 			{
 				camTransform.localPosition = originalPos + Random.insideUnitSphere * amount;
 

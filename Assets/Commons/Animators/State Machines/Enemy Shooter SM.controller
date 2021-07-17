@@ -127,7 +127,7 @@ MonoBehaviour:
   delayBeforeFirstShot: 1
   delayBetweenShots: 1
   durationShoot: 0.3
-  changeStateAfterShot: 1
+  changeStateAfterShoot: 1
 --- !u!1101 &-4621509442394195190
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

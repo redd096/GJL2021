@@ -80,6 +80,9 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         if (updateVisitedRooms)
             GameManager.instance.CurrentRoom++;
 
+        //call event
+        onInteract?.Invoke();
+
         //load scene after few seconds
         Invoke("LoadScene", timeBeforeLoadNewScene);
     }
