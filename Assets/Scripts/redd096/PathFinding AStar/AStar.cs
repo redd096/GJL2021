@@ -115,6 +115,23 @@
                 }
             }
 
+            //if no path, find nearest node to target point
+            Node nearestNode = startNode;
+            int distance = startNode.hCost;
+
+            foreach(Node node in closedList)
+            {
+                if(node.hCost < distance)
+                {
+                    distance = node.hCost;
+                    nearestNode = node;
+                }
+            }
+
+            //retrace the path nearest to target point
+            if(startNode != null && nearestNode != null)
+                return RetracePath(startNode, nearestNode);
+
             //if there is no path, return null
             return null;
         }
