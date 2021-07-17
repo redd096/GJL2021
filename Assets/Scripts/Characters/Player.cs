@@ -12,6 +12,10 @@ public class Player : Character
     [SerializeField] bool cameraFollowPlayer = true;
     [CanShow("cameraFollowPlayer")] [SerializeField] Vector3 offset = Vector3.back * 10;
 
+    [Header("DEBUG")]
+    [ReadOnly] [SerializeField] float remainingTimeInvincible;
+    float timerInvincible;
+
     public PlayerInput playerInput { get; private set; }
 
     Animator stateMachine;
@@ -59,6 +63,14 @@ public class Player : Character
             GameManager.instance.levelManager.Players.Add(this);
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+        //debug
+        remainingTimeInvincible = timerInvincible - Time.time;
+    }
+
     void OnDestroy()
     {
         //remove from level manager list
@@ -76,6 +88,13 @@ public class Player : Character
 
     public override void GetDamage(float damage, bool ignoreShield = true, Vector2 hitPosition = default)
     {
+        if (alreadyDead)
+            return;
+
+        //do nothing if invincible
+        if (Time.time < timerInvincible)
+            return;
+
         base.GetDamage(damage, ignoreShield, hitPosition);
 
         //update health UI
@@ -137,5 +156,13 @@ public class Player : Character
     public void SetState(string state)
     {
         stateMachine.SetTrigger(state);
+    }
+
+    /// <summary>
+    /// Set Invincible for few seconds
+    /// </summary>
+    public void SetInvincible(float durationInvincible)
+    {
+        timerInvincible = Time.time + durationInvincible;
     }
 }

@@ -11,6 +11,7 @@ public class NormalStatePlayer : StateMachineBehaviour
     [CanShow("canDash")] [SerializeField] bool dashToAimDirection = false;
     [CanShow("canDash")] [SerializeField] float dashForce = 20;
     [CanShow("canDash")] [SerializeField] float dashDelay = 1;
+    [CanShow("canDash")] [SerializeField] float durationInvincible = 0.2f;
 
     Player player;
     bool attacking;
@@ -103,6 +104,9 @@ public class NormalStatePlayer : StateMachineBehaviour
                 else
                     player.PushBack((player.transform.localScale.x > 0 ? Vector2.right : Vector2.left) * dashForce);
             }
+
+            //set invincible
+            player.SetInvincible(durationInvincible);
 
             //call event
             player.onDash?.Invoke();

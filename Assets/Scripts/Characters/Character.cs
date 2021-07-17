@@ -22,7 +22,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     public Rigidbody2D Rb { get; private set; }
     Shield shield;
 
-    bool alreadyDead;
+    protected bool alreadyDead;
 
     //animation events
     public System.Action onGetDamage { get; set; }
