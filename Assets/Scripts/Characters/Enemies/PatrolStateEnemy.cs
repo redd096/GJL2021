@@ -50,8 +50,11 @@ public class PatrolStateEnemy : StateMachineBehaviour
             return;
         }
 
+        //look at next point in path
+        LookAtNextPoint();
+
         //move if there is no timer to wait
-        if(Time.time > timerBeforeMove)
+        if (Time.time > timerBeforeMove)
             Movement();
 
         //check if found player
@@ -82,6 +85,12 @@ public class PatrolStateEnemy : StateMachineBehaviour
 
         //else move to next node in the path
         enemy.MoveCharacter((path[0].worldPosition - enemy.transform.position).normalized, speed);
+    }
+
+    void LookAtNextPoint()
+    {
+        //aim at next point
+        enemy.AimWithCharacter(path[0].worldPosition - enemy.transform.position);
     }
 
     #endregion

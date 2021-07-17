@@ -82,9 +82,6 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
 
     void LookAtTargetLastPosition()
     {
-        if (enemy.Target == null)
-            return;
-
         //aim at target
         enemy.AimWithCharacter(enemy.LastTargetPosition - enemy.transform.position);
     }

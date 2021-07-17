@@ -27,7 +27,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     //after few seconds, call "Next State"                  (only if setted to finish after seconds)
     //
     //delay before move
-    //update path to last target position at every frame
+    //update path to last target position at every frame (change target if null)
     //if no path, if setted to reach position will call Next State, else stay still
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -48,12 +48,12 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        //update path
+        //update path (change target if null)
         GetPathToLastTargetPosition();
 
         //check finish movement
         if ((finishAfterTime && CheckFinishSeconds())                               //after seconds
-            || (finishAfterTime == false && CheckReachedLastTargetPosition()))      //when reach target
+            || (finishAfterTime == false && CheckReachedLastTargetPosition()))      //when reach target (or no path)
         {
             return;
         }
@@ -61,6 +61,9 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
         //if no path, stop
         if (path == null || path.Count <= 0)
             return;
+
+        //look at next point in path
+        LookAtNextPoint();
 
         //move if there is no timer to wait
         if (Time.time > timerBeforeMove)
@@ -71,11 +74,20 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
 
     void GetPathToLastTargetPosition()
     {
-        //check target still in vision, and update Last Target Position
-        enemy.CheckTargetStillInVision();
+        //check target still in vision, and update Last Target Position (or change target)
+        if(enemy.Target)
+            enemy.CheckTargetStillInVision();
+        else
+            enemy.CheckPlayerIsFound();
 
         //update path to it
         path = AStar.instance.FindPath(enemy.transform.position, enemy.LastTargetPosition);
+    }
+
+    void LookAtNextPoint()
+    {
+        //aim at next point
+        enemy.AimWithCharacter(path[0].worldPosition - enemy.transform.position);
     }
 
     void Movement()
