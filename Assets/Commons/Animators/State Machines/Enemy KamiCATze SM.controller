@@ -394,10 +394,10 @@ MonoBehaviour:
   keepKnockbackPlayers: 0
   delayBeforeMove: 0
   speed: 3
-  approxReachPosition: 0.1
+  approxReachNode: 0.05
   finishAfterTime: 0
   secondsBeforeStop: 1
-  distanceFromLastTargetPosition: 0.1
+  distanceFromTargetPosition: 1
   canSeeThroughWalls: 0
   updatePatrolPosition: 1
 --- !u!1101 &3645033178591514223
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkMinDistance: 1
-  minDistance: 1
+  minDistance: 2
   callNextStateEvent: 1
   callTargetSettedEvent: 1
 --- !u!114 &6871135639553712797
@@ -458,10 +458,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayFirstMovement: 0.3
   speed: 1
-  approxReachPosition: 0.1
+  approxReachNode: 0.05
   alwaysInMovement: 0
   stopAtEveryNode: 0
   timeToWait: 1
+  checkCanReachTarget: 0
   remainingTime: 0
   path: []
 --- !u!1102 &8727641136136912749

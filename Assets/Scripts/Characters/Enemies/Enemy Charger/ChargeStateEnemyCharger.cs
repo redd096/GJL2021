@@ -15,12 +15,12 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     [CanShow("followTarget")] [SerializeField] bool canSeeThroughWalls = false;
 
     [Header("Charge Damage")]
-    [SerializeField] float damage = 30;
+    [SerializeField] float damage = 10;
     [SerializeField] float knockBack = 10;
+    [SerializeField] float radiusCastToCheckWhatHit = 0.5f;
 
     [Header("Check hit Something")]
     [SerializeField] float speedCheckIfHitWall = 2.5f;
-    [SerializeField] float radiusCastToCheckWhatHit = 0.5f;
 
     [Header("Event Animation")]
     [SerializeField] bool callNextStateEvent = true;
@@ -45,9 +45,6 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     //if follow target, rotate to aim at last target position                                                   (try change target if null)
     //when rigidbody stops (hit something), damage and knockback everything in front, then call Next State
     //knockback player on hit -> set again to true
-
-    //TODO
-    //controllare se si viene colpiti da un proiettile, in quel caso non ci si deve fermare
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

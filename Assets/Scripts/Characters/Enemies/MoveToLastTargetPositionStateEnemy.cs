@@ -17,7 +17,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     [Header("change state After Seconds or when Reach Target ??")]
     [SerializeField] bool finishAfterTime = true;
     [CanShow("finishAfterTime")] [SerializeField] float secondsBeforeStop = 1;
-    [CanShow("finishAfterTime", NOT = true)] [SerializeField] float distanceFromLastTargetPosition = 0.5f;
+    [CanShow("finishAfterTime", NOT = true)] [SerializeField] float distanceFromTargetPosition = 1f;
 
     [Header("Can See Through Walls")]
     [SerializeField] bool canSeeThroughWalls = false;
@@ -149,7 +149,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     {
         //check if reached last target position
         if (path == null || path.Count <= 0                                                                                 //no path (so can't move)
-            || Vector2.Distance(enemy.transform.position, enemy.LastTargetPosition) <= distanceFromLastTargetPosition)      //or reached position
+            || Vector2.Distance(enemy.transform.position, enemy.LastTargetPosition) <= distanceFromTargetPosition)      //or reached position
         {
             enemy.SetState("Next State");
             return true;
