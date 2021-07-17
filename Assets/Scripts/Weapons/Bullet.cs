@@ -13,12 +13,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] LayerMask layerPenetrable = default;
 
     [Header("Bullet")]
+    [SerializeField] bool ignoreShield;
+    [SerializeField] float knockBack = 1;                       //knockback hitted character
+
+    [Header("Area Damage")]
     [SerializeField] bool doAreaDamage = false;
+    [CanShow("doAreaDamage")] [SerializeField] bool ignoreShieldAreaDamage = false;
     [CanShow("doAreaDamage")] [SerializeField] [Min(0)] float radiusAreaDamage = 0;         //damage other characters in radius area
     [CanShow("doAreaDamage")] [SerializeField] bool areaCanDamageWhoShoot = false;          //is possible to damage owner with area damage
     [CanShow("doAreaDamage")] [SerializeField] bool areaCanDamageWhoHit = false;            //is possible to damage again who hit this bullet
     [CanShow("doAreaDamage")] [SerializeField] bool knockbackAlsoInArea = true;            //do knockback also who hit in area
-    [SerializeField] float knockBack = 1;                       //knockback hitted character
 
     [Header("Timer Autodestruction (0 = no autodestruction)")]
     [SerializeField] float delayAutodestruction = 0;
@@ -126,7 +130,7 @@ public class Bullet : MonoBehaviour
             return;
 
         //if hit something damageable, do damage and push back
-        damageable?.GetDamage(damage, transform.position);
+        damageable?.GetDamage(damage, ignoreShield, transform.position);
         damageable?.PushBack(direction * knockBack, transform.position);
 
         //if is not a penetrable layer, destroy this object
@@ -165,7 +169,7 @@ public class Bullet : MonoBehaviour
             {
                 //add only one time in the list, and do damage
                 damageables.Add(damageable);
-                damageable.GetDamage(damage, transform.position);
+                damageable.GetDamage(damage, ignoreShieldAreaDamage, transform.position);
 
                 //and knockback
                 if(knockbackAlsoInArea)

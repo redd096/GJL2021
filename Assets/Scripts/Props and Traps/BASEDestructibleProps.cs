@@ -12,6 +12,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
 
     [Header("Area Damage on Destroy")]
     [SerializeField] bool doAreaDamage = false;
+    [CanShow("doAreaDamage")] [SerializeField] bool ignoreShield = false;
     [CanShow("doAreaDamage")] [SerializeField] [Min(0)] float radiusAreaDamage = 1;     //damage characters in radius area
     [CanShow("doAreaDamage")] [SerializeField] float damage = 10;
     [CanShow("doAreaDamage")] [SerializeField] float knockBack = 0;
@@ -81,7 +82,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
             {
                 //add only one time in the list, and do damage and knockback
                 damageables.Add(damageable);
-                damageable.GetDamage(damage, transform.position);
+                damageable.GetDamage(damage, ignoreShield, transform.position);
                 damageable.PushBack((col.transform.position - transform.position).normalized * knockBack, transform.position);
             }
         }
@@ -113,7 +114,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     /// Get damage and check if dead
     /// </summary>
     /// <param name="damage"></param>
-    public virtual void GetDamage(float damage, Vector2 hitPosition = default)
+    public virtual void GetDamage(float damage, bool ignoreShield = true, Vector2 hitPosition = default)
     {
         if (alreadyDead)
             return;

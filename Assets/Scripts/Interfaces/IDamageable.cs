@@ -8,7 +8,7 @@ public interface IDamageable
     /// Get damage and check if dead
     /// </summary>
     /// <param name="damage"></param>
-    void GetDamage(float damage, Vector2 hitPosition = default);
+    void GetDamage(float damage, bool ignoreShield = true, Vector2 hitPosition = default);
 
     /// <summary>
     /// Call it when health reach 0

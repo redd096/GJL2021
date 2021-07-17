@@ -124,13 +124,13 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// Get damage and check if dead
     /// </summary>
     /// <param name="damage"></param>
-    public virtual void GetDamage(float damage, Vector2 hitPosition = default)
+    public virtual void GetDamage(float damage, bool ignoreShield = true, Vector2 hitPosition = default)
     {
         if (alreadyDead)
             return;
 
-        //do nothing if hit shield
-        if (shield && shield.HitShield(hitPosition))
+        //do nothing if hit shield (at least ignoreShield is true)
+        if (shield && shield.HitShield(hitPosition) && ignoreShield == false)
             return;
 
         //set health and update UI

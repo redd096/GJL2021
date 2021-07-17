@@ -13,6 +13,13 @@ public class BulletFeedbacks : MonoBehaviour
     [SerializeField] ParticleSystem particlesOnAutodestruction = default;
     [SerializeField] AudioStruct audioOnAutodestruction = default;
 
+    [Header("Camera Shake")]
+    [SerializeField] bool cameraShakeOnHit = false;
+    [SerializeField] bool cameraShakeOnAutoDestruction = false;
+    [CanShow("cameraShakeOnHit", "cameraShakeOnAutoDestruction", checkAND = false)] [SerializeField] bool customShake = false;
+    [CanShow("cameraShakeOnHit", "cameraShakeOnAutoDestruction", checkAND = false)] [SerializeField] float shakeDuration = 1;
+    [CanShow("cameraShakeOnHit", "cameraShakeOnAutoDestruction", checkAND = false)] [SerializeField] float shakeAmount = 0.7f;
+
     Bullet bullet;
 
     void OnEnable()
@@ -49,6 +56,16 @@ public class BulletFeedbacks : MonoBehaviour
         }
         ParticlesManager.instance.Play(particlesOnHit, transform.position, transform.rotation);
         SoundManager.instance.Play(audioOnHit.audioClip, transform.position, audioOnHit.volume);
+
+        //camera shake
+        if (cameraShakeOnHit)
+        {
+            //custom or default
+            if (customShake)
+                CameraShake.instance.StartShake(shakeDuration, shakeAmount);
+            else
+                CameraShake.instance.StartShake();
+        }
     }
 
     void OnAutodestruction()
@@ -62,5 +79,15 @@ public class BulletFeedbacks : MonoBehaviour
         }
         ParticlesManager.instance.Play(particlesOnAutodestruction, transform.position, transform.rotation);
         SoundManager.instance.Play(audioOnAutodestruction.audioClip, transform.position, audioOnAutodestruction.volume);
+
+        //camera shake
+        if (cameraShakeOnAutoDestruction)
+        {
+            //custom or default
+            if (customShake)
+                CameraShake.instance.StartShake(shakeDuration, shakeAmount);
+            else
+                CameraShake.instance.StartShake();
+        }
     }
 }

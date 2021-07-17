@@ -8,6 +8,11 @@ public class IdleStateEnemy : StateMachineBehaviour
     Enemy enemy;
     float timerIdle;
 
+    //Stay still for few seconds
+    //after few seconds, call "Next State"
+    //
+    //when call "Next State" call also enemy.onNextState event
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
@@ -30,11 +35,10 @@ public class IdleStateEnemy : StateMachineBehaviour
 
     void FinishIdle()
     {
-        //set if target still in vision, then change state
-        enemy.SetTargetSetted(enemy.CheckTargetStillInVision());
-        enemy.SetState("Next State");
+        //call next state event
+        enemy.onNextState?.Invoke();
 
-        //call back to patrol state (if go to charge will be called next state again)
-        enemy.onBackToPatrolState?.Invoke();
+        //change to next state
+        enemy.SetState("Next State");
     }
 }

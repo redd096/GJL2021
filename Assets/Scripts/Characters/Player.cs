@@ -74,9 +74,9 @@ public class Player : Character
 
     #region overrides
 
-    public override void GetDamage(float damage, Vector2 hitPosition = default)
+    public override void GetDamage(float damage, bool ignoreShield = true, Vector2 hitPosition = default)
     {
-        base.GetDamage(damage, hitPosition);
+        base.GetDamage(damage, ignoreShield, hitPosition);
 
         //update health UI
         GameManager.instance.CurrentLife = health;

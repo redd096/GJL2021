@@ -8,11 +8,11 @@ public class WarningStateEnemy : StateMachineBehaviour
     Enemy enemy;
     float timeFinishWarning;
 
-    //Stay still for few seconds
+    //Stay still for few seconds looking at target
     //when player is lost, call "Target Lost"       (check first this)
     //after few seconds, call "Next State"          (check only if Target is NOT lost)
     //
-    // when call "Next State" call also enemy.onNextState event
+    //when call "Next State" call also enemy.onNextState event
     //
     //look at target
     //if target is no more in vision area, call target Lost

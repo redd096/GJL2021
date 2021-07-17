@@ -1,12 +1,21 @@
 ﻿using UnityEngine;
 
-public class RechargeStateEnemyCharger : StateMachineBehaviour
+public class LookLastTargetPositionStateEnemy : StateMachineBehaviour
 {
-    [Header("Duration Recharge")]
-    [SerializeField] float durationRecharge = 1;
+    [Header("Time to wait")]
+    [SerializeField] float timeToWait = 1;
 
     Enemy enemy;
-    float timerRecharge;
+    float timeFinishState;
+
+    //(It's the same as IdleState, but look at last target position)
+    //Stay still for few seconds looking at last target position
+    //after few seconds, call "Next State"
+    //
+    //when call "Next State" call also enemy.onNextState event
+    //
+    //look at last target position                                  (try change target if null)
+    //after few seconds, call Next State
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -16,22 +25,22 @@ public class RechargeStateEnemyCharger : StateMachineBehaviour
         enemy = animator.GetComponent<Enemy>();
 
         //set timer
-        timerRecharge = Time.time + durationRecharge;
+        timeFinishState = Time.time + timeToWait;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        //check if there is target and save its last position
+        //check if there is target and save its last position (change target if null)
         CheckTarget();
 
         //look at target last position
         LookAtTargetLastPosition();
 
-        //wait, then charge target
-        if (Time.time > timerRecharge)
-            ChargeTarget();
+        //wait, then finish state
+        if (Time.time > timeFinishState)
+            FinishState();
     }
 
     #region private API
@@ -58,7 +67,7 @@ public class RechargeStateEnemyCharger : StateMachineBehaviour
 
     #endregion
 
-    void ChargeTarget()
+    void FinishState()
     {
         //call next state event
         enemy.onNextState?.Invoke();

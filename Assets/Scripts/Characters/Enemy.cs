@@ -144,14 +144,5 @@ public class Enemy : Character
         stateMachine.SetTrigger(state);
     }
 
-    /// <summary>
-    /// Set in state machine if Target is setted
-    /// </summary>
-    /// <param name="isSetted"></param>
-    public void SetTargetSetted(bool isSetted)
-    {
-        stateMachine.SetBool("Target Setted", isSetted);
-    }
-
     #endregion
 }

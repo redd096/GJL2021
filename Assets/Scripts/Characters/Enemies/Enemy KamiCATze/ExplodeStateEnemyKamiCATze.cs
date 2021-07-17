@@ -8,6 +8,7 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
 
     [Header("Explosion")]
     [SerializeField] [Min(0)] float radiusAreaDamage = 1;     //damage characters in radius area
+    [SerializeField] bool ignoreShield = false;
     [SerializeField] float damage = 10;
     [SerializeField] float knockBack = 10;
 
@@ -58,7 +59,7 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
             {
                 //add only one time in the list, and do damage and knockback
                 damageables.Add(damageable);
-                damageable.GetDamage(damage, enemy.transform.position);
+                damageable.GetDamage(damage, ignoreShield, enemy.transform.position);
                 damageable.PushBack((col.transform.position - enemy.transform.position).normalized * knockBack, enemy.transform.position);
             }
         }
@@ -67,7 +68,7 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
     void Explosion()
     {
         //set if target still in vision, then change state
-        enemy.SetTargetSetted(enemy.CheckTargetStillInVision());
+        //enemy.SetTargetSetted(enemy.CheckTargetStillInVision());
         enemy.SetState("Next State");
 
         //call back to patrol state (if go to charge will be called next state again)

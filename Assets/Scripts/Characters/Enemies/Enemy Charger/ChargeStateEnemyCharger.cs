@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using redd096;
 
-public class ChargeStateEnemy : StateMachineBehaviour
+public class ChargeStateEnemyCharger : StateMachineBehaviour
 {
     [Header("Charge Movement")]
     [SerializeField] float speed = 3;
@@ -14,8 +15,6 @@ public class ChargeStateEnemy : StateMachineBehaviour
     [SerializeField] float knockBack = 10;
 
     [Header("Check hit Something")]
-    [SerializeField] bool checkMinDistance = false;
-    [CanShow("checkMinDistance")] [SerializeField] float minDistance = 1;
     [SerializeField] float speedCheckIfHitWall = 2.5f;
     [SerializeField] float radiusCastToCheckWhatHit = 0.5f;
 
@@ -24,6 +23,24 @@ public class ChargeStateEnemy : StateMachineBehaviour
 
     Enemy enemy;
     Vector3 previousPosition;
+
+    //Move straight in aim direction
+    //if follow target, rotate using rotation speed
+    //when something stops rigidbody, call "Next State"
+    //
+    //when call "Next State" call also enemy.onNextState event
+    //
+    //knockback player on hit -> set to false
+    //move to aim direction
+    //if follow target, rotate to aim at last target position                                                   (try change target if null)
+    //when rigidbody stops (hit something), damage and knockback everything in front, then call Next State
+    //knockback player on hit -> set again to true
+
+    //TODO
+    //sul nuke hammer (quindi sui proiettili), per l'area damage mettere che possono ignorare la posizione
+    //avvisare che si è messo il camera shake nel bullet feedback
+    //controllare se si viene colpiti da un proiettile, in quel caso non ci si deve fermare
+    //finito questo, il charger è a posto, bisogna fare il gatto e poi l'armadillo
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -35,7 +52,7 @@ public class ChargeStateEnemy : StateMachineBehaviour
         //remove knockack player on hit
         enemy.SetKnobackPlayerOnHit(false);
 
-        //start coroutine
+        //start coroutine (to use fixed update)
         enemy.StartCoroutine(CheckHitWallCoroutine());
     }
 
@@ -112,21 +129,13 @@ public class ChargeStateEnemy : StateMachineBehaviour
             if (enemy == null)
                 break;
 
-            //hit wall or character
+            //if hit wall or character
             if (CheckHit())
             {
-                //if need min distance, check if reached
-                if (checkMinDistance == false || CheckReachedMinDistance())
-                {
-                    HitSomething();
-                    break;
-                }
-                //else lost target if didn't reach
-                else
-                {
-                    LostTarget();
-                    break;
-                }
+                //damage and change state
+                DamageInFront();
+                ChangeState();
+                break;
             }
 
             //use fixed update
@@ -149,51 +158,36 @@ public class ChargeStateEnemy : StateMachineBehaviour
         return false;
     }
 
-    bool CheckReachedMinDistance()
+    void DamageInFront()
     {
-        //reach min distance
-        if (Vector2.Distance(enemy.transform.position, enemy.LastTargetPosition) <= minDistance)
-        {
-            //if there is target, hit it
-            if (enemy.CheckTargetStillInVision())
-                return true;
-        }
+        //be sure to not hit again the same
+        List<IDamageable> damageables = new List<IDamageable>();
 
-        return false;
+        //be sure to not hit this enemy
+        damageables.Add(enemy.GetComponent<IDamageable>());
+
+        //find every object damageable in front
+        foreach (RaycastHit2D hit in Physics2D.CircleCastAll(enemy.transform.position, radiusCastToCheckWhatHit, enemy.DirectionAim, 0.2f))
+        {
+            IDamageable damageable = hit.transform.GetComponentInParent<IDamageable>();
+            if (damageable != null && damageables.Contains(damageable) == false)
+            {
+                //add only one time in the list, and do damage and knockback
+                damageables.Add(damageable);
+                damageable.GetDamage(damage, false, enemy.transform.position);
+                damageable.PushBack(enemy.DirectionAim * knockBack, enemy.transform.position);
+            }
+        }
     }
 
     #endregion
 
-    void HitSomething()
+    void ChangeState()
     {
-        //circle cast to check what hit
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(enemy.transform.position, radiusCastToCheckWhatHit, enemy.DirectionAim, 0.2f);
-
-        foreach (RaycastHit2D hit in hits)
-        {
-            //if hit something and isn't itself
-            if (hit.transform && hit.transform.GetComponentInParent<Character>() != enemy)
-            {
-                //if hit something damageable, do damage and push back
-                IDamageable damageable = hit.transform.GetComponentInParent<IDamageable>();
-                damageable?.PushBack(enemy.DirectionAim * knockBack, enemy.transform.position);
-                if (damage != 0)
-                    damageable?.GetDamage(damage, enemy.transform.position);
-            }
-        }
-
         //call next state event
         enemy.onNextState?.Invoke();
 
         //move to next state
         enemy.SetState("Next State");
-    }
-
-    void LostTarget()
-    {
-        //back to patrol state
-        enemy.onBackToPatrolState?.Invoke();
-
-        enemy.SetState("Target Lost");
     }
 }

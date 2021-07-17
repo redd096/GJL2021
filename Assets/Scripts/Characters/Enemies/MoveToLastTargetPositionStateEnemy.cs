@@ -22,12 +22,12 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
 
     float timerToChangeState;
 
-    //Move to last target position
+    //Move to last target position using pathfinding
     //when reach last target position, call "Next State"    (only if setted to NOT finish after seconds -so reach target-)
     //after few seconds, call "Next State"                  (only if setted to finish after seconds)
     //
     //delay before move
-    //update path to last target position at every frame (change target if null)
+    //update path to last target position at every frame                                (try change target if null)
     //if no path, if setted to reach position will call Next State, else stay still
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
