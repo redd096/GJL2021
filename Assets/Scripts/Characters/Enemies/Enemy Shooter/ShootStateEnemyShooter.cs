@@ -12,8 +12,9 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
     [SerializeField] float delayBeforeFirstShot = 1;
     [SerializeField] float delayBetweenShots = 1;
 
-    [Header("Used for automatic weapons")]
+    [Header("Shoot")]
     [SerializeField] float durationShoot = 0.3f;
+    [SerializeField] bool changeStateAfterShot = true;
 
     Enemy enemy;
     float timerBeforeShoot;
@@ -123,8 +124,13 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
         yield return new WaitForSeconds(durationShoot);
 
         //stop shoot
-        if(enemy)
+        if (enemy)
+        {
             enemy.CurrentWeapon?.ReleaseAttack();
+
+            if(changeStateAfterShot)
+                enemy.SetState("Next State");
+        }
     }
 
     #endregion

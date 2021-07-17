@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d9814d6e5af9648be93d07be0677ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayFirstMovement: 0.3
   speed: 1
   approxReachPosition: 0.1
   alwaysInMovement: 0

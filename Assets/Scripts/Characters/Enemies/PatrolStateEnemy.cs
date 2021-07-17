@@ -4,6 +4,9 @@ using redd096;
 
 public class PatrolStateEnemy : StateMachineBehaviour
 {
+    [Header("Delay before start move")]
+    [SerializeField] float delayFirstMovement = 0.3f;
+
     [Header("Patrol Movement")]
     [SerializeField] float speed = 1;
     [SerializeField] float approxReachPosition = 0.1f;
@@ -26,7 +29,7 @@ public class PatrolStateEnemy : StateMachineBehaviour
 
         //reset vars
         path = null;
-        timerBeforeMove = 0;
+        timerBeforeMove = Time.time + delayFirstMovement;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

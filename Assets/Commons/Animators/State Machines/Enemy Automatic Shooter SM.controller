@@ -98,6 +98,7 @@ MonoBehaviour:
   delayBeforeFirstShot: 1
   delayBetweenShots: 2
   durationShoot: 0.5
+  changeStateAfterShot: 1
 --- !u!1101 &-4621509442394195190
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -194,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d9814d6e5af9648be93d07be0677ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayFirstMovement: 0.3
   speed: 1
   approxReachPosition: 0.1
   alwaysInMovement: 1
