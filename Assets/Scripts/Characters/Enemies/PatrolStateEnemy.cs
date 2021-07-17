@@ -16,6 +16,9 @@ public class PatrolStateEnemy : StateMachineBehaviour
     [CanShow("alwaysInMovement", NOT = true)] [SerializeField] bool stopAtEveryNode = false;
     [CanShow("alwaysInMovement", NOT = true)] [SerializeField] float timeToWait = 1;
 
+    [Header("Check can reach Target")]
+    [SerializeField] bool checkCanReachTarget = false;
+
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] float remainingTime;
     [ReadOnly] [SerializeField] List<Node> path = new List<Node>();
@@ -48,7 +51,10 @@ public class PatrolStateEnemy : StateMachineBehaviour
 
         //check if found player
         if (CheckPlayerIsFound())
+        {
+            PlayerFound();
             return;
+        }
 
         //if not path, find new one
         if (path == null || path.Count <= 0)
@@ -109,17 +115,30 @@ public class PatrolStateEnemy : StateMachineBehaviour
         }
     }
 
-    #endregion
-
     bool CheckPlayerIsFound()
     {
-        //if player is found, change state
-        if (enemy.CheckPlayerIsFound())
+        //check if player is found
+        bool playerFound = enemy.CheckPlayerIsFound();
+
+        //check can reach it
+        if (playerFound && checkCanReachTarget)
         {
-            enemy.SetState("Target Found");
-            return true;
+            playerFound = AStar.instance.FindPath(enemy.transform.position, enemy.Target.transform.position) != null;
         }
 
-        return false;
+        //if no found, be sure to remove it (in case found but can't reach)
+        if(playerFound == false)
+            enemy.Target = null;
+
+        //return player found
+        return playerFound;
+    }
+
+    #endregion
+
+    void PlayerFound()
+    {
+        //if player is found, change state
+        enemy.SetState("Target Found");
     }
 }

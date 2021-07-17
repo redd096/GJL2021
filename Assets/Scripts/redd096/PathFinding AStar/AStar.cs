@@ -22,7 +22,11 @@
         /// <summary>
         /// Find path from one point to another
         /// </summary>
-        public List<Node> FindPath(Vector3 startPosition, Vector3 targetPosition)
+        /// <param name="startPosition"></param>
+        /// <param name="targetPosition"></param>
+        /// <param name="returnNearestPointToTarget">if no path to target position, return path to nearest point</param>
+        /// <returns></returns>
+        public List<Node> FindPath(Vector3 startPosition, Vector3 targetPosition, bool returnNearestPointToTarget = true)
         {
             /*
              * OPEN - the set of nodes to be evaluated
@@ -43,11 +47,11 @@
              *  remove Current from OPEN
              *  add Current to CLOSED
              *  
-             * if Current is the target node (path has been found)
-             *  return path
+             *  if Current is the target node (path has been found)
+             *   return path
              *  
-             * foreach Neighbour of the Current node
-             *  if Neighbour is not walkable or Neighbour is in CLOSED
+             *  foreach Neighbour of the Current node
+             *   if Neighbour is not walkable or Neighbour is in CLOSED
              *      skip to the next Neighbour
              *      
              *  if new path to Neighbour is shorter OR Neighbour is not in OPEN
@@ -115,22 +119,26 @@
                 }
             }
 
-            //if no path, find nearest node to target point
-            Node nearestNode = startNode;
-            int distance = startNode.hCost;
-
-            foreach(Node node in closedList)
+            //if no path
+            if (returnNearestPointToTarget)
             {
-                if(node.hCost < distance)
-                {
-                    distance = node.hCost;
-                    nearestNode = node;
-                }
-            }
+                //set start node because the start is not setted
+                startNode.hCost = GetDistance(startNode, targetNode);
 
-            //retrace the path nearest to target point
-            if(startNode != null && nearestNode != null)
-                return RetracePath(startNode, nearestNode);
+                //find the walkable node nearest to target point
+                Node nearestNode = startNode;
+                foreach (Node node in closedList)
+                {
+                    if (node.isWalkable && node.hCost < nearestNode.hCost)  //if walkable and nearest to target point
+                    {
+                        nearestNode = node;
+                    }
+                }
+
+                //find path only if nearest node is not the start node
+                if (startNode != nearestNode)
+                    return FindPath(startNode.worldPosition, nearestNode.worldPosition, false);
+            }
 
             //if there is no path, return null
             return null;

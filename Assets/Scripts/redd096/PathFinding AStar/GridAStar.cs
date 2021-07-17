@@ -52,6 +52,9 @@
         [SerializeField] Vector2 gridWorldSize = Vector2.one;
         [SerializeField] float nodeDiameter = 1;
 
+        [Header("Gizmos")]
+        [SerializeField] float alphaNodes = 0.3f;
+
         //grid
         Node[,] grid;
 
@@ -87,7 +90,7 @@
                 foreach (Node node in grid)
                 {
                     //set color if walkable or not
-                    Gizmos.color = node.isWalkable ? Color.white : Color.red;
+                    Gizmos.color = new Color(1,1,1,alphaNodes) * (node.isWalkable ? Color.white : Color.red);
                     //Gizmos.DrawSphere(node.worldPosition, nodeRadius);
                     Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - 0.1f));
                 }
