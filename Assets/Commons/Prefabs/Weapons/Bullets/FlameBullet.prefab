@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: gameObjectOnHit.instantiatedGameObject
+      value: 
+      objectReference: {fileID: 6802785105473152500, guid: f798f19cf1ce3dd42a71af8ea0cfccb8,
+        type: 3}
     - target: {fileID: 8157764783494114593, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
       propertyPath: m_Size.x
