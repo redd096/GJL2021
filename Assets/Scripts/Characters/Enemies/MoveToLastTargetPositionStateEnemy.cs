@@ -12,7 +12,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
 
     [Header("Movement")]
     [SerializeField] float speed = 1;
-    [SerializeField] float approxReachPosition = 0.1f;
+    [SerializeField] float approxReachNode = 0.05f;
 
     [Header("change state After Seconds or when Reach Target ??")]
     [SerializeField] bool finishAfterTime = true;
@@ -120,7 +120,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     void Movement()
     {
         //if reached position, remove node
-        if (Vector2.Distance(enemy.transform.position, path[0].worldPosition) <= approxReachPosition)
+        if (Vector2.Distance(enemy.transform.position, path[0].worldPosition) <= approxReachNode)
         {
             path.RemoveAt(0);
 

@@ -69,7 +69,7 @@ public class Enemy : Character
     /// Return path to a random point in patrol area
     /// </summary>
     /// <returns></returns>
-    public List<Node> GetPath()
+    public List<Node> GetPatrolPath()
     {
         //get random point in patrol area
         Vector3 randomPoint = new Vector2(pointPatrol.position.x, pointPatrol.position.y) + Random.insideUnitCircle * radiusPatrol;

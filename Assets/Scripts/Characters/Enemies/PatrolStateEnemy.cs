@@ -9,7 +9,7 @@ public class PatrolStateEnemy : StateMachineBehaviour
 
     [Header("Patrol Movement")]
     [SerializeField] float speed = 1;
-    [SerializeField] float approxReachPosition = 0.1f;
+    [SerializeField] float approxReachNode = 0.05f;
 
     [Header("Patrol Rules (stop at every node or when finish path")]
     [SerializeField] bool alwaysInMovement = false;
@@ -53,7 +53,7 @@ public class PatrolStateEnemy : StateMachineBehaviour
         //if not path, find new one
         if (path == null || path.Count <= 0)
         {
-            path = enemy.GetPath();
+            path = enemy.GetPatrolPath();
             return;
         }
 
@@ -73,7 +73,7 @@ public class PatrolStateEnemy : StateMachineBehaviour
     void Movement()
     {
         //if reached position, remove node
-        if(Vector2.Distance(enemy.transform.position, path[0].worldPosition) <= approxReachPosition)
+        if(Vector2.Distance(enemy.transform.position, path[0].worldPosition) <= approxReachNode)
         {
             path.RemoveAt(0);
 

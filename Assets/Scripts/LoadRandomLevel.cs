@@ -18,6 +18,9 @@ public class LoadRandomLevel : MonoBehaviour
 
         //instantiate random level
         InstantiateRandomLevel();
+
+        //update grid
+        AStar.instance.UpdateGrid();
     }
 
     #region load random level
