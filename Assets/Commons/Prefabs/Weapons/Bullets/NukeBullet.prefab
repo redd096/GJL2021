@@ -4763,10 +4763,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
+      propertyPath: customShake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: shakeAmount
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: shakeDuration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
       propertyPath: particlesOnHit
       value: 
       objectReference: {fileID: 3502173396900368868, guid: 1cc592f0ebfc3d54c95f128ed034cf1e,
         type: 3}
+    - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: cameraShakeOnHit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1535250552387387380, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
       propertyPath: gameObjectOnHit.timeAutodestruction
@@ -4815,12 +4835,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
+      propertyPath: ignoreShield
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
       propertyPath: radiusAreaDamage
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
       propertyPath: areaCanDamageWhoHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: ignoreShieldAreaDamage
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8395371864379619246, guid: e87c043ad52704844a0c9c2ac5acfa8a,
