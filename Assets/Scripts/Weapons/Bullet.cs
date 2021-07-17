@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using redd096;
 
@@ -18,6 +19,9 @@ public class Bullet : MonoBehaviour
     [CanShow("doAreaDamage")] [SerializeField] bool areaCanDamageWhoHit = false;            //is possible to damage again who hit this bullet
     [SerializeField] float knockBack = 1;                       //knockback hitted character
 
+    [Header("Timer Autodestruction (0 = no autodestruction)")]
+    [SerializeField] float delayAutodestruction = 0;
+
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] Vector2 direction = Vector2.zero;
     [ReadOnly] [SerializeField] float damage = 0;
@@ -28,8 +32,11 @@ public class Bullet : MonoBehaviour
     bool alreadyDead;
     List<IDamageable> alreadyHit = new List<IDamageable>();
 
+    Coroutine autodestructionCoroutine;
+
     //events
     public System.Action onHit { get; set; }
+    public System.Action onAutodestruction { get; set; }
 
     private void Awake()
     {
@@ -66,11 +73,17 @@ public class Bullet : MonoBehaviour
         this.owner = owner;
 
         //ignore every collision with owner
-        if(owner)
+        if (owner)
         {
             foreach (Collider2D ownerCol in owner.GetComponentsInChildren<Collider2D>())
                 foreach (Collider2D bulletCol in GetComponentsInChildren<Collider2D>())
                     Physics2D.IgnoreCollision(bulletCol, ownerCol);
+        }
+
+        //autodestruction coroutine
+        if(delayAutodestruction > 0)
+        {
+            autodestructionCoroutine = StartCoroutine(AutoDestructionCoroutine());
         }
     }
 
@@ -94,6 +107,8 @@ public class Bullet : MonoBehaviour
             OnHit(collision.gameObject);
     }
 
+    #region private API
+
     void OnHit(GameObject hit)
     {
         if (alreadyDead)
@@ -103,7 +118,7 @@ public class Bullet : MonoBehaviour
         if (hit == null || hit.GetComponentInParent<Bullet>() || hit.GetComponentInParent<Character>() == owner)
             return;
 
-        //don't hit again same damageable
+        //don't hit again same damageable (for penetrate shots)
         IDamageable damageable = hit.GetComponentInParent<IDamageable>();
         if (alreadyHit.Contains(damageable))
             return;
@@ -124,7 +139,8 @@ public class Bullet : MonoBehaviour
             if (doAreaDamage && radiusAreaDamage > 0)
                 DamageInArea(damageable);
 
-            Pooling.Destroy(gameObject);
+            //destroy
+            Die();
         }
     }
 
@@ -152,5 +168,29 @@ public class Bullet : MonoBehaviour
                 damageable.GetDamage(damage, transform.position);
             }
         }
+    }
+
+    IEnumerator AutoDestructionCoroutine()
+    {
+        //wait
+        yield return new WaitForSeconds(delayAutodestruction);
+
+        //call event
+        onAutodestruction?.Invoke();
+
+        //then destroy
+        Die();
+    }
+
+    #endregion
+
+    void Die()
+    {
+        //if coroutine is running, stop it
+        if (autodestructionCoroutine != null)
+            StopCoroutine(autodestructionCoroutine);
+
+        //destroy bullet
+        Pooling.Destroy(gameObject);
     }
 }

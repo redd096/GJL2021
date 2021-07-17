@@ -8,6 +8,11 @@ public class BulletFeedbacks : MonoBehaviour
     [SerializeField] ParticleSystem particlesOnHit = default;
     [SerializeField] AudioStruct audioOnHit = default;
 
+    [Header("On AutoDestruction")]
+    [SerializeField] InstantiatedGameObjectStruct gameObjectOnAutodestruction = default;
+    [SerializeField] ParticleSystem particlesOnAutodestruction = default;
+    [SerializeField] AudioStruct audioOnAutodestruction = default;
+
     Bullet bullet;
 
     void OnEnable()
@@ -19,6 +24,7 @@ public class BulletFeedbacks : MonoBehaviour
         if(bullet)
         {
             bullet.onHit += OnHit;
+            bullet.onAutodestruction += OnAutodestruction;
         }
     }
 
@@ -28,6 +34,7 @@ public class BulletFeedbacks : MonoBehaviour
         if (bullet)
         {
             bullet.onHit -= OnHit;
+            bullet.onAutodestruction -= OnAutodestruction;
         }
     }
 
@@ -42,5 +49,18 @@ public class BulletFeedbacks : MonoBehaviour
         }
         ParticlesManager.instance.Play(particlesOnHit, transform.position, transform.rotation);
         SoundManager.instance.Play(audioOnHit.audioClip, transform.position, audioOnHit.volume);
+    }
+
+    void OnAutodestruction()
+    {
+        //instantiate vfx and sfx
+        GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnAutodestruction, transform.position, transform.rotation);
+        if (instantiatedGameObject)
+        {
+            //rotate left/right
+            instantiatedGameObject.transform.localScale = transform.lossyScale;
+        }
+        ParticlesManager.instance.Play(particlesOnAutodestruction, transform.position, transform.rotation);
+        SoundManager.instance.Play(audioOnAutodestruction.audioClip, transform.position, audioOnAutodestruction.volume);
     }
 }
