@@ -13,7 +13,8 @@
         public WeaponBASE CurrentWeapon = null;
         public int CurrentToiletPaper = 0;
         public float CurrentLife = 0;
-        public bool firstRoom = true;
+        public int CurrentRoom = 0;
+        [SerializeField] bool firstRoom = true;
 
         public UIManager uiManager { get; private set; }
         public LevelManager levelManager { get; private set; }
@@ -56,6 +57,7 @@
             CurrentWeapon = null;
             CurrentToiletPaper = 0;
             CurrentLife = 0;
+            CurrentRoom = 0;
             firstRoom = true;
         }
     }

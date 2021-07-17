@@ -10,6 +10,7 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [SerializeField] bool checkPlayerHasWeapon = true;
 
     [Header("On Interact")]
+    [SerializeField] bool updateVisitedRooms = true;
     [SerializeField] bool destroyWeapon = true;
     [SerializeField] float timeBeforeLoadNewScene = 1;
     [SerializeField] string sceneToLoad = "Scena Game";
@@ -106,6 +107,10 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
 
         //deactive player
         player.GetComponent<Animator>().enabled = false;
+
+        //update current room
+        if (updateVisitedRooms)
+            GameManager.instance.CurrentRoom++;
 
         //start animation fade out
         if (animChangeScene)
