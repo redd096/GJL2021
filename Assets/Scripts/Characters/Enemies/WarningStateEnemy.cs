@@ -5,6 +5,9 @@ public class WarningStateEnemy : StateMachineBehaviour
     [Header("Duration Warning")]
     [SerializeField] float durationWarning = 0.5f;
 
+    [Header("Event Animation")]
+    [SerializeField] bool callNextStateEvent = true;
+
     Enemy enemy;
     float timeFinishWarning;
 
@@ -73,7 +76,8 @@ public class WarningStateEnemy : StateMachineBehaviour
     void FinishTimer()
     {
         //call next state event
-        enemy.onNextState?.Invoke();
+        if(callNextStateEvent)
+            enemy.onNextState?.Invoke();
 
         //change to next state
         enemy.SetState("Next State");

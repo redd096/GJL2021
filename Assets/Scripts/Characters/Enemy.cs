@@ -24,7 +24,7 @@ public class Enemy : Character
 
     //event animations
     public System.Action onNextState { get; set; }
-    public System.Action onBackToPatrolState { get; set; }
+    public System.Action<bool> onTargetSetted { get; set; }
 
     protected virtual void OnDrawGizmos()
     {
@@ -142,6 +142,15 @@ public class Enemy : Character
     {
         //set new state
         stateMachine.SetTrigger(state);
+    }
+
+    /// <summary>
+    /// Set in state machine if Target is setted
+    /// </summary>
+    /// <param name="isSetted"></param>
+    public void SetTargetSetted(bool isSetted)
+    {
+        stateMachine.SetBool("Target Setted", isSetted);
     }
 
     #endregion

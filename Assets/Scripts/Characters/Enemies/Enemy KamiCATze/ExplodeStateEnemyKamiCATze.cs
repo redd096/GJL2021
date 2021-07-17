@@ -15,6 +15,9 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
     [Header("Reduce health when explode")]
     [SerializeField] float selfDamage = 200;
 
+    [Header("Event Animation")]
+    [SerializeField] bool callNextStateEvent = true;
+
     Enemy enemy;
     float timeBeforeExplode;
 
@@ -36,10 +39,14 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
         //wait timer, then explode
         if (Time.time > timeBeforeExplode)
         {
+            //area damage
             if(radiusAreaDamage > 0)
                 DamageInArea();
 
-            Explosion();
+            //explosion self damage
+            enemy.GetDamage(selfDamage);
+
+            FinishState();
         }
     }
 
@@ -50,6 +57,9 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
     {
         //be sure to not hit again the same
         List<IDamageable> damageables = new List<IDamageable>();
+
+        //be sure to not hit this enemy
+        damageables.Add(enemy.GetComponent<IDamageable>());
 
         //find every object damageable in area
         foreach (Collider2D col in Physics2D.OverlapCircleAll(enemy.transform.position, radiusAreaDamage))
@@ -65,16 +75,13 @@ public class ExplodeStateEnemyKamiCATze : StateMachineBehaviour
         }
     }
 
-    void Explosion()
+    void FinishState()
     {
-        //set if target still in vision, then change state
-        //enemy.SetTargetSetted(enemy.CheckTargetStillInVision());
+        //call next state event
+        if (callNextStateEvent)
+            enemy.onNextState?.Invoke();
+
+        //move to next state
         enemy.SetState("Next State");
-
-        //call back to patrol state (if go to charge will be called next state again)
-        enemy.onBackToPatrolState?.Invoke();
-
-        //explosion self damage
-        enemy.GetDamage(selfDamage);
     }
 }

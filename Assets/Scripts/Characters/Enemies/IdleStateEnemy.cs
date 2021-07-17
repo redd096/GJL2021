@@ -10,6 +10,9 @@ public class IdleStateEnemy : StateMachineBehaviour
     [SerializeField] bool aimAtTarget = true;
     [CanShow("aimAtTarget")] [SerializeField] bool canSeeThroughWalls = false;
 
+    [Header("Event Animation")]
+    [SerializeField] bool callNextStateEvent = true;
+
     Enemy enemy;
     float timerIdle;
 
@@ -77,7 +80,8 @@ public class IdleStateEnemy : StateMachineBehaviour
     void FinishIdle()
     {
         //call next state event
-        enemy.onNextState?.Invoke();
+        if(callNextStateEvent)
+            enemy.onNextState?.Invoke();
 
         //change to next state
         enemy.SetState("Next State");

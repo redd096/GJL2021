@@ -16,7 +16,7 @@ public class EnemyAnimationsFeedbacks : MonoBehaviour
         if (enemy)
         {
             enemy.onNextState += OnNextState;
-            enemy.onBackToPatrolState += OnBackToPatrolState;
+            enemy.onTargetSetted += OnTargetSetted;
         }
 
         //be sure is setted animator
@@ -30,7 +30,7 @@ public class EnemyAnimationsFeedbacks : MonoBehaviour
         if (enemy)
         {
             enemy.onNextState -= OnNextState;
-            enemy.onBackToPatrolState -= OnBackToPatrolState;
+            enemy.onTargetSetted -= OnTargetSetted;
         }
     }
 
@@ -40,9 +40,9 @@ public class EnemyAnimationsFeedbacks : MonoBehaviour
         anim.SetTrigger("Next State");
     }
 
-    void OnBackToPatrolState()
+    public void OnTargetSetted(bool isSetted)
     {
-        //set next state
-        anim.SetTrigger("Back to Patrol State");
+        //set bool target setted
+        anim.SetBool("Target Setted", isSetted);
     }
 }

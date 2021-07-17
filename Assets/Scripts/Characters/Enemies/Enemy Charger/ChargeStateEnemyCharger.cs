@@ -19,6 +19,9 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     [SerializeField] float speedCheckIfHitWall = 2.5f;
     [SerializeField] float radiusCastToCheckWhatHit = 0.5f;
 
+    [Header("Event Animation")]
+    [SerializeField] bool callNextStateEvent = true;
+
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] float calculatedSpeed = 0;
 
@@ -184,7 +187,8 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     void ChangeState()
     {
         //call next state event
-        enemy.onNextState?.Invoke();
+        if(callNextStateEvent)
+            enemy.onNextState?.Invoke();
 
         //move to next state
         enemy.SetState("Next State");
