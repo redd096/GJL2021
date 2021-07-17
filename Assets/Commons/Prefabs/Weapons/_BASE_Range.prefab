@@ -77,7 +77,7 @@ MonoBehaviour:
   gameObjectOnDrop:
     instantiatedGameObject: {fileID: 4251096977177423863, guid: 8b4c9ee1ca454fd48b5753543f776c3e,
       type: 3}
-    timeAutodestruction: 0.25
+    timeAutodestruction: 1
   particlesOnDrop: {fileID: 0}
   audioOnDrop:
     audioClip: {fileID: 0}
