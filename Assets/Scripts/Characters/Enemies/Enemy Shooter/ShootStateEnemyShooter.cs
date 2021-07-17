@@ -12,14 +12,24 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
     [SerializeField] float delayBeforeFirstShot = 1;
     [SerializeField] float delayBetweenShots = 1;
 
-    [Header("Shoot")]
+    [Header("Shoot (change state after shoot or when lose target?)")]
     [SerializeField] float durationShoot = 0.3f;
-    [SerializeField] bool changeStateAfterShot = true;
+    [SerializeField] bool changeStateAfterShoot = true;
 
     Enemy enemy;
     float timerBeforeShoot;
     bool firstShoot;
     Coroutine stopShootCoroutine;
+
+    //Look at Target and shoot
+    //when player is lost, call "Target Lost"
+    //when finish shoot, call "Next State"
+    //
+    //continue look at target last position
+    //delay before first shoot. Can also overwrite noise weapon for first shoot
+    //delay between every shoot.
+    //can be changed state after shoot or when lose target
+    //can be set duration shoot, for automatic weapon or to delay the changing of state after shoot
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -40,7 +50,8 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
         //look at target
-        LookAtTarget();
+        enemy.CheckTargetStillInVision();
+        LookAtTargetLastPosition();
 
         //shoot if there is no timer to wait
         if (Time.time > timerBeforeShoot)
@@ -69,13 +80,13 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
 
     #region private API
 
-    void LookAtTarget()
+    void LookAtTargetLastPosition()
     {
         if (enemy.Target == null)
             return;
 
         //aim at target
-        enemy.AimWithCharacter(enemy.Target.transform.position - enemy.transform.position);
+        enemy.AimWithCharacter(enemy.LastTargetPosition - enemy.transform.position);
     }
 
     void FirstShoot()
@@ -128,17 +139,30 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
         {
             enemy.CurrentWeapon?.ReleaseAttack();
 
-            if(changeStateAfterShot)
-                enemy.SetState("Next State");
+            //call function finish shoot
+            OnFinishShoot();
         }
     }
 
     #endregion
 
+    void OnFinishShoot()
+    {
+        if (changeStateAfterShoot == false)
+            return;
+
+        //change state if necessary after shot
+        enemy.SetState("Next State");
+    }
+
     void CheckTargetStillInVision()
     {
-        //if player is found, change state
-        if (enemy.CheckTargetStillInVision() == false)
+        //do only if not change at every shot
+        if (changeStateAfterShoot)
+            return;
+
+        //if player is lost, change state
+        if (enemy.Target == null)
             enemy.SetState("Target Lost");
     }
 }

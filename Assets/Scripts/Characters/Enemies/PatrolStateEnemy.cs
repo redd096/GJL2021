@@ -20,6 +20,13 @@ public class PatrolStateEnemy : StateMachineBehaviour
     List<Node> path;
     float timerBeforeMove;
 
+    //Patrolling with pathfinding, inside area setted in enemy
+    //when found player, call "Target Found"
+    //
+    //delay before first movement
+    //can delay between every node or when finish path
+    //if no path, try get new one, else stay still
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);

@@ -6,7 +6,17 @@ public class WarningStateEnemy : StateMachineBehaviour
     [SerializeField] float durationWarning = 0.5f;
 
     Enemy enemy;
-    float timerBeforeCharge;
+    float timeFinishWarning;
+
+    //Stay still for few seconds
+    //when player is lost, call "Target Lost"
+    //after few seconds, call "Next State"
+    //
+    // when call "Next State" call also enemy.onNextState event
+    //
+    //look at target
+    //if target is no more in vision area, call target Lost
+    //else after few seconds, call Next State
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -16,7 +26,7 @@ public class WarningStateEnemy : StateMachineBehaviour
         enemy = animator.GetComponent<Enemy>();
 
         //set timer
-        timerBeforeCharge = Time.time + durationWarning;
+        timeFinishWarning = Time.time + durationWarning;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -30,9 +40,9 @@ public class WarningStateEnemy : StateMachineBehaviour
         if (CheckTargetStillInVision())
             return;
 
-        //if finish timer, start to charge
-        if(Time.time > timerBeforeCharge)
-            ChargeTarget();
+        //if finish timer, call it
+        if(Time.time > timeFinishWarning)
+            FinishTimer();
     }
 
     #region private API
@@ -60,7 +70,7 @@ public class WarningStateEnemy : StateMachineBehaviour
         return false;
     }
 
-    void ChargeTarget()
+    void FinishTimer()
     {
         //call next state event
         enemy.onNextState?.Invoke();
