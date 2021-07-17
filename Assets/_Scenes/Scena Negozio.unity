@@ -370,6 +370,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5117722139621958687, guid: 46b10d596dfb8674ebbdeb3cc1b47377,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[0].Y
+      value: 70000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117722139621958687, guid: 46b10d596dfb8674ebbdeb3cc1b47377,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[1].X
+      value: -130000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117722139621958687, guid: 46b10d596dfb8674ebbdeb3cc1b47377,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[1].Y
+      value: 70000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117722139621958687, guid: 46b10d596dfb8674ebbdeb3cc1b47377,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[2].X
+      value: -130000000
+      objectReference: {fileID: 0}
     - target: {fileID: 5917771213296174492, guid: 46b10d596dfb8674ebbdeb3cc1b47377,
         type: 3}
       propertyPath: m_RootOrder
@@ -935,7 +955,7 @@ PrefabInstance:
     - target: {fileID: 758818639357958587, guid: 577048d40a2b42b498bbac5f591aa8de,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -143.4004
+      value: -143.40039
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577048d40a2b42b498bbac5f591aa8de, type: 3}
