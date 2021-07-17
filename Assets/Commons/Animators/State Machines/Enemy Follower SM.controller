@@ -337,7 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keepKnockbackPlayers: 0
   delayBeforeMove: 0
-  speed: 2
+  speed: 5
   approxReachNode: 0.05
   finishAfterTime: 0
   secondsBeforeStop: 1

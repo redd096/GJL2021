@@ -259,10 +259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e868ebc62034b442b6362a845a3c01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeExplode: 0.5
+  delayBeforeExplode: 0.2
   radiusAreaDamage: 2
   ignoreShield: 0
-  damage: 10
+  damage: 20
   knockBack: 10
   selfDamage: 200
   callNextStateEvent: 1
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f06ef32f379d240b3327230ec107b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkMinDistance: 1
+  checkMinDistance: 0
   minDistance: 2
   callNextStateEvent: 1
   callTargetSettedEvent: 1

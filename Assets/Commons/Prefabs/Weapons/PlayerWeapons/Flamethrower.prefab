@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: damage
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
@@ -43,6 +43,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8648532792615226738, guid: a67f69d36f63c034c8dadad27a77f7cc,
         type: 3}
+    - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: NoiseAccuracy
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742674, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_Name

@@ -199,11 +199,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6094811806179294883, guid: ffc490a3680d94c42b30044a1f11e1c1,
         type: 3}
-      propertyPath: notNavigables.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6094811806179294883, guid: ffc490a3680d94c42b30044a1f11e1c1,
-        type: 3}
       propertyPath: notNavigables.Array.data[0]
       value: 
       objectReference: {fileID: 758818638572475630}

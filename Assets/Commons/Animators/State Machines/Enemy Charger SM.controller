@@ -203,7 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1609fcb0a5e234c93de92c18e6046a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  keepKnockbackPlayers: 0
+  speed: 6
   followTarget: 1
   rotationSpeed: 0.05
   canSeeThroughWalls: 0
@@ -211,6 +212,8 @@ MonoBehaviour:
   knockBack: 10
   speedCheckIfHitWall: 2.5
   radiusCastToCheckWhatHit: 0.5
+  callNextStateEvent: 1
+  updatePatrolPosition: 1
   calculatedSpeed: 0
 --- !u!91 &9100000
 AnimatorController:
@@ -293,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   durationWarning: 0.5
+  callNextStateEvent: 1
 --- !u!1102 &964527641966308831
 AnimatorState:
   serializedVersion: 5
@@ -414,6 +418,7 @@ MonoBehaviour:
   durationIdle: 2
   aimAtTarget: 0
   canSeeThroughWalls: 0
+  callNextStateEvent: 1
 --- !u!114 &6368219851331574078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,6 +434,7 @@ MonoBehaviour:
   durationIdle: 1
   aimAtTarget: 1
   canSeeThroughWalls: 0
+  callNextStateEvent: 1
 --- !u!114 &6871135639553712797
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,7 +449,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayFirstMovement: 0.3
   speed: 1
-  approxReachPosition: 0.1
+  approxReachNode: 0.05
   alwaysInMovement: 0
   stopAtEveryNode: 0
   timeToWait: 1
+  remainingTime: 0
+  path: []
