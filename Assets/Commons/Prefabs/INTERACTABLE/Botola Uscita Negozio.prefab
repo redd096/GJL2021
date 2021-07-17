@@ -41,8 +41,8 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     volume: 0
   soundFadeOut:
-    audioClip: {fileID: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: 4179f027626605e4ba251667b87ae893, type: 3}
+    volume: 0.2
   animChangeScene: {fileID: 0}
 --- !u!1 &3782190478170715186
 GameObject:

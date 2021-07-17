@@ -77,6 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dc44a54c699e04787be626262f9d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectsOnGetDamage: []
+  particlesOnGetDamage: {fileID: 0}
+  audioOnGetDamage:
+    audioClip: {fileID: 0}
+    volume: 0
   blinkMaterial: {fileID: 2100000, guid: ba381242cd8d6144f8af0713efd1c8df, type: 2}
   durationBlink: 0.2
   ignoreIfAlreadyBlinking: 1
@@ -89,7 +94,7 @@ MonoBehaviour:
     timeAutodestruction: 0
   particlesOnDie: {fileID: 0}
   audioOnDie:
-    audioClip: {fileID: 8300000, guid: 603694d946b011c408c9f62883cbf509, type: 3}
+    audioClip: {fileID: 8300000, guid: 8d43539371a0ed843abe30adc0b45714, type: 3}
     volume: 0.2
   anim: {fileID: 5462269823241799479}
   minSpeedToStartRun: 0.01
@@ -115,8 +120,8 @@ MonoBehaviour:
   maxDistance: 2.3
   particlesToActivateOnDash: {fileID: 757184093709045176}
   audioOnDash:
-    audioClip: {fileID: 8300000, guid: aaa5aca3cbee86f438205ca0fd016bf5, type: 3}
-    volume: 0.1
+    audioClip: {fileID: 8300000, guid: 36294213d73e7a644b09cceadd48d655, type: 3}
+    volume: 0.2
 --- !u!95 &5638893550303126142
 Animator:
   serializedVersion: 3

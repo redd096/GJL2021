@@ -97,7 +97,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioOnDie.audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 603694d946b011c408c9f62883cbf509, type: 3}
+      objectReference: {fileID: 8300000, guid: 5e042f13452ca1747b4b1f5987f96402, type: 3}
     - target: {fileID: 4545613733212651832, guid: 32f0a48baafe006409afe4bac4b27067,
         type: 3}
       propertyPath: gameObjectsOnDie.Array.data[1].instantiatedGameObject

@@ -48,6 +48,16 @@ PrefabInstance:
       propertyPath: NoiseAccuracy
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: audioOnShoot.volume
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: audioOnShoot.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 75234bbd2b30ef641a759fcadfac6c5b, type: 3}
     - target: {fileID: 1862482482030742674, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_Name
