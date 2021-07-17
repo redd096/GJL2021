@@ -274,7 +274,7 @@ MonoBehaviour:
     timeAutodestruction: 0
   particlesOnDie: {fileID: 0}
   audioOnDie:
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 6f1e10a3370bb6f4bad0a37e21cc8be7, type: 3}
     volume: 0
   anim: {fileID: 4545613732538162995}
   minSpeedToStartRun: 0.01
@@ -316,6 +316,9 @@ MonoBehaviour:
   - percentage: 100
     objectToDrop: {fileID: 4668326190196967851, guid: 506bd9c55924dba4d91c4fccc6f82517,
       type: 3}
+    audioOnDrop:
+      audioClip: {fileID: 0}
+      volume: 0
 --- !u!1 &6561139345710115905
 GameObject:
   m_ObjectHideFlags: 0

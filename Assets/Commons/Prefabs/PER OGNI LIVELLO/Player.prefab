@@ -62,8 +62,9 @@ MonoBehaviour:
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
   RadiusInteract: 1.5
-  cameraFollowPlayer: 0
+  cameraFollowPlayer: 1
   offset: {x: 0, y: 0, z: -10}
+  remainingTimeInvincible: 0
 --- !u!114 &2465572222686213355
 MonoBehaviour:
   m_ObjectHideFlags: 0
