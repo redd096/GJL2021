@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using redd096;
 
 public class IdleStateEnemy : StateMachineBehaviour
 {
@@ -7,7 +8,7 @@ public class IdleStateEnemy : StateMachineBehaviour
 
     [Header("Aim at Target")]
     [SerializeField] bool aimAtTarget = true;
-    [SerializeField] bool canSeeThroughWalls = false;
+    [CanShow("aimAtTarget")] [SerializeField] bool canSeeThroughWalls = false;
 
     Enemy enemy;
     float timerIdle;

@@ -206,6 +206,7 @@ MonoBehaviour:
   speed: 4
   followTarget: 1
   rotationSpeed: 0.05
+  canSeeThroughWalls: 0
   damage: 10
   knockBack: 10
   speedCheckIfHitWall: 2.5
@@ -225,19 +226,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Target Lost
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Next State
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -412,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   durationIdle: 2
   aimAtTarget: 0
+  canSeeThroughWalls: 0
 --- !u!114 &6368219851331574078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,6 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   durationIdle: 1
   aimAtTarget: 1
+  canSeeThroughWalls: 0
 --- !u!114 &6871135639553712797
 MonoBehaviour:
   m_ObjectHideFlags: 1
