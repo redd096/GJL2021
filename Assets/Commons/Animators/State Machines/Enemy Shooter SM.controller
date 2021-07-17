@@ -236,6 +236,8 @@ MonoBehaviour:
   alwaysInMovement: 1
   stopAtEveryNode: 0
   timeToWait: 1
+  remainingTime: 0
+  path: []
 --- !u!114 &7617279628604320886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adfa23a30a24cac4c8b8ec1499bdaf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keepKnockbackPlayers: 1
   delayBeforeMove: 0
   speed: 1
   approxReachPosition: 0.1
@@ -255,6 +258,7 @@ MonoBehaviour:
   secondsBeforeStop: 1
   distanceFromLastTargetPosition: 0.5
   canSeeThroughWalls: 0
+  updatePatrolPosition: 1
 --- !u!1102 &7887442275487329807
 AnimatorState:
   serializedVersion: 5

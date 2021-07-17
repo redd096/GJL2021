@@ -25,6 +25,9 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     [Header("Event Animation")]
     [SerializeField] bool callNextStateEvent = true;
 
+    [Header("Update Patrol Position")]
+    [SerializeField] bool updatePatrolPosition = true;
+
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] float calculatedSpeed = 0;
 
@@ -81,6 +84,10 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
         //reset knockback players on hit (if necessary)
         if (keepKnockbackPlayers == false)
             enemy.SetKnobackPlayerOnHit(true);
+
+        //update patrol position
+        if (updatePatrolPosition)
+            enemy.UpdatePatrolPosition();
     }
 
     #region private API

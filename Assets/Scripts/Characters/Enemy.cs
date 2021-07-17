@@ -29,7 +29,7 @@ public class Enemy : Character
     protected virtual void OnDrawGizmos()
     {
         //draw patrol area
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(pointPatrol != null ? pointPatrol.position : transform.position, radiusPatrol);
     }
 
@@ -72,9 +72,9 @@ public class Enemy : Character
     public List<Node> GetPath()
     {
         //get random point in patrol area
-        Vector3 randomPoint = pointPatrol.position + Random.insideUnitSphere * radiusPatrol;
+        Vector3 randomPoint = new Vector2(pointPatrol.position.x, pointPatrol.position.y) + Random.insideUnitCircle * radiusPatrol;
+        Debug.DrawLine(transform.position, randomPoint, Color.blue, 0.5f);
 
-        //find path
         return AStar.instance.FindPath(transform.position, randomPoint);
     }
 
@@ -151,6 +151,11 @@ public class Enemy : Character
     public void SetTargetSetted(bool isSetted)
     {
         stateMachine.SetBool("Target Setted", isSetted);
+    }
+
+    public void UpdatePatrolPosition()
+    {
+        pointPatrol.position = transform.position;
     }
 
     #endregion

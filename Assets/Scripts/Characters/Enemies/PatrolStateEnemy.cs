@@ -16,8 +16,11 @@ public class PatrolStateEnemy : StateMachineBehaviour
     [CanShow("alwaysInMovement", NOT = true)] [SerializeField] bool stopAtEveryNode = false;
     [CanShow("alwaysInMovement", NOT = true)] [SerializeField] float timeToWait = 1;
 
+    [Header("DEBUG")]
+    [ReadOnly] [SerializeField] float remainingTime;
+    [ReadOnly] [SerializeField] List<Node> path = new List<Node>();
+
     Enemy enemy;
-    List<Node> path;
     float timerBeforeMove;
 
     //Patrolling with pathfinding, inside area setted in enemy
@@ -52,6 +55,9 @@ public class PatrolStateEnemy : StateMachineBehaviour
 
         //look at next point in path
         LookAtNextPoint();
+
+        //debug
+        remainingTime = timerBeforeMove - Time.time;
 
         //move if there is no timer to wait
         if (Time.time > timerBeforeMove)
@@ -91,6 +97,15 @@ public class PatrolStateEnemy : StateMachineBehaviour
     {
         //aim at next point
         enemy.AimWithCharacter(path[0].worldPosition - enemy.transform.position);
+
+        //debug draw path
+        for (int i = 0; i < path.Count; i++)
+        {
+            if (i == 0)
+                Debug.DrawLine(enemy.transform.position, path[0].worldPosition, Color.cyan);
+            else
+                Debug.DrawLine(path[i - 1].worldPosition, path[i].worldPosition, Color.cyan);
+        }
     }
 
     #endregion

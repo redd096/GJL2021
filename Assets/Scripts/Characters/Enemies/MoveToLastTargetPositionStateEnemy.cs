@@ -22,6 +22,9 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     [Header("Can See Through Walls")]
     [SerializeField] bool canSeeThroughWalls = false;
 
+    [Header("Update Patrol Position")]
+    [SerializeField] bool updatePatrolPosition = true;
+
     Enemy enemy;
     List<Node> path;
     float timerBeforeMove;
@@ -88,6 +91,10 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
         //reset knockback players on hit (if necessary)
         if (keepKnockbackPlayers == false)
             enemy.SetKnobackPlayerOnHit(true);
+
+        //update patrol position
+        if (updatePatrolPosition)
+            enemy.UpdatePatrolPosition();
     }
 
     #region private API

@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adfa23a30a24cac4c8b8ec1499bdaf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keepKnockbackPlayers: 0
   delayBeforeMove: 0
   speed: 3
   approxReachPosition: 0.1
@@ -398,6 +399,7 @@ MonoBehaviour:
   secondsBeforeStop: 1
   distanceFromLastTargetPosition: 0.1
   canSeeThroughWalls: 0
+  updatePatrolPosition: 1
 --- !u!1101 &3645033178591514223
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -438,6 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f06ef32f379d240b3327230ec107b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkMinDistance: 1
+  minDistance: 1
   callNextStateEvent: 1
   callTargetSettedEvent: 1
 --- !u!114 &6871135639553712797
@@ -458,6 +462,8 @@ MonoBehaviour:
   alwaysInMovement: 0
   stopAtEveryNode: 0
   timeToWait: 1
+  remainingTime: 0
+  path: []
 --- !u!1102 &8727641136136912749
 AnimatorState:
   serializedVersion: 5
