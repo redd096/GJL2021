@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86dc4754b28a5348954243273db8dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponName: Weapon Name
+  WeaponPrice: 10
   Owner: {fileID: 0}
   automatic: 1
   rateOfFire: 0.2
@@ -73,9 +75,9 @@ MonoBehaviour:
   offset: {x: 0.2, y: -0.2}
   objectToRotate: {fileID: 0}
   gameObjectOnDrop:
-    instantiatedGameObject: {fileID: 4758295514663824166, guid: c7ce9cf5c106ae149b27bf5a0efcdeb4,
+    instantiatedGameObject: {fileID: 4251096977177423863, guid: 8b4c9ee1ca454fd48b5753543f776c3e,
       type: 3}
-    timeAutodestruction: 1
+    timeAutodestruction: 0.25
   particlesOnDrop: {fileID: 0}
   audioOnDrop:
     audioClip: {fileID: 0}
