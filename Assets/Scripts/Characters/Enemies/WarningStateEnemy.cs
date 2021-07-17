@@ -61,7 +61,7 @@ public class WarningStateEnemy : StateMachineBehaviour
     bool CheckTargetStillInVision()
     {
         //if player is found, change state
-        if (enemy.CheckTargetStillInVision() == false)
+        if (enemy.CheckTargetStillInVision(canSeeThroughWalls: false) == false)
         {
             enemy.SetState("Target Lost");
             return true;

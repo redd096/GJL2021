@@ -16,6 +16,9 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     [CanShow("finishAfterTime")] [SerializeField] float secondsBeforeStop = 1;
     [CanShow("finishAfterTime", NOT = true)] [SerializeField] float distanceFromLastTargetPosition = 0.5f;
 
+    [Header("Can See Through Walls")]
+    [SerializeField] bool canSeeThroughWalls = false;
+
     Enemy enemy;
     List<Node> path;
     float timerBeforeMove;
@@ -76,7 +79,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     {
         //check target still in vision, and update Last Target Position (or change target)
         if(enemy.Target)
-            enemy.CheckTargetStillInVision();
+            enemy.CheckTargetStillInVision(canSeeThroughWalls);
         else
             enemy.CheckPlayerIsFound();
 

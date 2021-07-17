@@ -50,7 +50,7 @@ public class ShootStateEnemyShooter : StateMachineBehaviour
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
         //look at target
-        enemy.CheckTargetStillInVision();
+        enemy.CheckTargetStillInVision(canSeeThroughWalls: false);
         LookAtTargetLastPosition();
 
         //shoot if there is no timer to wait

@@ -9,6 +9,7 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     [SerializeField] float speed = 3;
     [SerializeField] bool followTarget = true;
     [CanShow("followTarget")] [SerializeField] float rotationSpeed = 0.05f;
+    [CanShow("followTarget")] [SerializeField] bool canSeeThroughWalls = false;
 
     [Header("Charge Damage")]
     [SerializeField] float damage = 30;
@@ -37,8 +38,6 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     //knockback player on hit -> set again to true
 
     //TODO
-    //sul nuke hammer (quindi sui proiettili), per l'area damage mettere che possono ignorare la posizione
-    //avvisare che si è messo il camera shake nel bullet feedback
     //controllare se si viene colpiti da un proiettile, in quel caso non ci si deve fermare
     //finito questo, il charger è a posto, bisogna fare il gatto e poi l'armadillo
 
@@ -109,7 +108,7 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
         //be sure target still in vision area (and update last position)
         if (enemy.Target)
         {
-            enemy.CheckTargetStillInVision();
+            enemy.CheckTargetStillInVision(canSeeThroughWalls);
         }
         //else try find new target
         else

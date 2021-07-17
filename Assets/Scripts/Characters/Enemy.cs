@@ -113,7 +113,7 @@ public class Enemy : Character
     /// Check target is still in vision area
     /// </summary>
     /// <returns></returns>
-    public bool CheckTargetStillInVision()
+    public bool CheckTargetStillInVision(bool canSeeThroughWalls)
     {
         if (Target == null)
             return false;
@@ -121,8 +121,8 @@ public class Enemy : Character
         //save last target position
         LastTargetPosition = Target.transform.position;
 
-        //if there are not obstacles between enemy and player, return true
-        if (Physics2D.Linecast(transform.position, Target.transform.position, layerBlockSight) == false)
+        //if can see through walls OR there are not obstacles between enemy and player, return true
+        if (canSeeThroughWalls || Physics2D.Linecast(transform.position, Target.transform.position, layerBlockSight) == false)
         {
             Debug.DrawLine(transform.position, Target.transform.position, Color.red);
             return true;
