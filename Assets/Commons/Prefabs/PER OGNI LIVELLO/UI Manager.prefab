@@ -1026,7 +1026,7 @@ MonoBehaviour:
   endMenu: {fileID: 1244642704256052954}
   toiletPaperImage: {fileID: 6138552246186909632}
   toiletPaperText: {fileID: 6138552247104288927}
-  format: x{0:000}
+  format: x{0:00}
   weaponImage: {fileID: 6138552247638983840}
   spriteWhenNoWeapon: {fileID: 21300000, guid: 78d1dd0a04c0b044dbad40213568f78d, type: 3}
   sliderHealth: {fileID: 6138552247781960437}
@@ -1620,8 +1620,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -578.39996, y: 351.47693}
-  m_SizeDelta: {x: 150, y: 50}
+  m_AnchoredPosition: {x: -605.50037, y: 351.47693}
+  m_SizeDelta: {x: 95.799164, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6138552247104288920
 CanvasRenderer:
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x 360
+  m_text: x 36
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56f1c783d9fe0c743b358e3931022a5e, type: 2}
   m_sharedMaterial: {fileID: 4151846211026256064, guid: 56f1c783d9fe0c743b358e3931022a5e,
@@ -1944,7 +1944,9 @@ MonoBehaviour:
   - {fileID: 6138552246494447158}
   overrideObjects:
   - {fileID: 5142464702260144263}
-  notNavigables: []
+  notNavigables:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6138552247396242255
 GameObject:
   m_ObjectHideFlags: 0

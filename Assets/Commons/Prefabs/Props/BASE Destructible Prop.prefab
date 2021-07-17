@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 3212107487702693244}
   - component: {fileID: 7083865139490018212}
   - component: {fileID: 1482023216425784880}
+  - component: {fileID: 1152849430519687875}
   m_Layer: 9
   m_Name: BASE Destructible Prop
   m_TagString: Untagged
@@ -230,6 +231,7 @@ MonoBehaviour:
   health: 50
   removeColliderOnDeath: 1
   doAreaDamage: 0
+  ignoreShield: 0
   radiusAreaDamage: 1
   damage: 10
   knockBack: 0
@@ -240,6 +242,7 @@ MonoBehaviour:
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
   doDamageOnHit: 0
+  ignoreShieldOnHit: 0
   useTrigger: 0
   layerToIgnore:
     serializedVersion: 2
@@ -263,3 +266,19 @@ MonoBehaviour:
   blinkMaterial: {fileID: 2100000, guid: ba381242cd8d6144f8af0713efd1c8df, type: 2}
   durationBlink: 0.2
   ignoreIfAlreadyBlinking: 1
+--- !u!114 &1152849430519687875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212107487702693246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d7366dcdf00b84dacb94188912e981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - percentage: 50
+    objectToDrop: {fileID: 3366163097786489361, guid: da2219819bc7dc54793932e4408ee881,
+      type: 3}

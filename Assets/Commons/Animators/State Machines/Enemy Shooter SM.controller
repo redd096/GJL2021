@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overwriteNoiseAccuracyFirstShoot: 1
-  noiseAccuracyFirstShoot: 30
+  noiseAccuracyFirstShoot: 0
   delayBeforeFirstShot: 1
-  delayBetweenShots: 1
+  delayBetweenShots: 3
   durationShoot: 0.3
   changeStateAfterShoot: 1
 --- !u!1101 &-4621509442394195190
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayFirstMovement: 0.3
   speed: 1
-  approxReachPosition: 0.1
+  approxReachNode: 0.05
   alwaysInMovement: 1
   stopAtEveryNode: 0
   timeToWait: 1
@@ -253,7 +253,7 @@ MonoBehaviour:
   keepKnockbackPlayers: 1
   delayBeforeMove: 0
   speed: 1
-  approxReachPosition: 0.1
+  approxReachNode: 0.05
   finishAfterTime: 1
   secondsBeforeStop: 1
   distanceFromLastTargetPosition: 0.5
