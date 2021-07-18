@@ -1546,7 +1546,9 @@ MonoBehaviour:
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
   startMenu: {fileID: 1294247370}
-  firstSelectedGameObjects: []
+  firstSelectedGameObjects:
+  - {fileID: 1444669592}
+  - {fileID: 1385257100}
   overrideObjects: []
   notNavigables: []
 --- !u!4 &1259179158

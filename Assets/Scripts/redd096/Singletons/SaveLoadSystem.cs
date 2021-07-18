@@ -58,6 +58,7 @@
     }
 
     [AddComponentMenu("redd096/Singletons/Save and Load System")]
+    [DefaultExecutionOrder(-200)]
     public class SaveLoadSystem : Singleton<SaveLoadSystem>
     {
         [Header("Data Directory")]

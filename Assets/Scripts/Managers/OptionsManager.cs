@@ -39,6 +39,9 @@ public class OptionsManager : MonoBehaviour
 
         //update UI
         UpdateUI();
+
+        //set functions UI
+        SetFunctionsUI();
     }
 
     void UpdateUI()
@@ -56,9 +59,24 @@ public class OptionsManager : MonoBehaviour
             fullScreenToggle.isOn = savedOptions.fullScreen;
     }
 
+    void SetFunctionsUI()
+    {
+        //set volume func
+        if (volumeSlider)
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+
+        //set dash func
+        if (dashWhereYouAimToggle)
+            dashWhereYouAimToggle.onValueChanged.AddListener(SetDash);
+
+        //set full screen dash
+        if (fullScreenToggle)
+            fullScreenToggle.onValueChanged.AddListener(SetFullScreen);
+    }
+
     #region UI functions
 
-    public void SetVolume(float value)
+    void SetVolume(float value)
     {
         //update saved options
         savedOptions.volume = value;
@@ -68,7 +86,7 @@ public class OptionsManager : MonoBehaviour
         SetInScene(savedOptions);
     }
 
-    public void SetDash(bool value)
+    void SetDash(bool value)
     {
         //update saved options
         savedOptions.dashWhereYouAim = value;
@@ -78,7 +96,7 @@ public class OptionsManager : MonoBehaviour
         SetInScene(savedOptions);
     }
 
-    public void SetFullScreen(bool value)
+    void SetFullScreen(bool value)
     {
         //update saved options
         savedOptions.fullScreen = value;
