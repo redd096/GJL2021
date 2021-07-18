@@ -154,7 +154,7 @@ public class Bullet : MonoBehaviour
         List<IDamageable> damageables = new List<IDamageable>();
 
         //be sure to not hit owner (if necessary)
-        if (areaCanDamageWhoShoot == false)
+        if (areaCanDamageWhoShoot == false && owner)
             damageables.Add(owner.GetComponent<IDamageable>());
 
         //be sure to not hit who was already hit by bullet (if necessary)
