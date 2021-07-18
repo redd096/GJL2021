@@ -88,7 +88,7 @@ public class ModifiersFeedbacks : MonoBehaviour
             }
         }
         //on deactivate, stop particles
-        else if(activateModifier && instantiatedParticlesOnBurn)
+        else if(activateModifier == false && instantiatedParticlesOnBurn)
         {
             Pooling.Destroy(instantiatedParticlesOnBurn.gameObject);
             instantiatedParticlesOnBurn = null;
