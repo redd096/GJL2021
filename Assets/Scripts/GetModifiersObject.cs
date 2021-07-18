@@ -8,11 +8,13 @@ public class GetModifiersObject : MonoBehaviour
 
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] bool isFrozen;
+    [ReadOnly] [SerializeField] bool isBurning;
 
     Shield shield;
 
     //modifiers
     public System.Action<bool> onFrozen { get; set; }
+    public System.Action<bool> onBurn { get; set; }
 
     void Start()
     {
@@ -43,15 +45,15 @@ public class GetModifiersObject : MonoBehaviour
     /// <summary>
     /// Hitted by Ice Shot
     /// </summary>
-    /// <param name="activateFrozen"></param>
-    public void GetFrozen(bool activateFrozen)
+    /// <param name="activateModifier"></param>
+    public void GetFrozen(bool activateModifier)
     {
         //do nothing if don't change state
-        if (isFrozen == activateFrozen)
+        if (isFrozen == activateModifier)
             return;
 
-        //set if frozen
-        isFrozen = activateFrozen;
+        //set state
+        isFrozen = activateModifier;
 
         //set statemachine to frozen
         if (stateMachine)
@@ -64,6 +66,23 @@ public class GetModifiersObject : MonoBehaviour
 
         //call event
         onFrozen?.Invoke(isFrozen);
+    }
+
+    /// <summary>
+    /// Hitted by Flame Shot
+    /// </summary>
+    /// <param name="activateModifier"></param>
+    public void GetBurn(bool activateModifier)
+    {
+        //do nothing if don't change state
+        if (isBurning == activateModifier)
+            return;
+
+        //set state
+        isBurning = activateModifier;
+
+        //call event
+        onBurn?.Invoke(isBurning);
     }
 
     #endregion

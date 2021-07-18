@@ -21,6 +21,7 @@ public class ModifiersFeedbacks : MonoBehaviour
         if(modiferObject != null)
         {
             modiferObject.onFrozen += OnFrozen;
+            modiferObject.onBurn += OnBurn;
         }
     }
 
@@ -30,6 +31,7 @@ public class ModifiersFeedbacks : MonoBehaviour
         if (modiferObject != null)
         {
             modiferObject.onFrozen -= OnFrozen;
+            modiferObject.onBurn -= OnBurn;
         }
     }
 
@@ -50,12 +52,12 @@ public class ModifiersFeedbacks : MonoBehaviour
 
     #region modifiers
 
-    void OnFrozen(bool activateFrozen)
+    void OnFrozen(bool activateModifier)
     {
         //set animator
         if (anim)
         {
-            if (activateFrozen)
+            if (activateModifier)
                 anim.SetTrigger("Frozen");
             else
                 anim.SetTrigger("Next State");
@@ -63,7 +65,12 @@ public class ModifiersFeedbacks : MonoBehaviour
 
         //change sprite color
         if(spriteToChange)
-            spriteToChange.color = activateFrozen ? colorOnFrozen : defaultColor;
+            spriteToChange.color = activateModifier ? colorOnFrozen : defaultColor;
+    }
+
+    void OnBurn(bool activateModifier)
+    {
+
     }
 
     #endregion

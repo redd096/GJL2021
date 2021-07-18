@@ -1,19 +1,30 @@
 ﻿using UnityEngine;
 using redd096;
 
-public class FrozenModifier : MonoBehaviour
+public class BurnModifier : MonoBehaviour
 {
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] float remainingTime;
+    [ReadOnly] [SerializeField] float timeToNextDamage;
 
     GetModifiersObject modifierObject;
     float duration;
+    float damage;
+    float delayBetweenDamages;
+    float firstDelay;
 
     float timeFinishModifier = 0;
+    float timeDoDamage = 0;
 
-    public void Init(float duration)
+    public void Init(float duration, float damage, float delayBetweenDamages, float firstDelay)
     {
         this.duration = duration;
+        this.damage = damage;
+        this.delayBetweenDamages = delayBetweenDamages;
+        this.firstDelay = firstDelay;
+
+        //on start, set time to damage
+        OnStartDamage();
 
         //set timer
         OnStartTimer();
@@ -21,8 +32,12 @@ public class FrozenModifier : MonoBehaviour
 
     void Update()
     {
+        //check do damage
+        if (CheckDoDamage())
+            DoDamage();
+
         //check if finish timer, and call when finish
-        if(CheckFinishTimer())
+        if (CheckFinishTimer())
             OnFinishTImer();
     }
 
@@ -30,8 +45,41 @@ public class FrozenModifier : MonoBehaviour
     {
         //set modifier
         if (modifierObject)
-            modifierObject.GetFrozen(activate);
+            modifierObject.GetBurn(activate);
     }
+
+    #region damage
+
+    void OnStartDamage()
+    {
+        //set time to next damage
+        timeDoDamage = Time.time + firstDelay;
+    }
+
+    bool CheckDoDamage()
+    {
+        //debug
+        timeToNextDamage = timeDoDamage - Time.time;
+
+        //on finish timer
+        if (timeDoDamage > 0 && Time.time > timeDoDamage)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void DoDamage()
+    {
+        //damage modifier object
+        modifierObject.GetComponent<IDamageable>()?.GetDamage(damage);
+
+        //set delay next damage
+        timeDoDamage = Time.time + delayBetweenDamages;
+    }
+
+    #endregion
 
     #region timer
 

@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 
-public class IceShot : MonoBehaviour
+public class FlameShot : MonoBehaviour
 {
-    [Header("Ice")]
+    [Header("Fire")]
     [SerializeField] float duration = 2;
-    [SerializeField] bool ignoreIfAlreadyFrozen = false;
+    [SerializeField] bool ignoreIfAlreadyBurn = false;
     [SerializeField] bool ignoreShield = false;
+
+    [Header("Damage")]
+    [SerializeField] float damage = 2;
+    [SerializeField] float delayBetweenDamages = 0.2f;
+    [SerializeField] float firstDelay = 0;
 
     Bullet bullet;
 
@@ -15,7 +20,7 @@ public class IceShot : MonoBehaviour
         bullet = GetComponent<Bullet>();
 
         //add events
-        if(bullet)
+        if (bullet)
         {
             bullet.onHit += OnHit;
         }
@@ -35,14 +40,14 @@ public class IceShot : MonoBehaviour
         GetModifiersObject modifiersObject;
 
         //if can, apply modifier
-        if (CanApplyModifier<FrozenModifier>(hit, out modifiersObject))
+        if (CanApplyModifier<BurnModifier>(hit, out modifiersObject))
             ApplyModifier(modifiersObject);
     }
 
     void ApplyModifier(GetModifiersObject modifierObject)
     {
         //add new modifier and initialize
-        modifierObject.gameObject.AddComponent<FrozenModifier>().Init(duration);
+        modifierObject.gameObject.AddComponent<BurnModifier>().Init(duration, damage, delayBetweenDamages, firstDelay);
     }
 
     #region private API
@@ -59,7 +64,7 @@ public class IceShot : MonoBehaviour
             if (alreadyApplied)
             {
                 //ignore all, or remove old script
-                if (ignoreIfAlreadyFrozen)
+                if (ignoreIfAlreadyBurn)
                     return false;
                 else
                     Destroy(alreadyApplied);
