@@ -13,6 +13,9 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [SerializeField] float timeBeforeLoadNewScene = 1;
     [SerializeField] string sceneToLoad = "Scena Game";
 
+    [Header("TUTORIAL")]
+    [SerializeField] bool finishTutorial = false;
+
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] bool isOpen;
 
@@ -79,6 +82,10 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         //update current room
         if (updateVisitedRooms)
             GameManager.instance.CurrentRoom++;
+
+        //if finish tutorial, save it
+        if(finishTutorial)
+            SaveLoadJSON.Save(LoadRandomLevel.TUTORIALNAME, new TutorialSaveClass(false));
 
         //call event
         onInteract?.Invoke();

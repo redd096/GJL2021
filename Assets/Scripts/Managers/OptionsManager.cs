@@ -23,7 +23,7 @@ public class OptionsSaveClass
 
 public class OptionsManager : MonoBehaviour
 {
-    const string SAVENAME = "Options";
+    const string OPTIONSNAME = "Options";
 
     [Header("UI")]
     [SerializeField] Slider volumeSlider = default;
@@ -62,7 +62,7 @@ public class OptionsManager : MonoBehaviour
     {
         //update saved options
         savedOptions.volume = value;
-        SaveLoadJSON.Save(SAVENAME, savedOptions);
+        SaveLoadJSON.Save(OPTIONSNAME, savedOptions);
 
         //set in scene
         SetInScene(savedOptions);
@@ -72,7 +72,7 @@ public class OptionsManager : MonoBehaviour
     {
         //update saved options
         savedOptions.dashWhereYouAim = value;
-        SaveLoadJSON.Save(SAVENAME, savedOptions);
+        SaveLoadJSON.Save(OPTIONSNAME, savedOptions);
 
         //set in scene
         SetInScene(savedOptions);
@@ -82,7 +82,7 @@ public class OptionsManager : MonoBehaviour
     {
         //update saved options
         savedOptions.fullScreen = value;
-        SaveLoadJSON.Save(SAVENAME, savedOptions);
+        SaveLoadJSON.Save(OPTIONSNAME, savedOptions);
 
         //set in scene
         SetInScene(savedOptions);
@@ -112,13 +112,13 @@ public class OptionsManager : MonoBehaviour
     public static OptionsSaveClass LoadOptions()
     {
         //load
-        OptionsSaveClass save = SaveLoadJSON.Load<OptionsSaveClass>(SAVENAME);
+        OptionsSaveClass save = SaveLoadJSON.Load<OptionsSaveClass>(OPTIONSNAME);
 
         //if there are not saved options, create new one and save
         if (save == null)
         {
             save = new OptionsSaveClass(AudioListener.volume, false, Screen.fullScreen);
-            SaveLoadJSON.Save(SAVENAME, save);
+            SaveLoadJSON.Save(OPTIONSNAME, save);
         }
 
         return save;

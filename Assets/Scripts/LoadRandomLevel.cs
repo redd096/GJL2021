@@ -2,12 +2,33 @@
 using UnityEngine;
 using redd096;
 
+#region save class
+
+[System.Serializable]
+public class TutorialSaveClass
+{
+    public bool firstTime = true;
+
+    public TutorialSaveClass(bool firstTime)
+    {
+        this.firstTime = firstTime;
+    }
+}
+
+#endregion
+
 public class LoadRandomLevel : MonoBehaviour
 {
+    public const string TUTORIALNAME = "First Time";
+
     [Header("Random Levels")]
     [SerializeField] bool destroyOldLevel = true;
     [SerializeField] GameObject[] levels = default;
     [SerializeField] bool resetLevelsListWhenFinished = false;
+
+    [Header("Tutorial Level")]
+    [SerializeField] bool saveToNotRepeatAgain = true;
+    [SerializeField] GameObject tutorialLevel = default;
 
     [Header("Last Level")]
     [SerializeField] bool showAfterFewRooms = true;
@@ -20,19 +41,42 @@ public class LoadRandomLevel : MonoBehaviour
         if (destroyOldLevel)
             DestroyOldLevel();
 
-        //after few rooms, instantiate last level 
-        if (showAfterFewRooms && GameManager.instance.CurrentRoom >= numberOfRoomsBeforeLastLevel && lastLevel)
+        LoadLevel();
+
+        //update grid
+        AStar.instance.UpdateGrid();
+    }
+
+    void LoadLevel()
+    {
+        //if first room, instantiate tutorial
+        bool instantiateTutorial = GameManager.instance.CurrentRoom <= 0 && tutorialLevel;
+
+        //but if save to not repeat again, be sure is not already saved
+        if (instantiateTutorial && saveToNotRepeatAgain)
         {
-            Instantiate(lastLevel, transform);
+            TutorialSaveClass save = SaveLoadJSON.Load<TutorialSaveClass>(TUTORIALNAME);
+            if(save != null && save.firstTime == false)
+            {
+                instantiateTutorial = false;
+            }
+        }
+
+        //instantiate tutorial
+        if(instantiateTutorial)
+        {
+            InstantiateTutorialLevel();
+        }
+        //after few rooms, instantiate last level
+        else if (showAfterFewRooms && GameManager.instance.CurrentRoom >= numberOfRoomsBeforeLastLevel && lastLevel)
+        {
+            InstantiateLastlevel();
         }
         //else instantiate random level
         else
         {
             InstantiateRandomLevel();
         }
-
-        //update grid
-        AStar.instance.UpdateGrid();
     }
 
     #region load random level
@@ -42,6 +86,15 @@ public class LoadRandomLevel : MonoBehaviour
         //destroy old levels
         foreach (Transform child in transform)
             Destroy(child.gameObject);
+    }
+
+    void InstantiateTutorialLevel()
+    {
+        //instantiate tutorial level
+        Instantiate(tutorialLevel, transform);
+
+        //save it
+        SaveLoadJSON.Save(TUTORIALNAME, new TutorialSaveClass(true));
     }
 
     void InstantiateRandomLevel()
@@ -73,6 +126,12 @@ public class LoadRandomLevel : MonoBehaviour
 
         //save in already seen
         GameManager.instance.LevelsAlreadySeen.Add(possibleLevels[random]);
+    }
+
+    void InstantiateLastlevel()
+    {
+        //instantiate last level
+        Instantiate(lastLevel, transform);
     }
 
     List<GameObject> GetPossibleLevels()
