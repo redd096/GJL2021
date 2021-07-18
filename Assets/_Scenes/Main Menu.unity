@@ -1322,18 +1322,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cca78376824f3246a8f01213a9bb640, type: 3}
---- !u!114 &606420873 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6775149040864764065, guid: 2cca78376824f3246a8f01213a9bb640,
-    type: 3}
-  m_PrefabInstance: {fileID: 606420872}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 508fe151c97b6834fa64ffdf97a46bd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &651088711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,7 +2197,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 606420873}
+      - m_Target: {fileID: 6775149040864764065, guid: 2cca78376824f3246a8f01213a9bb640,
+          type: 3}
         m_MethodName: LoadTutorialOrShop
         m_Mode: 2
         m_Arguments:
