@@ -20,7 +20,7 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
     [CanShow("cameraShake", "customShake")] [SerializeField] float shakeDuration = 1;
     [CanShow("cameraShake", "customShake")] [SerializeField] float shakeAmount = 0.7f;
 
-    [Header("On Press Attack (only one object, not pooling)")]
+    [Header("On Press Attack (only one object, not pooling, deactivate on release)")]
     [SerializeField] Transform barrelOnPress = default;
     [SerializeField] GameObject gameObjectOnPress = default;
     [SerializeField] ParticleSystem particlesOnPress = default;
