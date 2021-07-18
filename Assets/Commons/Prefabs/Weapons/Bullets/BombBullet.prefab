@@ -67,6 +67,21 @@ PrefabInstance:
       propertyPath: useTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: doAreaDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: radiusAreaDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395371864379619245, guid: e87c043ad52704844a0c9c2ac5acfa8a,
+        type: 3}
+      propertyPath: delayAutodestruction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8395371864379619246, guid: e87c043ad52704844a0c9c2ac5acfa8a,
         type: 3}
       propertyPath: m_RootOrder
