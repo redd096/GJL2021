@@ -79,7 +79,7 @@ public class ShootStateEnemyBoss : StateMachineBehaviour
     {
         //center is point patrol or center of map
         Vector2 center = enemy.PointPatrol != null ? new Vector2(enemy.PointPatrol.position.x, enemy.PointPatrol.position.y) : Vector2.zero;
-        Vector2 size = enemy.RangeWhereToStop;
+        Vector2 size = enemy.RangeWhereToStop /2;
 
         //calculate random point
         float x = Random.Range(center.x - size.x, center.x + size.x);

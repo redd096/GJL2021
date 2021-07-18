@@ -78,7 +78,7 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
 
         //center is point patrol or center of map
         Vector2 center = enemy.PointPatrol != null ? new Vector2(enemy.PointPatrol.position.x, enemy.PointPatrol.position.y) : Vector2.zero;
-        Vector2 size = enemy.RangeBossAttack;
+        Vector2 size = enemy.RangeBossAttack /2;
 
         //calculate random point
         float x = Random.Range(center.x - size.x, center.x + size.x);
@@ -90,14 +90,13 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
 
         //instantiate bomb out of screen but on same X as circle
         Bullet bomb = poolBombs.Instantiate(enemy.BombPrefab);
-        bombCircle.transform.position = new Vector2(x, enemy.PositionOutScreen.y);
 
         //set delay autodestruction and Init
         bomb.delayAutodestruction = durationBombExplosion;
         bomb.Init(null, Vector2.zero, damage, 0);
 
         //move bomb to position explosion
-        bomb.transform.DOMove(new Vector3(x, y, 0), durationBombExplosion);
+        bomb.transform.DOMove(new Vector3(x, y, 0), durationBombExplosion).From(new Vector3(x, enemy.PositionOutScreen.y, 0));
     }
 
     void FinishState()
