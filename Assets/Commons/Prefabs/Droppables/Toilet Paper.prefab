@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &3093899526177870364
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417745576205106174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5dcc82af265e804da5851eb26be3c06, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2754458018580226968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668326190196967851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c7964207506bd488c5cdda7958a7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerOnPick: 101
+  particleToActive: {fileID: 8030561523047415463}
+  setCharacterAsParent: 0
+  gameObjectOnPick:
+    instantiatedGameObject: {fileID: 0}
+    timeAutodestruction: 0
+  particlesOnPick: {fileID: 0}
+  audioOnPick:
+    audioClip: {fileID: 8300000, guid: 792ff5194574d9a41a5595f8738bd412, type: 3}
+    volume: 0.2
+  movement: {x: 0, y: 1, z: 0}
+  sizeToReach: 1.5
+  durationMovement: 0.8
+  easeMovement1: 0
+  moveToToiletPaperInUI: 1
+  movement2: {x: 0, y: -1, z: 0}
+  sizeToReach2: 0.3
+  durationMovement2: 0.5
+  easeMovement2: 13
 --- !u!1 &7690451433242541895
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,56 +131,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2754458018580226968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4668326190196967851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69c7964207506bd488c5cdda7958a7a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerOnPick: 101
-  particleToActive: {fileID: 8030561523047415463}
-  setCharacterAsParent: 0
-  gameObjectOnPick:
-    instantiatedGameObject: {fileID: 0}
-    timeAutodestruction: 0
-  particlesOnPick: {fileID: 0}
-  audioOnPick:
-    audioClip: {fileID: 8300000, guid: 792ff5194574d9a41a5595f8738bd412, type: 3}
-    volume: 0.241
-  movement: {x: 0, y: 1, z: 0}
-  sizeToReach: 1.5
-  durationMovement: 0.8
-  easeMovement1: 0
-  moveToToiletPaperInUI: 1
-  movement2: {x: 0, y: -1, z: 0}
-  sizeToReach2: 0.3
-  durationMovement2: 0.5
-  easeMovement2: 13
---- !u!95 &3093899526177870364
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417745576205106174}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c5dcc82af265e804da5851eb26be3c06, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6432875141904383338
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &3093899526177870364
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417745576205106174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04950f453384a214b953cf47a0c193be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6568582897142331276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668326190196967851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d97578c3747c9041b535ebeb4802cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthGiven: 10
+  setCharacterAsParent: 0
+  gameObjectOnPick:
+    instantiatedGameObject: {fileID: 0}
+    timeAutodestruction: 0
+  particlesOnPick: {fileID: 0}
+  audioOnPick:
+    audioClip: {fileID: 8300000, guid: 792ff5194574d9a41a5595f8738bd412, type: 3}
+    volume: 0.2
 --- !u!1 &7690451433242541895
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,46 +121,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6568582897142331276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4668326190196967851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d97578c3747c9041b535ebeb4802cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthGiven: 10
-  setCharacterAsParent: 0
-  gameObjectOnPick:
-    instantiatedGameObject: {fileID: 0}
-    timeAutodestruction: 0
-  particlesOnPick: {fileID: 0}
-  audioOnPick:
-    audioClip: {fileID: 0}
-    volume: 0
---- !u!95 &3093899526177870364
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417745576205106174}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 04950f453384a214b953cf47a0c193be, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8844068077113913869
 PrefabInstance:
   m_ObjectHideFlags: 0
