@@ -101,9 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   durationState: 20
   durationMovementOutOfScreen: 2
-  damage: 30
-  durationBombExplosion: 1.5
-  delayFirstBomb: 4
+  damage: 15
+  durationBombExplosion: 3
+  delayFirstBomb: 2
   delayBetweenBombs: 1
   callBombStateEvent: 1
 --- !u!91 &9100000
@@ -215,11 +215,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760d84aec2bb4b54287a9b37f37f3e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationState: 6
+  durationState: 20
   durationMovementInsideOfScreen: 2
   overwriteNoiseAccuracyFirstShoot: 1
-  noiseAccuracyFirstShoot: 30
-  delayFirstShoot: 4
+  noiseAccuracyFirstShoot: 0
+  delayFirstShoot: 3
   delayBetweenShoots: 1
   callShootStateEvent: 1
 --- !u!1101 &6293415008906377840
