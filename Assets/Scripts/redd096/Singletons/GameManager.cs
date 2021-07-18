@@ -3,10 +3,32 @@
     using System.Collections.Generic;
     using UnityEngine;
 
+    #region save class
+
+    [System.Serializable]
+    public class TutorialSaveClass
+    {
+        public bool firstTime = true;
+
+        public TutorialSaveClass(bool firstTime)
+        {
+            this.firstTime = firstTime;
+        }
+    }
+
+    #endregion
+
     [AddComponentMenu("redd096/Singletons/Game Manager")]
     [DefaultExecutionOrder(-100)]
     public class GameManager : Singleton<GameManager>
     {
+        public const string TUTORIALNAME = "First Time";
+
+        [Header("Tutorial or Shop ?")]
+        [SerializeField] bool saveToNotRepeatAgain = true;
+        [SerializeField] string tutorialSceneName = "Scena Tutorial";
+        [SerializeField] string shopSceneName = "Scena Negozio";
+
         [Header("Saved elements for this run")]
         public List<GameObject> LevelsAlreadySeen = new List<GameObject>();
         public List<WeaponBASE> WeaponsAlreadyUsed = new List<WeaponBASE>();
@@ -15,7 +37,7 @@
         public int CurrentToiletPaper = 0;
         public float CurrentLife = 0;
         public int CurrentRoom = 0;
-        public bool FirstRoom = true;
+        [SerializeField] bool firstRoom = true;
 
         public UIManager uiManager { get; private set; }
         public LevelManager levelManager { get; private set; }
@@ -47,10 +69,8 @@
         public void PickWeaponSaved(Player player, WeaponBASE playerWeaponPrefab)
         {
             //in first room, pick weapon from player inspector
-            if(FirstRoom)
+            if(firstRoom)
             {
-                FirstRoom = false;
-
                 player.PickWeapon(playerWeaponPrefab);
             }
             //after, pick weapon from saved one
@@ -76,7 +96,25 @@
             CurrentToiletPaper = 0;
             CurrentLife = 0;
             CurrentRoom = 0;
-            FirstRoom = true;
+            firstRoom = true;
+        }
+
+        public void LoadTutorialOrShop()
+        {
+            //check if already saved tutorial, load shop
+            if (saveToNotRepeatAgain)
+            {
+                TutorialSaveClass save = SaveLoadJSON.Load<TutorialSaveClass>(TUTORIALNAME);
+                if (save != null && save.firstTime == false)
+                {
+                    SceneLoader.instance.LoadScene(shopSceneName);
+                    return;
+                }
+            }
+
+            //else load tutorial scene
+            SceneLoader.instance.LoadScene(tutorialSceneName);
+            SaveLoadJSON.Save(TUTORIALNAME, new TutorialSaveClass(true));
         }
     }
 }
