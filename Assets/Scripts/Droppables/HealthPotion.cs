@@ -42,13 +42,19 @@ public class HealthPotion : MonoBehaviour, IDroppable
 
             //set parent
             if (setCharacterAsParent)
+            {
                 instantiatedGameObject.transform.SetParent(character.transform);
+                instantiatedGameObject.transform.position = character.transform.position;
+            }
         }
 
         //particles and set parent
         ParticleSystem instantiatedParticles = ParticlesManager.instance.Play(particlesOnPick, transform.position, transform.rotation);
         if (instantiatedParticles && setCharacterAsParent)
+        {
             instantiatedParticles.transform.SetParent(character.transform);
+            instantiatedParticles.transform.position = character.transform.position;
+        }
 
         SoundManager.instance.Play(audioOnPick.audioClip, transform.position, audioOnPick.volume);
     }
