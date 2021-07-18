@@ -61,6 +61,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
+      propertyPath: audioOnPress.volume
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: audioOnShoot.volume
+      value: 0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: audioOnPress.audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: audioOnShoot.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4662c49afacea9e489839c632ed1f3f9, type: 3}
+    - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
       propertyPath: gameObjectOnInstantiateBullet.timeAutodestruction
       value: 0.3
       objectReference: {fileID: 0}
