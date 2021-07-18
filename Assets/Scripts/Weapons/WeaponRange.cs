@@ -39,6 +39,8 @@ public class WeaponRange : WeaponBASE
     //events
     public System.Action<Transform> onInstantiateBullet { get; set; }
     public System.Action onShoot { get; set; }
+    public System.Action onPressAttack { get; set; }
+    public System.Action onReleaseAttack { get; set; }
 
     public override void PressAttack()
     {
@@ -53,6 +55,9 @@ public class WeaponRange : WeaponBASE
             //start coroutine if automatic
             if(automatic)
                 automaticShootCoroutine = StartCoroutine(AutomaticShootCoroutine());
+
+            //call event
+            onPressAttack?.Invoke();
         }
     }
 
@@ -61,6 +66,9 @@ public class WeaponRange : WeaponBASE
         //stop coroutine if running (automatic shoot)
         if (automaticShootCoroutine != null)
             StopCoroutine(automaticShootCoroutine);
+
+        //call event
+        onReleaseAttack?.Invoke();
     }
 
     #region private API

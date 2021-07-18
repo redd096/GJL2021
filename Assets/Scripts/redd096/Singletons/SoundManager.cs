@@ -55,11 +55,11 @@
         /// <summary>
         /// Start audio clip. Can set volume and loop
         /// </summary>
-        public static void Play(AudioSource audioSource, AudioClip clip, bool forceReplay, float volume = 1, bool loop = false)
+        public static AudioSource Play(AudioSource audioSource, AudioClip clip, bool forceReplay, float volume = 1, bool loop = false)
         {
             //be sure to have audio source
             if (audioSource == null)
-                return;
+                return null;
 
             //change only if different clip (so we can have same music in different scenes without stop)
             if (forceReplay || audioSource.clip != clip)
@@ -69,7 +69,10 @@
                 audioSource.loop = loop;
 
                 audioSource.Play();
+                return audioSource;
             }
+
+            return null;
         }
 
         #endregion
@@ -79,10 +82,10 @@
         /// <summary>
         /// Start audio clip for background. Can set volume and loop
         /// </summary>
-        public void PlayBackgroundMusic(AudioClip clip, float volume = 1, bool loop = false)
+        public AudioSource PlayBackgroundMusic(AudioClip clip, float volume = 1, bool loop = false)
         {
             //start music from this audio source
-            Play(BackgroundAudioSource, clip, false, volume, loop);
+            return Play(BackgroundAudioSource, clip, false, volume, loop);
         }
 
         #endregion
@@ -92,10 +95,10 @@
         /// <summary>
         /// Start audio clip at point. Can set volume. Use specific pooling
         /// </summary>
-        public void Play(Pooling<AudioSource> pool, AudioClip clip, Vector3 position, float volume = 1)
+        public AudioSource Play(Pooling<AudioSource> pool, AudioClip clip, Vector3 position, float volume = 1)
         {
             if (clip == null)
-                return;
+                return null;
 
             //instantiate (if didn't find deactivated, take first one in the pool)
             AudioSource audioSource = pool.Instantiate(audioPrefab);
@@ -104,33 +107,33 @@
 
             //if still null, return
             if (audioSource == null)
-                return;
+                return null;
 
             //set position, rotation and parent
             audioSource.transform.position = position;
             audioSource.transform.SetParent(SoundsParent);
 
             //play and start coroutine to deactivate
-            Play(audioSource, clip, true, volume);
             StartCoroutine(DeactiveSoundAtPointCoroutine(audioSource));
+            return Play(audioSource, clip, true, volume);
         }
 
         /// <summary>
         /// Start audio clip at point. Can set volume
         /// </summary>
-        public void Play(AudioClip clip, Vector3 position, float volume = 1)
+        public AudioSource Play(AudioClip clip, Vector3 position, float volume = 1)
         {
             //use this manager's pooling, instead of a specific one
-            Play(poolingSounds, clip, position, volume);
+            return Play(poolingSounds, clip, position, volume);
         }
 
         /// <summary>
         /// Start audio clip at point, with selected volume
         /// </summary>
-        public void Play(AudioStruct audio, Vector3 position)
+        public AudioSource Play(AudioStruct audio, Vector3 position)
         {
             //use this manager's pooling, instead of a specific one
-            Play(poolingSounds, audio.audioClip, position, audio.volume);
+            return Play(poolingSounds, audio.audioClip, position, audio.volume);
         }
 
         IEnumerator DeactiveSoundAtPointCoroutine(AudioSource audioToDeactivate)
@@ -147,25 +150,29 @@
         /// <summary>
         /// Start audio clip at point. Can set volume. Get clip random from the array
         /// </summary>
-        public void Play(AudioClip[] clips, Vector3 position, float volume = 1)
+        public AudioSource Play(AudioClip[] clips, Vector3 position, float volume = 1)
         {
             //do only if there are elements in the array
             if (clips.Length > 0)
             {
-                Play(clips[Random.Range(0, clips.Length)], position, volume);
+                return Play(clips[Random.Range(0, clips.Length)], position, volume);
             }
+
+            return null;
         }
 
         /// <summary>
         /// Start audio clip at point. Get clip and volume random from the array
         /// </summary>
-        public void Play(AudioStruct[] audios, Vector3 position)
+        public AudioSource Play(AudioStruct[] audios, Vector3 position)
         {
             //do only if there are elements in the array
             if (audios.Length > 0)
             {
-                Play(audios[Random.Range(0, audios.Length)], position);
+                return Play(audios[Random.Range(0, audios.Length)], position);
             }
+
+            return null;
         }
 
         #endregion

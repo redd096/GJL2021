@@ -20,6 +20,18 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
     [CanShow("cameraShake", "customShake")] [SerializeField] float shakeDuration = 1;
     [CanShow("cameraShake", "customShake")] [SerializeField] float shakeAmount = 0.7f;
 
+    [Header("On Press Attack (only one object, not pooling)")]
+    [SerializeField] Transform barrelOnPress = default;
+    [SerializeField] GameObject gameObjectOnPress = default;
+    [SerializeField] ParticleSystem particlesOnPress = default;
+    [SerializeField] AudioSource audioSourcePrefab = default;
+    [SerializeField] AudioStruct audioOnPress = default;
+
+    //on release attack
+    GameObject instantiatedGameObjectOnPress;
+    ParticleSystem instantiatedParticlesOnPress;
+    AudioSource instantiatedAudioOnPress;
+
     WeaponRange weaponRange;
 
     protected override void OnEnable()
@@ -36,6 +48,8 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
         {
             weaponRange.onInstantiateBullet += OnInstantiateBullet;
             weaponRange.onShoot += OnShoot;
+            weaponRange.onPressAttack += OnPressAttack;
+            weaponRange.onReleaseAttack += OnReleaseAttack;
         }
     }
 
@@ -48,6 +62,8 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
         {
             weaponRange.onInstantiateBullet -= OnInstantiateBullet;
             weaponRange.onShoot -= OnShoot;
+            weaponRange.onPressAttack -= OnPressAttack;
+            weaponRange.onReleaseAttack -= OnReleaseAttack;
         }
     }
 
@@ -86,6 +102,81 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
                 CameraShake.instance.StartShake(shakeDuration, shakeAmount);
             else
                 CameraShake.instance.StartShake();
+        }
+    }
+
+    void OnPressAttack()
+    {
+        //if first time, instantiate prefabs
+        {
+            //instantiate game object
+            if (gameObjectOnPress && instantiatedGameObjectOnPress == null)
+            {
+                instantiatedGameObjectOnPress = Instantiate(gameObjectOnPress);
+            }
+            //instantiate particles
+            if (particlesOnPress && instantiatedParticlesOnPress == null)
+            {
+                instantiatedParticlesOnPress = Instantiate(particlesOnPress);
+            }
+            //instantiate audiosource
+            if (audioOnPress.audioClip && audioSourcePrefab && instantiatedAudioOnPress == null)
+            {
+                instantiatedAudioOnPress = Instantiate(audioSourcePrefab);
+                instantiatedAudioOnPress.clip = audioOnPress.audioClip;
+                instantiatedAudioOnPress.volume = audioOnPress.volume;
+            }
+        }
+
+        //set game object
+        if(instantiatedGameObjectOnPress)
+        {
+            instantiatedGameObjectOnPress.transform.position = barrelOnPress.position;
+            instantiatedGameObjectOnPress.transform.rotation = barrelOnPress.rotation;
+
+            //rotate left/right and set parent
+            instantiatedGameObjectOnPress.transform.localScale = transform.lossyScale;
+            instantiatedGameObjectOnPress.transform.SetParent(transform);
+
+            instantiatedGameObjectOnPress.SetActive(true);
+        }
+        //set particles
+        if(instantiatedParticlesOnPress)
+        {
+            instantiatedParticlesOnPress.transform.position = barrelOnPress.position;
+            instantiatedParticlesOnPress.transform.rotation = barrelOnPress.rotation;
+
+            //play
+            instantiatedParticlesOnPress.gameObject.SetActive(true);
+            instantiatedParticlesOnPress.Play();
+        }
+        //set audiosource
+        if(instantiatedAudioOnPress)
+        {
+            instantiatedAudioOnPress.transform.position = barrelOnPress.position;
+
+            //play
+            instantiatedAudioOnPress.gameObject.SetActive(true);
+            instantiatedAudioOnPress.Play();
+        }
+    }
+
+    void OnReleaseAttack()
+    {
+        //deactive game object
+        if (instantiatedGameObjectOnPress)
+        {
+            instantiatedGameObjectOnPress.SetActive(false);
+        }
+        //deactive particles
+        if(instantiatedParticlesOnPress)
+        {
+            instantiatedParticlesOnPress.gameObject.SetActive(false);
+        }
+        //deactive sound
+        if(instantiatedAudioOnPress)
+        {
+            instantiatedAudioOnPress.gameObject.SetActive(false);
         }
     }
 }
