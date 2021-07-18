@@ -489,15 +489,33 @@ MonoBehaviour:
   animationsOnEnter: []
   gameObjectsOnOpen: []
   particlesOnOpen: []
-  audiosOnOpen: []
+  audiosOnOpen:
+  - audioClip: {fileID: 8300000, guid: 461546b96ededf748aaf217961a8ddee, type: 3}
+    volume: 0.2
+  - audioClip: {fileID: 8300000, guid: 2ac0fa7fead09e4428e5a5fc2c5e3cf9, type: 3}
+    volume: 0.2
+  - audioClip: {fileID: 8300000, guid: ae83c0df6ae05a64e9027ae90476460a, type: 3}
+    volume: 0.2
   animationsOnOpen: []
   gameObjectsOnClose: []
   particlesOnClose: []
-  audiosOnClose: []
+  audiosOnClose:
+  - audioClip: {fileID: 8300000, guid: 81937a9ea27c2064a86b8f3833e7a93d, type: 3}
+    volume: 0.2
+  - audioClip: {fileID: 8300000, guid: fcdeadfeffce10142aa0d9ae716c7770, type: 3}
+    volume: 0.2
+  - audioClip: {fileID: 8300000, guid: 89e3caf2933552b4686f4b1b06b1542d, type: 3}
+    volume: 0.2
   animationsOnClose: []
   gameObjectsOnBuy: []
   particlesOnBuy: []
-  audiosOnBuy: []
+  audiosOnBuy:
+  - audioClip: {fileID: 8300000, guid: 23704246145f4f343aadb67aae6820a9, type: 3}
+    volume: 0.2
+  - audioClip: {fileID: 8300000, guid: 12b5fa141dbea8e43b0f83ac509cfb38, type: 3}
+    volume: 0.2
+  - audioClip: {fileID: 8300000, guid: 24f0a55caad89564e9cdd9a1b2679254, type: 3}
+    volume: 0.2
   animationsOnBuy: []
   gameObjectsOnSelect: []
   particlesOnSelect: []
