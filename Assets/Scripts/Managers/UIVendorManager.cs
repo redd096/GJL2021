@@ -254,6 +254,9 @@ public class UIVendorManager : MonoBehaviour
         isOpen = true;
         interactableForThisVendor = interactable;
 
+        //show cursor
+        SceneLoader.instance.LockMouse(CursorLockMode.None);
+
         //set player using this vendor
         playerUsingVendor = player;
         playerUsingVendor.SetState("Vendor");
@@ -280,6 +283,9 @@ public class UIVendorManager : MonoBehaviour
         isOpen = false;
         interactableForThisVendor?.ReactiveInteractable();
         interactableForThisVendor = null;
+
+        //hide cursor
+        SceneLoader.instance.LockMouse(CursorLockMode.Confined);
 
         //stop player using this vendor
         playerUsingVendor?.SetState("Vendor");
