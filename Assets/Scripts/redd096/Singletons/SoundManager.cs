@@ -55,11 +55,11 @@
         /// <summary>
         /// Start audio clip. Can set volume and loop
         /// </summary>
-        public static AudioSource Play(AudioSource audioSource, AudioClip clip, bool forceReplay, float volume = 1, bool loop = false)
+        public static void Play(AudioSource audioSource, AudioClip clip, bool forceReplay, float volume = 1, bool loop = false)
         {
             //be sure to have audio source
             if (audioSource == null)
-                return null;
+                return;
 
             //change only if different clip (so we can have same music in different scenes without stop)
             if (forceReplay || audioSource.clip != clip)
@@ -69,10 +69,7 @@
                 audioSource.loop = loop;
 
                 audioSource.Play();
-                return audioSource;
             }
-
-            return null;
         }
 
         #endregion
@@ -82,10 +79,10 @@
         /// <summary>
         /// Start audio clip for background. Can set volume and loop
         /// </summary>
-        public AudioSource PlayBackgroundMusic(AudioClip clip, float volume = 1, bool loop = false)
+        public void PlayBackgroundMusic(AudioClip clip, float volume = 1, bool loop = false)
         {
             //start music from this audio source
-            return Play(BackgroundAudioSource, clip, false, volume, loop);
+            Play(BackgroundAudioSource, clip, false, volume, loop);
         }
 
         #endregion
@@ -114,8 +111,10 @@
             audioSource.transform.SetParent(SoundsParent);
 
             //play and start coroutine to deactivate
+            Play(audioSource, clip, true, volume);
             StartCoroutine(DeactiveSoundAtPointCoroutine(audioSource));
-            return Play(audioSource, clip, true, volume);
+
+            return audioSource;
         }
 
         /// <summary>
@@ -139,7 +138,7 @@
         IEnumerator DeactiveSoundAtPointCoroutine(AudioSource audioToDeactivate)
         {
             //wait to end the clip
-            if (audioToDeactivate && audioToDeactivate.clip)
+            if (audioToDeactivate)
                 yield return new WaitForSeconds(audioToDeactivate.clip.length);
 
             //and deactive
