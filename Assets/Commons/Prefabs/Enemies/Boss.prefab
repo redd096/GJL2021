@@ -495,12 +495,12 @@ MonoBehaviour:
   Target: {fileID: 0}
   LastTargetPosition: {x: 0, y: 0, z: 0}
   PositionOutScreen: {x: 0, y: 13}
-  RangeBossAttack: {x: 20, y: 10}
+  RangeBossAttack: {x: 22, y: 10}
   BombPrefab: {fileID: 5101052746397492727, guid: 2abd4c3a640adc744b9a27662d2cdbcc,
     type: 3}
   BombCircle: {fileID: 1281022944873282570, guid: bfd0ed940e371624a82748adb57c577e,
     type: 3}
-  RangeWhereToStop: {x: 20, y: 10}
+  RangeWhereToStop: {x: 20, y: 8}
   BarrelsForEveryAttack:
   - barrels:
     - {fileID: 610810023109160455}
