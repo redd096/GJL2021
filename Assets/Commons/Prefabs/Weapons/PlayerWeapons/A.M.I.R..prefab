@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponName: A.M.I.R.
-  WeaponPrice: 10
+  WeaponPrice: 2
   Owner: {fileID: 0}
   automatic: 1
   rateOfFire: 0.08
@@ -106,6 +106,13 @@ MonoBehaviour:
   customShake: 0
   shakeDuration: 1
   shakeAmount: 0.7
+  barrelOnPress: {fileID: 0}
+  gameObjectOnPress: {fileID: 0}
+  particlesOnPress: {fileID: 0}
+  audioSourcePrefab: {fileID: 0}
+  audioOnPress:
+    audioClip: {fileID: 0}
+    volume: 0
 --- !u!1 &3182246790672316037
 GameObject:
   m_ObjectHideFlags: 0
