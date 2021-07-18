@@ -26,6 +26,7 @@ public class EnemyBoss : Enemy
     public System.Action onBombState { get; set; }
     public System.Action onShootState { get; set; }
     public System.Action onIdleState { get; set; }
+    public System.Action onEndIdleState { get; set; }
 
     protected override void OnDrawGizmos()
     {

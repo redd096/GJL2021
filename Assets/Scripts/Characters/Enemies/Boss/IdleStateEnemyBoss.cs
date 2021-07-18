@@ -12,6 +12,7 @@ public class IdleStateEnemyBoss : StateMachineBehaviour
 
     [Header("Event Animation On Enter State")]
     [SerializeField] bool callIdleStateEvent = true;
+    [SerializeField] bool callEndIdleStateEvent = true;
 
     EnemyBoss enemy;
     float timeFinishState;
@@ -20,6 +21,7 @@ public class IdleStateEnemyBoss : StateMachineBehaviour
     //after few seconds, call "Next State"
     //
     //when enter state call also enemy.onIdleState event
+    //when call "Next State", call also enemy.onEndIdleState event
     //
     //can look at last target position                              (try change target if null)
     //after few seconds, call Next State
@@ -55,6 +57,15 @@ public class IdleStateEnemyBoss : StateMachineBehaviour
         //wait timer, then finish state
         if (Time.time > timeFinishState)
             FinishState();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+
+        //call state event
+        if(callEndIdleStateEvent)
+            enemy.onEndIdleState?.Invoke();
     }
 
     #region private API

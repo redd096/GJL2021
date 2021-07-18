@@ -50,6 +50,7 @@ public class BossFeedbacks : MonoBehaviour
             boss.onBombState += OnBombState;
             boss.onShootState += OnShootState;
             boss.onIdleState += OnIdleState;
+            boss.onEndIdleState += OnEndIdleState;
         }
     }
 
@@ -64,6 +65,7 @@ public class BossFeedbacks : MonoBehaviour
             boss.onBombState -= OnBombState;
             boss.onShootState -= OnShootState;
             boss.onIdleState -= OnIdleState;
+            boss.onEndIdleState -= OnEndIdleState;
         }
     }
 
@@ -139,5 +141,11 @@ public class BossFeedbacks : MonoBehaviour
 
         //set animator
         anim.SetTrigger("Idle");
+    }
+
+    void OnEndIdleState()
+    {
+        //set animator
+        anim.SetTrigger("End Idle");
     }
 }
