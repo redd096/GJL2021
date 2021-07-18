@@ -91,14 +91,14 @@
         /// </summary>
         public void ResetAll()
         {
-            LevelsAlreadySeen.Clear();
-            WeaponsAlreadyUsed.Clear();
-            CurrentWeapon = null;
-            CurrentWeaponSprite = null;
-            CurrentToiletPaper = 0;
-            CurrentLife = 0;
-            CurrentRoom = 0;
-            firstRoom = true;
+            instance.LevelsAlreadySeen.Clear();
+            instance.WeaponsAlreadyUsed.Clear();
+            instance.CurrentWeapon = null;
+            instance.CurrentWeaponSprite = null;
+            instance.CurrentToiletPaper = 0;
+            instance.CurrentLife = 0;
+            instance.CurrentRoom = 0;
+            instance.firstRoom = true;
         }
 
         public void LoadTutorialOrShop()
