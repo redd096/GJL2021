@@ -241,6 +241,7 @@ MonoBehaviour:
   secondsBeforeRemove: 10
   pushForce: {x: 0, y: 0}
   currentSpeed: 0
+  maxHealth: 0
   doDamageOnHit: 0
   ignoreShieldOnHit: 0
   useTrigger: 0
@@ -284,4 +285,4 @@ MonoBehaviour:
       type: 3}
     audioOnDrop:
       audioClip: {fileID: 8300000, guid: 99cc67d58eb4f4e47b9c956a374ecb0f, type: 3}
-      volume: 0.092
+      volume: 0.1
