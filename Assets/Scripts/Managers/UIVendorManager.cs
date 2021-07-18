@@ -218,6 +218,7 @@ public class UIVendorManager : MonoBehaviour
         //buy selected weapon
         playerUsingVendor.PickWeapon(selectedWeapon.weapon);
         GameManager.instance.CurrentToiletPaper -= selectedWeapon.weapon.WeaponPrice;
+        GameManager.instance.uiManager.UpdateToiletPaper(GameManager.instance.CurrentToiletPaper);
 
         //close vendor
         CloseVendor();
