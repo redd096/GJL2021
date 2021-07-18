@@ -11,7 +11,7 @@ public class WeaponRange : WeaponBASE
     public float NoiseAccuracy = 10;                        //rotate random the shot when instantiated
 
     [Header("Barrel")]
-    [SerializeField] Transform[] barrels = default;         //spawn bullets - if more than one, shoot from every barrel
+    public Transform[] barrels = default;         //spawn bullets - if more than one, shoot from every barrel
     [SerializeField] bool barrelSimultaneously = true;      //when more than one barrel, shoot every bullet simultaneously or with a delay (use always rate of fire)
 
     [Header("Bullet")]

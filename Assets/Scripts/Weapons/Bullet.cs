@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     [CanShow("doAreaDamage")] [SerializeField] bool knockbackAlsoInArea = true;            //do knockback also who hit in area
 
     [Header("Timer Autodestruction (0 = no autodestruction)")]
-    [SerializeField] float delayAutodestruction = 0;
+    [SerializeField] public float delayAutodestruction = 0;
     [CanShow("doAreaDamage")] [SerializeField] bool doAreaDamageAlsoOnAutoDestruction = true;
 
     [Header("DEBUG")]

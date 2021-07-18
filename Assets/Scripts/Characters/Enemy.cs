@@ -16,7 +16,7 @@ public class Enemy : Character
     [CanShow("knockBackPlayerOnHit")] [SerializeField] float damageOnHitEnemy = 10;
 
     [Header("DEBUG ENEMY")]
-    [ReadOnly] [SerializeField] Transform pointPatrol;
+    [ReadOnly] [SerializeField] protected Transform pointPatrol;
     [ReadOnly] public Player Target;
     [ReadOnly] public Vector3 LastTargetPosition;
 
