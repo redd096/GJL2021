@@ -95,6 +95,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerOnPick: 101
   particleToActive: {fileID: 8030561523047415463}
+  setCharacterAsParent: 0
+  gameObjectOnPick:
+    instantiatedGameObject: {fileID: 0}
+    timeAutodestruction: 0
+  particlesOnPick: {fileID: 0}
+  audioOnPick:
+    audioClip: {fileID: 8300000, guid: 792ff5194574d9a41a5595f8738bd412, type: 3}
+    volume: 0.241
   movement: {x: 0, y: 1, z: 0}
   sizeToReach: 1.5
   durationMovement: 0.8
