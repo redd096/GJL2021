@@ -9,7 +9,7 @@ public struct BossBarrelsStruct
 
 public class EnemyBoss : Enemy
 {
-    [Header("Boss Bomb State (red)")]
+    [Header("Boss Bomb State (cyan)")]
     public Vector2 PositionOutScreen = Vector2.up * 10;
     public Vector2 RangeBossAttack = Vector2.one;
     public Bullet BombPrefab = default;
@@ -32,7 +32,7 @@ public class EnemyBoss : Enemy
         base.OnDrawGizmos();
 
         //line to position out screen
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, PositionOutScreen);
 
         //bomb area
@@ -46,6 +46,7 @@ public class EnemyBoss : Enemy
     protected override void Update()
     {
         //don't push character
+        Rb.velocity = Vector2.zero;
     }
 
     public void FindNearestEnemy()
