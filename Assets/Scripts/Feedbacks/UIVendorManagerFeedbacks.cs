@@ -107,7 +107,8 @@ public class UIVendorManagerFeedbacks : MonoBehaviour
         SoundManager.instance.Play(audiosOnEvent, transform.position);
 
         //set animations
-        anim.SetTrigger(animationsOnEvent[Random.Range(0, animationsOnEvent.Length)]);
+        if(animationsOnEvent.Length > 0)
+            anim.SetTrigger(animationsOnEvent[Random.Range(0, animationsOnEvent.Length)]);
     }
 
     #region events
