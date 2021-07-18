@@ -107,13 +107,13 @@
                 TutorialSaveClass save = SaveLoadJSON.Load<TutorialSaveClass>(TUTORIALNAME);
                 if (save != null && save.firstTime == false)
                 {
-                    SceneLoader.instance.LoadScene(shopSceneName);
+                    FindObjectOfType<SceneLoader>().LoadScene(shopSceneName);
                     return;
                 }
             }
 
             //else load tutorial scene
-            SceneLoader.instance.LoadScene(tutorialSceneName);
+            FindObjectOfType<SceneLoader>().LoadScene(tutorialSceneName);
             SaveLoadJSON.Save(TUTORIALNAME, new TutorialSaveClass(true));
         }
     }

@@ -121,14 +121,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5584576993007751574, guid: 2cca78376824f3246a8f01213a9bb640,
           type: 3}
-        m_MethodName: ExitGame
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Main Menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1244642704256052954
@@ -631,18 +631,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5584576993007751574, guid: 2cca78376824f3246a8f01213a9bb640,
-          type: 3}
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Scena Game
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6775149040864764065, guid: 2cca78376824f3246a8f01213a9bb640,
           type: 3}
         m_MethodName: ResetAll
@@ -653,6 +641,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5584576993007751574, guid: 2cca78376824f3246a8f01213a9bb640,
+          type: 3}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Scena Negozio
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6138552245964950957
@@ -892,14 +892,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5584576993007751574, guid: 2cca78376824f3246a8f01213a9bb640,
           type: 3}
-        m_MethodName: ExitGame
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Main Menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6138552246186909638
