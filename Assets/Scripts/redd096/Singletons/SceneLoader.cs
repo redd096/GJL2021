@@ -15,7 +15,7 @@
         void LockMouse(CursorLockMode lockMode)
         {
             Cursor.lockState = lockMode;
-            Cursor.visible = lockMode != CursorLockMode.Locked;
+            Cursor.visible = lockMode == CursorLockMode.None;
         }
 
         #endregion
