@@ -90,9 +90,7 @@
             //do only if there are elements in the array
             if (prefabs.Length > 0)
             {
-                InstantiatedGameObjectStruct prefab = prefabs[Random.Range(0, prefabs.Length)];
-
-                return Play(prefab, position, rotation);
+                return Play(prefabs[Random.Range(0, prefabs.Length)], position, rotation);
             }
 
             return null;

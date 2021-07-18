@@ -124,6 +124,15 @@
             Play(poolingSounds, clip, position, volume);
         }
 
+        /// <summary>
+        /// Start audio clip at point, with selected volume
+        /// </summary>
+        public void Play(AudioStruct audio, Vector3 position)
+        {
+            //use this manager's pooling, instead of a specific one
+            Play(poolingSounds, audio.audioClip, position, audio.volume);
+        }
+
         IEnumerator DeactiveSoundAtPointCoroutine(AudioSource audioToDeactivate)
         {
             //wait to end the clip
@@ -155,9 +164,7 @@
             //do only if there are elements in the array
             if (audios.Length > 0)
             {
-                AudioStruct audio = audios[Random.Range(0, audios.Length)];
-
-                Play(audio.audioClip, position, audio.volume);
+                Play(audios[Random.Range(0, audios.Length)], position);
             }
         }
 

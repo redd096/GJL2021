@@ -31,6 +31,13 @@ public class UIVendorManager : MonoBehaviour
     IInteractable interactableForThisVendor;                                    //which interactable opened this vendor? - Unfortunately can't be shown in inspector
     [ReadOnly] [SerializeField] WeaponVendorStruct selectedWeapon;              //the weapon currently selected
 
+    //animation events
+    public System.Action onEnterInVendorScene { get; set; }
+    public System.Action onOpenVendor { get; set; }
+    public System.Action onCloseVendor { get; set; }
+    public System.Action<WeaponBASE> onBuy { get; set; }
+    public System.Action<WeaponBASE> onSelectAnotherWeapon { get; set; }
+
     void Start()
     {
         //by default, hide shop
@@ -41,6 +48,9 @@ public class UIVendorManager : MonoBehaviour
 
         //hide selected weapon UI by default
         ShowHideSelectedWeaponUI(false);
+
+        //call event
+        onEnterInVendorScene?.Invoke();
     }
 
     void Update()
@@ -58,17 +68,13 @@ public class UIVendorManager : MonoBehaviour
                     if (weaponStruct.weaponButton.gameObject == EventSystemRedd096.current.currentSelectedGameObject && selectedWeapon.weaponButton != weaponStruct.weaponButton)
                         SelectWeapon(weaponStruct);
                 }
-
-                //if selected a weapon not available, select first available
-                if (selectedWeapon.weaponButton == null || selectedWeapon.weaponButton.interactable == false)
-                {
-                    SelectFirstWeaponAvailable();
-                    EventSystemRedd096.current.SetSelectedGameObject(selectedWeapon.weaponButton.gameObject);
-                }
             }
-            //else if player didn't select anything, select first weapon available
-            else
+
+            //if selected nothing OR selected a weapon not available
+            if(uiSelectedObject == null
+                || selectedWeapon.weaponButton == null || selectedWeapon.weaponButton.interactable == false)
             {
+                //select first weapon available
                 SelectFirstWeaponAvailable();
                 EventSystemRedd096.current.SetSelectedGameObject(selectedWeapon.weaponButton.gameObject);
             }
@@ -120,7 +126,7 @@ public class UIVendorManager : MonoBehaviour
         //active/deactive interactable button based on current toilet paper
         foreach (WeaponVendorStruct weaponStruct in weapons)
         {
-            if (weaponStruct.weaponButton == null || weaponStruct.weapon == null)
+            if (weaponStruct.weaponButton == null || weaponStruct.weapon == null)   //if no button can't set interactable, if no weapon will be hide in SetButtons
                 continue;
 
             if (weaponStruct.weapon.WeaponPrice <= GameManager.instance.CurrentToiletPaper)
@@ -132,7 +138,7 @@ public class UIVendorManager : MonoBehaviour
         //deactive weapons already seen
         foreach (WeaponVendorStruct weaponStruct in weapons)
         {
-            if (weaponStruct.weaponButton == null || weaponStruct.weapon == null)
+            if (weaponStruct.weaponButton == null || weaponStruct.weapon == null)   //if no button can't set interactable, if no weapon will be hide in SetButtons
                 continue;
 
             if (GameManager.instance.WeaponsAlreadyUsed.Contains(weaponStruct.weapon))
@@ -186,6 +192,10 @@ public class UIVendorManager : MonoBehaviour
             return;
         }
 
+        //call event only if change selected weapon, not when select first one (because first one is openVendor)
+        if (selectedWeapon.weapon)
+            onSelectAnotherWeapon?.Invoke(weaponStruct.weapon);
+
         //set selected weapon
         selectedWeapon = weaponStruct;
 
@@ -211,6 +221,9 @@ public class UIVendorManager : MonoBehaviour
 
         //close vendor
         CloseVendor();
+
+        //call event
+        onBuy?.Invoke(selectedWeapon.weapon);
     }
 
     /// <summary>
@@ -220,6 +233,9 @@ public class UIVendorManager : MonoBehaviour
     {
         //close vendor
         CloseVendor();
+
+        //call event
+        onCloseVendor?.Invoke();
     }
 
     #endregion
@@ -247,6 +263,9 @@ public class UIVendorManager : MonoBehaviour
 
         //show vendor
         shopToActive.SetActive(true);
+
+        //call event
+        onOpenVendor?.Invoke();
     }
 
     /// <summary>

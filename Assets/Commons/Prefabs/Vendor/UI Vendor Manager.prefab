@@ -390,6 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 758818638795394100}
   - component: {fileID: 758818638795394101}
+  - component: {fileID: 6424393725257700005}
   m_Layer: 0
   m_Name: UI Vendor Manager
   m_TagString: Untagged
@@ -469,6 +470,39 @@ MonoBehaviour:
   selectedWeapon:
     weaponButton: {fileID: 0}
     weapon: {fileID: 0}
+--- !u!114 &6424393725257700005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758818638795394107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf910319a6f7e34d91b7e67d6d8b901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  gameObjectsOnEnter: []
+  particlesOnEnter: []
+  audiosOnEnter: []
+  animationsOnEnter: []
+  gameObjectsOnOpen: []
+  particlesOnOpen: []
+  audiosOnOpen: []
+  animationsOnOpen: []
+  gameObjectsOnClose: []
+  particlesOnClose: []
+  audiosOnClose: []
+  animationsOnClose: []
+  gameObjectsOnBuy: []
+  particlesOnBuy: []
+  audiosOnBuy: []
+  animationsOnBuy: []
+  gameObjectsOnSelect: []
+  particlesOnSelect: []
+  audiosOnSelect: []
+  animationsOnSelect: []
 --- !u!1 &758818638800973486
 GameObject:
   m_ObjectHideFlags: 0
