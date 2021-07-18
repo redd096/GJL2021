@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   customDrag: 30
-  weaponPrefab: {fileID: 0}
+  WeaponPrefab: {fileID: 0}
   MaxHealth: 0
   DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
@@ -493,7 +493,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.030807048, y: 0.048531592}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -504,7 +504,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.34474164, y: 0.6985294}
   m_EdgeRadius: 0
 --- !u!1001 &1955258015810753452
 PrefabInstance:

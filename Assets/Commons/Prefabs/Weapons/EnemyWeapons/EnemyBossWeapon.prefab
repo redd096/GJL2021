@@ -28,6 +28,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6331313753230705135, guid: a91ec302fd85d3649b5356e48e9e127b,
         type: 3}
+    - target: {fileID: 1862482482030742672, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
+        type: 3}
+      propertyPath: NoiseAccuracy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742674, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: m_Name
