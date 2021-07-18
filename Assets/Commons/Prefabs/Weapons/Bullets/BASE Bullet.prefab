@@ -4914,7 +4914,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   ignoreShield: 0
-  knockBack: 0
+  knockBack: 10
   doAreaDamage: 0
   ignoreShieldAreaDamage: 0
   radiusAreaDamage: 0
