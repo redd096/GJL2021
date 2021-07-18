@@ -309,12 +309,12 @@ PrefabInstance:
     - target: {fileID: 5668475645687765778, guid: 506bd9c55924dba4d91c4fccc6f82517,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.086164
+      value: -7.84
       objectReference: {fileID: 0}
     - target: {fileID: 5668475645687765778, guid: 506bd9c55924dba4d91c4fccc6f82517,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1275327
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 5668475645687765778, guid: 506bd9c55924dba4d91c4fccc6f82517,
         type: 3}
@@ -1124,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: 3678769784504406802, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
         type: 3}
       propertyPath: cameraFollowPlayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3678769784504406893, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
         type: 3}
