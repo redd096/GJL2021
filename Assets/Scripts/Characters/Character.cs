@@ -1,13 +1,41 @@
 ﻿using UnityEngine;
 using redd096;
 
+#region editor
+
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(Character), true)]
+public class CharacterEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        Character character = target as Character;
+
+        if(GUILayout.Button("Drop Weapon"))
+        {
+            character.DropWeapon();
+        }
+        else if (GUILayout.Button("Equip Weapon"))
+        {
+            character.PickWeapon(character.WeaponPrefab);
+        }
+    }
+}
+#endif
+
+#endregion
+
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Character : MonoBehaviour, IDamageable
 {
     [Header("Character")]
     [SerializeField] protected float health = 100;
     [SerializeField] float customDrag = 30;
-    [SerializeField] protected WeaponBASE weaponPrefab = default;
+    public WeaponBASE WeaponPrefab = default;
 
     [Header("DEBUG")]
     [ReadOnly] public float MaxHealth = 0;

@@ -49,7 +49,7 @@ public class Player : Character
         }
 
         //if there a weapon saved in game manager, set it (or use weapon prefab for first room)
-        GameManager.instance.PickWeaponSaved(this, weaponPrefab);
+        GameManager.instance.PickWeaponSaved(this, WeaponPrefab);
 
         //get also life saved in game manager (or save in game manager)
         if (GameManager.instance.CurrentLife > 0)

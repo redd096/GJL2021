@@ -40,7 +40,7 @@ public class Enemy : Character
         pointPatrol.position = transform.position;
 
         //if there is a weapon by inspector, set it
-        PickWeapon(weaponPrefab);
+        PickWeapon(WeaponPrefab);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
