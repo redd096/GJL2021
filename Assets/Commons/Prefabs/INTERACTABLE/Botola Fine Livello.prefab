@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkNoEnemiesInScene: 1
   checkPlayerHasWeapon: 1
+  enemiesToIgnore:
+  - {fileID: 9100000, guid: c209efd1bd5619147b1551005531dedf, type: 2}
   updateVisitedRooms: 1
   destroyWeapon: 1
   timeBeforeLoadNewScene: 3
   sceneToLoad: Scena Negozio
+  finishTutorial: 0
   isOpen: 0
 --- !u!114 &5364919700012622153
 MonoBehaviour:

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using redd096;
 
 public class BotolaInteractable : MonoBehaviour, IInteractable
@@ -6,6 +7,7 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [Header("Rules to Open")]
     [SerializeField] bool checkNoEnemiesInScene = true;
     [SerializeField] bool checkPlayerHasWeapon = true;
+    [SerializeField] List<RuntimeAnimatorController> enemiesToIgnore = new List<RuntimeAnimatorController>();
 
     [Header("On Interact")]
     [SerializeField] bool updateVisitedRooms = true;
@@ -37,7 +39,19 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
 
         //check there are not enemies in scene
         if (canOpen && checkNoEnemiesInScene)
-            canOpen = FindObjectsOfType<Enemy>().Length <= 0;
+        {
+            //foreach enemy in scene
+            Enemy[] enemiesInScene = FindObjectsOfType<Enemy>();
+            foreach(Enemy enemyInScene in enemiesInScene)
+            {
+                //if there is an enemy, and is not an enemy to ignore, then can't open
+                if(enemiesToIgnore.Contains(enemyInScene.GetComponent<Animator>().runtimeAnimatorController) == false)
+                {
+                    canOpen = false;
+                    break;
+                }
+            }
+        }
 
         //check player has weapon equipped
         if (canOpen && checkPlayerHasWeapon)

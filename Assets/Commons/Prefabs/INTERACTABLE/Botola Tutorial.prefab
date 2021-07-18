@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkNoEnemiesInScene: 1
   checkPlayerHasWeapon: 1
+  enemiesToIgnore:
+  - {fileID: 9100000, guid: c209efd1bd5619147b1551005531dedf, type: 2}
   updateVisitedRooms: 0
   destroyWeapon: 1
   timeBeforeLoadNewScene: 3
