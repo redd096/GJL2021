@@ -12,7 +12,7 @@
         /// <summary>
         /// Set lockState, and visible only when not locked
         /// </summary>
-        void LockMouse(CursorLockMode lockMode)
+        public void LockMouse(CursorLockMode lockMode)
         {
             Cursor.lockState = lockMode;
             Cursor.visible = lockMode == CursorLockMode.None;

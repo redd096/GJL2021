@@ -37,6 +37,9 @@ public class Player : Character
     {
         base.Awake();
 
+        //lock mouse
+        SceneLoader.instance.LockMouse(CursorLockMode.Confined);
+
         //get references
         cam = Camera.main;
         playerInput = GetComponent<PlayerInput>();
