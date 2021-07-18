@@ -71,6 +71,8 @@
             //in first room, pick weapon from player inspector
             if(firstRoom)
             {
+                firstRoom = false;
+
                 player.PickWeapon(playerWeaponPrefab);
             }
             //after, pick weapon from saved one
