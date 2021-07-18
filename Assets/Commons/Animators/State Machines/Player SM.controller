@@ -295,7 +295,7 @@ MonoBehaviour:
   speed: 5
   canDash: 1
   dashForce: 10
-  dashDelay: 0.5
+  dashDelay: 1
   durationInvincible: 0.1
 --- !u!114 &2499942565069726917
 MonoBehaviour:
