@@ -233,7 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   customDrag: 30
-  weaponPrefab: {fileID: 0}
+  WeaponPrefab: {fileID: 2890288847764227051, guid: c7357ceffe9b066469b02a890b3dac26,
+    type: 3}
   MaxHealth: 0
   DirectionInput: {x: 0, y: 0}
   DirectionAim: {x: 0, y: 0}
