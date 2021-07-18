@@ -2,7 +2,7 @@
 
 public class FlameShot : MonoBehaviour
 {
-    [Header("Fire")]
+    [Header("Fire - ignore or restart Effect")]
     [SerializeField] float duration = 2;
     [SerializeField] bool ignoreIfAlreadyBurn = false;
     [SerializeField] bool ignoreShield = false;

@@ -42,6 +42,8 @@ public class WeaponRangeFeedbacks : WeaponBASEFeedbacks
         weaponRange = GetComponent<WeaponRange>();
         if (mainBarrel == null)
             mainBarrel = transform;
+        if (barrelOnPress == null)
+            barrelOnPress = transform;
 
         //add events
         if(weaponRange)

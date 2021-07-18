@@ -28,6 +28,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     [Header("DEBUG")]
     [ReadOnly] [SerializeField] Vector2 pushForce;          //used to push character (push by recoil, knockback, dash, etc...), will be decreased by customDrag in every frame
     [ReadOnly] [SerializeField] float currentSpeed;         //speed from MovementInput and pushForce
+    [ReadOnly] [SerializeField] float maxHealth = 0;
 
     public Rigidbody2D Rb { get; private set; }
 
@@ -51,6 +52,9 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     {
         //get references
         Rb = GetComponent<Rigidbody2D>();
+
+        //max health
+        maxHealth = health;
     }
 
     void Update()
@@ -181,7 +185,7 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
     }
 
     /// <summary>
-    /// Get health
+    /// Get health and clamp to max health
     /// </summary>
     /// <param name="healthGiven"></param>
     public void GetHealth(float healthGiven)
@@ -191,6 +195,10 @@ public class BASEDestructibleProps : MonoBehaviour, IDamageable
 
         //add health
         health += healthGiven;
+
+        //clamp to max health
+        if (health > maxHealth)
+            health = maxHealth;
     }
 
     /// <summary>

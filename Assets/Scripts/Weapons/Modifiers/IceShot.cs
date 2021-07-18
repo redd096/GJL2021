@@ -2,7 +2,7 @@
 
 public class IceShot : MonoBehaviour
 {
-    [Header("Ice")]
+    [Header("Ice - ignore or restart Effect")]
     [SerializeField] float duration = 2;
     [SerializeField] bool ignoreIfAlreadyFrozen = false;
     [SerializeField] bool ignoreShield = false;

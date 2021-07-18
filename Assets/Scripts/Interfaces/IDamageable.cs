@@ -16,7 +16,7 @@ public interface IDamageable
     void Die();
 
     /// <summary>
-    /// Get health
+    /// Get health and clamp to max health
     /// </summary>
     /// <param name="healthGiven"></param>
     void GetHealth(float healthGiven);

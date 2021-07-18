@@ -136,6 +136,10 @@ public class Player : Character
         GameManager.instance.levelManager.EndGame();
     }
 
+    /// <summary>
+    /// Get health and clamp to max health
+    /// </summary>
+    /// <param name="healthGiven"></param>
     public override void GetHealth(float healthGiven)
     {
         base.GetHealth(healthGiven);

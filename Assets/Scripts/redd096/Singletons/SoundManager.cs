@@ -139,7 +139,7 @@
         IEnumerator DeactiveSoundAtPointCoroutine(AudioSource audioToDeactivate)
         {
             //wait to end the clip
-            if (audioToDeactivate)
+            if (audioToDeactivate && audioToDeactivate.clip)
                 yield return new WaitForSeconds(audioToDeactivate.clip.length);
 
             //and deactive

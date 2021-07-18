@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 5638893550303126142}
+  isFrozen: 0
+  isBurning: 0
 --- !u!114 &1026232668058522476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 5462269823241799479}
-  spriteToChange: {fileID: 0}
+  spriteToChange: {fileID: 6843519103025443205}
   colorOnFrozen: {r: 0, g: 1, b: 1, a: 1}
+  particlesOnBurn: {fileID: 2719134228657324455, guid: ec084fbc39893c24e9bc494bd0a04b1c,
+    type: 3}
+  offSetParticle: {x: 0, y: -0.5, z: 0}
 --- !u!95 &5638893550303126142
 Animator:
   serializedVersion: 3

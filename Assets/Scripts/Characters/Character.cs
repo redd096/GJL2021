@@ -166,7 +166,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     }
 
     /// <summary>
-    /// Get health
+    /// Get health and clamp to max health
     /// </summary>
     /// <param name="healthGiven"></param>
     public virtual void GetHealth(float healthGiven)
@@ -176,6 +176,10 @@ public abstract class Character : MonoBehaviour, IDamageable
 
         //add health
         health += healthGiven;
+
+        //clamp to max health
+        if (health > MaxHealth)
+            health = MaxHealth;
     }
 
     /// <summary>
