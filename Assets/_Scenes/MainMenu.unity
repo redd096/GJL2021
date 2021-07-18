@@ -230,7 +230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -185}
+  m_AnchoredPosition: {x: 0, y: -160}
   m_SizeDelta: {x: 340.18756, y: 42.523445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109790296
@@ -353,7 +353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 6}
   m_SizeDelta: {x: 344.1575, y: 43.019688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &155620417
@@ -1545,7 +1545,7 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
-  startMenu: {fileID: 0}
+  startMenu: {fileID: 1294247370}
   firstSelectedGameObjects: []
   overrideObjects: []
   notNavigables: []
@@ -1826,7 +1826,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 36a314dd1bc2bca4ba0f428f750ee608, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4cad9c10d69aea40be4123115437fc9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
