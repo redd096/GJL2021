@@ -26,6 +26,9 @@ public class HealthPotion : MonoBehaviour, IDroppable
 
         //feedbacks
         Feedbacks(character);
+
+        //and destroy
+        Destroy(gameObject);
     }
 
     void Feedbacks(Character character)
