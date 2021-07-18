@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkNoEnemiesInScene: 1
-  checkPlayerHasWeapon: 1
+  checkPlayerHasWeapon: 0
   enemiesToIgnore:
   - {fileID: 9100000, guid: c209efd1bd5619147b1551005531dedf, type: 2}
   updateVisitedRooms: 0

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7f62b3f1763c343ae8eafe8fbc1287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 125
+  health: 100
   customDrag: 30
   weaponPrefab: {fileID: 0}
   MaxHealth: 0
