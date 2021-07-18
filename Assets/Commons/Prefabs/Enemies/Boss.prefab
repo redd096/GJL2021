@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 5192687877600504506}
-  anim: {fileID: 0}
+  anim: {fileID: 4545613732538162995}
   gameObjectsOnSpawn: []
   particlesOnSpawn: {fileID: 0}
   audiosOnSpawn: []
