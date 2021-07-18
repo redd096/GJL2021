@@ -101,7 +101,7 @@ MonoBehaviour:
   particlesOnShoot: {fileID: 0}
   audioOnShoot:
     audioClip: {fileID: 8300000, guid: dc4931d3502768842b08a0e5c8a46d38, type: 3}
-    volume: 0.03
+    volume: 0.15
   cameraShake: 1
   customShake: 0
   shakeDuration: 1

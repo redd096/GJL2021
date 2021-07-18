@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
       propertyPath: audioOnShoot.volume
-      value: 0.162
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1862482482030742673, guid: 2557c0556e3bf0d44b2eb21fa55875bb,
         type: 3}
