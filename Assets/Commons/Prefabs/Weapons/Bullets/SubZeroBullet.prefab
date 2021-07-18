@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+  ignoreIfAlreadyFrozen: 0
+  ignoreShield: 1
 --- !u!1001 &9157436338042600083
 PrefabInstance:
   m_ObjectHideFlags: 0

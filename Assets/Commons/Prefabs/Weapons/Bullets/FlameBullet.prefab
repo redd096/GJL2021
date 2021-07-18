@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
-  ignoreIfAlreadyBurn: 1
-  ignoreShield: 0
-  damage: 2
+  ignoreIfAlreadyBurn: 0
+  ignoreShield: 1
+  damage: 0.5
   delayBetweenDamages: 0.2
   firstDelay: 0
 --- !u!1001 &902858450382502623
