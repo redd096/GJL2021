@@ -20,6 +20,7 @@ MonoBehaviour:
   destroyWeapon: 1
   timeBeforeLoadNewScene: 3
   sceneToLoad: Scena Negozio
+  resetProgress: 1
   finishTutorial: 1
   isOpen: 0
 --- !u!114 &4790053953274743903
@@ -129,12 +130,12 @@ PrefabInstance:
     - target: {fileID: 3212107487702693235, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.71
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3212107487702693235, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.88
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 3212107487702693235, guid: 6b8f19c66884b6d47990b711f842cdd8,
         type: 3}
