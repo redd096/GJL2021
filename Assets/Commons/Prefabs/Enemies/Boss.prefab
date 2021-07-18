@@ -312,7 +312,7 @@ Animator:
   m_GameObject: {fileID: 4545613732538162993}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04d1f5f421697cb4ba1fee14a0678d3e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
   - instantiatedGameObject: {fileID: 5577563908462706139, guid: b2d26fb78a7b352449547dc66428b04d,
       type: 3}
     timeAutodestruction: 0.3
-  - instantiatedGameObject: {fileID: 3002026414214183893, guid: a42057a07df226745a29172170d7f248,
+  - instantiatedGameObject: {fileID: 3660151444143106135, guid: 04c9070100dc2734c9663c97a0516f6f,
       type: 3}
     timeAutodestruction: 0
   particlesOnDie: {fileID: 0}
