@@ -102,7 +102,8 @@ MonoBehaviour:
   durationState: 20
   durationMovementOutOfScreen: 2
   damage: 15
-  durationBombExplosion: 3
+  durationBombExplosion: 1
+  aimToPlayer: 1
   delayFirstBomb: 2
   delayBetweenBombs: 1
   callBombStateEvent: 1
@@ -312,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64da749e6018e214ea2443ffbc8ffe80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationState: 8
+  durationState: 3
   aimAtTarget: 1
   canSeeThroughWalls: 0
   callSpawnStateEvent: 1
