@@ -76,7 +76,9 @@ public class UIVendorManager : MonoBehaviour
             {
                 //select first weapon available
                 SelectFirstWeaponAvailable();
-                EventSystemRedd096.current.SetSelectedGameObject(selectedWeapon.weaponButton.gameObject);
+
+                if(selectedWeapon.weaponButton != null)
+                    EventSystemRedd096.current.SetSelectedGameObject(selectedWeapon.weaponButton.gameObject);
             }
         }
     }
