@@ -11,6 +11,7 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
     [Header("Bomb State")]
     [SerializeField] float damage = 30;
     [SerializeField] float durationBombExplosion = 1.5f;
+    [SerializeField] bool aimToPlayer = true;
 
     [Header("Delays")]
     [SerializeField] float delayFirstBomb = 4;
@@ -75,28 +76,41 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
         //set new delay
         timeNextBomb = Time.time + delayBetweenBombs;
 
+        Vector3 positionBomb = Vector2.zero;
 
-        //center is point patrol or center of map
-        Vector2 center = enemy.PointPatrol != null ? new Vector2(enemy.PointPatrol.position.x, enemy.PointPatrol.position.y) : Vector2.zero;
-        Vector2 size = enemy.RangeBossAttack /2;
+        //find nearest enemy
+        enemy.FindNearestEnemy();
+        if(enemy.Target && aimToPlayer)
+        {
+            positionBomb = enemy.Target.transform.position;
+        }
+        //else random point in area
+        else
+        {
+            //center is point patrol or center of map
+            Vector2 center = enemy.PointPatrol != null ? new Vector2(enemy.PointPatrol.position.x, enemy.PointPatrol.position.y) : Vector2.zero;
+            Vector2 size = enemy.RangeBossAttack / 2;
 
-        //calculate random point
-        float x = Random.Range(center.x - size.x, center.x + size.x);
-        float y = Random.Range(center.y - size.y, center.y + size.y);
+            //calculate random point
+            float x = Random.Range(center.x - size.x, center.x + size.x);
+            float y = Random.Range(center.y - size.y, center.y + size.y);
 
-        //instantiate bomb circle
+            positionBomb = new Vector3(x, y, 0);
+        }
+
+        //instantiate bomb circle and bomb
         GameObject bombCircle = poolBombCircle.Instantiate(enemy.BombCircle);
-        bombCircle.transform.position = new Vector3(x, y, 0);
-
-        //instantiate bomb out of screen but on same X as circle
         Bullet bomb = poolBombs.Instantiate(enemy.BombPrefab);
+
+        //circle position
+        bombCircle.transform.position = positionBomb;
 
         //set delay autodestruction and Init
         bomb.delayAutodestruction = durationBombExplosion;
         bomb.Init(null, Vector2.zero, damage, 0);
 
         //move bomb to position explosion
-        bomb.transform.DOMove(new Vector3(x, y, 0), durationBombExplosion).From(new Vector3(x, enemy.PositionOutScreen.y, 0));
+        bomb.transform.DOMove(positionBomb, durationBombExplosion).From(new Vector3(positionBomb.x, enemy.PositionOutScreen.y, 0));
     }
 
     void FinishState()

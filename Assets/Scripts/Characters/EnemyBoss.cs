@@ -49,6 +49,12 @@ public class EnemyBoss : Enemy
         Rb.velocity = Vector2.zero;
     }
 
+    public override void PickWeapon(WeaponBASE prefab)
+    {
+        //override, to equip current weapon instead of instantiate prefab
+        CurrentWeapon?.PickWeapon(this);
+    }
+
     public void FindNearestEnemy()
     {
         Player nearestPlayer = null;

@@ -26,6 +26,13 @@ public class ShootStateEnemyBoss : StateMachineBehaviour
 
     Pooling<Bullet> poolShoots = new Pooling<Bullet>();
 
+    //on enter, move inside of screen
+    //look at target
+    //every tot seconds, shoots
+    //after few seconds, call "Next State"
+    //
+    //when enter state call also enemy.onShootState event
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
@@ -46,12 +53,6 @@ public class ShootStateEnemyBoss : StateMachineBehaviour
 
         //start moving inside of screen
         MoveInsideOfScreen();
-
-        //torna dentro lo schermo, in un punto random, tanto non ci sono ostacoli
-        //spara una rosa (come il pompa) di colpi
-        //dopo tot secondi, spara da una seconda rosa di colpi
-        //continua così per tot secondi
-        //poi cambia stato
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
