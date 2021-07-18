@@ -144,8 +144,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timelineSlider: {fileID: 3963978829021076295}
-  startValue: 0.13
-  maxRooms: 5
+  valuesSliderBasedOnCurrentRoom:
+  - 0.13
+  - 0.38
+  - 0.63
+  - 0.88
+  - 1
   durationAnimation: 3
   ease: 0
 --- !u!1 &3963978828729139783

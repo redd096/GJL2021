@@ -7,8 +7,7 @@ public class TimelineManager : MonoBehaviour
 {
     [Header("Timeline Slider - by default get in children")]
     [SerializeField] Slider timelineSlider = default;
-    [SerializeField] float startValue = 0.13f;
-    [SerializeField] int maxRooms = 5;
+    [SerializeField] float[] valuesSliderBasedOnCurrentRoom = default;
 
     [Header("Animation")]
     [SerializeField] float durationAnimation = 3;
@@ -33,8 +32,10 @@ public class TimelineManager : MonoBehaviour
         if (timelineSlider == null)
             return;
 
+        //get current room or last index if room is greater
+        int index = Mathf.Min(GameManager.instance.CurrentRoom, valuesSliderBasedOnCurrentRoom.Length - 1);
+
         //set value based on current room
-        float endValue = ((float)GameManager.instance.CurrentRoom / maxRooms) + startValue;
-        timelineSlider.DOValue(endValue, durationAnimation).SetEase(ease);
+        timelineSlider.DOValue(valuesSliderBasedOnCurrentRoom[index], durationAnimation).SetEase(ease);
     }
 }
