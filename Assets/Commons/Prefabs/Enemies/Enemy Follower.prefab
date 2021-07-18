@@ -116,6 +116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4545613733212651835, guid: 32f0a48baafe006409afe4bac4b27067,
         type: 3}
+      propertyPath: WeaponPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545613733212651835, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
       propertyPath: damageOnHitEnemy
       value: 2
       objectReference: {fileID: 0}
