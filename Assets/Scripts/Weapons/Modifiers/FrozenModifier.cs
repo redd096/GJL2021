@@ -8,7 +8,7 @@ public class FrozenModifier : MonoBehaviour
     [ReadOnly] [SerializeField] float remainingTime;
 
     float timer = 0;
-    IGetModifiers frozenObject;
+    GetModifiersObject frozenObject;
 
     public void Init(float duration)
     {
@@ -36,8 +36,9 @@ public class FrozenModifier : MonoBehaviour
         timer = Time.time + duration;
 
         //and set frozen
-        frozenObject = GetComponentInParent<IGetModifiers>();
-        frozenObject?.GetFrozen(true);
+        frozenObject = GetComponent<GetModifiersObject>();
+        if(frozenObject)
+            frozenObject.GetFrozen(true);
     }
 
     void OnFinishTImer()
@@ -46,8 +47,11 @@ public class FrozenModifier : MonoBehaviour
         timer = 0;
 
         //and set frozen
-        frozenObject?.GetFrozen(false);
-        frozenObject = null;
+        if (frozenObject)
+        {
+            frozenObject.GetFrozen(false);
+            frozenObject = null;
+        }
 
         //remove this component
         Destroy(this);

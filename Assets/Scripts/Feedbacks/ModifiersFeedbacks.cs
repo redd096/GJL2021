@@ -9,14 +9,13 @@ public class ModifiersFeedbacks : MonoBehaviour
     [Header("On Frozen")]
     [SerializeField] Color colorOnFrozen = Color.cyan;
 
-    IGetModifiers modiferObject;
-
+    GetModifiersObject modiferObject;
     Color defaultColor;
 
     void OnEnable()
     {
         //get references
-        modiferObject = GetComponent<IGetModifiers>();
+        modiferObject = GetComponent<GetModifiersObject>();
 
         //add events
         if(modiferObject != null)
@@ -57,13 +56,9 @@ public class ModifiersFeedbacks : MonoBehaviour
         if (anim)
         {
             if (activateFrozen)
-            {
                 anim.SetTrigger("Frozen");
-            }
             else
-            {
                 anim.SetTrigger("Next State");
-            }
         }
 
         //change sprite color
