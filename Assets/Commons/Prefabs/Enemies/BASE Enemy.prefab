@@ -125,7 +125,7 @@ Animator:
   m_GameObject: {fileID: 4545613732538162993}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 9579139dad70c3048be3ecf6f3e410b1, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -172,6 +172,8 @@ GameObject:
   - component: {fileID: 4545613733212651834}
   - component: {fileID: 4545613733212651835}
   - component: {fileID: 4545613733212651832}
+  - component: {fileID: 5758484269093093021}
+  - component: {fileID: 9030832878674627609}
   - component: {fileID: 3788898173565024316}
   - component: {fileID: 8921366559598787594}
   m_Layer: 10
@@ -262,6 +264,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dc44a54c699e04787be626262f9d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectsOnGetDamage: []
+  particlesOnGetDamage: {fileID: 0}
+  audioOnGetDamage:
+    audioClip: {fileID: 0}
+    volume: 0
   blinkMaterial: {fileID: 2100000, guid: ba381242cd8d6144f8af0713efd1c8df, type: 2}
   durationBlink: 0.2
   ignoreIfAlreadyBlinking: 1
@@ -281,6 +288,34 @@ MonoBehaviour:
   spriteToChange: {fileID: 4545613732538162994}
   spriteInOrder: 2
   calculatedSpeed: 0
+--- !u!114 &5758484269093093021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545613733212651833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b97b7e24ad0af748b5b8ae57291dc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 3788898173565024316}
+--- !u!114 &9030832878674627609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545613733212651833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9574dc14fb09d42a88e3a3cd49e436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 4545613732538162995}
+  spriteToChange: {fileID: 4545613732538162994}
+  colorOnFrozen: {r: 0, g: 1, b: 1, a: 1}
 --- !u!95 &3788898173565024316
 Animator:
   serializedVersion: 3

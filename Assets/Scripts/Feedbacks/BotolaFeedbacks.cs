@@ -64,7 +64,8 @@ public class BotolaFeedbacks : MonoBehaviour
     void OnCloseOpen(bool isOpen)
     {
         //show open/close animation
-        anim?.SetTrigger(isOpen ? "Open" : "Close");
+        if(anim)
+            anim.SetTrigger(isOpen ? "Open" : "Close");
 
         //activate object
         if (objectToActivate)

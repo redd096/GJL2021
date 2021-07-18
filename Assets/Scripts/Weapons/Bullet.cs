@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
     Coroutine autodestructionCoroutine;
 
     //events
-    public System.Action onHit { get; set; }
+    public System.Action<GameObject> onHit { get; set; }
     public System.Action onAutodestruction { get; set; }
 
     private void Awake()
@@ -137,7 +137,7 @@ public class Bullet : MonoBehaviour
         if (layerPenetrable.ContainsLayer(hit.layer) == false)
         {
             //call event
-            onHit?.Invoke();
+            onHit?.Invoke(hit);
 
             //damage in area too
             if (doAreaDamage && radiusAreaDamage > 0)

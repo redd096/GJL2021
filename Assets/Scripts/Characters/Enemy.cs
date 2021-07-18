@@ -20,8 +20,6 @@ public class Enemy : Character
     [ReadOnly] public Player Target;
     [ReadOnly] public Vector3 LastTargetPosition;
 
-    Animator stateMachine;
-
     //event animations
     public System.Action onNextState { get; set; }
     public System.Action<bool> onTargetSetted { get; set; }
@@ -36,9 +34,6 @@ public class Enemy : Character
     protected override void Awake()
     {
         base.Awake();
-
-        //get references
-        stateMachine = GetComponent<Animator>();
 
         //instantiate static point for patrol
         pointPatrol = new GameObject("Patrol Point: " + name).transform;
@@ -153,6 +148,9 @@ public class Enemy : Character
         stateMachine.SetBool("Target Setted", isSetted);
     }
 
+    /// <summary>
+    /// Move patrol position to new transform position
+    /// </summary>
     public void UpdatePatrolPosition()
     {
         pointPatrol.position = transform.position;

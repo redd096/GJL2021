@@ -21,6 +21,7 @@ public abstract class Character : MonoBehaviour, IDamageable
 
     public Rigidbody2D Rb { get; private set; }
     Shield shield;
+    protected Animator stateMachine;
 
     bool alreadyDead;
 
@@ -33,6 +34,7 @@ public abstract class Character : MonoBehaviour, IDamageable
         //get references
         Rb = GetComponent<Rigidbody2D>();
         shield = GetComponentInChildren<Shield>();
+        stateMachine = GetComponent<Animator>();
 
         //max health
         MaxHealth = health;

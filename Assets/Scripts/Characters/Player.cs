@@ -21,7 +21,6 @@ public class Player : Character
 
     public PlayerInput playerInput { get; private set; }
 
-    Animator stateMachine;
     Camera cam;
 
     //animation events
@@ -41,7 +40,6 @@ public class Player : Character
         //get references
         cam = Camera.main;
         playerInput = GetComponent<PlayerInput>();
-        stateMachine = GetComponent<Animator>();
 
         //if follow camera, set parent
         if (cameraFollowPlayer)

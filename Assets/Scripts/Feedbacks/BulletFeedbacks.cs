@@ -45,7 +45,7 @@ public class BulletFeedbacks : MonoBehaviour
         }
     }
 
-    void OnHit()
+    void OnHit(GameObject hit)
     {
         //instantiate vfx and sfx
         GameObject instantiatedGameObject = InstantiateGameObjectManager.instance.Play(gameObjectOnHit, transform.position, transform.rotation);

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3678769784504406802}
   - component: {fileID: 2465572222686213355}
   - component: {fileID: 516145314496805839}
+  - component: {fileID: 1868904707074680794}
+  - component: {fileID: 1026232668058522476}
   - component: {fileID: 5638893550303126142}
   - component: {fileID: 2558624634725258368}
   - component: {fileID: 4118630773763783409}
@@ -64,6 +66,7 @@ MonoBehaviour:
   RadiusInteract: 1.5
   cameraFollowPlayer: 1
   offset: {x: 0, y: 0, z: -10}
+  DashToAimDirection: 0
   remainingTimeInvincible: 0
 --- !u!114 &2465572222686213355
 MonoBehaviour:
@@ -122,6 +125,34 @@ MonoBehaviour:
   audioOnDash:
     audioClip: {fileID: 8300000, guid: 36294213d73e7a644b09cceadd48d655, type: 3}
     volume: 0.2
+--- !u!114 &1868904707074680794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678769784504406800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b97b7e24ad0af748b5b8ae57291dc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 5638893550303126142}
+--- !u!114 &1026232668058522476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678769784504406800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9574dc14fb09d42a88e3a3cd49e436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5462269823241799479}
+  spriteToChange: {fileID: 0}
+  colorOnFrozen: {r: 0, g: 1, b: 1, a: 1}
 --- !u!95 &5638893550303126142
 Animator:
   serializedVersion: 3

@@ -36,7 +36,9 @@ public class ReplaceGameObjectMouseOrGamepad : MonoBehaviour
         }
 
         //active or deactive objects
-        objectMouse?.SetActive(usingMouse);
-        objectGamepad?.SetActive(!usingMouse);
+        if(objectMouse)
+            objectMouse.SetActive(usingMouse);
+        if(objectGamepad)
+            objectGamepad.SetActive(!usingMouse);
     }
 }
