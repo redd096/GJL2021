@@ -13,6 +13,8 @@ public class CharacterEditor : Editor
     {
         base.OnInspectorGUI();
 
+        EditorGUILayout.Space();
+
         Character character = target as Character;
 
         if(GUILayout.Button("Drop Weapon"))
