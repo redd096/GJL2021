@@ -14,6 +14,7 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
     [SerializeField] bool destroyWeapon = true;
     [SerializeField] float timeBeforeLoadNewScene = 1;
     [SerializeField] string sceneToLoad = "Scena Game";
+    [SerializeField] bool resetProgress = false;
 
     [Header("TUTORIAL")]
     [SerializeField] bool finishTutorial = false;
@@ -100,6 +101,10 @@ public class BotolaInteractable : MonoBehaviour, IInteractable
         //if finish tutorial, save it
         if(finishTutorial)
             SaveLoadJSON.Save(LoadRandomLevel.TUTORIALNAME, new TutorialSaveClass(false));
+
+        //reset progress
+        if (resetProgress)
+            GameManager.instance.ResetAll();
 
         //call event
         onInteract?.Invoke();

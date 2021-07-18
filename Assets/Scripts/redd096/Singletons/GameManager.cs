@@ -1,5 +1,6 @@
 ﻿namespace redd096
 {
+    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 
@@ -28,6 +29,8 @@
         [SerializeField] bool saveToNotRepeatAgain = true;
         [SerializeField] string tutorialSceneName = "Scena Tutorial";
         [SerializeField] string shopSceneName = "Scena Negozio";
+        [SerializeField] float delayTastoPlay = 3;
+        Coroutine delayCoroutine;
 
         [Header("Saved elements for this run")]
         public List<GameObject> LevelsAlreadySeen = new List<GameObject>();
@@ -101,8 +104,29 @@
             instance.firstRoom = true;
         }
 
-        public void LoadTutorialOrShop()
+        public void LoadTutorialOrShop(Animator animChangeScene)
         {
+            //do only one time
+            if (instance.delayCoroutine != null)
+                return;
+
+            //reset vars
+            ResetAll();
+
+            //fade out
+            if(animChangeScene)
+            {
+                animChangeScene.SetTrigger("Fade Out");
+            }
+
+            instance.delayCoroutine = instance.StartCoroutine(DelayCoroutine());
+        }
+
+        IEnumerator DelayCoroutine()
+        {
+            //wait
+            yield return new WaitForSeconds(instance.delayTastoPlay);
+
             //check if already saved tutorial, load shop
             if (saveToNotRepeatAgain)
             {
@@ -110,13 +134,15 @@
                 if (save != null && save.firstTime == false)
                 {
                     FindObjectOfType<SceneLoader>().LoadScene(shopSceneName);
-                    return;
+                    instance.delayCoroutine = null;
+                    yield break;
                 }
             }
 
             //else load tutorial scene
             FindObjectOfType<SceneLoader>().LoadScene(tutorialSceneName);
             SaveLoadJSON.Save(TUTORIALNAME, new TutorialSaveClass(true));
+            instance.delayCoroutine = null;
         }
     }
 }
