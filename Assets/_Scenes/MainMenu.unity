@@ -1782,11 +1782,11 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 83625708700372c478f1101bb53ddf7f,
+    m_HighlightedSprite: {fileID: 21300000, guid: 2a456a11b23c84b4ead73ca7225a1695,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 83625708700372c478f1101bb53ddf7f, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 83625708700372c478f1101bb53ddf7f, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 36a314dd1bc2bca4ba0f428f750ee608, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 2a456a11b23c84b4ead73ca7225a1695, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 2a456a11b23c84b4ead73ca7225a1695, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: f4cad9c10d69aea40be4123115437fc9, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -1937,7 +1937,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TutorialScene
+          m_StringArgument: Scena Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1444669595

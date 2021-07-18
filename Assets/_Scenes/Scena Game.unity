@@ -233,7 +233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474044160
 GameObject:
@@ -320,7 +320,13 @@ MonoBehaviour:
   - {fileID: 2343364841177267134, guid: 10f95756ea58e054493624da8b0d40de, type: 3}
   - {fileID: 5304366086089382543, guid: 9847762389e5c2b47983753224ce07f4, type: 3}
   resetLevelsListWhenFinished: 0
-  lastLevel: {fileID: 0}
+  saveToNotRepeatAgain: 1
+  tutorialLevel: {fileID: 8295713394799143620, guid: 4278ca973f755e640bbc47bb64812dc8,
+    type: 3}
+  showAfterFewRooms: 1
+  numberOfRoomsBeforeLastLevel: 4
+  lastLevel: {fileID: 6131713614615543923, guid: 1bfda1c6666e7ac49a517458503a99ee,
+    type: 3}
 --- !u!1001 &1033316362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,7 +512,7 @@ PrefabInstance:
     - target: {fileID: 1493638287775525642, guid: cd86b87ab053a4442a54e630f13becb8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1493638287775525642, guid: cd86b87ab053a4442a54e630f13becb8,
         type: 3}
@@ -575,7 +581,7 @@ PrefabInstance:
     - target: {fileID: 6138552246223235641, guid: ffc490a3680d94c42b30044a1f11e1c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6138552246223235641, guid: ffc490a3680d94c42b30044a1f11e1c1,
         type: 3}
@@ -700,7 +706,7 @@ PrefabInstance:
     - target: {fileID: 3678769784504406893, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3678769784504406893, guid: 0c42731bbf7abb74e80a53d2c953a0e6,
         type: 3}
@@ -798,7 +804,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3457061262487887463
 PrefabInstance:

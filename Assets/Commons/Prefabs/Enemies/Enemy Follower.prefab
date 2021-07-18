@@ -134,6 +134,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8921366559598787594, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
+    - target: {fileID: 8921366559598787594, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: drops.Array.data[0].percentage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921366559598787594, guid: 32f0a48baafe006409afe4bac4b27067,
+        type: 3}
+      propertyPath: drops.Array.data[0].objectToDrop
+      value: 
+      objectReference: {fileID: 4668326190196967851, guid: 1ab2e166443b99249a3610247768ec43,
+        type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32f0a48baafe006409afe4bac4b27067, type: 3}
