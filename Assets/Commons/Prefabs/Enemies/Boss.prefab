@@ -609,8 +609,8 @@ MonoBehaviour:
     timeAutodestruction: 0
   particlesOnDie: {fileID: 0}
   audioOnDie:
-    audioClip: {fileID: 8300000, guid: 6f1e10a3370bb6f4bad0a37e21cc8be7, type: 3}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: b46d46feb816b9141a4512846687bbe3, type: 3}
+    volume: 0.4
   anim: {fileID: 4545613732538162995}
   minSpeedToStartRun: 0.01
   spriteToChange: {fileID: 4545613732538162994}
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ff3ccfca4d7ad4084e90fb316cdc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 300
   customDrag: 30
   WeaponPrefab: {fileID: 0}
   MaxHealth: 0
@@ -701,16 +701,22 @@ MonoBehaviour:
   anim: {fileID: 4545613732538162995}
   gameObjectsOnSpawn: []
   particlesOnSpawn: {fileID: 0}
-  audiosOnSpawn: []
+  audiosOnSpawn:
+  - audioClip: {fileID: 8300000, guid: a0391fc66303e0241a07b2b43a37791c, type: 3}
+    volume: 0.4
   gameObjectsOnBomb: []
   particlesOnBomb: {fileID: 0}
-  audiosOnBomb: []
+  audiosOnBomb:
+  - audioClip: {fileID: 8300000, guid: e6a8ae833b468314a8b989baae634faf, type: 3}
+    volume: 0.4
   gameObjectsOnShoot: []
   particlesOnShoot: {fileID: 0}
   audiosOnShoot: []
   gameObjectsOnIdle: []
   particlesOnIdle: {fileID: 0}
-  audiosOnIdle: []
+  audiosOnIdle:
+  - audioClip: {fileID: 8300000, guid: 5094bc259dae6d04c99fd0f61265f612, type: 3}
+    volume: 0.4
 --- !u!1 &4610625429185522853
 GameObject:
   m_ObjectHideFlags: 0

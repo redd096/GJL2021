@@ -441,6 +441,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1222641045, guid: be108fb92b79463419f1421e87f895fb, type: 3}
+      propertyPath: resetProgress
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222641045, guid: be108fb92b79463419f1421e87f895fb, type: 3}
       propertyPath: checkPlayerHasWeapon
       value: 0
       objectReference: {fileID: 0}
