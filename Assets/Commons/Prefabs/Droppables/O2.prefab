@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d97578c3747c9041b535ebeb4802cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthGiven: 10
+  healthGiven: 5
   setCharacterAsParent: 0
   gameObjectOnPick:
     instantiatedGameObject: {fileID: 0}
