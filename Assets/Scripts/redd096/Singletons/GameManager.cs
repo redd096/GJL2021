@@ -15,7 +15,7 @@
         public int CurrentToiletPaper = 0;
         public float CurrentLife = 0;
         public int CurrentRoom = 0;
-        [SerializeField] bool firstRoom = true;
+        public bool FirstRoom = true;
 
         public UIManager uiManager { get; private set; }
         public LevelManager levelManager { get; private set; }
@@ -47,9 +47,9 @@
         public void PickWeaponSaved(Player player, WeaponBASE playerWeaponPrefab)
         {
             //in first room, pick weapon from player inspector
-            if(firstRoom)
+            if(FirstRoom)
             {
-                firstRoom = false;
+                FirstRoom = false;
 
                 player.PickWeapon(playerWeaponPrefab);
             }
@@ -76,7 +76,7 @@
             CurrentToiletPaper = 0;
             CurrentLife = 0;
             CurrentRoom = 0;
-            firstRoom = true;
+            FirstRoom = true;
         }
     }
 }

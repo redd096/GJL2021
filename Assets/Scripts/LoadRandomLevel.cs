@@ -29,6 +29,7 @@ public class LoadRandomLevel : MonoBehaviour
     [Header("Tutorial Level")]
     [SerializeField] bool saveToNotRepeatAgain = true;
     [SerializeField] GameObject tutorialLevel = default;
+    [SerializeField] string shopSceneName = "Scena Negozio";
 
     [Header("Last Level")]
     [SerializeField] bool showAfterFewRooms = true;
@@ -49,21 +50,8 @@ public class LoadRandomLevel : MonoBehaviour
 
     void LoadLevel()
     {
-        //if first room, instantiate tutorial
-        bool instantiateTutorial = GameManager.instance.CurrentRoom <= 0 && tutorialLevel;
-
-        //but if save to not repeat again, be sure is not already saved
-        if (instantiateTutorial && saveToNotRepeatAgain)
-        {
-            TutorialSaveClass save = SaveLoadJSON.Load<TutorialSaveClass>(TUTORIALNAME);
-            if(save != null && save.firstTime == false)
-            {
-                instantiateTutorial = false;
-            }
-        }
-
         //instantiate tutorial
-        if(instantiateTutorial)
+        if(GameManager.instance.FirstRoom)
         {
             InstantiateTutorialLevel();
         }
@@ -90,11 +78,31 @@ public class LoadRandomLevel : MonoBehaviour
 
     void InstantiateTutorialLevel()
     {
-        //instantiate tutorial level
-        Instantiate(tutorialLevel, transform);
+        //be sure to have tutorial level
+        bool instantiateTutorial = tutorialLevel != null;
 
-        //save it
-        SaveLoadJSON.Save(TUTORIALNAME, new TutorialSaveClass(true));
+        //but if save to not repeat again, be sure is not already saved
+        if (instantiateTutorial && saveToNotRepeatAgain)
+        {
+            TutorialSaveClass save = SaveLoadJSON.Load<TutorialSaveClass>(TUTORIALNAME);
+            if (save != null && save.firstTime == false)
+            {
+                instantiateTutorial = false;
+            }
+        }
+
+        //instantiate tutorial and save
+        if(instantiateTutorial)
+        {
+            Instantiate(tutorialLevel, transform);
+            SaveLoadJSON.Save(TUTORIALNAME, new TutorialSaveClass(true));
+        }
+        //else set is not first room and load shop scene
+        else
+        {
+            GameManager.instance.FirstRoom = false;
+            SceneLoader.instance.LoadScene(shopSceneName);
+        }
     }
 
     void InstantiateRandomLevel()
