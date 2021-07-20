@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using redd096;
-using DG.Tweening;
 
 public class ToiletPaper : MonoBehaviour, IDroppable
 {
@@ -15,17 +15,15 @@ public class ToiletPaper : MonoBehaviour, IDroppable
     [SerializeField] AudioStruct audioOnPick = default;
 
     [Header("Animation Destruction (movement 1)")]
-    [SerializeField] Vector3 movement = Vector3.up;
-    [SerializeField] float sizeToReach = 1.5f;
-    [SerializeField] float durationMovement = 0.8f;
-    [SerializeField] Ease easeMovement1 = Ease.Unset;
+    [SerializeField] Vector3 movement1 = Vector3.up;
+    [SerializeField] float sizeToReach1 = 1.5f;
+    [SerializeField] AnimationCurve curveMovement1 = default;
 
     [Header("Animation Destruction (movement 2)")]
     [SerializeField] bool moveToToiletPaperInUI = true;
     [CanShow("moveToToiletPaperInUI", NOT = true)] [SerializeField] Vector3 movement2 = Vector3.down;
     [SerializeField] float sizeToReach2 = 0.3f;
-    [SerializeField] float durationMovement2 = 0.5f;
-    [SerializeField] Ease easeMovement2 = Ease.Unset;
+    [SerializeField] AnimationCurve curveMovement2 = default;
 
     bool alreadyPicked;
 
@@ -60,7 +58,7 @@ public class ToiletPaper : MonoBehaviour, IDroppable
             particleToActive.SetActive(true);
 
         //animation destruction
-        AnimationDestroy();
+        StartCoroutine(AnimationDestroyCoroutine());
     }
 
     void VFXFeedbacks(Character character)
@@ -91,26 +89,54 @@ public class ToiletPaper : MonoBehaviour, IDroppable
         SoundManager.instance.Play(audioOnPick.audioClip, transform.position, audioOnPick.volume);
     }
 
-    void AnimationDestroy()
+    IEnumerator AnimationDestroyCoroutine()
     {
-        Sequence sequence = DOTween.Sequence();
+        float durationMovement1 = curveMovement1.keys[curveMovement1.length - 1].time;
+        float durationMovement2 = curveMovement2.keys[curveMovement2.length - 1].time;
 
         //movement 1
-        sequence.Join(transform.DOMove(transform.position + movement, durationMovement).SetEase(easeMovement1));
-        sequence.Join(transform.DOScale(sizeToReach, durationMovement));
+        float currentTime = 0;
+        float delta = 0;
+        Vector2 startPosition = transform.position;
+        Vector2 endPosition = transform.position + movement1;
+        Vector2 startSize = transform.localScale;
+        Vector2 endSize = new Vector2(sizeToReach1, sizeToReach1);
+        while(delta < 1)
+        {
+            currentTime += Time.deltaTime;
+            delta += Time.deltaTime / durationMovement1;
 
-        //position movement 2 (or move to Toilet Paper in UI)
-        Vector3 positionToReach = transform.position + movement2;
-        if (moveToToiletPaperInUI)
-            positionToReach = GameManager.instance.uiManager.ToiletPaperImage ? GameManager.instance.uiManager.ToiletPaperImage.transform.position : transform.position;
+            //movement with curve, size with delta
+            transform.position = Vector2.Lerp(startPosition, endPosition, curveMovement1.Evaluate(currentTime));
+            transform.localScale = Vector2.Lerp(startSize, endSize, delta);
 
-        //movement 2
-        sequence.Append(transform.DOMove(positionToReach, durationMovement2).SetEase(easeMovement2));
-        sequence.Join(transform.DOScale(sizeToReach2, durationMovement2));
+            yield return null;
+        }
 
-        //and destroy it
-        sequence.OnComplete(() => Destroy(gameObject));
+        //movement 2 (reach toilet paper image, or movement2)
+        currentTime = 0;
+        delta = 0;
+        startPosition = transform.position;
+        endPosition = moveToToiletPaperInUI && GameManager.instance.uiManager.ToiletPaperImage ? GameManager.instance.uiManager.ToiletPaperImage.transform.position : transform.position + movement2;
+        startSize = transform.localScale;
+        endSize = new Vector2(sizeToReach2, sizeToReach2);
+        while (delta < 1)
+        {
+            currentTime += Time.deltaTime;
+            delta += Time.deltaTime / durationMovement2;
 
-        sequence.Play();
+            //if moving to toilet paper UI, update end position
+            if (moveToToiletPaperInUI && GameManager.instance.uiManager.ToiletPaperImage)
+                endPosition = GameManager.instance.uiManager.ToiletPaperImage.transform.position;
+
+            //movement with curve, size with delta
+            transform.position = Vector2.Lerp(startPosition, endPosition, curveMovement2.Evaluate(currentTime));
+            transform.localScale = Vector2.Lerp(startSize, endSize, delta);
+
+            yield return null;
+        }
+
+        //on finish animation, destroy
+        Destroy(gameObject);
     }
 }

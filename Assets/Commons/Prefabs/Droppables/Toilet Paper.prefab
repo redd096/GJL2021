@@ -41,15 +41,59 @@ MonoBehaviour:
   audioOnPick:
     audioClip: {fileID: 8300000, guid: 792ff5194574d9a41a5595f8738bd412, type: 3}
     volume: 0.2
-  movement: {x: 0, y: 1, z: 0}
-  sizeToReach: 1.5
-  durationMovement: 0.8
-  easeMovement1: 0
+  movement1: {x: 0, y: 1, z: 0}
+  sizeToReach1: 1.5
+  curveMovement1:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.25
+      outSlope: 1.25
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: 1
+      inSlope: 1.25
+      outSlope: 1.25
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   moveToToiletPaperInUI: 1
   movement2: {x: 0, y: -1, z: 0}
   sizeToReach2: 0.3
-  durationMovement2: 0.5
-  easeMovement2: 13
+  curveMovement2:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7690451433242541895
 GameObject:
   m_ObjectHideFlags: 0
