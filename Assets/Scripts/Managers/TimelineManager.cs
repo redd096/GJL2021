@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 using redd096;
 
 public class TimelineManager : MonoBehaviour
@@ -10,8 +10,7 @@ public class TimelineManager : MonoBehaviour
     [SerializeField] float[] valuesSliderBasedOnCurrentRoom = default;
 
     [Header("Animation")]
-    [SerializeField] float durationAnimation = 3;
-    [SerializeField] Ease ease = Ease.Unset;
+    [SerializeField] AnimationCurve animationCurve = default;
 
     void OnEnable()
     {
@@ -19,23 +18,29 @@ public class TimelineManager : MonoBehaviour
         if (timelineSlider == null)
             timelineSlider = GetComponentInChildren<Slider>();
 
-        //reset slider
+        //reset slider and start coroutine
         if (timelineSlider)
+        {
             timelineSlider.value = 0;
-
-        //animation slider
-        AnimationSlider();
+            StartCoroutine(AnimationCoroutine());
+        }
     }
 
-    void AnimationSlider()
+    IEnumerator AnimationCoroutine()
     {
-        if (timelineSlider == null)
-            return;
-
         //get current room or last index if room is greater
         int index = Mathf.Min(GameManager.instance.CurrentRoom, valuesSliderBasedOnCurrentRoom.Length - 1);
 
-        //set value based on current room
-        timelineSlider.DOValue(valuesSliderBasedOnCurrentRoom[index], durationAnimation).SetEase(ease);
+        float currentTime = 0;
+        while(currentTime < animationCurve.keys[animationCurve.length - 1].time)
+        {
+            currentTime += Time.deltaTime;
+
+            //set value based on current room
+            if (timelineSlider)
+                timelineSlider.value = Mathf.Lerp(0, valuesSliderBasedOnCurrentRoom[index], animationCurve.Evaluate(currentTime));
+
+            yield return null;
+        }
     }
 }
