@@ -13,8 +13,12 @@
         {
             base.Awake();
 
-            //by default, mouse visible (used to set texture in main menu)
-            LockMouse(CursorLockMode.None);
+            //if this is the unique scene loader
+            if (instance == this)
+            {
+                //by default, mouse visible (used to set texture in main menu)
+                LockMouse(CursorLockMode.None);
+            }
         }
 
         #region private API
