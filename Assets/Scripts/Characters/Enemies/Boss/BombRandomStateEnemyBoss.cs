@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using DG.Tweening;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using redd096;
 
 public class BombRandomStateEnemyBoss : StateMachineBehaviour
@@ -27,6 +27,8 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
 
     Pooling<GameObject> poolBombCircle = new Pooling<GameObject>();
     Pooling<Bullet> poolBombs = new Pooling<Bullet>();
+    Coroutine movementCoroutine;
+    List<Coroutine> bombCoroutines = new List<Coroutine>();
 
     //on enter, move out of screen
     //every tot seconds spawn bombs at random point inside area
@@ -66,10 +68,27 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
             FinishState();
     }
 
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+
+        //be sure to stop coroutines
+        if (movementCoroutine != null)
+            enemy.StopCoroutine(movementCoroutine);
+
+        foreach(Coroutine bombCoroutine in bombCoroutines)      //every coroutine in the list
+            if (bombCoroutine != null)
+                enemy.StopCoroutine(bombCoroutine);
+
+        bombCoroutines.Clear();                                 //and clear the list
+    }
+
+    #region private API
+
     void MoveOutOfScreen()
     {
         //move out of screen
-        enemy.transform.DOMove(enemy.PositionOutScreen, durationMovementOutOfScreen);
+        movementCoroutine = enemy.StartCoroutine(enemy.MovementCoroutine(enemy.transform, enemy.PositionOutScreen, durationMovementOutOfScreen));
     }
 
     void GetPositionBombs()
@@ -105,16 +124,19 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
         GameObject bombCircle = poolBombCircle.Instantiate(enemy.BombCircle);
         Bullet bomb = poolBombs.Instantiate(enemy.BombPrefab);
 
-        //circle position
+        //circle and bomb position
         bombCircle.transform.position = position;
+        bomb.transform.position = new Vector3(position.x, enemy.PositionOutScreen.y, 0);    //move bomb from out of screen to position explosion
 
         //set delay autodestruction and Init
         bomb.delayAutodestruction = durationBombExplosion;
         bomb.Init(null, Vector2.zero, damage, 0);
 
-        //move bomb from out of screen to position explosion
-        bomb.transform.DOMove(position, durationBombExplosion).From(new Vector3(position.x, enemy.PositionOutScreen.y, 0));
+        //move bomb to destination
+        bombCoroutines.Add(enemy.StartCoroutine(enemy.MovementCoroutine(bomb.transform, position, durationBombExplosion)));
     }
+
+    #endregion
 
     void FinishState()
     {

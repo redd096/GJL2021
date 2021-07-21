@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using redd096;
 
 [System.Serializable]
@@ -74,5 +75,20 @@ public class EnemyBoss : Enemy
 
         //set target
         Target = nearestPlayer;
+    }
+
+    public IEnumerator MovementCoroutine(Transform transformToMove, Vector2 destination, float duration)
+    {
+        Vector2 startPosition = transformToMove.position;
+        float delta = 0;
+
+        while (delta < 1)
+        {
+            delta += Time.deltaTime / duration;
+
+            //move to destination
+            transformToMove.position = Vector2.Lerp(startPosition, destination, delta);
+            yield return null;
+        }
     }
 }

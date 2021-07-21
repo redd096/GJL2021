@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using redd096;
-using DG.Tweening;
 
 public class ShootStateEnemyBoss : StateMachineBehaviour
 {
@@ -23,8 +23,7 @@ public class ShootStateEnemyBoss : StateMachineBehaviour
     float timeFinishState;
     float timeNextShoot;
     int currentShoot;
-
-    Pooling<Bullet> poolShoots = new Pooling<Bullet>();
+    Coroutine movementCoroutine;
 
     //on enter, move inside of screen
     //look at target
@@ -76,6 +75,17 @@ public class ShootStateEnemyBoss : StateMachineBehaviour
             FinishState();
     }
 
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+
+        //be sure to stop coroutines
+        if (movementCoroutine != null)
+            enemy.StopCoroutine(movementCoroutine);
+    }
+
+    #region private API
+
     void MoveInsideOfScreen()
     {
         //center is point patrol or center of map
@@ -87,7 +97,7 @@ public class ShootStateEnemyBoss : StateMachineBehaviour
         float y = Random.Range(center.y - size.y, center.y + size.y);
 
         //move inside of screen
-        enemy.transform.DOMove(new Vector3(x, y, 0), durationMovementInsideOfScreen);
+        movementCoroutine = enemy.StartCoroutine(enemy.MovementCoroutine(enemy.transform, new Vector3(x, y, 0), durationMovementInsideOfScreen));
     }
 
     void LookAtPlayer()
@@ -146,6 +156,8 @@ public class ShootStateEnemyBoss : StateMachineBehaviour
         enemy.CurrentWeapon?.PressAttack();
         enemy.CurrentWeapon?.ReleaseAttack();
     }
+
+    #endregion
 
     void FinishState()
     {
