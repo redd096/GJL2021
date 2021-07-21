@@ -13,8 +13,7 @@ public class LevelManager : MonoBehaviour
     public void EndGame()
     {
         //show cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        SceneLoader.instance.LockMouse(CursorLockMode.None);
 
         //show end menu
         GameManager.instance.uiManager.EndMenu(true);

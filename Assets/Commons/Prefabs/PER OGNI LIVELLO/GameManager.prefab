@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508fe151c97b6834fa64ffdf97a46bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: b18121e0e3334e14daa3a507b27fcb63, type: 3}
   saveToNotRepeatAgain: 1
   tutorialSceneName: Scena Tutorial
   shopSceneName: Scena Negozio
@@ -156,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c53cdbad3ffa243be357927517b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: b18121e0e3334e14daa3a507b27fcb63, type: 3}
 --- !u!82 &-752511808644109455
 AudioSource:
   m_ObjectHideFlags: 0
