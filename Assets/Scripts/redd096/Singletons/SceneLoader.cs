@@ -27,8 +27,8 @@
             Cursor.lockState = lockMode;
             Cursor.visible = lockMode == CursorLockMode.None;
 
-            //change texture if there is one
-            if(cursorTexture)
+            //if cursor visible, change texture if there is one
+            if(lockMode == CursorLockMode.None && cursorTexture)
                 Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
         }
 
