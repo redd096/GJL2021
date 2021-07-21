@@ -99,13 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82efdcd4a13f8b747b30df586b1060af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationState: 20
+  durationState: 17
   durationMovementOutOfScreen: 2
   damage: 15
   durationBombExplosion: 1
   bombOnPlayer: 1
   delayFirstBomb: 2
-  numberRandomBombs: 3
+  numberRandomBombs: 5
   delayBetweenBombs: 1
   callBombStateEvent: 1
 --- !u!91 &9100000
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86559d5a6e74534f8f6cdee539431b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationState: 4
+  durationState: 4.5
   aimAtTarget: 1
   canSeeThroughWalls: 0
   callIdleStateEvent: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760d84aec2bb4b54287a9b37f37f3e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationState: 20
+  durationState: 17
   durationMovementInsideOfScreen: 2
   overwriteNoiseAccuracyFirstShoot: 1
   noiseAccuracyFirstShoot: 0
