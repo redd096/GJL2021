@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponName: A.M.I.R.
-  WeaponPrice: 2
+  WeaponPrice: 4
   Owner: {fileID: 0}
   automatic: 1
   rateOfFire: 0.08
