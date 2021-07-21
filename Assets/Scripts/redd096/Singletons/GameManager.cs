@@ -25,6 +25,9 @@
     {
         public const string TUTORIALNAME = "First Time";
 
+        [Header("Mouse")]
+        [SerializeField] Texture2D cursorTexture = default;
+
         [Header("Tutorial or Shop ?")]
         [SerializeField] bool saveToNotRepeatAgain = true;
         [SerializeField] string tutorialSceneName = "Scena Tutorial";
@@ -64,6 +67,10 @@
             uiManager = FindObjectOfType<UIManager>();
             levelManager = FindObjectOfType<LevelManager>();
             uIVendorManager = FindObjectOfType<UIVendorManager>();
+
+            //change sprite if there is one
+            if(cursorTexture)
+                Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
         }
 
         /// <summary>
