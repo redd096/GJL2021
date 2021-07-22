@@ -70,14 +70,26 @@ public class BossFeedbacks : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        //rotate slider to look always same direction
+        if (healthSlider && rotateWithBoss)
+        {
+            //rotate left or right
+            if (boss.IsLookingRight == false && healthSlider.transform.localScale.x > 0
+                || boss.IsLookingRight && healthSlider.transform.localScale.x <= 0)
+            {
+                healthSlider.transform.localScale = new Vector3(-healthSlider.transform.localScale.x, healthSlider.transform.localScale.y, healthSlider.transform.localScale.z);
+            }
+        }
+    }
+
     void OnGetDamage()
     {
         //update slider health
         if (healthSlider)
         {
             healthSlider.value = boss.Health / boss.MaxHealth;
-            if (rotateWithBoss)
-                healthSlider.direction = boss.IsLookingRight ? Slider.Direction.LeftToRight : Slider.Direction.RightToLeft;
         }
     }
 
