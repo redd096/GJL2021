@@ -6,6 +6,7 @@ public class BossFeedbacks : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField] Slider healthSlider = default;
+    [SerializeField] bool rotateWithBoss = true;
 
     [Header("Animator Animations - if not setted get in children")]
     [SerializeField] Animator anim;
@@ -73,7 +74,11 @@ public class BossFeedbacks : MonoBehaviour
     {
         //update slider health
         if (healthSlider)
+        {
             healthSlider.value = boss.Health / boss.MaxHealth;
+            if (rotateWithBoss)
+                healthSlider.direction = boss.IsLookingRight ? Slider.Direction.LeftToRight : Slider.Direction.RightToLeft;
+        }
     }
 
     void OnSpawnState()

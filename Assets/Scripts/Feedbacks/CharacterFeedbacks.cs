@@ -80,9 +80,9 @@ public class CharacterFeedbacks : MonoBehaviour
     void Update()
     {
         //rotate left or right
-        if (character.DirectionAim.x < 0 && transform.localScale.x >= 0)
+        if (character.IsLookingRight == false && transform.localScale.x >= 0)
             RotateObject(false);
-        else if (character.DirectionAim.x > 0 && transform.localScale.x <= 0)
+        else if (character.IsLookingRight && transform.localScale.x <= 0)
             RotateObject(true);
     }
 

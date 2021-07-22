@@ -108,7 +108,7 @@ public class WeaponRange : WeaponBASE
     {
         //create random noise in accuracy
         float randomNoiseAccuracy = Random.Range(-NoiseAccuracy, NoiseAccuracy);
-        Vector3 direction = Owner.DirectionAim.x < 0 ? -barrel.right : barrel.right;            //normal direction
+        Vector3 direction = Owner.IsLookingRight ? barrel.right : -barrel.right;            //normal direction
         direction = Quaternion.AngleAxis(randomNoiseAccuracy, Vector3.forward) * direction;     //direction with noise
 
         Debug.DrawLine(barrel.position, barrel.position + direction, Color.red, 1);
@@ -117,7 +117,7 @@ public class WeaponRange : WeaponBASE
         Bullet bullet = bulletsPooling.Instantiate(bulletPrefab, BulletsParent.transform);
         bullet.transform.position = barrel.position;
         bullet.transform.rotation = barrel.rotation * Quaternion.AngleAxis(randomNoiseAccuracy, Vector3.forward);
-        bullet.transform.localScale = Owner.DirectionAim.x < 0 ? new Vector3(-1, 1, 1) : Vector3.one;    //rotate bullet
+        bullet.transform.localScale = Owner.IsLookingRight ? Vector3.one : new Vector3(-1, 1, 1);    //rotate bullet
 
         //and set it
         bullet.Init(Owner, direction, damage, bulletSpeed);

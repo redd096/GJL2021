@@ -91,13 +91,11 @@ public abstract class WeaponBASEFeedbacks : MonoBehaviour
         //rotate weapon with aim
         if (weaponBASE.Owner)
         {
-            bool isLookingRight = weaponBASE.Owner.DirectionAim.x > 0;
-
-            float angle = Vector2.SignedAngle(isLookingRight ? Vector2.right : Vector2.left, weaponBASE.Owner.DirectionAim);
+            float angle = Vector2.SignedAngle(weaponBASE.Owner.IsLookingRight ? Vector2.right : Vector2.left, weaponBASE.Owner.DirectionAim);
             objectToRotate.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             //rotate also offset and use it to set new position
-            objectToRotate.localPosition = Quaternion.AngleAxis(angle, isLookingRight ? Vector3.forward : Vector3.back) * offset;
+            objectToRotate.localPosition = Quaternion.AngleAxis(angle, weaponBASE.Owner.IsLookingRight ? Vector3.forward : Vector3.back) * offset;
         }
     }
 

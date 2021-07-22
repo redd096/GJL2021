@@ -41,6 +41,7 @@ public abstract class Character : MonoBehaviour, IDamageable
 
     [Header("DEBUG")]
     [ReadOnly] public float MaxHealth = 0;
+    [ReadOnly] public bool IsLookingRight = true;           //check if looking right
     [ReadOnly] public Vector2 DirectionInput;               //when character moves, set it with only direction (used to know last movement direction)
     [ReadOnly] public Vector2 DirectionAim;                 //when character aim, set it (used to know where to shoot for example)
     [ReadOnly] public Vector2 AimPositionNotNormalized;     //when character aim, set it without normalize (used to set crosshair on screen)
@@ -119,6 +120,12 @@ public abstract class Character : MonoBehaviour, IDamageable
     /// <param name="aim"></param>
     public void AimWithCharacter(Vector2 aim)
     {
+        //check if looking right or left
+        if (DirectionAim.x < 0 && IsLookingRight)
+            IsLookingRight = false;
+        else if (DirectionAim.x > 0 && !IsLookingRight)
+            IsLookingRight = true;
+
         //save last input aim + set direction aim
         AimPositionNotNormalized = aim;
         DirectionAim = aim.normalized;
