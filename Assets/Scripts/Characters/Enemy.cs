@@ -29,6 +29,8 @@ public class Enemy : Character
         //draw patrol area
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(pointPatrol != null ? pointPatrol.position : transform.position, radiusPatrol);
+
+        Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y) + DirectionAim * 0.2f, 0.5f);
     }
 
     protected override void Awake()

@@ -19,31 +19,24 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     [SerializeField] float knockBack = 10;
     [SerializeField] float radiusCastToCheckWhatHit = 0.5f;
 
-    [Header("Check hit Something")]
-    [SerializeField] float speedCheckIfHitWall = 2.5f;
-
     [Header("Event Animation")]
     [SerializeField] bool callNextStateEvent = true;
 
     [Header("Update Patrol Position")]
     [SerializeField] bool updatePatrolPosition = true;
 
-    [Header("DEBUG")]
-    [ReadOnly] [SerializeField] float calculatedSpeed = 0;
-
     Enemy enemy;
-    Vector3 previousPosition;
 
     //Move straight in aim direction
     //if follow target, rotate using rotation speed
-    //when something stops rigidbody, call "Next State"
+    //when something hit collider, call "Next State"
     //
     //when call "Next State" call also enemy.onNextState event
     //
     //knockback player on hit -> set to false
     //move to aim direction
     //if follow target, rotate to aim at last target position                                                   (try change target if null)
-    //when rigidbody stops (hit something), damage and knockback everything in front, then call Next State
+    //when hit something, damage and knockback everything in front, then call Next State
     //knockback player on hit -> set again to true
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -130,10 +123,6 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
 
     IEnumerator CheckHitWallCoroutine()
     {
-        //save previous position and wait to not stop immediatly
-        previousPosition = enemy.transform.position;
-        yield return new WaitForSeconds(0.1f);
-
         while (true)
         {
             if (enemy == null)
@@ -155,14 +144,19 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
 
     bool CheckHit()
     {
-        //calculate speed (don't use rigidbody, to not glitch when hit walls), and save previous position
-        calculatedSpeed = (enemy.transform.position - previousPosition).magnitude / Time.fixedDeltaTime;
-        previousPosition = enemy.transform.position;
+        ContactFilter2D contactFilter2D = new ContactFilter2D();
+        Vector2 enemyPosition = new Vector2(enemy.transform.position.x, enemy.transform.position.y);
 
-        //hit wall or character
-        if (calculatedSpeed <= speedCheckIfHitWall)
+        //foreach collider, overlap
+        foreach (Collider2D collider in enemy.GetComponentsInChildren<Collider2D>())
         {
-            return true;
+            List<Collider2D> cols = new List<Collider2D>();
+            Physics2D.OverlapCollider(collider, contactFilter2D, cols);
+
+            //check something is in front
+            foreach (Collider2D col in cols)
+                if (Vector2.Angle(col.ClosestPoint(enemyPosition + enemy.DirectionAim), enemyPosition + enemy.DirectionAim) < radiusCastToCheckWhatHit)
+                    return true;
         }
 
         return false;
