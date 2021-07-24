@@ -22,6 +22,8 @@
 
         [Header("Health")]
         [SerializeField] Slider sliderHealth = default;
+        [SerializeField] TextMeshProUGUI textHealth = default;
+        [SerializeField] string stringAfterTextHealth = "%";
 
         public Image ToiletPaperImage => toiletPaperImage;
 
@@ -88,7 +90,7 @@
         }
 
         /// <summary>
-        /// Set slider health
+        /// Set slider health and text
         /// </summary>
         /// <param name="currentHealth"></param>
         /// <param name="maxHealth"></param>
@@ -96,6 +98,10 @@
         {
             if (sliderHealth)
                 sliderHealth.value = currentHealth / maxHealth;
+
+            //text is health*100
+            if (textHealth)
+                textHealth.text = (currentHealth / maxHealth * 100).ToString("F0") + stringAfterTextHealth;
         }
     }
 }
