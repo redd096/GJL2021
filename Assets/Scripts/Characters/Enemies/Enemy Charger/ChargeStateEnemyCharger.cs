@@ -11,8 +11,9 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     [Header("Charge Movement")]
     [SerializeField] float speed = 3;
     [SerializeField] bool followTarget = true;
-    [CanShow("followTarget")] [SerializeField] float rotationSpeed = 0.05f;
+    [CanShow("followTarget")] [SerializeField] float rotationSpeed = 50f;
     [CanShow("followTarget")] [SerializeField] bool canSeeThroughWalls = false;
+    [SerializeField] float radiusCheckHitInFront = 0.2f;
 
     [Header("Charge Damage")]
     [SerializeField] float damage = 10;
@@ -99,7 +100,7 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
         float angle = Vector2.SignedAngle(enemy.DirectionAim, (enemy.LastTargetPosition - enemy.transform.position).normalized);
         if(angle != 0)
         {
-            enemy.AimWithCharacter(Quaternion.AngleAxis(angle > 0 ? rotationSpeed : -rotationSpeed, Vector3.forward) * enemy.DirectionAim);
+            enemy.AimWithCharacter(Quaternion.AngleAxis(angle > 0 ? rotationSpeed * Time.deltaTime : -rotationSpeed * Time.deltaTime, Vector3.forward) * enemy.DirectionAim);
         }
 
         //debug
@@ -145,7 +146,6 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
     bool CheckHit()
     {
         ContactFilter2D contactFilter2D = new ContactFilter2D();
-        Vector2 enemyPosition = new Vector2(enemy.transform.position.x, enemy.transform.position.y);
 
         //foreach collider, overlap
         foreach (Collider2D collider in enemy.GetComponentsInChildren<Collider2D>())
@@ -153,10 +153,44 @@ public class ChargeStateEnemyCharger : StateMachineBehaviour
             List<Collider2D> cols = new List<Collider2D>();
             Physics2D.OverlapCollider(collider, contactFilter2D, cols);
 
-            //check something is in front
-            foreach (Collider2D col in cols)
-                if (Vector2.Angle(col.ClosestPoint(enemyPosition + enemy.DirectionAim), enemyPosition + enemy.DirectionAim) < radiusCastToCheckWhatHit)
-                    return true;
+            //if hit something, check if hit in front
+            if(cols.Count > 0)
+            {
+                foreach (RaycastHit2D hit in Physics2D.CircleCastAll(enemy.transform.position, radiusCheckHitInFront, enemy.DirectionAim, 0.5f))
+                {
+                    //be sure to not hit itself
+                    if (hit.transform.GetComponentInParent<Enemy>() != enemy)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            ////check something is in front
+            //foreach (Collider2D col in cols)
+            //{
+            //    Vector2 directionHit = Vector2.zero;
+            //
+            //    //raycast to check point where hit
+            //    RaycastHit2D[] hits = Physics2D.RaycastAll(enemyPosition, col.ClosestPoint(enemyPosition + enemy.DirectionAim));
+            //    foreach (RaycastHit2D hit in hits)
+            //    {
+            //        //be sure to not hit itself
+            //        if (hit.transform.GetComponentInParent<Enemy>() != enemy)
+            //        {
+            //            directionHit = (hit.point - enemyPosition).normalized;
+            //            break;
+            //        }
+            //    }
+            //
+            //    //use angle to check if is in front
+            //    Debug.DrawLine(enemyPosition + directionHit, enemyPosition, Color.red, 2f);
+            //    Debug.DrawLine(enemyPosition + enemy.DirectionAim, enemyPosition, Color.magenta, 2f);
+            //    if (Vector2.Angle(directionHit, enemy.DirectionAim) <= radiusCastToCheckWhatHit)
+            //    {
+            //        return true;
+            //    }
+            //}
         }
 
         return false;

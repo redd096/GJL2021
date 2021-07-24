@@ -262,15 +262,14 @@ MonoBehaviour:
   keepKnockbackPlayers: 0
   speed: 6
   followTarget: 1
-  rotationSpeed: 0.05
+  rotationSpeed: 50
   canSeeThroughWalls: 0
+  radiusCheckHitInFront: 0.3
   damage: 10
   knockBack: 10
   radiusCastToCheckWhatHit: 0.5
-  speedCheckIfHitWall: 2.5
   callNextStateEvent: 1
   updatePatrolPosition: 1
-  calculatedSpeed: 0
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -285,25 +284,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Target Lost
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Next State
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Frozen
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
