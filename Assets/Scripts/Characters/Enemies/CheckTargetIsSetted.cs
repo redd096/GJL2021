@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using redd096;
 
 public class CheckTargetIsSetted : StateMachineBehaviour
 {
     [Header("Check Min Distance")]
     [SerializeField] bool checkMinDistance = true;
-    [SerializeField] float minDistance = 1;
+    [CanShow("checkMinDistance")] [SerializeField] float minDistance = 1;
 
     [Header("Event Animation")]
     [SerializeField] bool callNextStateEvent = true;

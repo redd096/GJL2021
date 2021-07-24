@@ -148,7 +148,7 @@ public class MoveToLastTargetPositionStateEnemy : StateMachineBehaviour
     bool CheckReachedLastTargetPosition()
     {
         //check if reached last target position
-        if (path == null || path.Count <= 0                                                                                 //no path (so can't move)
+        if (path == null || path.Count <= 0                                                                             //no path (so can't move)
             || Vector2.Distance(enemy.transform.position, enemy.LastTargetPosition) <= distanceFromTargetPosition)      //or reached position
         {
             enemy.SetState("Next State");
