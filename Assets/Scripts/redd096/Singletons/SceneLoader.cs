@@ -6,21 +6,6 @@
     [AddComponentMenu("redd096/Singletons/Scene Loader")]
     public class SceneLoader : Singleton<SceneLoader>
     {
-        [Header("Cursor")]
-        [SerializeField] Texture2D cursorTexture = default;
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            //if this is the unique scene loader
-            if (instance == this)
-            {
-                //by default, mouse visible (used to set texture in main menu)
-                LockMouse(CursorLockMode.None);
-            }
-        }
-
         #region private API
 
         /// <summary>
@@ -30,10 +15,6 @@
         {
             Cursor.lockState = lockMode;
             Cursor.visible = lockMode == CursorLockMode.None;
-
-            //if cursor visible, change texture if there is one
-            if(lockMode == CursorLockMode.None && cursorTexture)
-                Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
         }
 
         #endregion

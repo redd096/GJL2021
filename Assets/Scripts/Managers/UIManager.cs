@@ -100,9 +100,9 @@
             if (sliderHealth)
                 sliderHealth.value = currentHealth / maxHealth;
 
-            //text is health*100
+            //text is health*100 with clamp at 0
             if (textHealth)
-                textHealth.text = (currentHealth / maxHealth * 100).ToString("F0") + stringAfterTextHealth;
+                textHealth.text = Mathf.Max(0, (currentHealth / maxHealth * 100)).ToString("F0") + stringAfterTextHealth;
         }
     }
 }
