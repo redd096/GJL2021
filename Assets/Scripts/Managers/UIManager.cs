@@ -26,6 +26,7 @@
         [SerializeField] string stringAfterTextHealth = "%";
 
         public Image ToiletPaperImage => toiletPaperImage;
+        public Slider SliderHealth => sliderHealth;
 
         void Start()
         {

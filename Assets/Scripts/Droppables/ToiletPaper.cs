@@ -125,7 +125,7 @@ public class ToiletPaper : MonoBehaviour, IDroppable
             currentTime += Time.deltaTime;
             delta += Time.deltaTime / durationMovement2;
 
-            //if moving to toilet paper UI, update end position
+            //if moving to UI, update end position
             if (moveToToiletPaperInUI && GameManager.instance.uiManager.ToiletPaperImage)
                 endPosition = GameManager.instance.uiManager.ToiletPaperImage.transform.position;
 
