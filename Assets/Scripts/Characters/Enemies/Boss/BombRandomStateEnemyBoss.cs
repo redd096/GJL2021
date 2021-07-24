@@ -15,7 +15,8 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
 
     [Header("Delays")]
     [SerializeField] float delayFirstBomb = 4;
-    [SerializeField] int numberRandomBombs = 3;
+    [SerializeField] int minNumberRandomBombs = 4;
+    [SerializeField] int maxNumberRandomBombs = 7;
     [SerializeField] float delayBetweenBombs = 1;
 
     [Header("Event Animation On Enter State")]
@@ -107,8 +108,11 @@ public class BombRandomStateEnemyBoss : StateMachineBehaviour
         Vector2 center = enemy.PointPatrol != null ? new Vector2(enemy.PointPatrol.position.x, enemy.PointPatrol.position.y) : Vector2.zero;
         Vector2 size = enemy.RangeBossAttack / 2;
 
+        //get random number of bombs
+        int randomBombsNumber = Random.Range(minNumberRandomBombs, maxNumberRandomBombs);
+
         //then spawn bombs in random points
-        for (int i = 0; i < numberRandomBombs; i++)
+        for (int i = 0; i < randomBombsNumber; i++)
         {
             //calculate random point
             float x = Random.Range(center.x - size.x, center.x + size.x);
